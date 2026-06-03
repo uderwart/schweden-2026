@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#2f4a32">
+<title>Schweden 2026</title>
+<style>
+  :root{
+    --gruen:#2f4a32; --gruen-hell:#3d5e41; --sand:#f4f1e8;
+    --gelb:#f7c948; --text:#1f2a20; --grau:#6b7568;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--sand); color:var(--text);
+    min-height:100vh; padding:env(safe-area-inset-top) 20px 40px;
+    display:flex; flex-direction:column; align-items:center;
+  }
+  header{text-align:center; margin:48px 0 36px;}
+  .flagge{font-size:40px; line-height:1;}
+  h1{font-size:28px; font-weight:700; color:var(--gruen); margin-top:10px; letter-spacing:-.3px;}
+  .datum{color:var(--grau); font-size:15px; margin-top:6px;}
+  .karten{width:100%; max-width:480px; display:flex; flex-direction:column; gap:14px;}
+  a.karte{
+    display:flex; align-items:center; gap:16px; text-decoration:none;
+    background:#fff; border:1px solid #e3ddcd; border-radius:16px;
+    padding:18px 20px; color:var(--text);
+    box-shadow:0 1px 3px rgba(47,74,50,.06);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  a.karte:active{transform:scale(.98); box-shadow:0 1px 2px rgba(47,74,50,.04);}
+  .icon{
+    flex:0 0 48px; height:48px; border-radius:12px;
+    background:var(--gruen); color:#fff; font-size:24px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .karte .titel{font-size:17px; font-weight:600;}
+  .karte .sub{font-size:13px; color:var(--grau); margin-top:2px;}
+  .pfeil{margin-left:auto; color:var(--grau); font-size:20px;}
+  footer{margin-top:40px; font-size:12px; color:var(--grau); text-align:center; line-height:1.5;}
+</style>
+</head>
+<body>
+  <header>
+    <div class="flagge">🇸🇪</div>
+    <h1>Schweden 2026</h1>
+    <div class="datum">11. – 26. Juni · Uli &amp; Sabine</div>
+  </header>
+
+  <nav class="karten">
+    <a class="karte" href="guide.html">
+      <div class="icon">🗺️</div>
+      <div>
+        <div class="titel">Reise-Guide</div>
+        <div class="sub">Route, Karte, Regeln, Notfall</div>
+      </div>
+      <div class="pfeil">›</div>
+    </a>
+
+    <a class="karte" href="packliste.html">
+      <div class="icon">🎒</div>
+      <div>
+        <div class="titel">Packliste</div>
+        <div class="sub">Checkliste zum Abhaken</div>
+      </div>
+      <div class="pfeil">›</div>
+    </a>
+
+    <a class="karte" href="uebergabe.html">
+      <div class="icon">🚐</div>
+      <div>
+        <div class="titel">Bus-Übergabe</div>
+        <div class="sub">roadsurfer · Abholung &amp; Rückgabe</div>
+      </div>
+      <div class="pfeil">›</div>
+    </a>
+  </nav>
+
+  <footer>Privat · nicht in Suchmaschinen gelistet<br>Trevlig resa! 🌲</footer>
+</body>
+</html>

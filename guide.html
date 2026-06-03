@@ -1,0 +1,2922 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schweden mit dem VW-Bus · 11. bis 26.06.2026 · v10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f1ea;
+    --paper: #ffffff;
+    --ink: #1c2620;
+    --ink-soft: #4a564f;
+    --moss: #4a6a4a;
+    --moss-deep: #2f4a32;
+    --sun: #d4a437;
+    --berry: #8a3a3a;
+    --line: #d8d0c2;
+    --shadow: 0 1px 3px rgba(28,38,32,.06), 0 8px 24px rgba(28,38,32,.06);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  h1, h2, h3, h4 { font-family: 'Fraunces', serif; font-weight: 500; line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+  h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 400; }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); margin-bottom: 1rem; }
+  h3 { font-size: 1.25rem; margin-bottom: .5rem; }
+  h4 { font-size: 1rem; margin-bottom: .3rem; font-weight: 600; }
+  p { margin: 0 0 1rem 0; color: var(--ink-soft); }
+  a { color: var(--moss-deep); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--berry); }
+
+  .hero {
+    min-height: 88vh;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(74,106,74,.12) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(212,164,55,.10) 0%, transparent 50%),
+      var(--bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; position: relative; z-index: 2; }
+  .eyebrow {
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--moss);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+  .hero h1 em { font-style: italic; color: var(--moss-deep); }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+    font-family: 'Fraunces', serif;
+  }
+  .hero-meta div { min-width: 140px; }
+  .hero-meta span { display: block; font-size: .7rem; text-transform: uppercase; letter-spacing: .2em; color: var(--ink-soft); margin-bottom: .3rem; }
+  .hero-meta strong { font-size: 1.4rem; font-weight: 500; color: var(--ink); }
+
+  .hero-deco {
+    position: absolute;
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Fraunces', serif;
+    font-size: 14rem;
+    color: rgba(74,106,74,.06);
+    font-weight: 400;
+    line-height: 1;
+    user-select: none;
+    z-index: 1;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    z-index: 50;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  nav.toc ul {
+    display: flex;
+    gap: .5rem;
+    padding: .8rem 1rem;
+    margin: 0;
+    list-style: none;
+    max-width: 1200px;
+    margin: 0 auto;
+    white-space: nowrap;
+  }
+  nav.toc a, nav.toc .toc-btn {
+    text-decoration: none;
+    padding: .4rem .9rem;
+    font-size: .85rem;
+    color: var(--ink-soft);
+    border-radius: 999px;
+    transition: all .2s;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+  nav.toc a:hover, nav.toc .toc-btn:hover { background: var(--moss-deep); color: white; }
+  nav.toc .toc-btn.active { background: var(--moss-deep); color: white; }
+
+  section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+  section.alt { background: var(--paper); max-width: none; }
+  section.alt > .inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-head { margin-bottom: 3rem; }
+  .section-head .num { font-family: 'Fraunces', serif; font-size: .9rem; color: var(--moss); letter-spacing: .15em; }
+
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1.6rem;
+    transition: all .2s;
+  }
+  .card:hover { border-color: var(--moss); transform: translateY(-2px); box-shadow: var(--shadow); }
+  .card .icon { font-size: 1.6rem; margin-bottom: .8rem; display: block; }
+  .card.warn { border-left: 3px solid var(--berry); }
+  .card.tip { border-left: 3px solid var(--sun); }
+  .card.good { border-left: 3px solid var(--moss); }
+
+  .day {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 1.5rem;
+    padding: 1.8rem 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+  .day:last-child { border-bottom: none; }
+  .day-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.4rem;
+    color: var(--moss);
+    line-height: 1;
+    font-weight: 400;
+  }
+  .day-num small { display: block; font-size: .7rem; color: var(--ink-soft); margin-top: .3rem; letter-spacing: .15em; text-transform: uppercase; font-family: 'Inter', sans-serif; }
+  .day.highlight .day-num { color: var(--berry); }
+  .day.highlight { background: rgba(138,58,58,.03); padding-left: 1rem; padding-right: 1rem; margin-left: -1rem; margin-right: -1rem; }
+  .day-content h3 { color: var(--ink); margin-bottom: .3rem; }
+  .day-content .route { font-size: .85rem; color: var(--moss); margin-bottom: .6rem; font-weight: 500; }
+  .day-content ul { margin: .5rem 0 0 0; padding-left: 1.2rem; }
+  .day-content li { margin-bottom: .3rem; color: var(--ink-soft); }
+  .day-content li::marker { color: var(--moss); }
+
+  @media (max-width: 600px) {
+    .day { grid-template-columns: 1fr; gap: .5rem; }
+    .day-num { font-size: 1.6rem; display: flex; align-items: baseline; gap: 1rem; }
+    .day-num small { margin-top: 0; }
+  }
+
+  .checklist { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+  .checklist-cat { background: var(--paper); border: 1px solid var(--line); padding: 1.4rem; border-radius: 4px; }
+  .checklist-cat h4 { color: var(--moss-deep); margin-bottom: 1rem; padding-bottom: .5rem; border-bottom: 1px solid var(--line); }
+  .checklist-cat label {
+    display: flex;
+    align-items: flex-start;
+    gap: .6rem;
+    padding: .35rem 0;
+    cursor: pointer;
+    font-size: .92rem;
+    color: var(--ink-soft);
+    transition: color .15s;
+    line-height: 1.4;
+  }
+  .checklist-cat label:hover { color: var(--ink); }
+  .checklist-cat input[type="checkbox"] {
+    margin-top: .25rem;
+    accent-color: var(--moss);
+    flex-shrink: 0;
+  }
+  .checklist-cat input[type="checkbox"]:checked + span { text-decoration: line-through; opacity: .5; }
+
+  .phrase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: .7rem; }
+  .phrase {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: .9rem 1.1rem;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .phrase .sv { font-family: 'Fraunces', serif; font-size: 1.05rem; color: var(--moss-deep); }
+  .phrase .de { font-size: .85rem; color: var(--ink-soft); text-align: right; }
+
+  .emergency {
+    background: linear-gradient(135deg, var(--berry) 0%, #6a2828 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 4px;
+    margin-top: 2rem;
+  }
+  .emergency h3 { color: white; }
+  .emergency p { color: rgba(255,255,255,.85); }
+  .emergency-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1rem; }
+  .emergency-grid div { padding: .8rem; background: rgba(255,255,255,.08); border-radius: 3px; }
+  .emergency-grid strong { display: block; font-family: 'Fraunces', serif; font-size: 1.4rem; }
+  .emergency-grid span { font-size: .8rem; opacity: .8; }
+
+  .quick-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .fact {
+    padding: 1.4rem;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .fact span { font-size: .7rem; text-transform: uppercase; letter-spacing: .15em; color: var(--ink-soft); }
+  .fact strong { display: block; font-family: 'Fraunces', serif; font-size: 1.3rem; color: var(--moss-deep); margin-top: .3rem; }
+  .fact small { color: var(--ink-soft); font-size: .8rem; }
+
+  details {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: .8rem;
+    transition: border-color .2s;
+  }
+  details[open] { border-color: var(--moss); }
+  summary {
+    cursor: pointer;
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    color: var(--ink);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; font-size: 1.5rem; color: var(--moss); transition: transform .2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details > *:not(summary) { margin-top: 1rem; }
+
+  /* ARCHIV */
+  .archiv-doc {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--moss);
+    border-radius: 4px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .archiv-doc h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    color: var(--moss-deep);
+    margin-bottom: .3rem;
+    font-weight: 500;
+  }
+  .archiv-doc .doc-meta {
+    font-size: .75rem;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: 1rem;
+  }
+  .archiv-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: .8rem 0;
+    font-size: .9rem;
+  }
+  .archiv-table td {
+    padding: .5rem .8rem;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .archiv-table td:first-child {
+    color: var(--ink-soft);
+    width: 40%;
+    font-size: .85rem;
+  }
+  .archiv-table td:last-child {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .archiv-table tr:last-child td { border-bottom: none; }
+
+  .step-list {
+    list-style: none;
+    padding: 0;
+    counter-reset: step-counter;
+  }
+  .step-list li {
+    counter-increment: step-counter;
+    padding: .8rem 0 .8rem 3rem;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .step-list li:last-child { border-bottom: none; }
+  .step-list li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: .8rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--moss);
+    color: white;
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .9rem;
+  }
+
+  .copyable {
+    background: rgba(74,106,74,.05);
+    border: 1px dashed var(--moss);
+    border-radius: 3px;
+    padding: .3rem .6rem;
+    font-family: 'Fraunces', serif;
+    color: var(--moss-deep);
+    cursor: pointer;
+    transition: background .15s;
+    font-size: 1rem;
+    user-select: all;
+  }
+  .copyable:hover { background: rgba(74,106,74,.12); }
+
+  .archiv-warning {
+    background: linear-gradient(to right, rgba(138,58,58,.08), rgba(138,58,58,.03));
+    border: 1px solid rgba(138,58,58,.3);
+    border-left: 3px solid var(--berry);
+    border-radius: 4px;
+    padding: 1.4rem;
+    margin: 1.5rem 0;
+  }
+  .archiv-warning h4 {
+    color: var(--berry);
+    margin-bottom: .6rem;
+  }
+
+  .doc-checklist {
+    list-style: none;
+    padding: 0;
+  }
+  .doc-checklist li {
+    padding: .4rem 0 .4rem 1.8rem;
+    position: relative;
+    color: var(--ink);
+    font-size: .9rem;
+  }
+  .doc-checklist li::before {
+    content: '☐';
+    position: absolute;
+    left: 0;
+    top: .4rem;
+    color: var(--moss);
+    font-size: 1.1rem;
+  }
+
+  /* RESERVIERUNGEN */
+  .reservations {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 1rem 0;
+  }
+  .res-row {
+    display: grid;
+    grid-template-columns: 110px 1fr 130px 100px 36px;
+    gap: .8rem;
+    padding: .9rem 1rem;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+  .res-row:last-child { border-bottom: none; }
+  .res-row.header {
+    background: rgba(74,106,74,.06);
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--ink-soft);
+    font-weight: 600;
+    padding: .6rem 1rem;
+  }
+  .res-date {
+    font-family: 'Fraunces', serif;
+    color: var(--moss-deep);
+    font-size: .95rem;
+    line-height: 1.3;
+  }
+  .res-date small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: .7rem;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-top: .15rem;
+  }
+  .res-content { min-width: 0; }
+  .res-name {
+    font-weight: 600;
+    color: var(--ink);
+    font-size: .92rem;
+    margin-bottom: .15rem;
+  }
+  .res-meta {
+    font-size: .8rem;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+  .res-meta span { display: inline-block; margin-right: .8rem; }
+  .res-status {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    padding: .25rem .6rem;
+    border-radius: 999px;
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid;
+    background: transparent;
+    font-family: inherit;
+    transition: all .15s;
+  }
+  .res-status.offen { color: #8a3a3a; border-color: rgba(138,58,58,.3); background: rgba(138,58,58,.05); }
+  .res-status.gebucht { color: var(--moss-deep); border-color: var(--moss); background: rgba(74,106,74,.08); }
+  .res-status.bezahlt { background: var(--moss-deep); color: white; border-color: var(--moss-deep); }
+  .res-status:hover { transform: translateY(-1px); }
+  .res-price {
+    font-family: 'Fraunces', serif;
+    color: var(--ink);
+    font-size: .95rem;
+    text-align: right;
+  }
+  .res-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .res-edit {
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    color: var(--ink-soft);
+    font-size: .85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .15s;
+    padding: 0;
+  }
+  .res-edit:hover { border-color: var(--moss); color: var(--moss-deep); }
+  @media (max-width: 700px) {
+    .res-row, .res-row.header { grid-template-columns: 1fr; gap: .3rem; padding: 1rem; }
+    .res-row.header { display: none; }
+    .res-date { font-size: 1rem; margin-bottom: .3rem; }
+    .res-price { text-align: left; margin-top: .3rem; }
+    .res-actions { justify-content: flex-start; }
+  }
+
+  .res-edit-form {
+    background: rgba(74,106,74,.04);
+    border-top: 1px solid var(--moss);
+    padding: 1.2rem;
+  }
+  .res-edit-form label {
+    display: block;
+    font-size: .75rem;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: .25rem;
+    margin-top: .8rem;
+  }
+  .res-edit-form label:first-child { margin-top: 0; }
+  .res-edit-form input,
+  .res-edit-form textarea {
+    width: 100%;
+    padding: .55rem .7rem;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: .9rem;
+    background: white;
+    color: var(--ink);
+    box-sizing: border-box;
+  }
+  .res-edit-form input:focus,
+  .res-edit-form textarea:focus {
+    outline: none;
+    border-color: var(--moss);
+  }
+  .res-edit-form textarea { min-height: 60px; resize: vertical; }
+  .res-edit-actions {
+    display: flex;
+    gap: .5rem;
+    margin-top: 1rem;
+    justify-content: flex-end;
+  }
+  .res-btn {
+    padding: .5rem 1rem;
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: .85rem;
+    cursor: pointer;
+    border: 1px solid var(--line);
+    background: white;
+    color: var(--ink);
+    transition: all .15s;
+  }
+  .res-btn:hover { border-color: var(--moss); }
+  .res-btn.primary {
+    background: var(--moss-deep);
+    border-color: var(--moss-deep);
+    color: white;
+  }
+  .res-btn.primary:hover { background: var(--moss); border-color: var(--moss); }
+
+  .res-summary {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    padding: .9rem 1.2rem;
+    background: rgba(74,106,74,.04);
+    border-radius: 3px;
+    font-size: .85rem;
+  }
+  .res-summary div { color: var(--ink-soft); }
+  .res-summary strong {
+    font-family: 'Fraunces', serif;
+    color: var(--moss-deep);
+    font-size: 1.05rem;
+    margin-left: .3rem;
+  }
+
+  /* BUS-TAB: Abholung / Rückgabe */
+  .pickup-return-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  @media (max-width: 800px) {
+    .pickup-return-grid { grid-template-columns: 1fr; }
+  }
+  .pr-col {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1.6rem;
+  }
+  .pr-col.pickup { border-top: 3px solid var(--moss); }
+  .pr-col.return { border-top: 3px solid var(--sun); }
+  .pr-col h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    color: var(--moss-deep);
+    margin-bottom: 1rem;
+    padding-bottom: .6rem;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .pr-col h3 .pr-date {
+    font-size: .8rem;
+    color: var(--ink-soft);
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 600;
+  }
+  .pr-col h4 {
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--moss);
+    margin: 1.4rem 0 .6rem 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+  }
+  .pr-col h4:first-of-type { margin-top: .2rem; }
+  .pr-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .pr-col li {
+    padding: .35rem 0 .35rem 1.5rem;
+    position: relative;
+    color: var(--ink);
+    font-size: .9rem;
+    line-height: 1.45;
+    cursor: pointer;
+    user-select: none;
+  }
+  .pr-col li::before {
+    content: '☐';
+    position: absolute;
+    left: 0;
+    top: .35rem;
+    color: var(--moss);
+    font-size: 1rem;
+  }
+  .pr-col li.checked { color: var(--ink-soft); text-decoration: line-through; opacity: .65; }
+  .pr-col li.checked::before { content: '☑'; }
+  .pr-col li.critical {
+    background: rgba(138,58,58,.05);
+    margin-left: -.5rem;
+    margin-right: -.5rem;
+    padding-left: 2rem;
+    padding-right: .5rem;
+    border-left: 2px solid var(--berry);
+  }
+  .pr-col li.critical::before {
+    content: '!';
+    color: var(--berry);
+    font-weight: 700;
+    left: .5rem;
+    font-family: 'Fraunces', serif;
+  }
+  .pr-col li.critical.checked { opacity: .55; }
+
+  .photo-plan {
+    background: linear-gradient(to right, rgba(74,106,74,.04), rgba(212,164,55,.04));
+    border: 1px solid var(--moss);
+    border-radius: 4px;
+    padding: 1.4rem;
+    margin: 2rem 0;
+  }
+  .photo-plan h3 {
+    color: var(--moss-deep);
+    margin-bottom: .5rem;
+  }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: .6rem;
+    margin-top: 1rem;
+  }
+  .photo-tile {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: .7rem;
+    text-align: center;
+    font-size: .82rem;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all .15s;
+    user-select: none;
+  }
+  .photo-tile:hover { border-color: var(--moss); transform: translateY(-1px); }
+  .photo-tile.done {
+    background: var(--moss);
+    color: white;
+    border-color: var(--moss-deep);
+  }
+  .photo-tile .num {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    color: var(--moss-deep);
+    margin-bottom: .2rem;
+  }
+  .photo-tile.done .num { color: white; }
+
+  .timeline-handover {
+    border-left: 2px solid var(--line);
+    margin: 1.5rem 0 1.5rem 1rem;
+    padding-left: 1.5rem;
+  }
+  .timeline-handover .th-step {
+    position: relative;
+    padding-bottom: 1.2rem;
+  }
+  .timeline-handover .th-step::before {
+    content: '';
+    position: absolute;
+    left: -1.65rem;
+    top: .3rem;
+    width: 12px;
+    height: 12px;
+    background: var(--moss);
+    border-radius: 50%;
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--line);
+  }
+  .timeline-handover .th-time {
+    font-family: 'Fraunces', serif;
+    color: var(--moss);
+    font-size: .85rem;
+    margin-bottom: .2rem;
+  }
+  .timeline-handover .th-title {
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: .2rem;
+  }
+  .timeline-handover .th-desc {
+    color: var(--ink-soft);
+    font-size: .88rem;
+    line-height: 1.5;
+  }
+
+  footer {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: var(--moss-deep);
+    color: rgba(255,255,255,.75);
+    font-size: .85rem;
+  }
+  footer p { color: rgba(255,255,255,.7); }
+  footer .signature { font-family: 'Fraunces', serif; font-style: italic; font-size: 1.1rem; color: white; margin-bottom: 1rem; }
+
+  ul.clean { list-style: none; padding: 0; }
+  ul.clean li { padding: .4rem 0; border-bottom: 1px dashed var(--line); color: var(--ink-soft); }
+  ul.clean li:last-child { border-bottom: none; }
+  ul.clean li strong { color: var(--ink); }
+
+  .source-note { font-size: .75rem; color: var(--ink-soft); font-style: italic; margin-top: 1rem; }
+
+  .timeline-bar {
+    margin: 2rem 0;
+    padding: 1.2rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    font-family: 'Fraunces', serif;
+  }
+  .timeline-bar div { text-align: center; flex: 1; min-width: 110px; }
+  .timeline-bar div span { display: block; font-size: .7rem; text-transform: uppercase; letter-spacing: .15em; color: var(--ink-soft); margin-bottom: .3rem; font-family: 'Inter', sans-serif; }
+  .timeline-bar div strong { color: var(--moss-deep); font-size: 1.05rem; }
+
+  /* MAP */
+  .map-wrap {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  @media (max-width: 900px) {
+    .map-wrap { grid-template-columns: 1fr; }
+    .map-list { max-height: 320px; }
+  }
+  #map { display: none; }
+  .svg-map-container {
+    position: relative;
+    background: #dde7e8;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    aspect-ratio: 6 / 7;
+    max-height: 580px;
+  }
+  @media (max-width: 600px) {
+    .svg-map-container { max-height: none; }
+  }
+  #route-svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .route-marker-circle {
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+  .route-marker-circle:hover,
+  .route-marker-circle.active {
+    filter: drop-shadow(0 3px 8px rgba(0,0,0,.4));
+  }
+  .route-marker-circle:hover {
+    transform: scale(1.15);
+  }
+  .route-marker-circle.active {
+    transform: scale(1.25);
+    stroke: var(--berry);
+    stroke-width: 3;
+  }
+  .route-marker-text {
+    pointer-events: none;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    fill: white;
+    text-anchor: middle;
+    dominant-baseline: central;
+    font-size: 10px;
+  }
+  .map-tooltip {
+    position: absolute;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: .7rem .9rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    font-size: .85rem;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, calc(-100% - 12px));
+    transition: opacity .15s;
+    white-space: nowrap;
+    max-width: 220px;
+    white-space: normal;
+    z-index: 10;
+  }
+  .map-tooltip.visible { opacity: 1; }
+  .map-tooltip strong {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    color: var(--moss-deep);
+    margin-bottom: .15rem;
+  }
+  .map-tooltip .tt-date {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--ink-soft);
+    margin-bottom: .3rem;
+  }
+  .map-tooltip .tt-sub {
+    color: var(--ink-soft);
+    font-size: .8rem;
+  }
+  .map-list {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow-y: auto;
+    max-height: 580px;
+  }
+  .map-list-item {
+    padding: .8rem 1rem;
+    border-bottom: 1px solid var(--line);
+    cursor: pointer;
+    transition: all .15s;
+    display: flex;
+    align-items: flex-start;
+    gap: .8rem;
+  }
+  .map-list-item:last-child { border-bottom: none; }
+  .map-list-item:hover { background: rgba(74,106,74,.08); }
+  .map-list-item.active { background: var(--moss-deep); color: white; }
+  .map-list-item.active .mli-date,
+  .map-list-item.active .mli-sub { color: rgba(255,255,255,.8); }
+  .map-list-item.ferry { background: rgba(212,164,55,.08); }
+  .map-list-item.ferry:hover { background: rgba(212,164,55,.15); }
+  .map-list-item.ferry.active { background: var(--sun); color: var(--ink); }
+  .mli-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    color: var(--moss);
+    width: 28px;
+    flex-shrink: 0;
+    text-align: center;
+  }
+  .map-list-item.active .mli-num { color: white; }
+  .map-list-item.ferry .mli-num { color: var(--sun); }
+  .map-list-item.ferry.active .mli-num { color: var(--berry); }
+  .mli-content { flex: 1; min-width: 0; }
+  .mli-title { font-weight: 600; font-size: .92rem; line-height: 1.3; }
+  .mli-date { font-size: .72rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .1em; margin-top: .2rem; }
+  .mli-sub { font-size: .8rem; color: var(--ink-soft); margin-top: .2rem; }
+  .map-popup {
+    font-family: 'Inter', sans-serif;
+    font-size: .85rem;
+  }
+  .map-popup strong {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    display: block;
+    margin-bottom: .2rem;
+    color: var(--moss-deep);
+  }
+  .map-popup .pdate {
+    color: var(--ink-soft);
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: .4rem;
+  }
+  .map-legend {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    font-size: .8rem;
+    color: var(--ink-soft);
+    flex-wrap: wrap;
+  }
+  .map-legend span {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+  }
+  .legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .legend-line {
+    width: 22px;
+    height: 3px;
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-deco">Sverige</div>
+  <div class="hero-inner">
+    <div class="eyebrow">VW-Bus · Rostock–Trelleborg · Ostküste · Stockholm</div>
+    <h1>Eine ruhige Reise<br>durch <em>Sverige</em>.</h1>
+    <p style="max-width: 600px; margin-top: 1.5rem; font-size: 1.1rem;">Vom Aufbruch in München bis zu den Schären vor Stockholm und zurück. Alles, was ihr unterwegs braucht: Route, Stellplätze, Regeln, Sprache, Notfälle.</p>
+    <div class="hero-meta">
+      <div><span>Start</span><strong>Do, 11.06.2026</strong></div>
+      <div><span>Stockholm</span><strong>21.–24.06.</strong></div>
+      <div><span>Rückfähre</span><strong>Fr, 26.06.2026</strong></div>
+      <div><span>Reisende</span><strong>Uli &amp; Sabine</strong></div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <ul>
+    <li><button class="toc-btn" data-target="vorab">Vorab</button></li>
+    <li><button class="toc-btn" data-target="bus">Bus</button></li>
+    <li><button class="toc-btn" data-target="route">Route</button></li>
+    <li><button class="toc-btn" data-target="karte">Karte</button></li>
+    <li><button class="toc-btn" data-target="stockholm">Stockholm</button></li>
+    <li><button class="toc-btn" data-target="regeln">Regeln</button></li>
+    <li><button class="toc-btn" data-target="stellplatz">Stellplatz</button></li>
+    <li><button class="toc-btn" data-target="essen">Essen &amp; Fika</button></li>
+    <li><button class="toc-btn" data-target="muecken">Mücken</button></li>
+    <li><button class="toc-btn" data-target="sprache">Sprache</button></li>
+    <li><button class="toc-btn" data-target="packliste">Packliste</button></li>
+    <li><button class="toc-btn" data-target="notfall">Notfall</button></li>
+    <li><button class="toc-btn" data-target="archiv">Archiv</button></li>
+  </ul>
+</nav>
+
+<!-- ============ VORAB ============ -->
+<section id="vorab">
+  <div class="section-head">
+    <div class="num">01 — Bevor es losgeht</div>
+    <h2>Das Wichtigste in Kürze</h2>
+    <p>Schweden ist im Schengen-Raum, der Personalausweis reicht. Bezahlt wird fast nur mit Karte, ihr braucht so gut wie kein Bargeld. Strom funktioniert wie zuhause (Typ F).</p>
+  </div>
+
+  <div class="quick-facts">
+    <div class="fact"><span>Währung</span><strong>SEK</strong><small>1 € ≈ 11 SEK</small></div>
+    <div class="fact"><span>Sprache</span><strong>Schwedisch</strong><small>Englisch überall</small></div>
+    <div class="fact"><span>Zeitzone</span><strong>MESZ</strong><small>gleiche wie DE</small></div>
+    <div class="fact"><span>Notruf</span><strong>112</strong><small>EU-weit</small></div>
+    <div class="fact"><span>Strom</span><strong>230 V · F</strong><small>kein Adapter</small></div>
+    <div class="fact"><span>Tageslicht</span><strong>~18 h</strong><small>Stockholm im Juni</small></div>
+  </div>
+
+  <div style="margin-top: 2.5rem;">
+    <h3 style="margin-bottom: 1rem;">Vor der Abfahrt erledigen</h3>
+    <div class="grid-2">
+      <div class="card good">
+        <span class="icon">📄</span>
+        <h4>Dokumente</h4>
+        <p>Personalausweis (oder Reisepass), Führerschein, Fahrzeugschein (Zulassung Teil I), Versicherungspapiere, Buchungsbestätigung der Fähre — hin und zurück.</p>
+      </div>
+      <div class="card good">
+        <span class="icon">💳</span>
+        <h4>Karten und Bezahlen</h4>
+        <p>Schweden ist nahezu bargeldlos. Kreditkarte ohne Auslandseinsatzgebühr einpacken. Apple/Google Pay funktioniert überall, auch an unbemannten Tankstellen.</p>
+      </div>
+      <div class="card good">
+        <span class="icon">📱</span>
+        <h4>EU-Roaming</h4>
+        <p>Roaming inklusive — kein extra SIM nötig. Offline-Karten in Google Maps oder Organic Maps für die Schären vorab herunterladen, weil das Netz auf den Inseln dünn wird.</p>
+      </div>
+      <div class="card tip">
+        <span class="icon">🅿️</span>
+        <h4>Stellplatz-Apps</h4>
+        <p><strong>park4night</strong> und <strong>Campercontact</strong> sind in Schweden Standard für Wohnmobil-Stellplätze, mit Bewertungen anderer Reisender.</p>
+      </div>
+      <div class="card warn">
+        <span class="icon">🛞</span>
+        <h4>Bus-Check</h4>
+        <p>Reifendruck, Öl, Bremsen, Gasprüfung. Warnweste und Warndreieck wie in Deutschland. Ersatz-Glühlampen sind keine Pflicht, aber sinnvoll.</p>
+      </div>
+      <div class="card warn">
+        <span class="icon">💡</span>
+        <h4>Licht — auch tagsüber</h4>
+        <p>In Schweden gilt Pflicht zum Fahren mit Abblendlicht oder Tagfahrlicht — rund um die Uhr, auch im Hochsommer.</p>
+        <p class="source-note">Quelle: ADAC Länderinfo Schweden</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUS ============ -->
+<section id="bus">
+  <div class="section-head">
+    <div class="num">01b — VW-Bus Übergabe</div>
+    <h2>Abholung &amp; Rückgabe</h2>
+    <p>Der teuerste Moment der Reise ist nicht das Tanken, sondern eine übersehene Delle bei der Rückgabe. Hier alles, was bei Übergabe und Rückgabe wichtig ist — mit Schwerpunkt auf <strong>Schadens-Beweissicherung</strong>, weil das die Kaution rettet.</p>
+  </div>
+
+  <div class="archiv-warning">
+    <h4>⚠ Die zwei wichtigsten Regeln</h4>
+    <p style="margin-bottom: .5rem;"><strong>1. Schäden nach Verlassen der Station können nicht mehr gemeldet werden.</strong> Alles vor Ort dokumentieren, im Übergabeprotokoll eintragen lassen, Fotos machen.</p>
+    <p style="margin-bottom: 0;"><strong>2. Fotos und Video sind eure Lebensversicherung.</strong> Mehrere Reisende berichten, dass nur ihr privates Handyvideo die Kaution gerettet hat, als bei der Rückgabe Schäden behauptet wurden, die schon vorher da waren.</p>
+    <p class="source-note">Quelle: roadsurfer Trustpilot-Bewertungen, roadsurfer FAQ &amp; AGB</p>
+  </div>
+
+  <div class="pickup-return-grid">
+
+    <!-- ABHOLUNG -->
+    <div class="pr-col pickup">
+      <h3>Abholung <span class="pr-date">Mi, 10.06.2026</span></h3>
+
+      <h4>Mitbringen</h4>
+      <ul>
+        <li class="critical">Personalausweis oder Reisepass beider Fahrer — <strong>Original</strong>, keine Fotos</li>
+        <li class="critical">Führerschein beider Fahrer im Original (Klasse B / 3, mind. 1–2 Jahre Fahrpraxis)</li>
+        <li class="critical">Kreditkarte für die Kaution (Visa oder Mastercard), PIN nicht vergessen</li>
+        <li>Buchungsbestätigung digital oder ausgedruckt</li>
+        <li>ERGO Versicherungsschein Nr. 184447112</li>
+        <li>Mietvertrag-Daten / Reservierungsnummer</li>
+      </ul>
+
+      <h4>Vorab am Vortag</h4>
+      <ul>
+        <li>Online-Check-in im Kundenkonto erledigen</li>
+        <li>Camper-Tutorial-Videos zum Bus-Modell anschauen — das spart vor Ort Zeit</li>
+        <li>Equipment-Liste der Buchung durchgehen, damit ihr wisst, was dabei sein muss</li>
+      </ul>
+
+      <h4>Bei der Übergabe</h4>
+      <ul>
+        <li class="critical">Bus außen <strong>komplett auf Schäden absuchen</strong>, gemeinsam mit Mitarbeiter</li>
+        <li class="critical">Jede vorhandene Delle, jeden Kratzer ins Übergabeprotokoll eintragen lassen</li>
+        <li class="critical">Eigenes Handyvideo machen: Rundgang außen, dann innen — mit Datum/Uhrzeit sichtbar</li>
+        <li>Innen prüfen: Polsterschäden, Funktionsfähigkeit der Klappen, Markise, Aufstelldach</li>
+        <li>Reifenzustand, Felgen-Kratzer dokumentieren</li>
+        <li>Unterboden (soweit sichtbar) und Front- + Heckschürze prüfen</li>
+        <li>Equipment-Check: alles vollständig laut Liste?</li>
+        <li>Tankfüllstand notieren (Foto vom Tacho)</li>
+        <li>Kilometerstand notieren (Foto)</li>
+        <li>Wassertanks: voll/leer? Notieren</li>
+        <li>Gas-Kasten: Flasche(n) vorhanden, Stand?</li>
+      </ul>
+
+      <h4>Vor Abfahrt</h4>
+      <ul>
+        <li class="critical">Mietvertrag <strong>unterschreiben</strong> — sonst kein Versicherungsschutz</li>
+        <li class="critical">E-Mail mit Mietvertrag und erfassten Schäden ankommen lassen, prüfen, ob alles drin steht</li>
+        <li>Pannenhotline-Nummer ins Handy speichern (erscheint nach Abholung im Kundenkonto)</li>
+        <li>QR-Code im Handschuhfach merken (für Hilfe unterwegs)</li>
+        <li>Praktisch erproben: Bett aufbauen, Küche, Heizung, Aufstelldach</li>
+      </ul>
+    </div>
+
+    <!-- RÜCKGABE -->
+    <div class="pr-col return">
+      <h3>Rückgabe <span class="pr-date">Sa, 27.06.2026</span></h3>
+
+      <h4>Tag vorher unterwegs</h4>
+      <ul>
+        <li class="critical">Grauwassertank und Toilette an Entsorgungsstation leeren</li>
+        <li class="critical">Bus innen reinigen: Oberflächen, Küche, Kühlschrank leer, Boden fegen</li>
+        <li>Vollständigkeits-Check des Equipments — ist alles wieder dabei?</li>
+        <li>Frischwassertank ausspülen oder leeren (je nach Vorgabe)</li>
+        <li>Müll komplett entsorgen — keine Reste im Bus</li>
+        <li>Persönliche Sachen einsammeln (auch unter Polstern, in Fächern)</li>
+      </ul>
+
+      <h4>Am Tag der Rückgabe</h4>
+      <ul>
+        <li class="critical">Vollgetankt zurückgeben — sonst 19 € Pauschale + Spritkosten</li>
+        <li>Groben Schmutz an Windschutzscheibe und Stoßstange entfernen (Tankstelle)</li>
+        <li><strong>Nicht</strong> durch die Waschanlage — kann Aufstelldach beschädigen</li>
+        <li>Pünktlich am Rückgabeort sein, Puffer einplanen</li>
+        <li>Online einchecken via QR-Code an der Station oder Link aus Erinnerungs-Mail</li>
+      </ul>
+
+      <h4>Bei der Rückgabe vor Ort</h4>
+      <ul>
+        <li class="critical"><strong>Eigenes Handyvideo machen, BEVOR ihr die Schlüssel abgebt</strong> — Rundgang außen + innen, mit Datum sichtbar</li>
+        <li class="critical">Bei gemeinsamer Sichtprüfung dabei bleiben, Schäden im Rückgabeprotokoll mitlesen</li>
+        <li class="critical">Rückgabeprotokoll <strong>unterschreiben</strong> — und Kopie/Foto behalten</li>
+        <li>Prüfung kann 20 Min dauern, Zeit einplanen</li>
+        <li>Ergebnis findet ihr danach im Kundenkonto</li>
+        <li>Bei behaupteten Schäden, die ihr nicht verursacht habt: <strong>vor Ort widersprechen</strong>, eigenes Video zeigen</li>
+      </ul>
+
+      <h4>Nach der Rückgabe</h4>
+      <ul>
+        <li>Schadensberechnung erfolgt innerhalb 14 Tagen</li>
+        <li><strong>48-Stunden-Frist:</strong> Vermieter kann verdeckte Schäden bis 48 h nach Rückgabe geltend machen</li>
+        <li>Kreditkarten-Kaution: Block wird nach max. 30 Tagen automatisch freigegeben</li>
+        <li>EC-Kaution: Rückzahlung innerhalb 8 Wochen</li>
+        <li>Bei Schadensvorwurf: Einspruch per E-Mail oder Post innerhalb 14 Tagen ab Erhalt der Rechnung</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FOTO-PLAN -->
+  <div class="photo-plan">
+    <h3>📸 Foto-Plan: 12 Aufnahmen pro Übergabe</h3>
+    <p style="margin-bottom: .5rem;"><strong>Beide Male</strong> — bei Abholung und Rückgabe — durch dieselbe Liste gehen. Jedes Foto mit sichtbarem Datum/Uhrzeit, alternativ als Videoaufnahme im Rundgang. So habt ihr im Ernstfall einen Vergleich.</p>
+    <p style="margin-bottom: 0; font-size: .85rem; color: var(--ink-soft);"><em>Klick auf eine Kachel = erledigt markieren (lokal gespeichert).</em></p>
+    <div class="photo-grid" id="photo-grid">
+      <!-- wird per JS gerendert -->
+    </div>
+  </div>
+
+  <!-- ABLAUF ABHOLUNG -->
+  <h3 style="margin: 2.5rem 0 1rem 0;">Empfohlener Ablauf am Abholtag</h3>
+  <p>Plant für die Abholung mindestens 90 Minuten ein. Hier ein realistischer Zeitplan, der nichts dem Zufall überlässt:</p>
+
+  <div class="timeline-handover">
+    <div class="th-step">
+      <div class="th-time">– 24 Stunden</div>
+      <div class="th-title">Online-Check-in &amp; Camper-Tutorial</div>
+      <div class="th-desc">Daten eintragen, Tutorial-Videos schauen, Equipment-Liste prüfen. Dokumente bereitlegen.</div>
+    </div>
+    <div class="th-step">
+      <div class="th-time">+ 0 Min</div>
+      <div class="th-title">Ankunft am Welcome Point</div>
+      <div class="th-desc">Pünktlich da sein. Dokumente bereithalten. Mitarbeiter wird euch zugewiesen.</div>
+    </div>
+    <div class="th-step">
+      <div class="th-time">+ 10 Min</div>
+      <div class="th-title">Dokumenten-Check &amp; Kaution</div>
+      <div class="th-desc">Ausweis und Führerschein des Hauptfahrers werden fotografiert. Kaution wird auf der Kreditkarte geblockt.</div>
+    </div>
+    <div class="th-step">
+      <div class="th-time">+ 25 Min</div>
+      <div class="th-title">Final Checks am Fahrzeug</div>
+      <div class="th-desc">Praktische Einführung in die Camper-Funktionen. Fragen sammeln, alle Funktionen durchgehen.</div>
+    </div>
+    <div class="th-step">
+      <div class="th-time">+ 45 Min</div>
+      <div class="th-title">Schadensaufnahme — gründlich!</div>
+      <div class="th-desc"><strong>Der wichtigste Schritt.</strong> Bus außen und innen komplett durchgehen, jede Auffälligkeit ins Protokoll. Parallel eigenes Video aufnehmen. Reifen, Felgen, Unterboden, Dach nicht vergessen.</div>
+    </div>
+    <div class="th-step">
+      <div class="th-time">+ 70 Min</div>
+      <div class="th-title">Mietvertrag unterschreiben</div>
+      <div class="th-desc">Erst nach kompletter Schadensaufnahme. E-Mail-Bestätigung abwarten und prüfen, dass alle dokumentierten Schäden drin sind.</div>
+    </div>
+    <div class="th-step">
+      <div class="th-time">+ 90 Min</div>
+      <div class="th-title">Abfahrt</div>
+      <div class="th-desc">Pannenhotline ins Handy gespeichert, QR-Code im Handschuhfach lokalisiert. Erste Tankstop einplanen für ruhige Bus-Erkundung.</div>
+    </div>
+  </div>
+
+  <!-- WAS TUN WENN -->
+  <h3 style="margin: 2.5rem 0 1rem 0;">Was tun, wenn …</h3>
+  <div class="grid-2">
+    <div class="card warn">
+      <h4>… der Bus nicht dem Gebuchten entspricht?</h4>
+      <p>Z.B. Schaltgetriebe statt Automatik, fehlende Ausstattung. Sofort vor Ort reklamieren, nicht einsteigen und losfahren. Pannenhotline anrufen für Lösung. Schriftlich/per E-Mail dokumentieren.</p>
+    </div>
+    <div class="card warn">
+      <h4>… ein neuer Schaden während der Reise passiert?</h4>
+      <p>Sofort dokumentieren: Fotos, Notizen mit Datum, ggf. Polizei rufen (bei Unfall mit anderen). Pannenhotline anrufen, Schaden melden. ERGO parallel informieren (089 4166-1799).</p>
+    </div>
+    <div class="card warn">
+      <h4>… technische Probleme unterwegs auftreten?</h4>
+      <p>Pannenhotline anrufen (Nummer im Kundenkonto nach Abholung). QR-Code im Handschuhfach scannen für schnelle Hilfe. Nicht selbst reparieren ohne Rücksprache — das kann den Versicherungsschutz gefährden.</p>
+    </div>
+    <div class="card warn">
+      <h4>… bei Rückgabe Schäden behauptet werden, die ihr nicht verursacht habt?</h4>
+      <p>Eigenes Übergabe-Video zeigen. Vor Ort widersprechen, Rückgabeprotokoll <strong>nicht ohne Vorbehalt</strong> unterschreiben (z.B. "unter Vorbehalt der Prüfung" dazuschreiben). Innerhalb 14 Tagen schriftlich Einspruch einlegen.</p>
+    </div>
+  </div>
+
+  <!-- ZUSATZHINWEISE -->
+  <h3 style="margin: 2.5rem 0 1rem 0;">Praktische Tipps</h3>
+  <ul class="clean">
+    <li><strong>Equipment-Check beim Einräumen:</strong> Vor der eigenen Beladung das mitgelieferte Equipment durchzählen und in einer eigenen Liste festhalten. Sonst wird's bei der Rückgabe stressig.</li>
+    <li><strong>Innen-Foto vor dem Beladen:</strong> Vor dem Einräumen ein Foto vom leeren, sauberen Innenraum machen. So habt ihr einen Vergleichsstand, falls bei der Rückgabe behauptet wird, der Bus sei verschmutzt zurückgegeben worden.</li>
+    <li><strong>Werkzeug-Kasten prüfen:</strong> Bordwerkzeug, Wagenheber, Ersatzrad oder Reifendichtmittel-Set vorhanden? Auch das beim Übergabe-Check abhaken.</li>
+    <li><strong>Bedienungsanleitung fotografieren:</strong> Falls ein Heft im Bus liegt, Seiten zu Aufstelldach, Heizung, Wasser-/Gassystem abfotografieren. Spart unterwegs Sucherei.</li>
+    <li><strong>Schäden-Frist beachten:</strong> Verdeckte Schäden können bis 48 Std. nach Rückgabe vom Vermieter geltend gemacht werden. Bewahrt euer Rückgabe-Video mindestens 8 Wochen auf.</li>
+  </ul>
+
+</section>
+
+<!-- ============ ROUTE ============ -->
+<section id="route" class="alt">
+  <div class="inner">
+    <div class="section-head">
+      <div class="num">02 — Tag für Tag</div>
+      <h2>Eure Route — 16 Tage</h2>
+      <p>Anreise München → Rostock → Trelleborg, dann gemütlich an der Ostküste hoch nach Stockholm (Ankunft 21.06.). Drei Tage in der Hauptstadt, dann zurück über Mittelschweden zur Fähre am 26.06.</p>
+    </div>
+
+    <div class="timeline-bar">
+      <div><span>Tag 1–2</span><strong>Anreise</strong></div>
+      <div><span>Tag 3–10</span><strong>Ostküste hoch</strong></div>
+      <div><span>Tag 11–13</span><strong>Stockholm</strong></div>
+      <div><span>Tag 14–15</span><strong>Rückweg</strong></div>
+      <div><span>Tag 16</span><strong>Fähre + Heim</strong></div>
+    </div>
+
+    <div class="day">
+      <div class="day-num">11.06.<small>Do · Tag 1</small></div>
+      <div class="day-content">
+        <h3>München → Rostock</h3>
+        <div class="route">~ 780 km · Autobahn-Tag</div>
+        <p>Frühe Abfahrt. Lange Strecke, deshalb auf der Autobahn lassen. Übernachtung in Rostock oder direkt am Hafen — viele Stellplätze in Hafennähe. Wer Lust hat: Abendspaziergang am Stadthafen, frischer Fisch.</p>
+        <ul>
+          <li><strong>Tipp:</strong> Tank vor der Grenze auffüllen, Diesel in Schweden ist meist etwas teurer.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num">12.06.<small>Fr · Tag 2</small></div>
+      <div class="day-content">
+        <h3>Rostock → Trelleborg → Skåne</h3>
+        <div class="route">Fähre ~ 6 h · dann ~ 100 km</div>
+        <p>Fähre nach Trelleborg. An Bord ankommen lassen, lesen, schlafen, ein Bier auf Deck. In Schweden angekommen: erste Nacht z.B. am <strong>Stenshuvud-Nationalpark</strong> (Klippen, Buchenwald, Meer) oder am Strand bei <strong>Simrishamn</strong>.</p>
+        <ul>
+          <li>Tankstop direkt nach der Fähre, schwedische Tank-Apps gleich einrichten (Circle K, OKQ8).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num">13.06.<small>Sa · Tag 3</small></div>
+      <div class="day-content">
+        <h3>Skåne → Blekinge-Schären</h3>
+        <div class="route">~ 150 km · Küstenstraße</div>
+        <p>Entlang der Küste nach <strong>Karlskrona</strong> — UNESCO-Weltkulturerbe wegen der barocken Marinestadt-Anlage, vorgelagert ein eigener kleiner Schärengarten. Hafen, alte Werften, gutes Essen.</p>
+        <ul>
+          <li>Stellplatz: Dragsö Camping direkt an der Küste, oder weiter östlich Richtung Kristianopel.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num">14.06.<small>So · Tag 4</small></div>
+      <div class="day-content">
+        <h3>Småland-Wälder</h3>
+        <div class="route">~ 130 km · ein Inland-Tag</div>
+        <p>Heute weg von der Küste, hinein in die <strong>Astrid-Lindgren-Landschaft</strong>: rote Holzhäuser, Seen, tiefe Wälder. Stopp im <strong>Glasreich</strong> (Kosta Boda, Orrefors) — Glashütten zum Anschauen, Fabrikverkauf, oft Vorführungen.</p>
+        <ul>
+          <li>Übernachtung am See — Småland hat unzählige Stellplätze direkt am Wasser.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num">15.06.<small>Mo · Tag 5</small></div>
+      <div class="day-content">
+        <h3>Kalmar &amp; Öland</h3>
+        <div class="route">~ 120 km · plus Brückenfahrt</div>
+        <p><strong>Kalmar</strong> mit Renaissanceschloss am Wasser und gut erhaltener Altstadt. Über die 6 km lange Brücke auf die Insel <strong>Öland</strong>: flache Landschaft, Steinmauern, Windmühlen, Strände wie ein wenig Süditalien. Wer mag, übernachtet auf Öland.</p>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num">16.06.<small>Di · Tag 6</small></div>
+      <div class="day-content">
+        <h3>Vimmerby oder Westervik</h3>
+        <div class="route">~ 170 km</div>
+        <p>Zwei Optionen: <strong>Vimmerby</strong> (Astrid Lindgrens Welt — auch ohne Kinder charmant, viel Liebe zum Detail) oder direkt an die Küste nach <strong>Västervik</strong> mit eigenem kleinen Schärenarchipel und entspanntem Hafen.</p>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num">17.06.<small>Mi · Tag 7</small></div>
+      <div class="day-content">
+        <h3>Östgötaland — Wald und Wasser</h3>
+        <div class="route">~ 180 km</div>
+        <p>Weiter nach Norden, links und rechts wechseln Wald und Küste. Stopp am <strong>Sankt-Anna-Schärengarten</strong> — weniger Touristen als bei Stockholm, urwüchsiger. Bus stehen lassen, ein paar Stunden mit dem Boot rausfahren oder einfach am Wasser sitzen.</p>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num">18.06.<small>Do · Tag 8</small></div>
+      <div class="day-content">
+        <h3>Stendörren-Naturreservat</h3>
+        <div class="route">~ 130 km · ein Wandertag</div>
+        <p>Eines der schönsten leicht erreichbaren Schärengebiete am Festland. <strong>Hängebrücken</strong> verbinden eine Kette von Inselchen, ihr könnt 1–3 Stunden durchwandern. Kostenloser Stellplatz oben am Parkplatz, ruhig, viel Wald.</p>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num">19.06.<small>Fr · Tag 9</small></div>
+      <div class="day-content">
+        <h3>Mittsommer in Schweden</h3>
+        <div class="route">Wo ihr gerade seid, bleiben</div>
+        <p><strong>Mittsommer ist 2026 am 20. Juni</strong> (Samstag). Der Freitag davor — der Mittsommerabend — ist Schwedens wichtigster Feiertag, fast alle Geschäfte und das Systembolaget schließen früh oder ganz. Plant ihn ein: einen Tag früher einkaufen, dann zu einem Mittsommerfest gehen — die werden in fast jedem Dorf gefeiert, mit Maibaum, Kränzen, Tanz, Essen. Touristen sind willkommen.</p>
+        <ul>
+          <li>Gute Orte für ein authentisches Fest: Småland-Dörfer, Sankt Anna, oder ein offizielles Fest auf <a href="https://www.skansen.se" target="_blank" rel="noopener">Skansen</a> in Stockholm (falls ihr früher dort seid).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num">20.06.<small>Sa · Tag 10</small></div>
+      <div class="day-content">
+        <h3>Mittsommertag — langsam Richtung Stockholm</h3>
+        <div class="route">~ 100 km · kein Stress</div>
+        <p>Heute ist Schweden im Feiermodus, viele Geschäfte zu — also entspannt fahren. Letzte Nacht außerhalb der Stadt. Empfehlung: Stellplatz am See, vielleicht <strong>Trosa</strong> (kleines Hafenstädtchen, nicht weit von Stockholm), oder Camping im Grünen mit ÖPNV-Anschluss.</p>
+      </div>
+    </div>
+
+    <div class="day highlight">
+      <div class="day-num">21.06.<small>So · Tag 11</small></div>
+      <div class="day-content">
+        <h3>Ankunft Stockholm</h3>
+        <div class="route">~ 80 km · dann U-Bahn</div>
+        <p>Bus auf einem Stellplatz <strong>außerhalb</strong> abstellen — innerstädtisch ist es teuer und eng. Empfehlung: <strong>Bredäng Camping</strong> (eigene U-Bahn-Station, 15 Min ins Zentrum) oder <strong>Ängby Camping</strong>. Erster Nachmittag/Abend in <strong>Gamla Stan</strong>, der mittelalterlichen Altstadt: Kopfsteinpflaster, schmale Gassen, am Stortorget ein erstes Bier.</p>
+      </div>
+    </div>
+
+    <div class="day highlight">
+      <div class="day-num">22.06.<small>Mo · Tag 12</small></div>
+      <div class="day-content">
+        <h3>Stockholm — Museumstag</h3>
+        <div class="route">U-Bahn &amp; zu Fuß</div>
+        <p>Auf der Insel <strong>Djurgården</strong> bündeln sich die Highlights: <strong>Vasamuseum</strong> (das geborgene Kriegsschiff von 1628), <strong>Skansen</strong> (Freilichtmuseum mit Tierpark — Elche, Bären, Rentiere), <strong>ABBA-Museum</strong>. Mehr als zwei Museen pro Tag wird zu viel — wählt aus.</p>
+        <ul>
+          <li>Mittag: <strong>Rosendals Trädgård</strong> auf Djurgården — Bio-Garten-Café mit eigenem Brot.</li>
+          <li>Abends: <em>Fika</em> bei Vete-Katten in Vasastan oder Spaziergang über den <strong>Monteliusvägen</strong> bei Sonnenuntergang (geht im Juni gegen 22 Uhr).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day highlight">
+      <div class="day-num">23.06.<small>Di · Tag 13</small></div>
+      <div class="day-content">
+        <h3>Stockholm — Schären-Tag</h3>
+        <div class="route">Fähre vom Strömkajen</div>
+        <p>Tagesausflug in den Stockholmer Schärengarten — etwa <strong>30.000 Inseln</strong> ziehen sich 80 km in die Ostsee. Empfehlung für einen Tag: <strong>Vaxholm</strong> (gut erreichbar, schönes Festungsstädtchen, ~1 h Fähre) oder weiter raus nach <strong>Sandhamn</strong> (mehr Atmosphäre, längere Fahrt).</p>
+        <ul>
+          <li>Mitnehmen: Picknick, Badesachen, Fernglas, Sonnencreme.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day highlight">
+      <div class="day-num">24.06.<small>Mi · Tag 14</small></div>
+      <div class="day-content">
+        <h3>Stockholm → Uppsala → Mälaren</h3>
+        <div class="route">~ 150 km</div>
+        <p>Letzter Stockholm-Vormittag — vielleicht das <strong>Nationalmuseum</strong> oder einfach noch einmal Gamla Stan. Nachmittags raus aus der Stadt: <strong>Uppsala</strong>, Universitätsstadt mit imposantem Dom, entspannt am Fluss Fyris. Übernachtung am <strong>Mälaren-See</strong> Richtung Süden.</p>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num">25.06.<small>Do · Tag 15</small></div>
+      <div class="day-content">
+        <h3>Mälaren → Süden Richtung Trelleborg</h3>
+        <div class="route">~ 500 km · langer Fahrtag</div>
+        <p>Heute geht's strecken. Über Linköping und Jönköping nach Süden. Optional ein Stopp am <strong>Vätternsee</strong> (zweitgrößter See Schwedens, beeindruckend klares Wasser). Letzte Nacht bei <strong>Skanör/Falsterbo</strong> oder <strong>Ystad</strong> — beides nahe Trelleborg, Strand zum Auslaufen lassen.</p>
+        <ul>
+          <li><strong>Wichtig:</strong> Abends tanken und einkaufen — am 26. wird's eng.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-num">26.06.<small>Fr · Tag 16</small></div>
+      <div class="day-content">
+        <h3>Trelleborg → Rostock → München</h3>
+        <div class="route">Fähre + ~ 780 km</div>
+        <p>Pünktlich am Hafen sein (mind. 1 h vor Abfahrt einchecken). Auf der Fähre nochmal ankommen, schlafen, schwedischer Kaffee zum Abschied. In Rostock entscheiden: durchfahren (ankommen spät nachts) oder eine Nacht zwischendurch (Berlin/Leipzig/Bayreuth).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KARTE ============ -->
+<section id="karte">
+  <div class="section-head">
+    <div class="num">02b — Interaktive Karte</div>
+    <h2>Eure Route auf der Karte</h2>
+    <p>Klickt auf eine Etappe in der Liste oder direkt auf einen Marker — die Karte zoomt hin und zeigt Details. Die hellgelbe Linie markiert die Fährstrecken, die grüne den Landweg.</p>
+  </div>
+
+  <div class="map-wrap">
+    <div class="svg-map-container">
+      <svg id="route-svg" viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <!-- Hintergrund: Ostsee/Wasser -->
+        <rect width="600" height="700" fill="#dde7e8"/>
+
+        <!-- Land-Layer (Schweden, Norwegen, Dänemark, Deutschland) wird per JS gezeichnet -->
+        <g id="land-layer"></g>
+
+        <!-- Beschriftungen -->
+        <g id="labels-layer"></g>
+
+        <!-- Route-Linien und Marker -->
+        <g id="route-lines"></g>
+        <g id="route-markers"></g>
+      </svg>
+      <div id="map-tooltip" class="map-tooltip"></div>
+    </div>
+    <div class="map-list" id="map-list"></div>
+  </div>
+
+  <div class="map-legend">
+    <span><span class="legend-dot" style="background: #4a6a4a;"></span>Übernachtungsort</span>
+    <span><span class="legend-dot" style="background: #d4a437;"></span>Fährhafen</span>
+    <span><span class="legend-line" style="background: #4a6a4a;"></span>Fahrstrecke</span>
+    <span><span class="legend-line" style="background: #d4a437; border-top: 1px dashed #d4a437; height: 0;"></span>Fährstrecke</span>
+  </div>
+</section>
+
+<!-- ============ STOCKHOLM ============ -->
+<section id="stockholm" class="alt">
+  <div class="inner">
+  <div class="section-head">
+    <div class="num">03 — Stockholm vertieft</div>
+    <h2>Drei Tage in der Hauptstadt</h2>
+    <p>Stockholm ist auf 14 Inseln gebaut, ein Drittel der Stadtfläche ist Wasser. Ihr braucht keine festen Pläne — wer einfach durch die Inseln läuft, sieht das Beste.</p>
+  </div>
+
+  <h3 style="margin-bottom: 1rem;">Die wichtigsten Inseln</h3>
+  <div class="grid-3">
+    <div class="card good">
+      <h4>Gamla Stan</h4>
+      <p>Mittelalterliche Altstadt auf Stadsholmen. Königspalast, Stockholmer Dom, schmale Gassen, das Nobelpreis-Museum am Stortorget. Touristisch, aber zurecht.</p>
+    </div>
+    <div class="card good">
+      <h4>Djurgården</h4>
+      <p>Grüne Museumsinsel: Vasa, Skansen, ABBA, Nordisches Museum, Rosendals Trädgård. Mit der Fähre oder zu Fuß über die Brücke.</p>
+    </div>
+    <div class="card good">
+      <h4>Södermalm</h4>
+      <p>Alternativ, hipper, viele Cafés, gute Bars, Vintage-Läden. Vom Monteliusvägen aus den besten Sonnenuntergangs-Blick auf die Stadt.</p>
+    </div>
+    <div class="card good">
+      <h4>Östermalm</h4>
+      <p>Elegant, Boutiquen, die wunderschöne <strong>Saluhall</strong> (alte Markthalle, gutes Mittagessen).</p>
+    </div>
+    <div class="card good">
+      <h4>Skeppsholmen</h4>
+      <p>Kleine Insel mit dem <strong>Modernen Museum</strong> und ArkDes (Architektur). Ruhig, fast wie ein Park.</p>
+    </div>
+    <div class="card good">
+      <h4>Vasastan</h4>
+      <p>Wohnviertel, kein Touristenstress. Hier wohnten viele Stockholmer Schriftsteller. Perfekt für Fika unter Einheimischen.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">Verkehr in der Stadt</h3>
+  <div class="grid-2">
+    <div class="card tip">
+      <h4>SL-Tageskarte</h4>
+      <p>72-Stunden-Ticket der SL gilt für alle U-Bahnen, Busse und Pendlerfähren — mit der Pendlerfähre kommt ihr sogar bis Vaxholm. Etwa 35 €. Per App (SL: Reseplaneraren och biljetter) kaufbar.</p>
+    </div>
+    <div class="card tip">
+      <h4>U-Bahn als Kunstwerk</h4>
+      <p>Stockholms Tunnelbana wird oft als <strong>längste Kunstausstellung der Welt</strong> bezeichnet — über 100 Stationen sind von Künstlern gestaltet. Lohnenswert: T-Centralen, Kungsträdgården, Solna Centrum, Stadion.</p>
+      <p class="source-note">Quelle: visitsweden.de</p>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ============ REGELN ============ -->
+<section id="regeln">
+    <div class="section-head">
+      <div class="num">04 — Regeln am Steuer</div>
+      <h2>Verkehr, Maut, Promille</h2>
+    </div>
+
+    <div class="grid-2">
+      <div class="card warn">
+        <span class="icon">🚨</span>
+        <h4>0,2 Promillegrenze</h4>
+        <p>Schweden ist hier strenger als Deutschland — praktisch heißt das: <strong>kein Tropfen Alkohol</strong> vor dem Fahren. Auch nicht das eine Bier zum Mittagessen.</p>
+      </div>
+      <div class="card warn">
+        <span class="icon">💡</span>
+        <h4>Licht immer an</h4>
+        <p>Abblendlicht oder Tagfahrlicht ist 24/7 Pflicht — auch im Hochsommer mittags. Bei modernen Bussen läuft das Tagfahrlicht eh automatisch.</p>
+      </div>
+      <div class="card warn">
+        <span class="icon">🦌</span>
+        <h4>Wildwechsel</h4>
+        <p>Elche, Rehe und Rentiere sind ein echtes Risiko, besonders in der Dämmerung. Bei Schildern wirklich runter vom Gas. Ein ausgewachsener Elch wiegt bis 700 kg.</p>
+      </div>
+      <div class="card warn">
+        <span class="icon">📷</span>
+        <h4>Citymaut Stockholm</h4>
+        <p>Stockholm hat automatische Maut — Kennzeichen wird fotografiert, Rechnung kommt per Post nach Hause (über Epass24). Pro Einfahrt ca. 4–5 € werktags, am Wochenende kostenlos. Plant nicht ein, eure 3 Tage in Stockholm zu fahren — stellt den Bus außerhalb ab.</p>
+        <p class="source-note">Quelle: viel-unterwegs.de, traveloptimizer.de</p>
+      </div>
+      <div class="card tip">
+        <span class="icon">⛽</span>
+        <h4>Tankstellen</h4>
+        <p>Viele sind unbemannt — Zahlung nur mit Karte am Automaten. Kein Bargeld, kein Personal. Die schwedischen Apps (Circle K, OKQ8, Preem) machen das einfacher.</p>
+      </div>
+      <div class="card tip">
+        <span class="icon">🚦</span>
+        <h4>Tempolimits</h4>
+        <p>Autobahn meist 110 km/h, abschnittsweise 120. Landstraße 70–90, innerorts 50, Wohngebiete oft 30. Kontrollen sind häufig.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 3rem; margin-bottom: 1rem;">Alkohol kaufen — der schwedische Weg</h3>
+    <div class="card" style="border-left: 3px solid var(--moss);">
+      <p>Bier über 3,5 % Alkohol, Wein und Spirituosen gibt es <strong>nur im staatlichen Systembolaget</strong> — nicht im Supermarkt. Öffnungszeiten: meist Mo–Fr bis 18/19 Uhr, Sa nur bis 15 Uhr, Sonntag <strong>geschlossen</strong>. Mindestalter 20 Jahre. Im Supermarkt findet ihr nur Leichtbier ("folköl", max. 3,5 %).</p>
+      <p style="margin-bottom: 0;"><strong>Wichtig in eurem Fall:</strong> Mittsommer 2026 fällt auf den 20. Juni. Der <strong>Mittsommerabend (Fr 19.06.) und der Tag selbst (Sa 20.06.)</strong> sind Feiertage, an denen Systembolaget früh schließt oder ganz zu hat. Wer am Wochenende ein Glas Wein zum Sonnenuntergang will, kauft <strong>donnerstags</strong> ein.</p>
+    </div>
+</section>
+
+<!-- ============ STELLPLATZ ============ -->
+<section id="stellplatz" class="alt">
+  <div class="inner">
+  <div class="section-head">
+    <div class="num">05 — Schlafen im Bus</div>
+    <h2>Allemansrätten verstehen</h2>
+    <p>Das berühmte schwedische "Jedermannsrecht" ist nicht das, wofür viele es halten. Wer es richtig versteht, reist legal und entspannt.</p>
+  </div>
+
+  <details open>
+    <summary>Was Allemansrätten <strong>nicht</strong> ist</summary>
+    <p>Das Jedermannsrecht erlaubt freien Zugang zur Natur — aber <strong>nur für Wanderer, Radfahrer und Reiter</strong>, die im Zelt schlafen. <strong>Es gilt nicht für motorisierte Fahrzeuge.</strong> Mit dem VW-Bus dürft ihr also <strong>nicht</strong> einfach in den Wald oder auf eine Wiese fahren und übernachten — selbst wenn niemand in Sichtweite ist.</p>
+    <p class="source-note">Quellen: visitsweden.de, schwedentipps.se, nordlandcamper.de</p>
+  </details>
+
+  <details>
+    <summary>Was mit dem Bus geht</summary>
+    <p>Auf <strong>öffentlichen Parkplätzen</strong> (Rastplätze, Wanderparkplätze, Hafenparkplätze) ist Übernachten meist erlaubt — <strong>maximal 24 Stunden</strong>, sofern keine Schilder es verbieten. Lokale Vorschriften können das einschränken (z.B. Gotland ist generell strenger). Achtet auf Schilder wie "Camping förbjuden" oder "Tältning förbjuden".</p>
+  </details>
+
+  <details>
+    <summary>Die ungeschriebene Regel</summary>
+    <p>Was geduldet wird, ist das stille, rücksichtsvolle Stehen für eine Nacht — fern von Wohnhäusern, ohne Markise, Stühle, Tisch (das wäre "Camping" im rechtlichen Sinne). Wer kommt, schläft, frühstückt und weiterfährt: kein Problem. Wer sich häuslich einrichtet: schon.</p>
+  </details>
+
+  <details>
+    <summary>Stellplätze und Campingplätze</summary>
+    <p>Schweden hat ein dichtes Netz an offiziellen Stellplätzen ("Ställplats") und Campingplätzen. In der Hauptsaison kostet ein Platz mit Strom etwa 25–40 € pro Nacht. Apps: <strong>park4night</strong>, <strong>Campercontact</strong>. Beide haben aktuelle Bewertungen anderer Reisender.</p>
+  </details>
+
+  <details>
+    <summary>Müll, Toilette, Abwasser</summary>
+    <p>Müll <strong>immer</strong> mitnehmen — Schweden ist ein Recycling-Land, fast jede Tankstelle hat Müllinseln. Toilettenkassette und Grauwasser nur an offiziellen Entsorgungsstationen leeren ("Latrintömning", "Tömning"). Niemals in die Natur.</p>
+  </details>
+
+  <h3 style="margin-top: 3rem;">Konkrete Stellplatz-Empfehlungen für eure Route</h3>
+  <ul class="clean">
+    <li><strong>Stenshuvud-Nationalpark</strong> · Skåne — Parkplatz am Park, Ausgangspunkt für Wanderungen</li>
+    <li><strong>Dragsö Camping</strong> · Karlskrona — direkt an der Küste, eigene Insel</li>
+    <li><strong>Sankt Anna</strong> · Östgötaland — Schärengarten ohne Touristenstrom</li>
+    <li><strong>Stendörren-Naturreservat</strong> · zwischen Småland und Stockholm — kostenlos</li>
+    <li><strong>Bredäng Camping</strong> · Stockholm — eigene U-Bahn-Station ins Zentrum</li>
+    <li><strong>Ängby Camping</strong> · Stockholm — westlich, am See, mit U-Bahn-Anschluss</li>
+    <li><strong>Skanör Camping</strong> · Skåne — Strand-Camping vor der Heimreise</li>
+  </ul>
+  </div>
+</section>
+
+<!-- ============ ESSEN ============ -->
+<section id="essen">
+    <div class="section-head">
+      <div class="num">06 — Essen und Fika</div>
+      <h2>Was ihr probieren solltet</h2>
+      <p>Schweden ist teuer im Restaurant — eine kleine Mahlzeit kostet oft 20–30 €. Im Bus selbst kochen spart viel, und die Supermärkte (ICA, Coop, Willys) haben gute Frischware. Aber ein paar Sachen sind ein Pflichtprogramm.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <span class="icon">☕</span>
+        <h4>Fika</h4>
+        <p>Mehr als nur Kaffeepause — eine Lebenshaltung. Kaffee plus Zimtschnecke (Kanelbulle) am Vormittag, idealerweise in einem Café in einem alten Holzhaus. Macht's mindestens einmal pro Tag.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🐟</span>
+        <h4>Räucherfisch</h4>
+        <p>An den Häfen: geräucherter Lachs (rökt lax), Forelle, Hering. Frischer geht's nirgends. Auch lecker: <em>Gravad lax</em> — gebeizter Lachs.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🍞</span>
+        <h4>Köttbullar</h4>
+        <p>Schwedische Hackbällchen mit Preiselbeeren, Püree und Sauce. Im Restaurant ein Klassiker.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🥪</span>
+        <h4>Räksmörgås</h4>
+        <p>Üppig belegtes Garnelenbrot, oft auf hartem Roggenbrot. In Stockholm und an der Küste sehr beliebt zum Mittag.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🌭</span>
+        <h4>Korv mit Brot</h4>
+        <p>Würstchen mit Kartoffelpüree oder im Brot — der schwedische Imbiss-Klassiker. An jeder Tankstelle, günstig, sättigend.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🍓</span>
+        <h4>Mittsommer-Erdbeeren</h4>
+        <p>Mittsommer und Erdbeeren gehören zusammen. An jedem Straßenrand stehen im Juni rote Hütten, die frische Erdbeeren verkaufen — der schwedische Sommer in einer Schale.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 2.5rem;">Drei Cafés in Stockholm</h3>
+    <div class="grid-3">
+      <div class="card good">
+        <h4>Vete-Katten · Kungsgatan</h4>
+        <p>Klassisches Konditori von 1928, mehrere Etagen, herrliche Torten. Der Klassiker für eine ausgiebige Fika.</p>
+      </div>
+      <div class="card good">
+        <h4>Rosendals Trädgård · Djurgården</h4>
+        <p>Bio-Garten-Café mitten im Park, Brot aus eigener Bäckerei, alles selbst angebaut. Im Sommer paradiesisch.</p>
+      </div>
+      <div class="card good">
+        <h4>Pom &amp; Flora · Södermalm</h4>
+        <p>Modernes Frühstücks- und Brunchcafé, viele Veggie-Optionen, sehr beliebt bei Stockholmern.</p>
+      </div>
+    </div>
+</section>
+
+<!-- ============ MÜCKEN ============ -->
+<section id="muecken">
+    <div class="section-head">
+      <div class="num">07 — Mücken &amp; Co.</div>
+      <h2>Realistisch betrachtet</h2>
+      <p>Vorab die gute Nachricht: <strong>für eure Route ist die Lage sehr entspannt.</strong> Süd- und Mittelschweden, Ostküste, Stockholmer Schären — das sind genau die Regionen, in denen Mücken am wenigsten ein Problem sind. Mitte Juni ist außerdem der Saisonbeginn; die Hochsaison kommt erst mit Juli/August.</p>
+    </div>
+
+    <div class="grid-3" style="margin-bottom: 2.5rem;">
+      <div class="card good">
+        <span class="icon">☀️</span>
+        <h4>Süden &amp; Küste = ruhig</h4>
+        <p>Die salzhaltige Luft an der Ostsee und der Wind der Schären machen es Mücken schwer. Berichte von Reisenden bestätigen: südlich von Stockholm und entlang der Küste oft <strong>weniger Mücken als in Deutschland</strong>.</p>
+        <p class="source-note">Quelle: schwedentipps.se, dirtypawstravel.de</p>
+      </div>
+      <div class="card good">
+        <span class="icon">📅</span>
+        <h4>Juni = Saisonbeginn</h4>
+        <p>Die Hauptflugzeit liegt zwischen <strong>Mitte Juni und Ende August</strong>. Anfang Juni seid ihr früh dran. Ihr habt also genau das Zeitfenster mit den wenigsten Insekten.</p>
+        <p class="source-note">Quelle: skandinavientrips.de</p>
+      </div>
+      <div class="card tip">
+        <span class="icon">🌬️</span>
+        <h4>Wind ist euer Freund</h4>
+        <p>Mücken fliegen schlecht gegen Wind. Stellplätze auf einer kleinen Anhöhe, am Wasser oder auf einer Halbinsel sind fast immer mückenfrei — anders als ein windgeschütztes Tal im Wald.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom: 1rem;">Die Spezies, denen ihr begegnen könnt</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>Mygg — die normale Stechmücke</h4>
+        <p>Wie zuhause. Aktiv in der Dämmerung und nach Regenfällen. Bei eurer Route am ehesten in den Småland-Wäldern, an Seeufern, in Sankt Anna. Tagsüber an der Küste meist nicht spürbar.</p>
+      </div>
+      <div class="card warn">
+        <h4>Knott — Kriebelmücke</h4>
+        <p><strong>Das wäre der unangenehmere Bekannte.</strong> Winzig, fast unsichtbar, fliegt durch grobe Fliegengitter. Tritt vor allem Mai/Juni an feuchten, windstillen Abenden auf, oft am Wasser. Man merkt sie erst, wenn die Ohren brennen. Schutz: feinmaschige Netze, langärmlig zur Dämmerung.</p>
+      </div>
+      <div class="card">
+        <h4>Bromsar — Bremsen</h4>
+        <p>Tagaktiv, an heißen Sonnentagen, besonders am Wasser. Stechen ohne Vorwarnung, der Stich tut weh. Hilft: Spray, oder Zuschlagen.</p>
+      </div>
+      <div class="card warn">
+        <h4>Zecken (fästingar)</h4>
+        <p>Wichtiger als Mücken in Sachen Gesundheit. Verbreitet vor allem an der Ostküste zwischen Kalmar und Uppsala — also <strong>genau auf eurer Route</strong>. Können FSME und Borreliose übertragen. <strong>FSME-Impfung erwägen</strong>, falls nicht aktuell. Nach Wanderungen Körper absuchen, helle Kleidung erleichtert das Erkennen.</p>
+        <p class="source-note">Quelle: ferienhaus-schweden.de</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 3rem; margin-bottom: 1rem;">Was wirklich hilft</h3>
+    <div class="grid-2">
+      <div class="card tip">
+        <span class="icon">🇸🇪</span>
+        <h4>Vor Ort kaufen ist klüger</h4>
+        <p>Mehrere Reiseberichte sind hier eindeutig: <strong>Deutsche Sprays wie Autan wirken in Schweden oft schwächer</strong> als die einheimischen. Holt euch direkt nach der Fähre eines dieser zwei in Apotheke, Supermarkt oder Tankstelle:</p>
+        <ul>
+          <li><strong>Mygga</strong> — der schwedische Klassiker, ca. 9,5 % DEET, gut verträglich, als Spray, Roll-on oder Stick.</li>
+          <li><strong>Djungelolja</strong> — stärker, ca. 20 % DEET, für die wirklich harten Abende am See.</li>
+        </ul>
+        <p class="source-note">Quelle: besucherguide-schweden.de, mueckenguru.de</p>
+      </div>
+      <div class="card tip">
+        <span class="icon">🧥</span>
+        <h4>Kleidung schlägt Spray</h4>
+        <p>Lange, helle, dicht gewebte Kleidung am Abend ist der einfachste und beste Schutz. Helle Farben (beige, sand, hellgrau) ziehen weniger an als dunkle. Eine leichte Fleece-Jacke abends rauszuziehen ist sowieso angenehm — Schweden wird auch im Juni nachts kühl.</p>
+      </div>
+      <div class="card tip">
+        <span class="icon">🪟</span>
+        <h4>Bus dicht halten</h4>
+        <p>Vor Sonnenuntergang Fliegengitter prüfen und Türen früh schließen. Knott schlüpfen durch grobmaschige Netze — wer dort Probleme bemerkt, kann <strong>feinmaschige Insektennetze</strong> mitnehmen oder vor Ort nachbessern. Eine kleine USB-Powerbank-Lampe drinnen lockt nichts an, eine normale Glühbirne im Hochstand schon.</p>
+      </div>
+      <div class="card tip">
+        <span class="icon">🔥</span>
+        <h4>Lagerfeuer-Trick</h4>
+        <p>Wo Lagerfeuer erlaubt sind: ein bisschen <strong>Salbei oder Rosmarin</strong> in die Glut werfen — der Rauch hält Mücken effektiv fern. Aber: in Schweden gilt von Mai bis September oft regional <strong>Feuerverbot</strong> (Eldningsförbud) wegen Trockenheit. Vor jedem Feuer kurz prüfen unter <a href="https://www.brandriskute.se" target="_blank" rel="noopener">brandriskute.se</a> oder bei der Kommune nachfragen.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">Wenn doch was zwickt</h3>
+    <div class="grid-3">
+      <div class="card">
+        <h4>Salubrin</h4>
+        <p>Schwedisches Hausmittel zum Auftragen — kühlt, lindert Juckreiz. In jedem Apotek erhältlich. Dazu der heimliche Geheimtipp vieler Schweden.</p>
+      </div>
+      <div class="card">
+        <h4>Wärme-Stift</h4>
+        <p>Geräte wie der Bite Away (oder ähnlich) erhitzen den Stich kurz auf ~50 °C, das zerstört das Mückengift in der Haut. Sehr wirksam, wenn schnell angewendet.</p>
+      </div>
+      <div class="card">
+        <h4>Nicht kratzen!</h4>
+        <p>Klingt banal, ist die wichtigste Regel. Kratzen entzündet, ein offener Stich juckt 5 Tage statt 1. Fenistil-Gel oder After-Bite mitnehmen — und Hände still halten.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;">Eure Mücken-Karte</h3>
+    <ul class="clean">
+      <li><strong>Skåne (Trelleborg, Stenshuvud, Skanör)</strong> — sehr entspannt, salzige Luft, oft windig.</li>
+      <li><strong>Karlskrona &amp; Schären</strong> — kaum Mücken, viel Wind.</li>
+      <li><strong>Småland-Wälder, Glasreich</strong> — abends in Seenähe achten, sonst harmlos.</li>
+      <li><strong>Öland</strong> — Insel, viel Wind, sehr entspannt.</li>
+      <li><strong>Sankt Anna, Sörmland-Küste</strong> — Schärenklima, wenig Mücken.</li>
+      <li><strong>Stendörren-Reservat</strong> — laut Reisendenberichten <strong>auch in Mückenwetter ruhig</strong>.</li>
+      <li><strong>Stockholm Stadt</strong> — Großstadt, kein Thema.</li>
+      <li><strong>Stockholmer Schären (Vaxholm, Sandhamn)</strong> — Wind, Salz, sehr entspannt.</li>
+      <li><strong>Mälaren-See, Uppsala</strong> — abends an Ufern aufpassen, sonst unauffällig.</li>
+    </ul>
+    <p style="margin-top: 1rem; font-size: .9rem;">Wo es nervig werden <em>könnte</em>: nur wenn ihr abends einen sehr windstillen Stellplatz tief im Småland-Wald direkt am See wählt. Lösung: ein paar hundert Meter weiter eine offenere Stelle suchen.</p>
+</section>
+
+<!-- ============ SPRACHE ============ -->
+<section id="sprache" class="alt">
+  <div class="inner">
+  <div class="section-head">
+    <div class="num">08 — Sprache</div>
+    <h2>Ein paar Wörter Schwedisch</h2>
+    <p>Fast alle Schweden sprechen sehr gut Englisch — niemand erwartet Schwedisch von Touristen. Aber ein <em>Tack!</em> beim Kassierer öffnet Türen.</p>
+  </div>
+
+  <div class="phrase-grid">
+    <div class="phrase"><span class="sv">Hej</span><span class="de">Hallo</span></div>
+    <div class="phrase"><span class="sv">Hej då</span><span class="de">Tschüss</span></div>
+    <div class="phrase"><span class="sv">Tack</span><span class="de">Danke</span></div>
+    <div class="phrase"><span class="sv">Tack så mycket</span><span class="de">Vielen Dank</span></div>
+    <div class="phrase"><span class="sv">Varsågod</span><span class="de">Bitte (gebend)</span></div>
+    <div class="phrase"><span class="sv">Ursäkta</span><span class="de">Entschuldigung</span></div>
+    <div class="phrase"><span class="sv">Ja / Nej</span><span class="de">Ja / Nein</span></div>
+    <div class="phrase"><span class="sv">Talar du engelska?</span><span class="de">Sprichst du Englisch?</span></div>
+    <div class="phrase"><span class="sv">Var ligger…?</span><span class="de">Wo ist…?</span></div>
+    <div class="phrase"><span class="sv">Vad kostar det?</span><span class="de">Was kostet das?</span></div>
+    <div class="phrase"><span class="sv">En kaffe, tack</span><span class="de">Einen Kaffee, bitte</span></div>
+    <div class="phrase"><span class="sv">Skål!</span><span class="de">Prost!</span></div>
+    <div class="phrase"><span class="sv">Glad midsommar!</span><span class="de">Frohes Mittsommer!</span></div>
+    <div class="phrase"><span class="sv">God morgon</span><span class="de">Guten Morgen</span></div>
+    <div class="phrase"><span class="sv">Toalett</span><span class="de">Toilette</span></div>
+    <div class="phrase"><span class="sv">Öppet / Stängt</span><span class="de">Offen / Geschlossen</span></div>
+  </div>
+  </div>
+</section>
+
+<!-- ============ PACKLISTE ============ -->
+<section id="packliste">
+    <div class="section-head">
+      <div class="num">09 — Packliste</div>
+      <h2>Was in den Bus muss</h2>
+      <p>Zum Abhaken — die Häkchen werden lokal in eurem Browser gespeichert.</p>
+    </div>
+
+    <div class="checklist" id="checklist-root">
+      <div class="checklist-cat">
+        <h4>Dokumente</h4>
+        <label><input type="checkbox" data-key="d1"><span>Personalausweis (beide)</span></label>
+        <label><input type="checkbox" data-key="d2"><span>Führerschein</span></label>
+        <label><input type="checkbox" data-key="d3"><span>Fahrzeugschein</span></label>
+        <label><input type="checkbox" data-key="d4"><span>Versicherungspapiere / Grüne Karte</span></label>
+        <label><input type="checkbox" data-key="d5"><span>Fährbuchung Hin- und Rückweg</span></label>
+        <label><input type="checkbox" data-key="d6"><span>Krankenversicherungskarte (EHIC)</span></label>
+        <label><input type="checkbox" data-key="d7"><span>ADAC-Karte / Schutzbrief</span></label>
+      </div>
+
+      <div class="checklist-cat">
+        <h4>Bus und Technik</h4>
+        <label><input type="checkbox" data-key="b1"><span>Warndreieck, Warnweste (2x)</span></label>
+        <label><input type="checkbox" data-key="b2"><span>Verbandskasten, Glühlampen</span></label>
+        <label><input type="checkbox" data-key="b3"><span>Abschleppseil</span></label>
+        <label><input type="checkbox" data-key="b4"><span>Reifendruck-Messer</span></label>
+        <label><input type="checkbox" data-key="b5"><span>Starthilfekabel</span></label>
+        <label><input type="checkbox" data-key="b6"><span>Werkzeug, Kabelbinder, Dichtband</span></label>
+        <label><input type="checkbox" data-key="b7"><span>Wasserkanister, Trichter</span></label>
+        <label><input type="checkbox" data-key="b8"><span>Verlängerungskabel CEE-Adapter</span></label>
+        <label><input type="checkbox" data-key="b9"><span>Toilettenchemie / Kassettentabs</span></label>
+      </div>
+
+      <div class="checklist-cat">
+        <h4>Schlafen und Wohnen</h4>
+        <label><input type="checkbox" data-key="s1"><span>Bettwäsche, Decken, Kissen</span></label>
+        <label><input type="checkbox" data-key="s2"><span>Schlafsack als Backup</span></label>
+        <label><input type="checkbox" data-key="s3"><span>Verdunkelung — wegen 18 h Tageslicht!</span></label>
+        <label><input type="checkbox" data-key="s4"><span>Klappstühle, Klapptisch</span></label>
+        <label><input type="checkbox" data-key="s5"><span>Stirnlampen + Ersatzbatterien</span></label>
+        <label><input type="checkbox" data-key="s6"><span>Outdoor-Decke fürs Picknick</span></label>
+      </div>
+
+      <div class="checklist-cat">
+        <h4>Küche</h4>
+        <label><input type="checkbox" data-key="k1"><span>Gas voll? (Kartuschen prüfen)</span></label>
+        <label><input type="checkbox" data-key="k2"><span>Kaffee-Setup (Kanne, Mühle, Bohnen)</span></label>
+        <label><input type="checkbox" data-key="k3"><span>Geschirr, Besteck, Schneidebrett</span></label>
+        <label><input type="checkbox" data-key="k4"><span>Spülmittel, Schwämme, Geschirrtuch</span></label>
+        <label><input type="checkbox" data-key="k5"><span>Müllbeutel, Brotzeitdosen</span></label>
+        <label><input type="checkbox" data-key="k6"><span>Salz, Pfeffer, Olivenöl, Gewürze</span></label>
+        <label><input type="checkbox" data-key="k7"><span>Trockenvorrat (Pasta, Reis, Couscous)</span></label>
+        <label><input type="checkbox" data-key="k8"><span>Wasserflaschen + Filter</span></label>
+      </div>
+
+      <div class="checklist-cat">
+        <h4>Kleidung</h4>
+        <label><input type="checkbox" data-key="c1"><span>Regenjacke + Regenhose</span></label>
+        <label><input type="checkbox" data-key="c2"><span>Warme Fleecejacke</span></label>
+        <label><input type="checkbox" data-key="c3"><span>Wanderschuhe + leichte Schuhe</span></label>
+        <label><input type="checkbox" data-key="c4"><span>Mütze, dünne Handschuhe</span></label>
+        <label><input type="checkbox" data-key="c5"><span>Badesachen, Mikrofaserhandtücher</span></label>
+        <label><input type="checkbox" data-key="c6"><span>Sonnenbrille, Sonnenhut</span></label>
+        <label><input type="checkbox" data-key="c7"><span>Schlafmaske (helle Nächte!)</span></label>
+        <label><input type="checkbox" data-key="c8"><span>Eine schönere Kombi für Stockholm</span></label>
+      </div>
+
+      <div class="checklist-cat">
+        <h4>Outdoor und Natur</h4>
+        <label><input type="checkbox" data-key="o1"><span>Mückenschutz (Autan, Anti-Brumm)</span></label>
+        <label><input type="checkbox" data-key="o2"><span>After-Bite, Zeckenzange</span></label>
+        <label><input type="checkbox" data-key="o3"><span>Sonnencreme (LSF 30+)</span></label>
+        <label><input type="checkbox" data-key="o4"><span>Fernglas (Schären!)</span></label>
+        <label><input type="checkbox" data-key="o5"><span>Wanderkarte / Outdooractive Premium</span></label>
+        <label><input type="checkbox" data-key="o6"><span>Trinkflaschen, Daypack</span></label>
+      </div>
+
+      <div class="checklist-cat">
+        <h4>Elektronik</h4>
+        <label><input type="checkbox" data-key="t1"><span>Handys + Ladekabel</span></label>
+        <label><input type="checkbox" data-key="t2"><span>Powerbank, USB-Adapter (12V)</span></label>
+        <label><input type="checkbox" data-key="t3"><span>Kamera + Speicherkarten</span></label>
+        <label><input type="checkbox" data-key="t4"><span>Bluetooth-Box für Lagerfeuer-Musik</span></label>
+        <label><input type="checkbox" data-key="t5"><span>Kindle / Buch / Reiseführer</span></label>
+      </div>
+
+      <div class="checklist-cat">
+        <h4>Persönlich und Sonstiges</h4>
+        <label><input type="checkbox" data-key="e1"><span>Reise-Apotheke (Schmerz, Magen, Pflaster)</span></label>
+        <label><input type="checkbox" data-key="e2"><span>Persönliche Medikamente</span></label>
+        <label><input type="checkbox" data-key="e3"><span>Kreditkarte + Backup-Karte</span></label>
+        <label><input type="checkbox" data-key="e4"><span>Etwas Bargeld (~50 €) als Reserve</span></label>
+        <label><input type="checkbox" data-key="e5"><span>Tagebuch + Stift</span></label>
+        <label><input type="checkbox" data-key="e6"><span>Spielkarten, Würfelspiel</span></label>
+        <label><input type="checkbox" data-key="e7"><span>Gitarre? (für Lagerfeuer-Abende)</span></label>
+      </div>
+    </div>
+</section>
+
+<!-- ============ NOTFALL ============ -->
+<section id="notfall" class="alt">
+  <div class="inner">
+  <div class="section-head">
+    <div class="num">10 — Im Notfall</div>
+    <h2>Wichtige Nummern</h2>
+  </div>
+
+  <div class="emergency">
+    <h3>Sofortige Hilfe</h3>
+    <p>Die 112 funktioniert in ganz Schweden — Polizei, Feuerwehr, Krankenwagen. Operatoren sprechen Englisch.</p>
+    <div class="emergency-grid">
+      <div><strong>112</strong><span>Notruf (alle)</span></div>
+      <div><strong>114 14</strong><span>Polizei (kein Notfall)</span></div>
+      <div><strong>1177</strong><span>Krankenberatung</span></div>
+      <div><strong>020 96 27 27</strong><span>SOS Pannenhilfe</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 2rem;" class="grid-2">
+    <div class="card">
+      <h4>Deutsche Botschaft Stockholm</h4>
+      <p>Skarpögatan 9, 115 27 Stockholm<br>+46 8 670 1500</p>
+    </div>
+    <div class="card">
+      <h4>ADAC Auslands-Notruf</h4>
+      <p>Aus Schweden: <strong>+49 89 22 22 22</strong><br>24/7 deutschsprachig — Pannenhilfe, Abschleppen, Werkstatt-Vermittlung</p>
+    </div>
+    <div class="card">
+      <h4>Apotheke (Apotek)</h4>
+      <p>Apotheken erkennt ihr am grünen Kreuz. Größere Ketten: <strong>Apotek Hjärtat</strong>, <strong>Apoteket</strong>. Standardmedikamente meist ohne Rezept verfügbar.</p>
+    </div>
+    <div class="card">
+      <h4>Krankenhaus (Sjukhus)</h4>
+      <p>EHIC-Karte mitnehmen — damit werden Behandlungen wie für schwedische Bürger abgerechnet (kleine Selbstbeteiligung). Größere Krankenhäuser in jeder Provinzhauptstadt.</p>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ============ ARCHIV ============ -->
+<section id="archiv">
+  <div class="section-head">
+    <div class="num">10 — Dokumentenarchiv</div>
+    <h2>Wichtige Daten auf einen Blick</h2>
+    <p>Reservierungen, Versicherung, Vertragsdaten, Schadensablauf — alles, was im Ernstfall griffbereit sein muss. Tippe auf eine Nummer oder Adresse, um sie zu kopieren.</p>
+  </div>
+
+  <h3 style="margin: 0 0 1rem 0;">Reservierungen &amp; Buchungen</h3>
+  <p style="margin-bottom: 1rem;">Klicke auf den Status, um zwischen <em>offen → gebucht → bezahlt</em> zu wechseln. Der Stift öffnet die Detailansicht zum Bearbeiten. Alle Änderungen werden lokal in deinem Browser gespeichert.</p>
+
+  <div class="reservations" id="reservations-list">
+    <div class="res-row header">
+      <div>Datum</div>
+      <div>Unterkunft / Buchung</div>
+      <div>Status</div>
+      <div style="text-align: right;">Preis</div>
+      <div></div>
+    </div>
+    <!-- Einträge werden per JS gerendert -->
+  </div>
+
+  <div class="res-summary" id="res-summary">
+    <div>Einträge: <strong id="res-count">0</strong></div>
+    <div>Davon offen: <strong id="res-open">0</strong></div>
+    <div>Gebucht: <strong id="res-booked">0</strong></div>
+    <div>Gesamt geplant: <strong id="res-total">0,00 €</strong></div>
+  </div>
+
+  <div class="archiv-warning">
+    <h4>⚠ Vor Reisebeginn klären</h4>
+    <p style="margin-bottom: .5rem;">Im Beratungsprotokoll und in Teil H der Versicherungsbedingungen ist der CDW-Selbstbehalts-Ausschluss PLUS durchgängig auf <strong>Mietfahrzeuge</strong> ausgelegt — er erstattet den Selbstbehalt aus dem Mietvertrag. Wenn ihr mit eurem <strong>eigenen</strong> California Ocean fahrt, könnte der Tarif nicht greifen.</p>
+    <p style="margin-bottom: 0;"><strong>Empfehlung:</strong> Vor Reisebeginn ERGO unter <span class="copyable">+49 89 4166-1766</span> anrufen und klären, ob der Tarif für ein Eigenfahrzeug gilt. Widerruf wäre innerhalb von 14 Tagen ab Erhalt der Unterlagen möglich. Dies ist Information, keine Rechtsberatung.</p>
+  </div>
+
+  <h3 style="margin: 2.5rem 0 1rem 0;">ERGO Reiseversicherung — Vertragsdaten</h3>
+  <div class="archiv-doc">
+    <h4>CDW-Selbstbehalts-Ausschluss PLUS für Wohnmobile</h4>
+    <div class="doc-meta">Tarif SBA201 · Versicherungsschein vom 04.02.2026</div>
+
+    <table class="archiv-table">
+      <tr><td>Versicherungs-Nr.</td><td><span class="copyable">184447112</span></td></tr>
+      <tr><td>Anfrage-ID</td><td><span class="copyable">RA-ERV-7126076</span></td></tr>
+      <tr><td>Versicherungsnehmer</td><td>Ulrich Derwart</td></tr>
+      <tr><td>Versicherte Personen</td><td>Ulrich Derwart, Sabine Dany-Panzer</td></tr>
+      <tr><td>Versicherungsbeginn</td><td>10.06.2026</td></tr>
+      <tr><td>Versicherungsende</td><td>27.06.2026</td></tr>
+      <tr><td>Geltungsbereich</td><td>Welt (weltweit)</td></tr>
+      <tr><td>Versicherungssumme</td><td>6.000,00 €</td></tr>
+      <tr><td>Selbstbeteiligung</td><td>keine</td></tr>
+      <tr><td>Prämie gesamt</td><td>304,20 € (inkl. 48,57 € Versicherungsteuer)</td></tr>
+      <tr><td>Zahlungsweise</td><td>Banklastschrift</td></tr>
+      <tr><td>Vertragsbedingungen</td><td>VB-ERV/CC 2024</td></tr>
+    </table>
+  </div>
+
+  <h3 style="margin: 2.5rem 0 1rem 0;">Was die Versicherung leistet</h3>
+  <div class="grid-2">
+    <div class="card good">
+      <h4>Versichert ist</h4>
+      <ul style="margin: 0; padding-left: 1.2rem;">
+        <li>Diebstahl des Mietfahrzeugs</li>
+        <li>Schäden durch Unfall</li>
+        <li>Schäden durch Vandalismus</li>
+        <li>Schäden durch Elementarereignisse (Sturm, Hagel, Hochwasser, Erdrutsch etc.)</li>
+        <li>Schäden bei versuchtem Diebstahl</li>
+        <li><strong>Plus-Leistung:</strong> Unterboden, Reifen, Windschutz-/Seiten-/Heckscheibe, Außenspiegel, Dach</li>
+      </ul>
+    </div>
+    <div class="card warn">
+      <h4>Nicht versichert</h4>
+      <ul style="margin: 0; padding-left: 1.2rem;">
+        <li>Fahrer ohne Berechtigung im Mietvertrag</li>
+        <li>Schäden an Ölwanne</li>
+        <li>Schäden im Innenraum</li>
+        <li>Verlust/Beschädigung Fahrzeugschlüssel</li>
+        <li>Vorsatz oder grobe Fahrlässigkeit</li>
+        <li>Fahren unter Alkohol/Drogen/Arzneimittel-Einfluss</li>
+        <li>Wettfahrten und Übungsfahrten</li>
+        <li>Befahren nicht-zulässiger Straßen (Campingplätze sind erlaubt)</li>
+        <li>Verschleiß und Bedienfehler</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin: 2.5rem 0 1rem 0;">Im Schadenfall — Schritt für Schritt</h3>
+  <ol class="step-list">
+    <li><strong>Sicher stellen, Polizei rufen.</strong> Bei Unfall, Diebstahl oder Vandalismus die örtliche Polizei sofort verständigen — schwedischer Notruf <span class="copyable">112</span>. Lasst euch ein Aktenzeichen oder einen Polizeibericht aushändigen.</li>
+    <li><strong>Fotos machen.</strong> Schäden, Unfallstelle, Kennzeichen aller Beteiligten, Zeugen-Kontaktdaten. Mit Datum/Uhrzeit, möglichst aus mehreren Winkeln.</li>
+    <li><strong>Schaden minimieren.</strong> Vertragspflicht — alles vermeiden, was den Schaden vergrößern würde (Schadenminderungspflicht).</li>
+    <li><strong>Schaden bei ERGO online melden:</strong> <span class="copyable">ergo-reiseversicherung.de/schaden</span> — Nachweise direkt im Formular hochladen.</li>
+    <li><strong>Bei Fragen:</strong> Schadenabwicklung <span class="copyable">+49 89 4166-1799</span> (Mo-Fr 8-19 Uhr, Sa 9-13 Uhr).</li>
+    <li><strong>Belege sammeln.</strong> Alles aufheben, was zum Schadenfall gehört (siehe Liste unten).</li>
+  </ol>
+
+  <h3 style="margin: 2.5rem 0 1rem 0;">Erforderliche Nachweise</h3>
+  <p style="margin-bottom: 1rem;">Diese Unterlagen werden für die Schadensabwicklung benötigt — sammelt sie sofort, nicht erst zuhause:</p>
+  <div class="grid-2">
+    <div class="card">
+      <h4>Immer einreichen</h4>
+      <ul class="doc-checklist">
+        <li>Versicherungsnachweis (Prämienrechnung)</li>
+        <li>Buchungsunterlagen</li>
+        <li>Ausgefülltes Schadenformular</li>
+        <li>Übergabeprotokoll Mietfahrzeug</li>
+        <li>Vollständiger Mietvertrag</li>
+        <li>Nachweis vereinbarter Selbstbehalt</li>
+        <li>Abrechnungsbescheid des Vermieters</li>
+        <li>Angaben zu zusätzlichen Reiseversicherungen (Kreditkarte, Automobilclub)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Je nach Schadenfall</h4>
+      <ul class="doc-checklist">
+        <li>Unfallprotokoll oder Polizeibericht</li>
+        <li>Rückgabeprotokoll mit Schadenbericht</li>
+        <li>Fotos der entstandenen Schäden</li>
+        <li>Bei Diebstahl: Polizeiliche Anzeige</li>
+        <li>Kostenvoranschlag oder Reparaturrechnung</li>
+        <li>Nachweis der Selbstbehalt-Zahlung an Vermieter</li>
+        <li>Bestätigung Vermieter über unverzügliche Schadenmeldung</li>
+        <li>Bei Erstattung durch Kfz-Versicherung: Leistungsbescheid</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin: 2.5rem 0 1rem 0;">Kontakte ERGO</h3>
+  <div class="archiv-doc">
+    <table class="archiv-table">
+      <tr><td>Schadenmeldung online</td><td><span class="copyable">ergo-reiseversicherung.de/schaden</span></td></tr>
+      <tr><td>Schadenabwicklung Telefon</td><td><span class="copyable">+49 89 4166-1799</span></td></tr>
+      <tr><td>Allgemeine Beratung</td><td><span class="copyable">+49 89 4166-1766</span></td></tr>
+      <tr><td>E-Mail</td><td><span class="copyable">contact@ergo-reiseversicherung.de</span></td></tr>
+      <tr><td>Erreichbarkeit</td><td>Mo-Fr 8-19 Uhr · Sa 9-13 Uhr</td></tr>
+      <tr><td>Postadresse Schäden</td><td>ERGO Reiseversicherung AG<br>Leistungsabteilung<br>Postfach 80 06 20<br>81606 München</td></tr>
+      <tr><td>Postadresse allgemein</td><td>ERGO Reiseversicherung AG<br>Postfach 80 05 45<br>81605 München</td></tr>
+    </table>
+  </div>
+
+  <h3 style="margin: 2.5rem 0 1rem 0;">Zu beachten</h3>
+  <div class="card" style="border-left: 3px solid var(--sun);">
+    <h4 style="color: var(--moss-deep);">Wichtige Regeln aus den Bedingungen</h4>
+    <ul style="margin: 0; padding-left: 1.2rem; color: var(--ink-soft);">
+      <li><strong>Schaden unverzüglich melden</strong> — "ohne schuldhaftes Zögern". Verspätete Meldung kann zu Leistungskürzung oder -verweigerung führen.</li>
+      <li><strong>Bei Übernahme des Fahrzeugs:</strong> Alle vorhandenen Schäden im Übergabeprotokoll dokumentieren. Spätere Ansprüche scheitern sonst.</li>
+      <li><strong>Wahrheitspflicht:</strong> Alle Angaben gegenüber ERGO müssen wahrheitsgemäß sein. Arglistige Verletzung führt zum vollständigen Verlust des Versicherungsschutzes.</li>
+      <li><strong>Vorrang anderer Versicherungen:</strong> Falls Kreditkarten-Schutz oder andere Versicherungen den Schaden decken, gehen diese vor. ERGO leistet zunächst, holt sich Geld dann von dort zurück.</li>
+      <li><strong>Verjährung:</strong> Ansprüche verjähren nach drei Jahren ab Schluss des Jahres, in dem der Anspruch entstanden ist.</li>
+    </ul>
+  </div>
+
+  <h3 style="margin: 2.5rem 0 1rem 0;">Weitere Dokumente zur Reise</h3>
+  <p>Diese Unterlagen liegen separat als PDF vor und sollten <strong>digital im Handy</strong> (z.B. in einer Reise-Cloud) und <strong>als Ausdruck im Bus</strong> verfügbar sein:</p>
+  <ul class="doc-checklist" style="margin-top: 1rem;">
+    <li>Personalausweise (beide)</li>
+    <li>Führerscheine</li>
+    <li>Fahrzeugschein des California</li>
+    <li>Kfz-Versicherungsschein (Kasko / Haftpflicht)</li>
+    <li>Grüne Versicherungskarte</li>
+    <li>ERGO Versicherungsschein Nr. 184447112</li>
+    <li>Beratungsprotokoll RA-ERV-7126076</li>
+    <li>Fährbuchung Rostock-Trelleborg (hin und zurück)</li>
+    <li>Krankenversicherungskarte (EHIC) beider Personen</li>
+    <li>Impfausweise (Tetanus, FSME)</li>
+    <li>Listen wichtiger Medikamente und Allergien</li>
+    <li>ADAC-Mitgliedskarte / Schutzbrief-Unterlagen</li>
+    <li>Notfall-Kontakte zuhause (jemand der Bescheid weiß)</li>
+  </ul>
+
+  <h3 style="margin: 2.5rem 0 1rem 0;">Notruf-Karte für die Brieftasche</h3>
+  <div class="archiv-doc" style="border-left-color: var(--berry); background: #fafaf5;">
+    <h4 style="color: var(--berry);">Im Ernstfall</h4>
+    <table class="archiv-table">
+      <tr><td>Notruf Schweden (alle)</td><td><strong style="font-size: 1.2rem;">112</strong></td></tr>
+      <tr><td>Polizei (kein Notfall)</td><td><strong>114 14</strong></td></tr>
+      <tr><td>Krankenberatung</td><td><strong>1177</strong></td></tr>
+      <tr><td>SOS Pannenhilfe Schweden</td><td><strong>020 96 27 27</strong></td></tr>
+      <tr><td>ADAC aus dem Ausland</td><td><strong>+49 89 22 22 22</strong></td></tr>
+      <tr><td>ERGO Schadenmeldung</td><td><strong>+49 89 4166-1799</strong></td></tr>
+      <tr><td>Versicherungs-Nr. ERGO</td><td><strong>184447112</strong></td></tr>
+      <tr><td>Deutsche Botschaft Stockholm</td><td><strong>+46 8 670 1500</strong></td></tr>
+    </table>
+    <p style="margin: 1rem 0 0 0; font-size: .85rem;"><em>Diese Liste ausdrucken, in die Brieftasche stecken oder als Foto auf dem Handy speichern.</em></p>
+  </div>
+
+</section>
+
+<footer>
+  <p class="signature">Ha en trevlig resa.</p>
+  <p>Habt eine schöne Zeit — und meldet euch, wenn ihr zurück seid.<br>
+  Quellen: visitsweden.de, schwedentipps.se, ADAC Länderinfo Schweden, nordlandcamper.de, traveloptimizer.de, skandinavientrips.de, mueckenguru.de, besucherguide-schweden.de · Stand April 2026.</p>
+</footer>
+
+<script>
+  (function() {
+    const STORAGE_KEY = 'schweden-packliste-2026';
+    const root = document.getElementById('checklist-root');
+    if (!root) return;
+
+    let saved = {};
+    try {
+      saved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    } catch(e) {
+      saved = {};
+    }
+
+    root.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      const key = cb.dataset.key;
+      if (saved[key]) cb.checked = true;
+      cb.addEventListener('change', () => {
+        saved[key] = cb.checked;
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+        } catch(e) {}
+      });
+    });
+  })();
+
+  document.querySelectorAll('nav.toc .toc-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const targetId = btn.getAttribute('data-target');
+      const target = document.getElementById(targetId);
+      if (target) {
+        const offset = 60;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+
+        // active-Hervorhebung
+        document.querySelectorAll('nav.toc .toc-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Wenn Karte geklickt wird, Karte neu rendern (Fix für display issues)
+        if (targetId === 'karte' && window._mapInstance) {
+          setTimeout(() => window._mapInstance.invalidateSize(), 300);
+        }
+      }
+    });
+  });
+
+  // ============ KARTE (SVG, offline) ============
+  function initMap() {
+    const svg = document.getElementById('route-svg');
+    if (!svg) return;
+
+    const linesG = document.getElementById('route-lines');
+    const markersG = document.getElementById('route-markers');
+    const listEl = document.getElementById('map-list');
+    const tooltip = document.getElementById('map-tooltip');
+
+    // Reisestationen
+    const stations = [
+      { day: 1, date: '11.06.', title: 'München', sub: 'Start', lat: 48.1351, lng: 11.5820, type: 'land' },
+      { day: 1, date: '11.06.', title: 'Rostock', sub: 'Übernachtung am Hafen', lat: 54.0887, lng: 12.1428, type: 'land' },
+      { day: 2, date: '12.06.', title: 'Rostock → Trelleborg', sub: 'Fähre, ~6 h', lat: 55.3753, lng: 13.1569, type: 'ferry' },
+      { day: 2, date: '12.06.', title: 'Stenshuvud / Skåne', sub: 'Erste Nacht in Schweden', lat: 55.6565, lng: 14.2654, type: 'land' },
+      { day: 3, date: '13.06.', title: 'Karlskrona', sub: 'UNESCO-Marinestadt, Schären', lat: 56.1612, lng: 15.5869, type: 'land' },
+      { day: 4, date: '14.06.', title: 'Småland-Wälder', sub: 'Glasreich, Kosta Boda', lat: 56.8390, lng: 15.4070, type: 'land' },
+      { day: 5, date: '15.06.', title: 'Kalmar & Öland', sub: 'Schloss + Insel', lat: 56.6634, lng: 16.3568, type: 'land' },
+      { day: 6, date: '16.06.', title: 'Vimmerby / Västervik', sub: 'Lindgren-Welt oder Schären', lat: 57.7588, lng: 16.6376, type: 'land' },
+      { day: 7, date: '17.06.', title: 'Sankt Anna', sub: 'Östgötaland-Schären', lat: 58.3667, lng: 16.7833, type: 'land' },
+      { day: 8, date: '18.06.', title: 'Stendörren-Reservat', sub: 'Hängebrücken, Stellplatz', lat: 58.7569, lng: 17.3106, type: 'land' },
+      { day: 9, date: '19.06.', title: 'Mittsommerabend', sub: 'Im Dorf feiern', lat: 58.8500, lng: 17.4500, type: 'land' },
+      { day: 10, date: '20.06.', title: 'Trosa', sub: 'Mittsommer-Ruhetag', lat: 58.8961, lng: 17.5469, type: 'land' },
+      { day: 11, date: '21.06.', title: 'Stockholm', sub: 'Ankunft, Gamla Stan', lat: 59.3293, lng: 18.0686, type: 'highlight' },
+      { day: 12, date: '22.06.', title: 'Stockholm — Djurgården', sub: 'Vasa, Skansen, ABBA', lat: 59.3260, lng: 18.1147, type: 'highlight' },
+      { day: 13, date: '23.06.', title: 'Vaxholm / Schären', sub: 'Tagestour mit Fähre', lat: 59.4022, lng: 18.3507, type: 'highlight' },
+      { day: 14, date: '24.06.', title: 'Uppsala → Mälaren', sub: 'Domkirche, See', lat: 59.8586, lng: 17.6389, type: 'land' },
+      { day: 15, date: '25.06.', title: 'Vätternsee', sub: 'Zwischenstopp Süden', lat: 58.4108, lng: 14.6381, type: 'land' },
+      { day: 15, date: '25.06.', title: 'Skanör / Ystad', sub: 'Letzte Nacht, Strand', lat: 55.4178, lng: 12.8456, type: 'land' },
+      { day: 16, date: '26.06.', title: 'Trelleborg → Rostock', sub: 'Fähre zurück', lat: 54.0887, lng: 12.1428, type: 'ferry' },
+      { day: 16, date: '26.06.', title: 'München', sub: 'Ankunft', lat: 48.1351, lng: 11.5820, type: 'land' }
+    ];
+
+    // Geo-Bounds für die Projektion
+    const minLat = 47.0, maxLat = 62.5;
+    const minLng = 5.0,  maxLng = 22.5;
+
+    // Mercator-ähnliche Projektion (lon linear, lat über Mercator)
+    function mercY(lat) {
+      const rad = lat * Math.PI / 180;
+      return Math.log(Math.tan(Math.PI / 4 + rad / 2));
+    }
+    const mercMin = mercY(minLat);
+    const mercMax = mercY(maxLat);
+
+    function project(lat, lng) {
+      const x = ((lng - minLng) / (maxLng - minLng)) * 600;
+      const y = ((mercMax - mercY(lat)) / (mercMax - mercMin)) * 700;
+      return { x, y };
+    }
+
+    // SVG-Namespace-Helper
+    const SVG_NS = 'http://www.w3.org/2000/svg';
+    function svgEl(name, attrs) {
+      const el = document.createElementNS(SVG_NS, name);
+      for (const k in attrs) el.setAttribute(k, attrs[k]);
+      return el;
+    }
+
+    // Land-Umrisse als grobe Polygone in echten Lat/Lng — werden mit project() umgewandelt
+    // Schweden (vereinfachter Umriss von Süd nach Nord und zurück)
+    const swedenCoords = [
+      [55.34, 13.16],  // Trelleborg (Süden)
+      [55.40, 12.85],  // Smygehuk
+      [55.71, 13.20],  // Malmö
+      [56.05, 12.70],  // Helsingborg
+      [56.67, 12.85],  // Halmstad
+      [57.71, 11.97],  // Göteborg
+      [58.30, 11.45],  // Lysekil-Region
+      [58.70, 11.20],  // Strömstad (Westgrenze)
+      [59.30, 11.40],  // Norwegen-Grenze
+      [59.65, 12.20],  // Värmland
+      [60.10, 12.50],  // Dalarna
+      [60.40, 13.00],
+      [60.45, 16.00],  // Mittelschweden
+      [60.40, 18.00],  // Östliche Mitte
+      [60.30, 18.50],  // Gefle
+      [60.00, 17.80],
+      [59.86, 17.64],  // Uppsala
+      [59.50, 18.30],
+      [59.33, 18.07],  // Stockholm
+      [58.80, 17.40],
+      [58.30, 16.80],
+      [57.76, 16.64],  // Västervik
+      [56.66, 16.36],  // Kalmar
+      [56.16, 15.59],  // Karlskrona
+      [55.92, 14.60],
+      [55.42, 14.30],
+      [55.34, 13.16]   // zurück
+    ];
+
+    // Norwegen (sehr grob, nur als Hintergrund)
+    const norwayCoords = [
+      [58.00, 6.00], [58.50, 5.50], [59.00, 5.50], [59.50, 6.50],
+      [60.00, 5.00], [60.50, 5.50], [61.00, 5.00], [62.00, 6.00],
+      [62.50, 7.00], [60.50, 11.50], [59.40, 11.40], [58.60, 11.20],
+      [58.30, 8.50], [58.00, 6.00]
+    ];
+
+    // Dänemark (Jütland + Inseln, vereinfacht)
+    const denmarkCoords = [
+      [54.55, 8.10], [55.50, 8.10], [56.50, 8.30], [57.30, 8.60],
+      [57.70, 10.50], [56.80, 10.80], [56.00, 12.50], [55.50, 12.60],
+      [55.20, 11.50], [54.80, 11.20], [54.55, 9.50], [54.55, 8.10]
+    ];
+
+    // Deutschland (nur Norden, grob)
+    const germanyCoords = [
+      [47.30, 7.50], [47.50, 13.50], [48.80, 12.90], [49.60, 9.60],
+      [50.20, 14.50], [54.20, 14.20], [54.40, 13.50], [54.50, 11.00],
+      [54.10, 9.80], [53.90, 8.20], [53.50, 7.00], [51.80, 6.10],
+      [50.90, 5.80], [49.50, 6.30], [47.50, 7.40], [47.30, 7.50]
+    ];
+
+    const landLayer = document.getElementById('land-layer');
+    const labelsLayer = document.getElementById('labels-layer');
+
+    // Polygon-Helper: erzeugt SVG-Path aus Lat/Lng-Liste
+    function drawLandPolygon(coords, fill, stroke) {
+      let d = '';
+      coords.forEach((c, i) => {
+        const p = project(c[0], c[1]);
+        d += (i === 0 ? 'M ' : 'L ') + p.x.toFixed(1) + ' ' + p.y.toFixed(1) + ' ';
+      });
+      d += 'Z';
+      const path = svgEl('path', {
+        d: d, fill: fill, stroke: stroke, 'stroke-width': '0.8',
+        'stroke-linejoin': 'round'
+      });
+      landLayer.appendChild(path);
+    }
+
+    drawLandPolygon(germanyCoords, '#ecebd9', '#bdb89a');
+    drawLandPolygon(denmarkCoords, '#ecebd9', '#bdb89a');
+    drawLandPolygon(norwayCoords, '#ecebd9', '#bdb89a');
+    drawLandPolygon(swedenCoords, '#e8efe5', '#9aae9a');
+
+    // Labels
+    function addLabel(lat, lng, text, opts) {
+      opts = opts || {};
+      const p = project(lat, lng);
+      const t = svgEl('text', {
+        x: p.x, y: p.y,
+        fill: opts.fill || '#a89a78',
+        'font-family': 'Fraunces, serif',
+        'font-style': 'italic',
+        'font-size': opts.size || 13,
+        'text-anchor': opts.anchor || 'middle'
+      });
+      t.textContent = text;
+      labelsLayer.appendChild(t);
+    }
+    addLabel(57.5, 19.5, 'Ostsee', { fill: '#88a3a8', size: 16 });
+    addLabel(61.0, 9.5, 'Norwegen', { fill: '#a89a78', size: 13 });
+    addLabel(54.0, 10.5, 'Deutschland', { fill: '#a89a78', size: 12 });
+    addLabel(56.0, 9.5, 'Dänemark', { fill: '#a89a78', size: 11 });
+
+    // Linien zeichnen
+    for (let i = 0; i < stations.length - 1; i++) {
+      const a = project(stations[i].lat, stations[i].lng);
+      const b = project(stations[i+1].lat, stations[i+1].lng);
+      const isFerry = stations[i+1].type === 'ferry' || stations[i].type === 'ferry';
+      const line = svgEl('line', {
+        x1: a.x, y1: a.y, x2: b.x, y2: b.y,
+        stroke: isFerry ? '#d4a437' : '#4a6a4a',
+        'stroke-width': isFerry ? 2.5 : 3,
+        'stroke-opacity': isFerry ? 0.9 : 0.75,
+        'stroke-linecap': 'round'
+      });
+      if (isFerry) line.setAttribute('stroke-dasharray', '6 4');
+      linesG.appendChild(line);
+    }
+
+    // Marker
+    const markerEls = [];
+    stations.forEach((s, idx) => {
+      const p = project(s.lat, s.lng);
+      const isFerry = s.type === 'ferry';
+      const isHighlight = s.type === 'highlight';
+      const color = isFerry ? '#d4a437' : (isHighlight ? '#8a3a3a' : '#4a6a4a');
+
+      const g = svgEl('g', { class: 'marker-group', 'data-idx': idx });
+
+      const circle = svgEl('circle', {
+        cx: p.x, cy: p.y, r: 11,
+        fill: color, stroke: 'white', 'stroke-width': 2.5,
+        class: 'route-marker-circle',
+        'data-idx': idx
+      });
+
+      const text = svgEl('text', {
+        x: p.x, y: p.y,
+        class: 'route-marker-text'
+      });
+      text.textContent = s.day;
+
+      g.appendChild(circle);
+      g.appendChild(text);
+      markersG.appendChild(g);
+      markerEls.push({ circle, station: s, x: p.x, y: p.y });
+
+      // Click-Handler
+      const clickHandler = (e) => selectStation(idx, e);
+      circle.addEventListener('click', clickHandler);
+      circle.addEventListener('mouseenter', (e) => showTooltip(idx));
+      circle.addEventListener('mouseleave', hideTooltip);
+    });
+
+    // Liste
+    if (listEl) {
+      stations.forEach((s, idx) => {
+        const item = document.createElement('div');
+        item.className = 'map-list-item' + (s.type === 'ferry' ? ' ferry' : '');
+        item.dataset.idx = idx;
+        item.innerHTML =
+          '<span class="mli-num">' + s.day + '</span>' +
+          '<div class="mli-content">' +
+            '<div class="mli-title">' + s.title + '</div>' +
+            '<div class="mli-date">' + s.date + '</div>' +
+            '<div class="mli-sub">' + s.sub + '</div>' +
+          '</div>';
+        item.addEventListener('click', () => selectStation(idx));
+        listEl.appendChild(item);
+      });
+    }
+
+    function selectStation(idx, evt) {
+      // Marker hervorheben
+      document.querySelectorAll('.route-marker-circle').forEach(c => c.classList.remove('active'));
+      const m = markerEls[idx];
+      m.circle.classList.add('active');
+
+      // Listen-Item hervorheben + scrollen
+      document.querySelectorAll('.map-list-item').forEach(el => el.classList.remove('active'));
+      const listItem = document.querySelector('.map-list-item[data-idx="' + idx + '"]');
+      if (listItem) {
+        listItem.classList.add('active');
+        listItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      showTooltip(idx);
+    }
+
+    function showTooltip(idx) {
+      if (!tooltip) return;
+      const m = markerEls[idx];
+      const s = m.station;
+
+      // SVG-Koordinaten in Pixel-Position im Container umrechnen
+      const svgRect = svg.getBoundingClientRect();
+      const containerRect = svg.parentElement.getBoundingClientRect();
+      const scaleX = svgRect.width / 600;
+      const scaleY = svgRect.height / 700;
+      const px = m.x * scaleX + (svgRect.left - containerRect.left);
+      const py = m.y * scaleY + (svgRect.top - containerRect.top);
+
+      tooltip.innerHTML =
+        '<div class="tt-date">Tag ' + s.day + ' · ' + s.date + '</div>' +
+        '<strong>' + s.title + '</strong>' +
+        '<div class="tt-sub">' + s.sub + '</div>';
+      tooltip.style.left = px + 'px';
+      tooltip.style.top = py + 'px';
+      tooltip.classList.add('visible');
+    }
+
+    function hideTooltip() {
+      // Tooltip nur ausblenden, wenn kein aktiver Marker
+      if (!document.querySelector('.route-marker-circle.active')) {
+        tooltip.classList.remove('visible');
+      }
+    }
+  }
+
+  // Auf DOM-bereit warten
+  // Klick-zum-Kopieren für Archiv
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('copyable')) {
+      const text = e.target.textContent.trim();
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => {
+          const original = e.target.style.background;
+          e.target.style.background = 'var(--moss)';
+          e.target.style.color = 'white';
+          setTimeout(() => {
+            e.target.style.background = original;
+            e.target.style.color = '';
+          }, 800);
+        }).catch(() => {});
+      }
+    }
+  });
+
+  // ============ RESERVIERUNGEN ============
+  const RES_KEY = 'schweden-reservierungen-2026';
+  const STATUS_CYCLE = ['offen', 'gebucht', 'bezahlt'];
+
+  // Default-Einträge (initial bei erstem Öffnen)
+  const defaultReservations = [
+    {
+      id: 'r1', date: '11.06.2026', dateLabel: 'Mi · Tag 1',
+      name: 'Stellplatz Mühlendamm Rostock',
+      address: 'Mühlendamm 36, 18055 Rostock',
+      phone: '0381 3812222',
+      price: '10,00',
+      status: 'offen',
+      notes: '24 Plätze, beleuchtet, 1 km zur Altstadt, Bushaltestelle am Platz. Ganzjährig geöffnet.'
+    },
+    {
+      id: 'r2', date: '12.06.2026', dateLabel: 'Do · Tag 2',
+      name: 'Fähre Rostock → Trelleborg',
+      address: 'TT-Line oder Stena Line',
+      phone: '',
+      price: '',
+      status: 'gebucht',
+      notes: 'Bereits gebucht. Mind. 1 h vor Abfahrt am Hafen.'
+    },
+    {
+      id: 'r3', date: '12.06.2026', dateLabel: 'Do · Tag 2',
+      name: 'Stellplatz Skåne (Stenshuvud / Simrishamn)',
+      address: '',
+      phone: '',
+      price: '',
+      status: 'offen',
+      notes: 'Erste Nacht in Schweden. park4night oder Campercontact.'
+    },
+    {
+      id: 'r4', date: '13.06.2026', dateLabel: 'Fr · Tag 3',
+      name: 'Dragsö Camping Karlskrona',
+      address: 'Dragsövägen, 371 37 Karlskrona',
+      phone: '+46 455 153 54',
+      price: '',
+      status: 'offen',
+      notes: 'Direkt an der Küste, eigene Halbinsel.'
+    },
+    {
+      id: 'r5', date: '14.06.2026', dateLabel: 'Sa · Tag 4',
+      name: 'Stellplatz Småland (See)',
+      address: '',
+      phone: '',
+      price: '',
+      status: 'offen',
+      notes: 'Glasreich-Region. Konkreter Platz spontan.'
+    },
+    {
+      id: 'r6', date: '15.06.2026', dateLabel: 'So · Tag 5',
+      name: 'Camping Kalmar / Öland',
+      address: '',
+      phone: '',
+      price: '',
+      status: 'offen',
+      notes: 'Bei gutem Wetter Öland; sonst Kalmar Stadt.'
+    },
+    {
+      id: 'r7', date: '16.06.2026', dateLabel: 'Mo · Tag 6',
+      name: 'Stellplatz Vimmerby / Västervik',
+      address: '',
+      phone: '',
+      price: '',
+      status: 'offen',
+      notes: 'Lindgren-Welt oder Schären — Entscheidung vor Ort.'
+    },
+    {
+      id: 'r8', date: '17.06.2026', dateLabel: 'Di · Tag 7',
+      name: 'Sankt Anna Stellplatz',
+      address: '',
+      phone: '',
+      price: '',
+      status: 'offen',
+      notes: 'Schären-Tag, ruhig.'
+    },
+    {
+      id: 'r9', date: '18.06.2026', dateLabel: 'Mi · Tag 8',
+      name: 'Stendörren-Naturreservat',
+      address: 'Stendörrens naturreservat, 611 99 Studsvik',
+      phone: '',
+      price: '0,00',
+      status: 'gebucht',
+      notes: 'Kostenloser Stellplatz. Hängebrücken zu Inseln.'
+    },
+    {
+      id: 'r10', date: '19.06.2026', dateLabel: 'Fr · Tag 9',
+      name: 'Mittsommer-Übernachtung',
+      address: '',
+      phone: '',
+      price: '',
+      status: 'offen',
+      notes: 'Wichtigster Feiertag — Geschäfte zu! Donnerstag vorab einkaufen.'
+    },
+    {
+      id: 'r11', date: '20.06.2026', dateLabel: 'Sa · Tag 10',
+      name: 'Trosa / Sörmland',
+      address: '',
+      phone: '',
+      price: '',
+      status: 'offen',
+      notes: 'Mittsommertag, ruhig fahren.'
+    },
+    {
+      id: 'r12', date: '21.-23.06.2026', dateLabel: 'So-Di · Tag 11-13',
+      name: 'Bredäng Camping Stockholm (3 Nächte)',
+      address: 'Stora Sällskapets Väg 60, 127 32 Skärholmen',
+      phone: '+46 8 97 70 71',
+      price: '',
+      status: 'offen',
+      notes: 'Eigene U-Bahn-Station ins Zentrum. Vorab buchen — in der Hauptsaison oft voll.'
+    },
+    {
+      id: 'r13', date: '24.06.2026', dateLabel: 'Mi · Tag 14',
+      name: 'Stellplatz Mälaren-See',
+      address: '',
+      phone: '',
+      price: '',
+      status: 'offen',
+      notes: 'Nach Uppsala-Vormittag.'
+    },
+    {
+      id: 'r14', date: '25.06.2026', dateLabel: 'Do · Tag 15',
+      name: 'Skanör / Ystad — letzte Nacht',
+      address: '',
+      phone: '',
+      price: '',
+      status: 'offen',
+      notes: 'Strand-Camping in Trelleborg-Nähe. Abends tanken.'
+    },
+    {
+      id: 'r15', date: '26.06.2026', dateLabel: 'Fr · Tag 16',
+      name: 'Fähre Trelleborg → Rostock',
+      address: '',
+      phone: '',
+      price: '',
+      status: 'gebucht',
+      notes: 'Bereits gebucht. Frühe Abfahrt empfohlen.'
+    }
+  ];
+
+  function loadReservations() {
+    try {
+      const saved = localStorage.getItem(RES_KEY);
+      if (saved) return JSON.parse(saved);
+    } catch (e) {}
+    return JSON.parse(JSON.stringify(defaultReservations));
+  }
+
+  function saveReservations(data) {
+    try { localStorage.setItem(RES_KEY, JSON.stringify(data)); } catch(e) {}
+  }
+
+  function escapeHtml(s) {
+    if (!s) return '';
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function renderReservations() {
+    const list = document.getElementById('reservations-list');
+    if (!list) return;
+
+    const data = loadReservations();
+
+    // Header beibehalten, danach alles neu rendern
+    const header = list.querySelector('.res-row.header');
+    list.innerHTML = '';
+    if (header) list.appendChild(header);
+
+    data.forEach((r) => {
+      const row = document.createElement('div');
+      row.className = 'res-row';
+      row.dataset.id = r.id;
+
+      const meta = [];
+      if (r.address) meta.push('<span>📍 ' + escapeHtml(r.address) + '</span>');
+      if (r.phone) meta.push('<span>📞 <span class="copyable">' + escapeHtml(r.phone) + '</span></span>');
+      if (r.notes) meta.push('<span style="display:block; margin-top:.3rem; font-style:italic;">' + escapeHtml(r.notes) + '</span>');
+
+      row.innerHTML =
+        '<div class="res-date">' + escapeHtml(r.date) +
+          '<small>' + escapeHtml(r.dateLabel || '') + '</small>' +
+        '</div>' +
+        '<div class="res-content">' +
+          '<div class="res-name">' + escapeHtml(r.name) + '</div>' +
+          '<div class="res-meta">' + meta.join(' ') + '</div>' +
+        '</div>' +
+        '<div><button class="res-status ' + r.status + '" data-action="cycle-status">' +
+          (r.status === 'offen' ? '○ offen' : (r.status === 'gebucht' ? '● gebucht' : '✓ bezahlt')) +
+        '</button></div>' +
+        '<div class="res-price">' + (r.price ? escapeHtml(r.price) + ' €' : '—') + '</div>' +
+        '<div class="res-actions"><button class="res-edit" data-action="edit" title="Bearbeiten">✎</button></div>';
+
+      list.appendChild(row);
+    });
+
+    updateSummary(data);
+  }
+
+  function updateSummary(data) {
+    const cnt = data.length;
+    const open = data.filter(r => r.status === 'offen').length;
+    const booked = data.filter(r => r.status === 'gebucht' || r.status === 'bezahlt').length;
+    let total = 0;
+    data.forEach(r => {
+      if (r.price) {
+        const v = parseFloat(String(r.price).replace(',', '.'));
+        if (!isNaN(v)) total += v;
+      }
+    });
+    const setText = (id, t) => { const el = document.getElementById(id); if (el) el.textContent = t; };
+    setText('res-count', cnt);
+    setText('res-open', open);
+    setText('res-booked', booked);
+    setText('res-total', total.toFixed(2).replace('.', ',') + ' €');
+  }
+
+  function cycleStatus(id) {
+    const data = loadReservations();
+    const item = data.find(r => r.id === id);
+    if (!item) return;
+    const cur = STATUS_CYCLE.indexOf(item.status);
+    item.status = STATUS_CYCLE[(cur + 1) % STATUS_CYCLE.length];
+    saveReservations(data);
+    renderReservations();
+  }
+
+  function openEditForm(id) {
+    const data = loadReservations();
+    const item = data.find(r => r.id === id);
+    if (!item) return;
+
+    const row = document.querySelector('.res-row[data-id="' + id + '"]');
+    if (!row) return;
+
+    // Wenn schon Form offen: schließen
+    const existing = row.nextElementSibling;
+    if (existing && existing.classList.contains('res-edit-form')) {
+      existing.remove();
+      return;
+    }
+
+    const form = document.createElement('div');
+    form.className = 'res-edit-form';
+    form.innerHTML =
+      '<label>Datum</label>' +
+      '<input type="text" data-field="date" value="' + escapeHtml(item.date) + '">' +
+      '<label>Beschreibung Datum</label>' +
+      '<input type="text" data-field="dateLabel" value="' + escapeHtml(item.dateLabel || '') + '">' +
+      '<label>Name / Buchung</label>' +
+      '<input type="text" data-field="name" value="' + escapeHtml(item.name) + '">' +
+      '<label>Adresse</label>' +
+      '<input type="text" data-field="address" value="' + escapeHtml(item.address || '') + '">' +
+      '<label>Telefon</label>' +
+      '<input type="text" data-field="phone" value="' + escapeHtml(item.phone || '') + '">' +
+      '<label>Preis (€)</label>' +
+      '<input type="text" data-field="price" value="' + escapeHtml(item.price || '') + '">' +
+      '<label>Notizen</label>' +
+      '<textarea data-field="notes">' + escapeHtml(item.notes || '') + '</textarea>' +
+      '<div class="res-edit-actions">' +
+        '<button class="res-btn" data-action="cancel">Abbrechen</button>' +
+        '<button class="res-btn" data-action="delete" style="color:var(--berry); border-color:rgba(138,58,58,.3);">Löschen</button>' +
+        '<button class="res-btn primary" data-action="save">Speichern</button>' +
+      '</div>';
+
+    row.parentNode.insertBefore(form, row.nextSibling);
+
+    form.addEventListener('click', (e) => {
+      const action = e.target.dataset.action;
+      if (action === 'cancel') {
+        form.remove();
+      } else if (action === 'delete') {
+        if (confirm('Eintrag "' + item.name + '" wirklich löschen?')) {
+          const d = loadReservations();
+          const idx = d.findIndex(r => r.id === id);
+          if (idx >= 0) {
+            d.splice(idx, 1);
+            saveReservations(d);
+            renderReservations();
+          }
+        }
+      } else if (action === 'save') {
+        const d = loadReservations();
+        const it = d.find(r => r.id === id);
+        if (it) {
+          form.querySelectorAll('[data-field]').forEach(input => {
+            it[input.dataset.field] = input.value.trim();
+          });
+          saveReservations(d);
+          renderReservations();
+        }
+      }
+    });
+  }
+
+  // Event-Delegation für Status- und Edit-Buttons
+  document.addEventListener('click', (e) => {
+    const action = e.target.dataset.action;
+    if (!action) return;
+    const row = e.target.closest('.res-row');
+    if (!row) return;
+    const id = row.dataset.id;
+
+    if (action === 'cycle-status') {
+      e.stopPropagation();
+      cycleStatus(id);
+    } else if (action === 'edit') {
+      e.stopPropagation();
+      openEditForm(id);
+    }
+  });
+
+  // ============ BUS-TAB Checklisten + Foto-Plan ============
+  const BUS_CHECK_KEY = 'schweden-bus-checklist-2026';
+  const PHOTO_KEY = 'schweden-foto-plan-2026';
+
+  const photoList = [
+    { id: 'p1',  label: 'Front (komplett)' },
+    { id: 'p2',  label: 'Heck (komplett)' },
+    { id: 'p3',  label: 'Linke Seite' },
+    { id: 'p4',  label: 'Rechte Seite' },
+    { id: 'p5',  label: 'Dach &amp; Aufstelldach' },
+    { id: 'p6',  label: 'Räder &amp; Felgen' },
+    { id: 'p7',  label: 'Front-/Heckschürze nah' },
+    { id: 'p8',  label: 'Innenraum vorne' },
+    { id: 'p9',  label: 'Innenraum hinten' },
+    { id: 'p10', label: 'Polster &amp; Bett' },
+    { id: 'p11', label: 'Tacho: km + Tank' },
+    { id: 'p12', label: 'Equipment ausgebreitet' }
+  ];
+
+  function loadPhotoState() {
+    try {
+      const s = localStorage.getItem(PHOTO_KEY);
+      return s ? JSON.parse(s) : { pickup: {}, return: {} };
+    } catch(e) { return { pickup: {}, return: {} }; }
+  }
+  function savePhotoState(st) {
+    try { localStorage.setItem(PHOTO_KEY, JSON.stringify(st)); } catch(e) {}
+  }
+
+  function renderPhotoGrid() {
+    const grid = document.getElementById('photo-grid');
+    if (!grid) return;
+    const state = loadPhotoState();
+    grid.innerHTML = '';
+
+    // Zwei Sektionen: Abholung und Rückgabe
+    [
+      { key: 'pickup', label: 'Abholung 10.06.' },
+      { key: 'return', label: 'Rückgabe 27.06.' }
+    ].forEach(section => {
+      const header = document.createElement('div');
+      header.style.cssText = 'grid-column: 1/-1; font-family: Fraunces, serif; color: var(--moss-deep); font-size: 1rem; margin-top: .5rem; margin-bottom: .2rem; font-weight: 500;';
+      header.textContent = section.label;
+      grid.appendChild(header);
+
+      photoList.forEach((p, idx) => {
+        const tile = document.createElement('div');
+        const isDone = state[section.key] && state[section.key][p.id];
+        tile.className = 'photo-tile' + (isDone ? ' done' : '');
+        tile.dataset.section = section.key;
+        tile.dataset.photoId = p.id;
+        tile.innerHTML = '<span class="num">' + (idx + 1) + '</span>' + p.label;
+        tile.addEventListener('click', () => {
+          const st = loadPhotoState();
+          if (!st[section.key]) st[section.key] = {};
+          st[section.key][p.id] = !st[section.key][p.id];
+          savePhotoState(st);
+          renderPhotoGrid();
+        });
+        grid.appendChild(tile);
+      });
+    });
+  }
+
+  // Checkbox-Klicks in den Listen
+  function initBusChecklist() {
+    const cols = document.querySelectorAll('#bus .pr-col');
+    if (!cols.length) return;
+
+    // Items eindeutig adressieren (sektion + index)
+    let saved = {};
+    try {
+      const s = localStorage.getItem(BUS_CHECK_KEY);
+      if (s) saved = JSON.parse(s);
+    } catch(e) {}
+
+    cols.forEach((col, colIdx) => {
+      const items = col.querySelectorAll('li');
+      items.forEach((li, liIdx) => {
+        const key = 'c' + colIdx + '-' + liIdx;
+        if (saved[key]) li.classList.add('checked');
+        li.addEventListener('click', () => {
+          li.classList.toggle('checked');
+          saved[key] = li.classList.contains('checked');
+          try { localStorage.setItem(BUS_CHECK_KEY, JSON.stringify(saved)); } catch(e) {}
+        });
+      });
+    });
+
+    renderPhotoGrid();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBusChecklist);
+  } else {
+    initBusChecklist();
+  }
+
+  // Initial-Render bei DOM-Ready
+  function initReservations() {
+    renderReservations();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initReservations);
+  } else {
+    initReservations();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMap);
+  } else {
+    initMap();
+  }
+</script>
+
+</body>
+</html>

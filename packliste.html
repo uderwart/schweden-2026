@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#2f4a32">
+<title>Packliste Schweden 2026 · v02</title>
+<style>
+  :root {
+    --moss: #4a6a4a;
+    --moss-deep: #2f4a32;
+    --sun: #d4a437;
+    --berry: #8a3a3a;
+    --ink: #1c2620;
+    --ink-soft: #4a564f;
+    --line: #d8d0c2;
+    --bg: #f5f1ea;
+    --paper: #ffffff;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.45;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  header {
+    background: var(--moss-deep);
+    color: white;
+    padding: env(safe-area-inset-top, 0) 1rem .8rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 1px 4px rgba(0,0,0,.1);
+  }
+  header .title {
+    padding-top: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: .15rem;
+  }
+  header .sub {
+    font-size: .8rem;
+    opacity: .75;
+    margin-bottom: .8rem;
+  }
+  header .stats {
+    display: flex;
+    gap: 1rem;
+    font-size: .85rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  header .stats strong { font-weight: 600; }
+  header .stats .progress {
+    flex: 1;
+    min-width: 100px;
+    height: 6px;
+    background: rgba(255,255,255,.2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  header .stats .progress-fill {
+    height: 100%;
+    background: var(--sun);
+    width: 0%;
+    transition: width .3s;
+  }
+
+  /* Aktionsleiste */
+  .actions {
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: .6rem 1rem;
+    display: flex;
+    gap: .4rem;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 100px;
+    z-index: 9;
+  }
+  .actions button {
+    background: var(--paper);
+    border: 1px solid var(--moss);
+    color: var(--moss-deep);
+    padding: .5rem .8rem;
+    border-radius: 20px;
+    font-family: inherit;
+    font-size: .8rem;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    white-space: nowrap;
+    touch-action: manipulation;
+  }
+  .actions button:active,
+  .actions button.active {
+    background: var(--moss-deep);
+    color: white;
+  }
+  .actions button.edit-on {
+    background: var(--sun);
+    border-color: var(--sun);
+    color: var(--ink);
+  }
+
+  main { padding: 0; }
+
+  /* Filter-Hinweis */
+  .filter-hint {
+    background: rgba(212,164,55,.12);
+    border-left: 3px solid var(--sun);
+    padding: .6rem 1rem;
+    font-size: .8rem;
+    color: var(--ink-soft);
+    display: none;
+  }
+  .filter-hint.visible { display: block; }
+
+  /* Edit-Hinweis */
+  .edit-hint {
+    background: rgba(212,164,55,.15);
+    padding: .8rem 1rem;
+    font-size: .82rem;
+    color: var(--ink);
+    border-bottom: 1px solid var(--sun);
+    display: none;
+  }
+  .edit-hint.visible { display: block; }
+  .edit-hint strong { color: var(--moss-deep); }
+
+  /* Kategorien */
+  .cat {
+    background: var(--paper);
+    border-bottom: 8px solid var(--bg);
+  }
+  .cat h2 {
+    background: rgba(74,106,74,.06);
+    margin: 0;
+    padding: .7rem 1rem;
+    font-size: .85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--moss-deep);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cat h2 .cat-count {
+    font-weight: 400;
+    font-size: .7rem;
+    color: var(--ink-soft);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  /* Items */
+  .item {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    padding: .65rem 1rem;
+    border-bottom: 1px solid var(--bg);
+    min-height: 44px;
+    cursor: pointer;
+    user-select: none;
+    transition: background .15s;
+  }
+  .item:active { background: rgba(74,106,74,.05); }
+  .item:last-child { border-bottom: none; }
+  .item input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    accent-color: var(--moss);
+    cursor: pointer;
+    flex-shrink: 0;
+    margin: 0;
+  }
+  .item .text {
+    flex: 1;
+    min-width: 0;
+    font-size: .95rem;
+    color: var(--ink);
+    word-wrap: break-word;
+    padding: .15rem 0;
+  }
+  .item input[type="checkbox"]:checked ~ .text {
+    text-decoration: line-through;
+    color: var(--ink-soft);
+    opacity: .6;
+  }
+
+  /* Mengenfeld */
+  .qty {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    background: rgba(74,106,74,.08);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    padding: 0 .4rem 0 0;
+  }
+  .qty input.qty-num {
+    border: none;
+    background: transparent;
+    width: 2.2rem;
+    text-align: center;
+    font-size: .9rem;
+    color: var(--moss-deep);
+    font-weight: 600;
+    padding: .25rem 0;
+    outline: none;
+    -moz-appearance: textfield;
+    font-family: inherit;
+  }
+  .qty input.qty-num::-webkit-inner-spin-button,
+  .qty input.qty-num::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .qty input.qty-num:focus { background: white; }
+  .qty .qty-unit {
+    font-size: .7rem;
+    color: var(--ink-soft);
+  }
+
+  /* Edit-Modus */
+  body.editing .item .text {
+    cursor: text;
+    border-bottom: 1px dashed transparent;
+    padding: .15rem .2rem;
+    border-radius: 2px;
+  }
+  body.editing .item .text:focus {
+    outline: none;
+    background: rgba(212,164,55,.12);
+    border-bottom-color: var(--moss-deep);
+  }
+  .item-delete {
+    display: none;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--berry);
+    cursor: pointer;
+    font-size: 1.1rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    line-height: 1;
+    flex-shrink: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 0;
+  }
+  .item-delete:active { background: rgba(138,58,58,.15); }
+  body.editing .item-delete { display: inline-flex; align-items: center; justify-content: center; }
+
+  .add-item-btn {
+    display: none;
+    width: 100%;
+    background: transparent;
+    border: 1px dashed var(--moss);
+    color: var(--moss-deep);
+    padding: .7rem;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: .9rem;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  body.editing .add-item-btn { display: block; }
+  .add-item-btn:active { background: rgba(74,106,74,.08); }
+
+  /* Filter: abgehakte ausblenden */
+  body.hide-checked .item input[type="checkbox"]:checked ~ .text { display: none; }
+  body.hide-checked .item:has(input[type="checkbox"]:checked) { display: none; }
+
+  /* Modal */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(28,38,32,.7);
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 100;
+    padding: 0;
+  }
+  .modal-overlay.visible { display: flex; }
+  .modal {
+    background: var(--paper);
+    border-radius: 16px 16px 0 0;
+    max-width: 500px;
+    width: 100%;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: env(safe-area-inset-bottom, 1rem);
+  }
+  .modal-header {
+    padding: 1rem 1.2rem .6rem;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .modal-header h3 {
+    margin: 0;
+    color: var(--moss-deep);
+    font-size: 1rem;
+  }
+  .modal-close {
+    background: transparent;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--ink-soft);
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    width: 32px;
+    height: 32px;
+  }
+  .modal-body {
+    padding: 1rem 1.2rem;
+    overflow-y: auto;
+    flex: 1;
+    font-size: .9rem;
+  }
+  .modal-body textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: .7rem;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: .8rem;
+    background: rgba(74,106,74,.03);
+    resize: vertical;
+    box-sizing: border-box;
+    color: var(--ink);
+  }
+  .modal-body p { margin: 0 0 .8rem 0; color: var(--ink-soft); }
+  .modal-footer {
+    padding: .8rem 1.2rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    gap: .5rem;
+    justify-content: flex-end;
+  }
+  .modal-footer button {
+    padding: .7rem 1.2rem;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: .9rem;
+    cursor: pointer;
+    border: 1px solid var(--line);
+    background: white;
+    color: var(--ink);
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .modal-footer button.primary {
+    background: var(--moss-deep);
+    color: white;
+    border-color: var(--moss-deep);
+  }
+
+  /* Status-Toast */
+  .toast {
+    position: fixed;
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--moss-deep);
+    color: white;
+    padding: .7rem 1.2rem;
+    border-radius: 24px;
+    font-size: .85rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,.2);
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s;
+  }
+  .toast.visible { opacity: 1; }
+  .toast.error { background: var(--berry); }
+
+  footer {
+    text-align: center;
+    padding: 2rem 1rem 4rem;
+    color: var(--ink-soft);
+    font-size: .75rem;
+  }
+
+  /* ============ PACK-PLAN-MODUS ============ */
+  .item .bag-badge {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: .2rem .55rem;
+    font-size: .72rem;
+    color: var(--ink-soft);
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all .15s;
+    min-height: 28px;
+    line-height: 1;
+  }
+  .item .bag-badge:active { transform: scale(.95); }
+  .item .bag-badge.assigned {
+    background: var(--moss);
+    border-color: var(--moss-deep);
+    color: white;
+    font-weight: 600;
+  }
+  .item .bag-badge .bag-icon {
+    margin-right: .3rem;
+    font-size: .85rem;
+  }
+
+  /* View-Toggle in Header */
+  .view-tabs {
+    background: var(--moss-deep);
+    padding: 0 1rem .6rem;
+    display: flex;
+    gap: .4rem;
+  }
+  .view-tabs button {
+    flex: 1;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,.3);
+    color: white;
+    padding: .55rem .8rem;
+    border-radius: 18px;
+    font-family: inherit;
+    font-size: .85rem;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .view-tabs button.active {
+    background: var(--sun);
+    color: var(--ink);
+    border-color: var(--sun);
+    font-weight: 600;
+  }
+
+  /* Bag-Übersicht */
+  .bag-view { display: none; padding: 1rem; }
+  body.view-bags .bag-view { display: block; }
+  body.view-bags main,
+  body.view-bags .actions,
+  body.view-bags .filter-hint,
+  body.view-bags .edit-hint { display: none !important; }
+
+  .bag-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  .bag-card.empty { opacity: .55; }
+  .bag-card-head {
+    padding: .8rem 1rem;
+    background: rgba(74,106,74,.06);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .bag-card-title {
+    font-weight: 600;
+    color: var(--moss-deep);
+    font-size: .95rem;
+  }
+  .bag-card-title .bag-emoji { margin-right: .3rem; }
+  .bag-card-count {
+    font-size: .8rem;
+    color: var(--ink-soft);
+    background: white;
+    padding: .15rem .55rem;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+  }
+  .bag-card-items { padding: .3rem 0; }
+  .bag-card-item {
+    padding: .5rem 1rem;
+    font-size: .88rem;
+    color: var(--ink);
+    border-bottom: 1px solid var(--bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .6rem;
+  }
+  .bag-card-item:last-child { border-bottom: none; }
+  .bag-card-item.checked {
+    color: var(--ink-soft);
+    text-decoration: line-through;
+    opacity: .55;
+  }
+  .bag-card-item .cat-tag {
+    font-size: .7rem;
+    color: var(--ink-soft);
+    background: var(--bg);
+    padding: .1rem .45rem;
+    border-radius: 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .bag-card-empty {
+    padding: 1.2rem 1rem;
+    text-align: center;
+    color: var(--ink-soft);
+    font-style: italic;
+    font-size: .85rem;
+  }
+
+  .bag-summary {
+    background: rgba(74,106,74,.06);
+    border-left: 3px solid var(--moss);
+    padding: .8rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0 6px 6px 0;
+    font-size: .85rem;
+    color: var(--ink);
+  }
+  .bag-summary strong { color: var(--moss-deep); }
+
+  /* Pack-Plan Modal */
+  .bag-options {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+  .bag-option {
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    padding: .8rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+    font-size: .95rem;
+    color: var(--ink);
+    transition: all .15s;
+  }
+  .bag-option:active { background: rgba(74,106,74,.08); }
+  .bag-option.selected {
+    border-color: var(--moss);
+    background: rgba(74,106,74,.08);
+    font-weight: 600;
+  }
+  .bag-option .emoji { font-size: 1.4rem; }
+  .bag-option .info { flex: 1; }
+  .bag-option .desc {
+    font-size: .75rem;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+
+  /* Print: Bag-View */
+  @media print {
+    .view-tabs, .bag-view { display: none !important; }
+    body.view-bags .view-tabs { display: none !important; }
+    body.view-bags .bag-view { display: block !important; padding: 0; columns: 1; }
+    body.view-bags main { display: none !important; }
+    body.view-bags .bag-card { break-inside: avoid; page-break-inside: avoid; border: 1px solid #999; }
+  }
+
+  /* Print */
+  @media print {
+    @page { margin: 12mm; }
+    body { background: white; font-size: 10pt; }
+    header { background: white !important; color: black !important; box-shadow: none; padding: 0 0 1rem; position: static; }
+    header .title { font-size: 16pt; font-weight: bold; }
+    header .sub { color: #555; }
+    header .stats { display: none; }
+    .actions, .filter-hint, .edit-hint, .add-item-btn, .item-delete, footer, .modal-overlay, .toast { display: none !important; }
+    main { columns: 2; column-gap: 8mm; }
+    .cat { border: none; break-inside: avoid; page-break-inside: avoid; margin-bottom: 4mm; background: white; }
+    .cat h2 { background: none; color: black; border-bottom: 1px solid #999; padding: 0 0 1mm; font-size: 10pt; }
+    .item { padding: 1mm 0; min-height: 0; border: none; }
+    .item .text { font-size: 9.5pt; color: black; }
+    .item input[type="checkbox"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 3mm; height: 3mm;
+      border: 1px solid black !important;
+      background: white !important;
+    }
+    .item input[type="checkbox"]:checked {
+      background: #4a6a4a !important;
+      border-color: #4a6a4a !important;
+    }
+    .qty { background: none !important; border: none !important; padding: 0; }
+    .qty input.qty-num { color: black !important; font-weight: bold; width: 1.6rem; }
+    .qty .qty-unit { font-size: 8pt; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="title">Packliste Schweden 2026</div>
+  <div class="sub">VW California · 11.–26.06.2026 · 2 Personen</div>
+  <div class="stats">
+    <span><strong id="count-checked">0</strong> / <strong id="count-total">0</strong></span>
+    <div class="progress"><div class="progress-fill" id="progress-fill"></div></div>
+    <span id="percent">0%</span>
+  </div>
+  <div class="view-tabs">
+    <button id="tab-list" class="active" onclick="setView('list')">📋 Liste</button>
+    <button id="tab-bags" onclick="setView('bags')">🎒 Pack-Plan</button>
+  </div>
+</header>
+
+<div class="actions">
+  <button id="filter-btn" onclick="toggleFilter()">Nur offene</button>
+  <button id="edit-btn" onclick="toggleEdit()">✏️ Bearbeiten</button>
+  <button onclick="showExport()">📤 Export</button>
+  <button onclick="showImport()">📥 Import</button>
+  <button onclick="window.print()">🖨️ Drucken</button>
+  <button onclick="resetAll()">↺ Reset</button>
+</div>
+
+<div class="filter-hint" id="filter-hint">Abgehakte Items werden ausgeblendet. Klick auf 📋 zeigt sie wieder.</div>
+<div class="edit-hint" id="edit-hint">
+  <strong>Bearbeiten-Modus:</strong> Tippe auf einen Text um ihn zu ändern. ✕ löscht ein Item. <strong>+ Hinzufügen</strong> erweitert eine Kategorie.
+</div>
+
+<main id="list"></main>
+<div class="bag-view" id="bag-view"></div>
+
+<footer>
+  Daten werden lokal im Browser gespeichert.<br>
+  Stand der Liste: 23.05.2026
+</footer>
+
+<!-- Export-Modal -->
+<div class="modal-overlay" id="export-modal" onclick="if(event.target===this)closeModal('export-modal')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Packliste exportieren</h3>
+      <button class="modal-close" onclick="closeModal('export-modal')">×</button>
+    </div>
+    <div class="modal-body">
+      <p>Diesen Text kopieren und z.B. per Signal verschicken. Wer ihn importiert, hat genau deinen Stand (Häkchen, Mengen, eigene Items).</p>
+      <textarea id="export-text" readonly></textarea>
+    </div>
+    <div class="modal-footer">
+      <button onclick="closeModal('export-modal')">Schließen</button>
+      <button class="primary" onclick="copyExport()">Kopieren</button>
+    </div>
+  </div>
+</div>
+
+<!-- Import-Modal -->
+<div class="modal-overlay" id="import-modal" onclick="if(event.target===this)closeModal('import-modal')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Packliste importieren</h3>
+      <button class="modal-close" onclick="closeModal('import-modal')">×</button>
+    </div>
+    <div class="modal-body">
+      <p>Empfangenen Text hier einfügen. <strong>Achtung:</strong> Dein aktueller Stand wird überschrieben.</p>
+      <textarea id="import-text" placeholder="Hier den exportierten Text einfügen…"></textarea>
+    </div>
+    <div class="modal-footer">
+      <button onclick="closeModal('import-modal')">Abbrechen</button>
+      <button class="primary" onclick="applyImport()">Importieren</button>
+    </div>
+  </div>
+</div>
+
+<!-- Bag-Auswahl-Modal -->
+<div class="modal-overlay" id="bag-modal" onclick="if(event.target===this)closeModal('bag-modal')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="bag-modal-title">Wohin packen?</h3>
+      <button class="modal-close" onclick="closeModal('bag-modal')">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="bag-options" id="bag-options"></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// =============== DATENBASIS ===============
+const PACKLIST = [
+  ["Dokumente", [
+    ["d1", "Personalausweis (beide)"],
+    ["d2", "Führerschein"],
+    ["d3", "Fahrzeugschein"],
+    ["d4", "Versicherungspapiere / Grüne Karte"],
+    ["d5", "Fährbuchung Hin- und Rückweg"],
+    ["d6", "Krankenversicherungskarte (EHIC)"],
+    ["d7", "ADAC-Karte / Schutzbrief"],
+    ["d8", "Impfausweis"],
+    ["d9", "Bargeld + Kreditkarte + Backup-Karte"]
+  ]],
+  ["Bus und Technik", [
+    ["b1", "Warndreieck, Warnweste (2x)"],
+    ["b2", "Verbandskasten, Glühlampen"],
+    ["b3", "Abschleppseil"],
+    ["b4", "Reifendruck-Messer"],
+    ["b5", "Starthilfekabel"],
+    ["b6", "Werkzeug, Kabelbinder, Dichtband"],
+    ["b7", "Wasserkanister, Trichter"],
+    ["b8", "Verlängerungskabel CEE-Adapter"],
+    ["b9", "2× Verlängerungskabel + Mehrfachstecker"],
+    ["b10", "Toilettenchemie / Kassettentabs"],
+    ["b11", "Hammer, Gummihammer, Expander"],
+    ["b12", "Reflektorschild"],
+    ["b13", "Seitenschneider / Kabelzange"],
+    ["b14", "Gaffaband"]
+  ]],
+  ["Aufbau und Außenraum", [
+    ["a1", "Zelt, Heringe, Gummihammer"],
+    ["a2", "Heckklappenzelt"],
+    ["a3", "Schattennetz, Magnete, Expander"],
+    ["a4", "Plane"],
+    ["a5", "Schnüre, Maurerschnur"],
+    ["a6", "Klappstühle, Klapptisch", 2, "Stk."],
+    ["a7", "S-Haken, Karabiner"],
+    ["a8", "Keile"],
+    ["a9", "Teppich"],
+    ["a10", "Schaufel + Besen"],
+    ["a11", "Picknickdecke"],
+    ["a12", "Hängematte"],
+    ["a13", "Wäscheklammern, große Klammern", 1, "Beutel"],
+    ["a14", "Grill"],
+    ["a15", "Gasflasche (für Grill)"]
+  ]],
+  ["Schlafen und Wohnen", [
+    ["s1", "Bettwäsche, Decken, Kissen", 2, "Sets"],
+    ["s2", "Schlafsack als Backup", 2, "Stk."],
+    ["s3", "2× Spannbettlaken / Leintücher", 2, "Sets"],
+    ["s4", "Bettdecke", 2, "Stk."],
+    ["s5", "Schlafanzüge", 4, "Stk."],
+    ["s6", "Lammfelle", 2, "Stk."],
+    ["s7", "Verdunkelung — wegen 18 h Tageslicht!"],
+    ["s8", "Schlafmaske (helle Nächte!)", 2, "Stk."],
+    ["s9", "Oropax", 1, "Pack"]
+  ]],
+  ["Küche", [
+    ["k1", "Gas voll? (Kartuschen prüfen)", 3, "Stk."],
+    ["k2", "Kaffee-Setup (Kanne, Mühle, Bohnen)"],
+    ["k3", "Espressotopf, Milchschäumer"],
+    ["k4", "Topf klein + Topf groß"],
+    ["k5", "Pfanne + Pfannenheber"],
+    ["k6", "Kochlöffel, Spaghettigabel"],
+    ["k7", "Scharfes Messer, Schneidebretter"],
+    ["k8", "Besteck", 3, "Sets"],
+    ["k9", "Teller, Tassen, Becher, Gläser", 3, "Sets"],
+    ["k10", "Salatschüssel"],
+    ["k11", "Schere, Korkenzieher, Flaschenöffner"],
+    ["k12", "Spülmittel, Schwämme, Spülbürste"],
+    ["k13", "Spülwanne, Geschirrtücher"],
+    ["k14", "Müllbeutel", 25, "Stk."],
+    ["k15", "Frischhaltebeutel, Alufolie, Frischhaltefolie", 1, "Pack"],
+    ["k16", "Verschlussclipse, Gummis"],
+    ["k17", "Tischdecken / Tücher"],
+    ["k18", "Salz, Pfeffer, Gewürze"],
+    ["k19", "Essig, Öl", 1, "Set"],
+    ["k20", "Honig, Marmelade"],
+    ["k21", "Suppenwürfel", 1, "Pack"],
+    ["k22", "Müsli", 3, "Pack"],
+    ["k23", "Nudeln, Reis, Risotto, Tomatensauce"],
+    ["k24", "Wasserflaschen + Filter", 6, "L"],
+    ["k26", "Wasserträger still (Kasten/Kanister)", 12, "L"],
+    ["k27", "Wein (in Schweden teuer, nur Systembolaget)", 6, "Fl."],
+    ["k28", "Bier (Supermarkt nur bis 3,5 %)", 24, "Fl."],
+    ["k25", "Aschenbecher"]
+  ]],
+  ["Kleidung", [
+    ["c1", "Regenjacke + Regenhose", 2, "Sets"],
+    ["c2", "Warme Fleecejacke / Anorak", 2, "Sets"],
+    ["c3", "Wanderschuhe + leichte Schuhe", 4, "Paar"],
+    ["c4", "Duschschuhe", 2, "Paar"],
+    ["c5", "Mütze, Hut", 4, "Stk."],
+    ["c6", "Dünne Handschuhe", 2, "Paar"],
+    ["c7", "Gürtel", 2, "Stk."],
+    ["c8", "Unterwäsche", 16, "Stk."],
+    ["c8b", "Socken (davon 2 Paar Wandersocken)", 16, "Paar"],
+    ["c9", "T-Shirts", 14, "Stk."],
+    ["c10", "Jeans, lange Hose", 4, "Stk."],
+    ["c11", "Kurze Hosen", 4, "Stk."],
+    ["c12", "Badesachen, Strandkleider, Bademantel", 5, "Stk."],
+    ["c13", "Wandersachen", 2, "Sets"],
+    ["c14", "Strandtücher, Badetaschen", 4, "Stk."],
+    ["c15", "Sonnenbrille, Sonnenhut", 4, "Stk."],
+    ["c16", "Eine schönere Kombi für Stockholm", 2, "Sets"]
+  ]],
+  ["Bad und Pflege", [
+    ["bp1", "Kulturbeutel, Waschzeug"],
+    ["bp9", "Nagelschere & Nagelpflege"],
+    ["bp2", "Handtücher, Duschtücher", 8, "Stk."],
+    ["bp3", "2× Saunahandtuch", 2, "Stk."],
+    ["bp4", "2× Mikrofaser-Handtuch", 2, "Stk."],
+    ["bp5", "Toilettenpapier, Küchenrolle", 6, "Rollen"],
+    ["bp6", "Taschentücher", 4, "Pack"],
+    ["bp7", "Putztücher, Feuchttücher", 3, "Pack"],
+    ["bp8", "Reisewaschmittel (Tube)", 1, "Tube"]
+  ]],
+  ["Outdoor und Natur", [
+    ["o1", "Mückenschutz (Mygga oder Djungelolja vor Ort)", 2, "Fl."],
+    ["o2", "Mückenstichbrenner, After-Bite"],
+    ["o3", "Mückenkerzen", 5, "Stk."],
+    ["o4", "Zeckenzange", 2, "Stk."],
+    ["o5", "Sonnencreme (LSF 30+)", 2, "Tuben"],
+    ["o6", "Sonnenzelt"],
+    ["o7", "Fernglas (Schären!)"],
+    ["o8", "Wanderkarte / Outdooractive Premium"],
+    ["o9", "Trinkflaschen, Daypack, Rucksack"]
+  ]],
+  ["Licht und Energie", [
+    ["l1", "2× Schlangenleuchten", 2, "Stk."],
+    ["l2", "2× Klemmleuchten", 2, "Stk."],
+    ["l3", "2× Tischleuchten", 2, "Stk."],
+    ["l4", "Große Leuchte"],
+    ["l5", "Taschenlampe"],
+    ["l6", "Stirnlampen + Ersatzbatterien", 2, "Stk."],
+    ["l7", "Kerzen", 6, "Stk."],
+    ["l8", "Stabfeuerzeug", 2, "Stk."],
+    ["l9", "Powerbank groß + Powerbank klein"]
+  ]],
+  ["Fahrrad", [
+    ["f1", "Schlösser für Räder"],
+    ["f2", "Kabelschloss"],
+    ["f3", "Fahrradpumpe + Kompressor"],
+    ["f4", "Fahrradbeleuchtung vorne / hinten"],
+    ["f5", "Werkzeug Fahrrad"],
+    ["f6", "Radkorb"]
+  ]],
+  ["Elektronik", [
+    ["t1", "Handys + Ladekabel + Kopfhörer", 2, "Sets"],
+    ["t2", "iPad + Ladekabel"],
+    ["t3", "Tolino + Ladekabel"],
+    ["t4", "Kamera + Akkus + Ladegerät"],
+    ["t5", "Speicherkarten, SSD-Kabel, Micro-SSD-Adapter", 2, "Karten"],
+    ["t6", "Musikbox + Kabel"],
+    ["t7", "USB-Adapter (12V)"]
+  ]],
+  ["Apotheke", [
+    ["ap1", "Persönliche Medikamente"],
+    ["ap2", "Ibuprofen / Schmerzmittel", 1, "Pack"],
+    ["ap3", "Verband, Pflaster"],
+    ["ap4", "Ohrentropfen"],
+    ["ap5", "Nasentropfen, Augentropfen"],
+    ["ap6", "Arnikasalbe"],
+    ["ap7", "Combudoron"],
+    ["ap8", "Zugsalbe, Bepanthen, Blasentee"],
+    ["ap9", "Schlafmittel, Schlafspray"],
+    ["ap10", "Globuli-Kasten"]
+  ]],
+  ["Persönlich und Sonstiges", [
+    ["e1", "Brille, Sonnenbrille, Schlafbrille"],
+    ["e2", "Schreibzeug, Papier, Block"],
+    ["e3", "Tagebuch + Stift"],
+    ["e4", "Bücher", 3, "Stk."],
+    ["e5", "Landkarten, Reiseführer Camping"],
+    ["e6", "Spielkarten, Würfelspiel"],
+    ["e7", "Gitarre (für Lagerfeuer-Abende)"],
+    ["e8", "Nähzeug"],
+    ["e9", "Transportbox (transparent)"],
+    ["e10", "Tüten", 20, "Stk."]
+  ]],
+  ["Aus dem Keller", [
+    ["kel1", "Kühlschrank"],
+    ["kel2", "Kochplatte"],
+    ["kel3", "Matratzen"]
+  ]]
+];
+
+// =============== STATE ===============
+const KEYS = {
+  checks: 'pl-schweden-checks',
+  qty: 'pl-schweden-qty',
+  edits: 'pl-schweden-edits',
+  bags: 'pl-schweden-bags'
+};
+
+// Behälter: 6 PÄRKLA + 1 Elektronik-Tasche + außen/im Bus
+const BAGS = [
+  { id: 'b1',   emoji: '🧥', name: 'PÄRKLA 1 — Kleidung Uli',     desc: '~80 L · Tasche für Uli' },
+  { id: 'b2',   emoji: '👗', name: 'PÄRKLA 2 — Kleidung Sabine',  desc: '~80 L · Tasche für Sabine' },
+  { id: 'b3',   emoji: '🛏️', name: 'PÄRKLA 3 — Schlafen/Textil',  desc: '~80 L · Bettzeug, Handtücher' },
+  { id: 'b4',   emoji: '🥾', name: 'PÄRKLA 4 — Outdoor/Schuhe',   desc: '~80 L · Regen, Schuhe' },
+  { id: 'b5',   emoji: '🧴', name: 'PÄRKLA 5 — Bad/Pflege/Apotheke', desc: '~80 L · Empfindliches' },
+  { id: 'b6',   emoji: '🍝', name: 'PÄRKLA 6 — Vorrat/Spiel',     desc: '~80 L · Trockenes & Spiele' },
+  { id: 'el',   emoji: '📷', name: 'Elektronik-Tasche',           desc: 'Klein · Handys, Kamera, Kabel' },
+  { id: 'bus',  emoji: '🚐', name: 'Im Bus (Außen/Fest)',         desc: 'Zelt, Werkzeug, Stühle, Gas' },
+  { id: 'box',  emoji: '📦', name: 'Eigene Kiste/Box',            desc: 'Wein, Bier, Wasser, Apotheke-Box' }
+];
+
+// Default-Zuordnung: welches Item kommt standardmäßig in welche Tasche
+const DEFAULT_BAGS = {
+  // Dokumente: in Brieftasche/persönlich → keine Tasche zugeordnet
+  // Bus und Technik → im Bus
+  b1:'bus', b2:'bus', b3:'bus', b4:'bus', b5:'bus', b6:'bus', b7:'bus',
+  b8:'bus', b9:'bus', b10:'bus', b11:'bus', b12:'bus', b13:'bus', b14:'bus',
+  // Aufbau und Außenraum → im Bus
+  a1:'bus', a2:'bus', a3:'bus', a4:'bus', a5:'bus', a6:'bus', a7:'bus',
+  a8:'bus', a9:'bus', a10:'bus', a11:'bus', a12:'bus', a13:'bus',
+  a14:'bus', a15:'bus',
+  // Schlafen → PÄRKLA 3
+  s1:'b3', s2:'b3', s3:'b3', s4:'b3', s5:'b3', s6:'b3', s7:'b3', s8:'b3', s9:'b3',
+  // Küche: Vorräte → PÄRKLA 6, Geräte/Geschirr → im Bus, Flüssiges → Box
+  k1:'bus', k2:'bus', k3:'bus', k4:'bus', k5:'bus', k6:'bus', k7:'bus',
+  k8:'bus', k9:'bus', k10:'bus', k11:'bus', k12:'bus', k13:'bus',
+  k14:'b6', k15:'b6', k16:'b6', k17:'bus',
+  k18:'b6', k19:'b6', k20:'b6', k21:'b6', k22:'b6', k23:'b6',
+  k24:'box', k26:'box', k27:'box', k28:'box', k25:'bus',
+  // Kleidung → aufgeteilt zwischen Uli (b1) und Sabine (b2)
+  // Ich nehme an: gemeinsame Items auf b1 (oder beide?), ich setze sie nicht beide,
+  // sondern lasse das per Default offen für die wenigen klaren Fälle.
+  // Da nicht klar trennbar, packe ich alle Kleidung erstmal in PÄRKLA 1 (Uli) als Anker,
+  // Sabine kann ihre Sachen umparken oder gemeinsame Items lassen.
+  c1:'b1', c2:'b1', c3:'b4', c4:'b4', c5:'b1', c6:'b1', c7:'b1',
+  c8:'b1', c8b:'b1', c9:'b1', c10:'b1', c11:'b1', c12:'b1', c13:'b1',
+  c14:'b3', c15:'b1', c16:'b1',
+  // Bad und Pflege → PÄRKLA 5
+  bp1:'b5', bp9:'b5', bp2:'b3', bp3:'b3', bp4:'b3',
+  bp5:'b5', bp6:'b5', bp7:'b5', bp8:'b5',
+  // Outdoor → PÄRKLA 4 oder 5
+  o1:'b5', o2:'b5', o3:'bus', o4:'b5', o5:'b5', o6:'bus', o7:'b4', o8:'b4', o9:'b4',
+  // Licht → im Bus
+  l1:'bus', l2:'bus', l3:'bus', l4:'bus', l5:'bus', l6:'b5', l7:'bus', l8:'bus', l9:'b5',
+  // Fahrrad → im Bus/außen
+  f1:'bus', f2:'bus', f3:'bus', f4:'bus', f5:'bus', f6:'bus',
+  // Elektronik → Elektronik-Tasche
+  t1:'el', t2:'el', t3:'el', t4:'el', t5:'el', t6:'el', t7:'el',
+  // Apotheke → eigene Box (in PÄRKLA 5)
+  ap1:'box', ap2:'box', ap3:'box', ap4:'box', ap5:'box',
+  ap6:'box', ap7:'box', ap8:'box', ap9:'box', ap10:'box',
+  // Persönlich → PÄRKLA 6
+  e1:'b5', e2:'b6', e3:'b6', e4:'b6', e5:'bus',
+  e6:'b6', e7:'bus', e8:'b6', e9:'bus', e10:'b6',
+  // Aus dem Keller → im Bus
+  kel1:'bus', kel2:'bus', kel3:'bus'
+};
+
+let checks = loadJson(KEYS.checks, {});
+let qty = loadJson(KEYS.qty, {});
+let edits = Object.assign({ deleted: [], renamed: {}, custom: {} }, loadJson(KEYS.edits, {}));
+let bagAssignments = loadJson(KEYS.bags, {});
+let currentView = 'list';
+
+function loadJson(key, def) {
+  try { return JSON.parse(localStorage.getItem(key)) || def; }
+  catch(e) { return def; }
+}
+function saveJson(key, obj) {
+  try { localStorage.setItem(key, JSON.stringify(obj)); }
+  catch(e) { console.warn('Speichern fehlgeschlagen:', e); }
+}
+function persistChecks() { saveJson(KEYS.checks, checks); }
+function persistQty() { saveJson(KEYS.qty, qty); }
+function persistEdits() { saveJson(KEYS.edits, edits); }
+function persistBags() { saveJson(KEYS.bags, bagAssignments); }
+
+function getBag(key) {
+  if (bagAssignments[key] !== undefined) return bagAssignments[key];
+  return DEFAULT_BAGS[key] || null;
+}
+function getBagInfo(id) {
+  return BAGS.find(b => b.id === id) || null;
+}
+
+// =============== RENDERING ===============
+function escapeHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function render() {
+  const main = document.getElementById('list');
+  main.innerHTML = '';
+
+  PACKLIST.forEach(([catName, items]) => {
+    const cat = document.createElement('section');
+    cat.className = 'cat';
+    cat.dataset.cat = catName;
+
+    const allItems = items.slice();
+    // Custom-Items dieser Kategorie anhängen
+    (edits.custom[catName] || []).forEach(it => allItems.push([it.key, it.text]));
+
+    // Gelöschte filtern
+    const visible = allItems.filter(it => !edits.deleted.includes(it[0]));
+
+    let checkedCount = 0;
+    visible.forEach(it => { if (checks[it[0]]) checkedCount++; });
+
+    cat.innerHTML = `
+      <h2>
+        <span>${escapeHtml(catName)}</span>
+        <span class="cat-count">${checkedCount} / ${visible.length}</span>
+      </h2>`;
+
+    visible.forEach(([key, text, m, u]) => {
+      const isChecked = !!checks[key];
+      const finalText = edits.renamed[key] !== undefined ? edits.renamed[key] : text;
+      const bagId = getBag(key);
+      const bagInfo = bagId ? getBagInfo(bagId) : null;
+      const bagBadge = bagInfo
+        ? `<button type="button" class="bag-badge assigned" data-bag-for="${key}" title="${escapeHtml(bagInfo.name)}"><span class="bag-icon">${bagInfo.emoji}</span>${escapeHtml(bagShort(bagInfo))}</button>`
+        : `<button type="button" class="bag-badge" data-bag-for="${key}" title="Tasche wählen"><span class="bag-icon">📦</span>?</button>`;
+
+      const item = document.createElement('label');
+      item.className = 'item';
+      item.dataset.key = key;
+      item.innerHTML = `
+        <input type="checkbox" ${isChecked ? 'checked' : ''}>
+        <span class="text">${escapeHtml(finalText)}</span>
+        ${m ? renderQty(key, m, u) : ''}
+        ${bagBadge}
+        <button class="item-delete" type="button" aria-label="Löschen">✕</button>
+      `;
+      cat.appendChild(item);
+
+      const cb = item.querySelector('input[type="checkbox"]');
+      cb.addEventListener('change', e => {
+        e.stopPropagation();
+        checks[key] = cb.checked;
+        persistChecks();
+        updateStats();
+        updateCatCount(cat);
+        if (currentView === 'bags') renderBagView();
+      });
+
+      const textEl = item.querySelector('.text');
+      textEl.addEventListener('click', e => {
+        if (document.body.classList.contains('editing')) {
+          e.preventDefault();
+          e.stopPropagation();
+          startTextEdit(textEl, key);
+        }
+      });
+
+      // Bag-Badge: öffnet Auswahl-Modal
+      const bagBtn = item.querySelector('.bag-badge');
+      if (bagBtn) {
+        bagBtn.addEventListener('click', e => {
+          e.preventDefault();
+          e.stopPropagation();
+          openBagPicker(key, finalText);
+        });
+      }
+
+      const delBtn = item.querySelector('.item-delete');
+      delBtn.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (confirm('"' + finalText + '" wirklich löschen?')) {
+          if (key.startsWith('cu-')) {
+            if (edits.custom[catName]) {
+              edits.custom[catName] = edits.custom[catName].filter(i => i.key !== key);
+            }
+          } else {
+            if (!edits.deleted.includes(key)) edits.deleted.push(key);
+            delete edits.renamed[key];
+          }
+          delete checks[key];
+          delete qty[key];
+          delete bagAssignments[key];
+          persistChecks(); persistQty(); persistEdits(); persistBags();
+          render();
+        }
+      });
+
+      // Quantity-Inputs
+      const qtyInput = item.querySelector('input.qty-num');
+      if (qtyInput) {
+        qtyInput.addEventListener('click', e => { e.stopPropagation(); e.preventDefault(); });
+        qtyInput.addEventListener('mousedown', e => e.stopPropagation());
+        qtyInput.addEventListener('input', () => {
+          const val = parseInt(qtyInput.value);
+          qty[key] = isNaN(val) ? '' : val;
+          persistQty();
+        });
+      }
+    });
+
+    // Add-Button pro Kategorie
+    const addBtn = document.createElement('button');
+    addBtn.className = 'add-item-btn';
+    addBtn.type = 'button';
+    addBtn.textContent = '+ Item hinzufügen';
+    addBtn.addEventListener('click', () => {
+      const t = prompt('Neues Item für "' + catName + '":');
+      if (t && t.trim()) {
+        const newKey = 'cu-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6);
+        if (!edits.custom[catName]) edits.custom[catName] = [];
+        edits.custom[catName].push({ key: newKey, text: t.trim() });
+        persistEdits();
+        render();
+      }
+    });
+    cat.appendChild(addBtn);
+
+    main.appendChild(cat);
+  });
+
+  updateStats();
+}
+
+function renderQty(key, defaultMenge, unit) {
+  const val = qty[key] !== undefined && qty[key] !== '' ? qty[key] : defaultMenge;
+  return `<span class="qty">
+    <input type="number" class="qty-num" data-qty="${key}" value="${val}" min="0" max="999" inputmode="numeric">
+    <span class="qty-unit">${escapeHtml(unit)}</span>
+  </span>`;
+}
+
+function startTextEdit(textEl, key) {
+  textEl.contentEditable = 'true';
+  textEl.focus();
+  // Cursor ans Ende
+  const range = document.createRange();
+  range.selectNodeContents(textEl);
+  range.collapse(false);
+  const sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+
+  const finish = () => {
+    textEl.contentEditable = 'false';
+    const newText = textEl.textContent.trim();
+    if (newText === '') {
+      // Wiederherstellen
+      const original = findOriginal(key);
+      textEl.textContent = original;
+      return;
+    }
+    if (key.startsWith('cu-')) {
+      // Custom-Item updaten
+      Object.keys(edits.custom).forEach(catName => {
+        edits.custom[catName] = edits.custom[catName].map(it =>
+          it.key === key ? Object.assign({}, it, { text: newText }) : it
+        );
+      });
+    } else {
+      edits.renamed[key] = newText;
+    }
+    persistEdits();
+  };
+  textEl.onblur = finish;
+  textEl.onkeydown = e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      textEl.blur();
+    }
+  };
+}
+
+function findOriginal(key) {
+  for (const [cat, items] of PACKLIST) {
+    for (const it of items) {
+      if (it[0] === key) return it[1];
+    }
+  }
+  for (const cat of Object.keys(edits.custom)) {
+    for (const it of edits.custom[cat]) {
+      if (it.key === key) return it.text;
+    }
+  }
+  return '';
+}
+
+// =============== PACK-PLAN ===============
+function bagShort(bag) {
+  // Kurzer Name für Badge (statt voller Titel)
+  if (bag.id.startsWith('b') && /^b\d$/.test(bag.id)) return bag.id.toUpperCase().replace('B', 'PÄRKLA ');
+  if (bag.id === 'el') return 'Elektronik';
+  if (bag.id === 'bus') return 'Bus';
+  if (bag.id === 'box') return 'Kiste';
+  return bag.name;
+}
+
+function openBagPicker(key, itemText) {
+  const current = getBag(key);
+  document.getElementById('bag-modal-title').textContent = 'Wohin packen: ' + itemText;
+  const opts = document.getElementById('bag-options');
+  opts.innerHTML = '';
+
+  // "Keine Zuordnung"-Option oben
+  const noneBtn = document.createElement('button');
+  noneBtn.className = 'bag-option' + (current === null || current === undefined ? ' selected' : '');
+  noneBtn.type = 'button';
+  noneBtn.innerHTML = `
+    <span class="emoji">❔</span>
+    <span class="info">
+      <div>Keine Zuordnung</div>
+      <div class="desc">In Brieftasche, am Mann, später entscheiden</div>
+    </span>
+  `;
+  noneBtn.addEventListener('click', () => {
+    bagAssignments[key] = null;
+    persistBags();
+    closeModal('bag-modal');
+    render();
+  });
+  opts.appendChild(noneBtn);
+
+  BAGS.forEach(bag => {
+    const btn = document.createElement('button');
+    btn.className = 'bag-option' + (current === bag.id ? ' selected' : '');
+    btn.type = 'button';
+    btn.innerHTML = `
+      <span class="emoji">${bag.emoji}</span>
+      <span class="info">
+        <div>${escapeHtml(bag.name)}</div>
+        <div class="desc">${escapeHtml(bag.desc)}</div>
+      </span>
+    `;
+    btn.addEventListener('click', () => {
+      bagAssignments[key] = bag.id;
+      persistBags();
+      closeModal('bag-modal');
+      render();
+    });
+    opts.appendChild(btn);
+  });
+
+  document.getElementById('bag-modal').classList.add('visible');
+}
+
+function renderBagView() {
+  const container = document.getElementById('bag-view');
+  container.innerHTML = '';
+
+  // Alle aktiven Items sammeln, gruppieren nach Bag
+  const byBag = {};
+  const unassigned = [];
+
+  PACKLIST.forEach(([catName, items]) => {
+    const allItems = items.slice();
+    (edits.custom[catName] || []).forEach(it => allItems.push([it.key, it.text]));
+    const visible = allItems.filter(it => !edits.deleted.includes(it[0]));
+    visible.forEach(([key, text]) => {
+      const finalText = edits.renamed[key] !== undefined ? edits.renamed[key] : text;
+      const bagId = getBag(key);
+      const entry = { key, text: finalText, cat: catName, checked: !!checks[key] };
+      if (bagId) {
+        if (!byBag[bagId]) byBag[bagId] = [];
+        byBag[bagId].push(entry);
+      } else {
+        unassigned.push(entry);
+      }
+    });
+  });
+
+  // Summary oben
+  const totalItems = Object.values(byBag).reduce((s, arr) => s + arr.length, 0) + unassigned.length;
+  const assigned = totalItems - unassigned.length;
+  const summary = document.createElement('div');
+  summary.className = 'bag-summary';
+  summary.innerHTML = `
+    <strong>${assigned}</strong> von <strong>${totalItems}</strong> Items zugeordnet.
+    ${unassigned.length > 0 ? `<br><strong>${unassigned.length}</strong> noch ohne Tasche.` : ''}
+  `;
+  container.appendChild(summary);
+
+  // Pro Bag eine Karte
+  BAGS.forEach(bag => {
+    const items = byBag[bag.id] || [];
+    const card = document.createElement('div');
+    card.className = 'bag-card' + (items.length === 0 ? ' empty' : '');
+    const doneCount = items.filter(i => i.checked).length;
+    card.innerHTML = `
+      <div class="bag-card-head">
+        <div class="bag-card-title"><span class="bag-emoji">${bag.emoji}</span>${escapeHtml(bag.name)}</div>
+        <div class="bag-card-count">${doneCount} / ${items.length}</div>
+      </div>
+      <div class="bag-card-items"></div>
+    `;
+    const list = card.querySelector('.bag-card-items');
+    if (items.length === 0) {
+      list.innerHTML = '<div class="bag-card-empty">— leer —</div>';
+    } else {
+      // Nach Kategorie gruppiert sortieren (Reihenfolge der PACKLIST)
+      const catOrder = PACKLIST.map(([c]) => c);
+      items.sort((a, b) => catOrder.indexOf(a.cat) - catOrder.indexOf(b.cat));
+      items.forEach(it => {
+        const div = document.createElement('div');
+        div.className = 'bag-card-item' + (it.checked ? ' checked' : '');
+        div.innerHTML = `
+          <span>${escapeHtml(it.text)}</span>
+          <span class="cat-tag">${escapeHtml(it.cat)}</span>
+        `;
+        list.appendChild(div);
+      });
+    }
+    container.appendChild(card);
+  });
+
+  // Unzugeordnete Items
+  if (unassigned.length > 0) {
+    const card = document.createElement('div');
+    card.className = 'bag-card';
+    card.innerHTML = `
+      <div class="bag-card-head">
+        <div class="bag-card-title"><span class="bag-emoji">❔</span>Noch nicht zugeordnet</div>
+        <div class="bag-card-count">${unassigned.length}</div>
+      </div>
+      <div class="bag-card-items"></div>
+    `;
+    const list = card.querySelector('.bag-card-items');
+    const catOrder = PACKLIST.map(([c]) => c);
+    unassigned.sort((a, b) => catOrder.indexOf(a.cat) - catOrder.indexOf(b.cat));
+    unassigned.forEach(it => {
+      const div = document.createElement('div');
+      div.className = 'bag-card-item' + (it.checked ? ' checked' : '');
+      div.innerHTML = `
+        <span>${escapeHtml(it.text)}</span>
+        <span class="cat-tag">${escapeHtml(it.cat)}</span>
+      `;
+      list.appendChild(div);
+    });
+    container.appendChild(card);
+  }
+}
+
+function setView(v) {
+  currentView = v;
+  document.body.classList.toggle('view-bags', v === 'bags');
+  document.getElementById('tab-list').classList.toggle('active', v === 'list');
+  document.getElementById('tab-bags').classList.toggle('active', v === 'bags');
+  if (v === 'bags') renderBagView();
+}
+
+function updateStats() {
+  let total = 0, done = 0;
+  document.querySelectorAll('.cat .item').forEach(item => {
+    total++;
+    if (item.querySelector('input[type="checkbox"]').checked) done++;
+  });
+  document.getElementById('count-checked').textContent = done;
+  document.getElementById('count-total').textContent = total;
+  const pct = total > 0 ? Math.round(done / total * 100) : 0;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('percent').textContent = pct + '%';
+}
+
+function updateCatCount(cat) {
+  const items = cat.querySelectorAll('.item');
+  let done = 0;
+  items.forEach(i => { if (i.querySelector('input[type="checkbox"]').checked) done++; });
+  const countEl = cat.querySelector('.cat-count');
+  if (countEl) countEl.textContent = done + ' / ' + items.length;
+}
+
+// =============== AKTIONEN ===============
+function toggleFilter() {
+  const body = document.body;
+  const btn = document.getElementById('filter-btn');
+  const hint = document.getElementById('filter-hint');
+  body.classList.toggle('hide-checked');
+  const active = body.classList.contains('hide-checked');
+  btn.classList.toggle('active', active);
+  hint.classList.toggle('visible', active);
+  btn.textContent = active ? '📋 Alle zeigen' : '📋 Nur offene';
+}
+
+function toggleEdit() {
+  const body = document.body;
+  const btn = document.getElementById('edit-btn');
+  const hint = document.getElementById('edit-hint');
+  body.classList.toggle('editing');
+  const active = body.classList.contains('editing');
+  btn.classList.toggle('edit-on', active);
+  hint.classList.toggle('visible', active);
+  btn.textContent = active ? '✓ Fertig' : '✏️ Bearbeiten';
+}
+
+function resetAll() {
+  const choice = prompt(
+    'Was zurücksetzen?\n\n' +
+    '1 = nur Häkchen\n' +
+    '2 = Häkchen + Mengen\n' +
+    '3 = Pack-Plan (Tasche-Zuordnungen)\n' +
+    '4 = Alles (auch eigene Items, Umbenennungen, Pack-Plan)\n\n' +
+    'Tippe 1, 2, 3 oder 4:'
+  );
+  if (choice === '1') {
+    if (confirm('Alle Häkchen zurücksetzen?')) {
+      checks = {};
+      persistChecks();
+      render();
+      showToast('Häkchen zurückgesetzt');
+    }
+  } else if (choice === '2') {
+    if (confirm('Häkchen UND Mengen zurücksetzen?')) {
+      checks = {}; qty = {};
+      persistChecks(); persistQty();
+      render();
+      showToast('Häkchen und Mengen zurückgesetzt');
+    }
+  } else if (choice === '3') {
+    if (confirm('Pack-Plan zurücksetzen? Standard-Zuordnungen werden wiederhergestellt.')) {
+      bagAssignments = {};
+      persistBags();
+      render();
+      if (currentView === 'bags') renderBagView();
+      showToast('Pack-Plan zurückgesetzt');
+    }
+  } else if (choice === '4') {
+    if (confirm('ALLES zurücksetzen? Eigene Items, Mengen, Häkchen und Pack-Plan gehen verloren!')) {
+      checks = {}; qty = {}; edits = { deleted: [], renamed: {}, custom: {} }; bagAssignments = {};
+      persistChecks(); persistQty(); persistEdits(); persistBags();
+      render();
+      if (currentView === 'bags') renderBagView();
+      showToast('Komplett zurückgesetzt');
+    }
+  }
+}
+
+// =============== EXPORT / IMPORT ===============
+function buildBackup() {
+  return {
+    format: 'packliste-schweden-2026',
+    version: 2,
+    exported: new Date().toISOString(),
+    checks: checks,
+    qty: qty,
+    edits: edits,
+    bags: bagAssignments
+  };
+}
+
+function showExport() {
+  const data = buildBackup();
+  const json = JSON.stringify(data);
+  document.getElementById('export-text').value = json;
+  document.getElementById('export-modal').classList.add('visible');
+}
+
+function copyExport() {
+  const ta = document.getElementById('export-text');
+  ta.select();
+  ta.setSelectionRange(0, 99999);
+  let copied = false;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(ta.value).then(() => {
+      showToast('In Zwischenablage kopiert');
+      closeModal('export-modal');
+    }).catch(() => {
+      try { document.execCommand('copy'); copied = true; } catch(e) {}
+      if (copied) {
+        showToast('Kopiert');
+        closeModal('export-modal');
+      } else {
+        showToast('Bitte manuell markieren und kopieren', true);
+      }
+    });
+  } else {
+    try { document.execCommand('copy'); showToast('Kopiert'); closeModal('export-modal'); }
+    catch(e) { showToast('Bitte manuell markieren und kopieren', true); }
+  }
+}
+
+function showImport() {
+  document.getElementById('import-text').value = '';
+  document.getElementById('import-modal').classList.add('visible');
+  setTimeout(() => document.getElementById('import-text').focus(), 100);
+}
+
+function applyImport() {
+  const txt = document.getElementById('import-text').value.trim();
+  if (!txt) { showToast('Kein Text eingegeben', true); return; }
+  let data;
+  try { data = JSON.parse(txt); }
+  catch(e) { showToast('Ungültiges Format', true); return; }
+  if (data.format !== 'packliste-schweden-2026') {
+    if (!confirm('Daten haben nicht das erwartete Format. Trotzdem importieren?')) return;
+  }
+  if (!confirm('Aktuellen Stand überschreiben?\n\n' +
+    'Quelle: ' + (data.exported || 'unbekannt'))) return;
+
+  if (data.checks) checks = data.checks;
+  if (data.qty) qty = data.qty;
+  if (data.edits) edits = Object.assign({ deleted: [], renamed: {}, custom: {} }, data.edits);
+  if (data.bags) bagAssignments = data.bags;
+  persistChecks(); persistQty(); persistEdits(); persistBags();
+  render();
+  if (currentView === 'bags') renderBagView();
+  closeModal('import-modal');
+  showToast('Import erfolgreich');
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('visible');
+}
+
+// =============== TOAST ===============
+let toastTimer = null;
+function showToast(msg, isError) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.toggle('error', !!isError);
+  t.classList.add('visible');
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('visible'), 2500);
+}
+
+// =============== INIT ===============
+render();
+</script>
+</body>
+</html>

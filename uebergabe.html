@@ -1,0 +1,2183 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#2f4a32">
+<title>roadsurfer Übergabe & Rückgabe · v04</title>
+<style>
+  :root {
+    --moss: #4a6a4a;
+    --moss-deep: #2f4a32;
+    --sun: #d4a437;
+    --berry: #8a3a3a;
+    --ink: #1c2620;
+    --ink-soft: #4a564f;
+    --line: #d8d0c2;
+    --bg: #f5f1ea;
+    --paper: #ffffff;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.45;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  header {
+    background: var(--moss-deep);
+    color: white;
+    padding: env(safe-area-inset-top, 0) 1rem .8rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 1px 4px rgba(0,0,0,.1);
+  }
+  header .title {
+    padding-top: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: .15rem;
+  }
+  header .sub {
+    font-size: .8rem;
+    opacity: .75;
+    margin-bottom: .8rem;
+  }
+  header .stats {
+    display: flex;
+    gap: 1rem;
+    font-size: .85rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  header .stats strong { font-weight: 600; }
+  header .stats .progress {
+    flex: 1; min-width: 80px;
+    height: 6px;
+    background: rgba(255,255,255,.2);
+    border-radius: 3px; overflow: hidden;
+  }
+  header .stats .progress-fill {
+    height: 100%; background: var(--sun);
+    width: 0%; transition: width .3s;
+  }
+
+  /* Modus-Tabs */
+  .mode-tabs {
+    background: var(--moss-deep);
+    padding: 0 1rem .6rem;
+    display: flex; gap: .4rem;
+  }
+  .mode-tabs button {
+    flex: 1;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,.3);
+    color: white;
+    padding: .55rem .6rem;
+    border-radius: 18px;
+    font-family: inherit;
+    font-size: .85rem;
+    cursor: pointer;
+    -webkit-appearance: none; appearance: none;
+  }
+  .mode-tabs button.active {
+    background: var(--sun);
+    color: var(--ink);
+    border-color: var(--sun);
+    font-weight: 600;
+  }
+
+  /* Section-Tabs */
+  .section-tabs {
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: .6rem 1rem;
+    display: flex;
+    gap: .4rem;
+    overflow-x: auto;
+    position: sticky;
+    top: 130px;
+    z-index: 9;
+    -webkit-overflow-scrolling: touch;
+  }
+  .section-tabs::-webkit-scrollbar { display: none; }
+  .section-tabs button {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    padding: .5rem .9rem;
+    border-radius: 20px;
+    font-family: inherit;
+    font-size: .8rem;
+    cursor: pointer;
+    -webkit-appearance: none; appearance: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .section-tabs button.active {
+    background: var(--moss-deep);
+    color: white;
+    border-color: var(--moss-deep);
+  }
+
+  /* Aktions-Leiste */
+  .actions {
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: .5rem 1rem;
+    display: flex;
+    gap: .4rem;
+    flex-wrap: wrap;
+  }
+  .actions button {
+    background: var(--paper);
+    border: 1px solid var(--moss);
+    color: var(--moss-deep);
+    padding: .45rem .8rem;
+    border-radius: 16px;
+    font-family: inherit;
+    font-size: .78rem;
+    cursor: pointer;
+    -webkit-appearance: none; appearance: none;
+    white-space: nowrap;
+  }
+
+  main { padding: 0; }
+
+  /* Section */
+  section.app-section {
+    display: none;
+    padding: 1rem;
+  }
+  section.app-section.visible { display: block; }
+
+  /* Critical Warning */
+  .warning-card {
+    background: rgba(138,58,58,.06);
+    border: 1px solid rgba(138,58,58,.3);
+    border-left: 4px solid var(--berry);
+    border-radius: 6px;
+    padding: .9rem 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .warning-card h3 {
+    margin: 0 0 .4rem 0;
+    color: var(--berry);
+    font-size: .9rem;
+    font-weight: 600;
+  }
+  .warning-card p {
+    margin: 0;
+    font-size: .85rem;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .warning-card p + p { margin-top: .5rem; }
+
+  /* Vehicle Info Card */
+  .vehicle-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .vehicle-card h3 {
+    margin: 0 0 .8rem 0;
+    color: var(--moss-deep);
+    font-size: 1rem;
+  }
+  .vehicle-card .field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .6rem 0;
+    border-bottom: 1px solid var(--bg);
+    gap: .8rem;
+  }
+  .vehicle-card .field:last-child { border-bottom: none; }
+  .vehicle-card .field label {
+    font-size: .8rem;
+    color: var(--ink-soft);
+    flex-shrink: 0;
+  }
+  .vehicle-card .field input,
+  .vehicle-card .field textarea {
+    background: rgba(74,106,74,.03);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: .5rem .6rem;
+    font-family: inherit;
+    font-size: .9rem;
+    color: var(--ink);
+    text-align: right;
+    flex: 1;
+    min-width: 0;
+    -webkit-appearance: none; appearance: none;
+  }
+  .vehicle-card .field input:focus,
+  .vehicle-card .field textarea:focus {
+    outline: none;
+    border-color: var(--moss);
+    background: white;
+  }
+
+  /* Checklist Items */
+  .cl-cat {
+    background: var(--paper);
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .cl-cat h3 {
+    background: rgba(74,106,74,.06);
+    margin: 0;
+    padding: .7rem 1rem;
+    font-size: .85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--moss-deep);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cl-cat h3 .cat-count {
+    font-weight: 400;
+    font-size: .7rem;
+    color: var(--ink-soft);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .cl-item {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    padding: .65rem 1rem;
+    border-bottom: 1px solid var(--bg);
+    min-height: 44px;
+    cursor: pointer;
+    user-select: none;
+    transition: background .15s;
+  }
+  .cl-item:active { background: rgba(74,106,74,.05); }
+  .cl-item:last-child { border-bottom: none; }
+  .cl-item input[type="checkbox"] {
+    width: 22px; height: 22px;
+    accent-color: var(--moss);
+    cursor: pointer;
+    flex-shrink: 0;
+    margin: 0;
+  }
+  .cl-item .text {
+    flex: 1;
+    font-size: .92rem;
+    color: var(--ink);
+  }
+  .cl-item.critical {
+    background: rgba(138,58,58,.04);
+    border-left: 3px solid var(--berry);
+    padding-left: calc(1rem - 3px);
+  }
+  .cl-item.critical .text { color: var(--ink); font-weight: 500; }
+  .cl-item input[type="checkbox"]:checked ~ .text {
+    text-decoration: line-through;
+    color: var(--ink-soft);
+    opacity: .6;
+  }
+
+  /* Foto-Plan */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: .6rem;
+    margin-top: .5rem;
+  }
+  .photo-tile {
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-appearance: none; appearance: none;
+    font-family: inherit;
+    font-size: .82rem;
+    color: var(--ink);
+    transition: all .15s;
+    position: relative;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .photo-tile .photo-label {
+    padding: .6rem .5rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--bg);
+  }
+  .photo-tile .photo-num {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--moss);
+    margin-bottom: .15rem;
+  }
+  .photo-tile .photo-thumb-wrap {
+    position: relative;
+    background: rgba(74,106,74,.04);
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .photo-tile .photo-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .photo-tile .photo-empty-icon {
+    color: var(--ink-soft);
+    font-size: 1.8rem;
+    opacity: .35;
+  }
+  .photo-tile .photo-actions {
+    display: flex;
+    gap: 1px;
+    background: var(--line);
+    border-top: 1px solid var(--line);
+  }
+  .photo-tile .photo-actions button {
+    flex: 1;
+    background: var(--paper);
+    border: none;
+    padding: .55rem .3rem;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: .8rem;
+    color: var(--moss-deep);
+    -webkit-appearance: none; appearance: none;
+    min-height: 40px;
+  }
+  .photo-tile .photo-actions button:active {
+    background: rgba(74,106,74,.08);
+  }
+  .photo-tile .photo-actions button.danger {
+    color: var(--berry);
+  }
+  .photo-tile.has-photo .photo-label {
+    background: var(--moss);
+    color: white;
+    border-bottom-color: var(--moss-deep);
+  }
+  .photo-tile.has-photo .photo-num {
+    color: white;
+  }
+  .photo-tile .photo-meta {
+    font-size: .65rem;
+    color: rgba(255,255,255,.85);
+    margin-top: .2rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Foto-Viewer Modal */
+  .photo-viewer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(28,38,32,.95);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    padding: 1rem;
+  }
+  .photo-viewer-overlay.visible {
+    display: flex;
+    flex-direction: column;
+  }
+  .photo-viewer-overlay img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+  }
+  .photo-viewer-overlay .photo-viewer-info {
+    color: white;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: .85rem;
+  }
+  .photo-viewer-overlay .photo-viewer-close {
+    position: absolute;
+    top: env(safe-area-inset-top, 1rem);
+    right: 1rem;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.3);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.6rem;
+    cursor: pointer;
+    line-height: 1;
+    -webkit-appearance: none; appearance: none;
+  }
+
+  /* Speicher-Anzeige */
+  .photo-storage-info {
+    background: rgba(74,106,74,.06);
+    border-left: 3px solid var(--moss);
+    padding: .6rem 1rem;
+    margin-top: .8rem;
+    font-size: .82rem;
+    color: var(--ink-soft);
+    border-radius: 0 4px 4px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .8rem;
+  }
+  .photo-storage-info strong { color: var(--moss-deep); }
+  .photo-storage-bar {
+    flex: 1;
+    max-width: 100px;
+    height: 6px;
+    background: rgba(74,106,74,.15);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .photo-storage-bar-fill {
+    height: 100%;
+    background: var(--moss);
+    transition: width .3s, background .3s;
+  }
+  .photo-storage-bar-fill.warn {
+    background: var(--sun);
+  }
+  .photo-storage-bar-fill.danger {
+    background: var(--berry);
+  }
+
+  /* Schaden-Markierungen (interaktive Skizze) */
+  .damage-svg-wrap {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  .damage-svg-wrap svg {
+    width: 100%;
+    height: auto;
+    cursor: crosshair;
+    user-select: none;
+    touch-action: manipulation;
+  }
+  .damage-instructions {
+    background: rgba(212,164,55,.1);
+    border-left: 3px solid var(--sun);
+    padding: .7rem .9rem;
+    margin-bottom: .8rem;
+    font-size: .82rem;
+    color: var(--ink);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .damage-list { margin-top: 1rem; }
+  .damage-entry {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: .8rem 1rem;
+    margin-bottom: .5rem;
+  }
+  .damage-entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .8rem;
+    margin-bottom: .5rem;
+  }
+  .damage-num {
+    background: var(--berry);
+    color: white;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: .75rem;
+    flex-shrink: 0;
+  }
+  .damage-loc {
+    flex: 1;
+    font-weight: 600;
+    font-size: .9rem;
+    color: var(--ink);
+  }
+  .damage-del {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--berry);
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-appearance: none; appearance: none;
+    line-height: 1;
+    font-size: 1rem;
+  }
+  .damage-entry textarea {
+    width: 100%;
+    padding: .5rem .6rem;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: .85rem;
+    background: rgba(74,106,74,.03);
+    resize: vertical;
+    min-height: 44px;
+    box-sizing: border-box;
+    -webkit-appearance: none; appearance: none;
+    color: var(--ink);
+  }
+  .damage-entry textarea:focus {
+    outline: none;
+    border-color: var(--moss);
+    background: white;
+  }
+
+  /* Notes Section */
+  .notes-textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: .8rem;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: .9rem;
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-appearance: none; appearance: none;
+    box-sizing: border-box;
+    resize: vertical;
+  }
+
+  /* Modal (Standard) */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(28,38,32,.7);
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 100;
+  }
+  .modal-overlay.visible { display: flex; }
+  .modal {
+    background: var(--paper);
+    border-radius: 16px 16px 0 0;
+    max-width: 500px;
+    width: 100%;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: env(safe-area-inset-bottom, 1rem);
+  }
+  .modal-header {
+    padding: 1rem 1.2rem .6rem;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .modal-header h3 {
+    margin: 0;
+    color: var(--moss-deep);
+    font-size: 1rem;
+  }
+  .modal-close {
+    background: transparent;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--ink-soft);
+    cursor: pointer;
+    width: 32px; height: 32px;
+    -webkit-appearance: none; appearance: none;
+  }
+  .modal-body {
+    padding: 1rem 1.2rem;
+    overflow-y: auto;
+    flex: 1;
+    font-size: .9rem;
+  }
+  .modal-body p { margin: 0 0 .8rem 0; color: var(--ink-soft); }
+  .modal-body textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: .7rem;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: .8rem;
+    background: rgba(74,106,74,.03);
+    resize: vertical;
+    box-sizing: border-box;
+    color: var(--ink);
+  }
+  .modal-body input {
+    width: 100%;
+    padding: .6rem .8rem;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-appearance: none; appearance: none;
+    box-sizing: border-box;
+    margin-bottom: .8rem;
+  }
+  .modal-footer {
+    padding: .8rem 1.2rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    gap: .5rem;
+    justify-content: flex-end;
+  }
+  .modal-footer button {
+    padding: .7rem 1.2rem;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: .9rem;
+    cursor: pointer;
+    border: 1px solid var(--line);
+    background: white;
+    color: var(--ink);
+    -webkit-appearance: none; appearance: none;
+  }
+  .modal-footer button.primary {
+    background: var(--moss-deep);
+    color: white;
+    border-color: var(--moss-deep);
+  }
+  .modal-footer button.danger {
+    background: var(--berry);
+    color: white;
+    border-color: var(--berry);
+  }
+
+  /* Kontakt-Karte */
+  .contact-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: .8rem;
+  }
+  .contact-card h4 {
+    margin: 0 0 .5rem 0;
+    color: var(--moss-deep);
+    font-size: .9rem;
+  }
+  .contact-card .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .4rem 0;
+    border-bottom: 1px solid var(--bg);
+    gap: .5rem;
+    font-size: .85rem;
+  }
+  .contact-card .row:last-child { border-bottom: none; }
+  .contact-card .row .label { color: var(--ink-soft); flex-shrink: 0; }
+  .contact-card .row .value {
+    color: var(--ink);
+    word-break: break-all;
+    text-align: right;
+  }
+  .contact-card .row a {
+    color: var(--moss-deep);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--moss-deep);
+    color: white;
+    padding: .7rem 1.2rem;
+    border-radius: 24px;
+    font-size: .85rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,.2);
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s;
+  }
+  .toast.visible { opacity: 1; }
+  .toast.error { background: var(--berry); }
+
+  footer {
+    text-align: center;
+    padding: 2rem 1rem 4rem;
+    color: var(--ink-soft);
+    font-size: .75rem;
+  }
+
+  @media print {
+    @page { margin: 12mm; }
+    body { background: white; font-size: 10pt; }
+    header, .mode-tabs, .section-tabs, .actions { background: white !important; color: black !important; }
+    .modal-overlay, .toast { display: none !important; }
+    section.app-section { display: block !important; padding: 0; page-break-after: always; }
+    .cl-item { padding: 2mm 0; min-height: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="title">roadsurfer · SUNRISE SUITE</div>
+  <div class="sub" id="mode-sub">10.06.2026 · München · Buchung 3933254797</div>
+  <div class="stats">
+    <span><strong id="count-done">0</strong> / <strong id="count-total">0</strong></span>
+    <div class="progress"><div class="progress-fill" id="progress-fill"></div></div>
+    <span id="percent">0%</span>
+  </div>
+  <div class="mode-tabs">
+    <button id="tab-pickup" class="active" onclick="setMode('pickup')">📥 Abholung</button>
+    <button id="tab-return" onclick="setMode('return')">📤 Rückgabe</button>
+    <button id="tab-info" onclick="setMode('info')">ℹ️ Info</button>
+  </div>
+</header>
+
+<div class="section-tabs" id="section-tabs"></div>
+
+<div class="actions">
+  <button onclick="showExport()">📤 Export</button>
+  <button onclick="showImport()">📥 Import</button>
+  <button onclick="window.print()">🖨️ Drucken</button>
+  <button onclick="resetCurrent()">↺ Reset</button>
+</div>
+
+<main>
+  <!-- Sections werden per JS gefüllt -->
+  <div id="sections-container"></div>
+</main>
+
+<footer>
+  Daten werden lokal im Browser gespeichert.<br>
+  roadsurfer SUNRISE SUITE · Buchung 3933254797 · v04 vom 27.05.2026
+</footer>
+
+<!-- Damage-Detail Modal -->
+<div class="modal-overlay" id="damage-modal" onclick="if(event.target===this)closeModal('damage-modal')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="damage-modal-title">Schaden erfassen</h3>
+      <button class="modal-close" onclick="closeModal('damage-modal')">×</button>
+    </div>
+    <div class="modal-body">
+      <p>Bezeichne, was du an dieser Stelle gefunden hast (Kratzer, Delle, Lackschaden, etc.).</p>
+      <input type="text" id="damage-input" placeholder="z.B. Kratzer ca. 5 cm">
+    </div>
+    <div class="modal-footer">
+      <button onclick="closeModal('damage-modal')">Abbrechen</button>
+      <button class="primary" onclick="confirmDamage()">Speichern</button>
+    </div>
+  </div>
+</div>
+
+<!-- Export Modal -->
+<div class="modal-overlay" id="export-modal" onclick="if(event.target===this)closeModal('export-modal')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Bus-Daten exportieren</h3>
+      <button class="modal-close" onclick="closeModal('export-modal')">×</button>
+    </div>
+    <div class="modal-body">
+      <p>Kompletter Stand. Text kopieren und z.B. per Signal an Sabine senden.</p>
+      <div style="display:flex;gap:.5rem;margin-bottom:.6rem;">
+        <button type="button" id="exp-with-photos" onclick="showExport(true)" style="flex:1;padding:.6rem;border:1px solid var(--line);border-radius:6px;background:var(--paper);font-family:inherit;font-size:.85rem;color:var(--ink);">Mit Fotos</button>
+        <button type="button" id="exp-no-photos" onclick="showExport(false)" style="flex:1;padding:.6rem;border:1px solid var(--moss-deep);border-radius:6px;background:var(--moss-deep);color:white;font-family:inherit;font-size:.85rem;">Ohne Fotos (kleiner)</button>
+      </div>
+      <div id="export-size-info" style="font-size:.8rem;color:var(--ink-soft);margin-bottom:.5rem;"></div>
+      <textarea id="export-text" readonly></textarea>
+    </div>
+    <div class="modal-footer">
+      <button onclick="closeModal('export-modal')">Schließen</button>
+      <button class="primary" onclick="copyExport()">Kopieren</button>
+    </div>
+  </div>
+</div>
+
+<!-- Import Modal -->
+<div class="modal-overlay" id="import-modal" onclick="if(event.target===this)closeModal('import-modal')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Bus-Daten importieren</h3>
+      <button class="modal-close" onclick="closeModal('import-modal')">×</button>
+    </div>
+    <div class="modal-body">
+      <p>Empfangenen Text einfügen. Aktueller Stand wird überschrieben.</p>
+      <textarea id="import-text" placeholder="Hier den exportierten Text einfügen…"></textarea>
+    </div>
+    <div class="modal-footer">
+      <button onclick="closeModal('import-modal')">Abbrechen</button>
+      <button class="primary" onclick="applyImport()">Importieren</button>
+    </div>
+  </div>
+</div>
+
+<div class="photo-viewer-overlay" id="photo-viewer-overlay" onclick="if(event.target===this)closePhotoViewer()">
+  <button type="button" class="photo-viewer-close" onclick="closePhotoViewer()" aria-label="Schließen">×</button>
+  <img id="photo-viewer-img" alt="Foto-Ansicht">
+  <div class="photo-viewer-info" id="photo-viewer-info"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============ DATEN ============
+const PICKUP_CHECKLIST = {
+  'Mitbringen (Original!)': [
+    ['p-doc-1', 'Personalausweis oder Reisepass (beide Fahrer)', true],
+    ['p-doc-2', 'Führerschein im Original (Mieter + Zweitfahrer, Klasse B, mind. 1 Jahr)', true],
+    ['p-doc-3', 'Kreditkarte Mieter (nicht American Express!) für Kaution 800 €', true],
+    ['p-doc-4', 'Buchungsbestätigung Nr. 3933254797', false],
+    ['p-doc-5', 'ERGO Versicherungsschein Nr. 184447112 (für eigenen Selbstbehaltsschutz)', false]
+  ],
+  'Vorab am Vortag': [
+    ['p-vor-1', 'Online-Check-in im roadsurfer Kundenkonto', true],
+    ['p-vor-2', 'Camper-Tutorial-Video (SUNRISE SUITE) ansehen', true],
+    ['p-vor-3', 'Beide Fahrer eingetragen? — kostenloser Zweitfahrer inkl.', false],
+    ['p-vor-4', 'Schweden-Maut: Vorab auf epass24.com registrieren', true],
+    ['p-vor-5', 'Klären: ERGO-Tarif passt für Mietfahrzeug? 089 4166-1766', true]
+  ],
+  'Bei der Übergabe (vor Vertragsunterschrift!)': [
+    ['p-ueb-1', 'Bus außen komplett auf Schäden absuchen', true],
+    ['p-ueb-2', 'JEDE Delle, jeden Kratzer ins Übergabeprotokoll', true],
+    ['p-ueb-3', 'Eigenes Handyvideo: Rundgang außen + innen, Datum sichtbar', true],
+    ['p-ueb-4', 'Innen: Polster, Klappen, Aufstelldach prüfen', false],
+    ['p-ueb-5', 'Markise vorsichtig prüfen (kein Schutz bei Bedienfehler!)', true],
+    ['p-ueb-6', 'Reifen, Felgen-Kratzer dokumentieren', false],
+    ['p-ueb-7', 'Front- + Heckschürze, Unterboden prüfen', false],
+    ['p-ueb-8', 'Equipment-Check (siehe Liste rechts oben)', true],
+    ['p-ueb-9', 'Tankfüllstand notieren (Foto vom Tacho)', true],
+    ['p-ueb-10', 'AdBlue-Tank voll? (Falls Diesel mit DEF)', false],
+    ['p-ueb-11', 'Kilometerstand notieren (Foto)', true]
+  ],
+  'Equipment-Check (laut AGB §8)': [
+    ['p-eq-1', 'Auffahrkeile', false],
+    ['p-eq-2', 'Wasserkanister mit Einfüllstutzen', false],
+    ['p-eq-3', 'Stromkabel & Adapter', false],
+    ['p-eq-4', 'Handfeger & Schaufel', false],
+    ['p-eq-5', 'Gasflasche', false],
+    ['p-eq-6', 'Campingtisch + 2 Campingstühle', false],
+    ['p-eq-7', 'Verdunkelungen für die Fenster', false],
+    ['p-eq-8', 'Solbio-Flasche (Toilettenchemie)', false],
+    ['p-eq-9', 'Markisenkurbel', false],
+    ['p-eq-10', 'Küchenbox (Geschirr, Besteck) — gebucht', false],
+    ['p-eq-11', 'Fahrradträger (4 Räder) — gebucht', false],
+    ['p-eq-12', 'Bettwäsche-Set — falls gebucht', false]
+  ],
+  'Vor Abfahrt': [
+    ['p-ab-1', 'Mietvertrag nur unterschreiben nach kompletter Schadensaufnahme', true],
+    ['p-ab-2', 'Übergabeprotokoll im Original mitnehmen / Foto', true],
+    ['p-ab-3', 'Pannenhotline aus Kundenkonto ins Handy speichern', true],
+    ['p-ab-4', 'QR-Code im Handschuhfach finden', false],
+    ['p-ab-5', 'Unfallbericht-Formular im Handschuhfach prüfen', false],
+    ['p-ab-6', 'Praktisch erproben: Bett, Küche, Standheizung, Aufstelldach', true],
+    ['p-ab-7', 'Höhe des Busses + Aufstelldach merken (Durchfahrtshöhen!)', true]
+  ]
+};
+
+const RETURN_CHECKLIST = {
+  'Tag vorher unterwegs': [
+    ['r-vor-1', 'Toilette UND Solbio-Tank entleeren (sonst 230 €)', true],
+    ['r-vor-2', 'Frischwasser- und Abwassertank leeren (sonst 50 €)', true],
+    ['r-vor-3', 'Bus innen gefegt, gesaugt, gewischt (sonst Reinigungspauschale)', true],
+    ['r-vor-4', 'Grobe Außenverschmutzung entfernen (z.B. Schlamm)', false],
+    ['r-vor-5', 'Müll komplett entsorgen', true],
+    ['r-vor-6', 'Persönliche Sachen einsammeln (auch unter Polstern)', true],
+    ['r-vor-7', 'Bluetooth: Telefon/Geräte aus Bus-System entfernen', false]
+  ],
+  'Am Tag der Rückgabe': [
+    ['r-tag-1', 'VOLLGETANKT zurückgeben (sonst 64–199 € je nach Stand!)', true],
+    ['r-tag-2', 'AdBlue-Tank voll (sonst 50 € Pauschale)', true],
+    ['r-tag-3', 'Pünktlich bis 12:00 Uhr (50 €/h, max 500 €/24h)', true],
+    ['r-tag-4', 'Ingolstädterstr. 172, München (nicht anderswo: 700 €!)', true],
+    ['r-tag-5', 'NICHT durch die Waschanlage (Aufstelldach!)', true],
+    ['r-tag-6', 'Equipment vollständig im Bus? (Solbio, Kurbel, Kabel)', true]
+  ],
+  'Bei der Rückgabe': [
+    ['r-rue-1', 'EIGENES Handyvideo VOR Schlüsselabgabe (Datum sichtbar)', true],
+    ['r-rue-2', 'Bei gemeinsamer Besichtigung dabei bleiben', true],
+    ['r-rue-3', 'Rückgabeprotokoll prüfen und Kopie behalten', true],
+    ['r-rue-4', 'Bei behaupteten Schäden: vor Ort widersprechen!', true],
+    ['r-rue-5', 'Schlüssel + KFZ-Schein (Verlust: 1.000 € bzw. 200 €)', true],
+    ['r-rue-6', 'Tank-Foto vor Rückgabe als Beleg', false]
+  ],
+  'Nach der Rückgabe': [
+    ['r-nach-1', '⚠ 48-Stunden-Frist: roadsurfer kann verdeckte Schäden melden', true],
+    ['r-nach-2', 'Kreditkarten-Kaution-Freigabe: bis zu 30 Tage', false],
+    ['r-nach-3', 'Schadensberechnung kann später kommen — 14 Tage Einwendungsfrist', true],
+    ['r-nach-4', 'Video & Protokoll min. 8 Wochen aufheben', true],
+    ['r-nach-5', 'Endrechnung kommt per E-Mail nach Rückgabe', false]
+  ]
+};
+
+// Foto-Plan
+const PHOTO_LIST = [
+  ['Front (komplett)', '🚗'],
+  ['Heck (komplett)', '🔚'],
+  ['Linke Seite', '⬅️'],
+  ['Rechte Seite', '➡️'],
+  ['Dach &amp; Aufstelldach', '⬆️'],
+  ['Räder &amp; Felgen', '🛞'],
+  ['Front-/Heckschürze nah', '🔍'],
+  ['Innenraum vorne', '💺'],
+  ['Innenraum hinten', '🛏️'],
+  ['Polster &amp; Bett', '🛌'],
+  ['Tacho: km + Tank', '📊'],
+  ['Equipment ausgebreitet', '🧰']
+];
+
+// Vehicle-Felder
+const VEHICLE_FIELDS_PICKUP = [
+  ['v-p-modell', 'Modell / Hersteller', 'text', 'SUNRISE SUITE'],
+  ['v-p-kennzeichen', 'Kennzeichen', 'text', ''],
+  ['v-p-fin', 'Fahrgestell-Nr. (FIN/VIN)', 'text', ''],
+  ['v-p-km', 'Kilometerstand', 'number', ''],
+  ['v-p-tank', 'Tankfüllstand', 'text', 'sollte VOLL sein'],
+  ['v-p-adblue', 'AdBlue-Tank (falls vorhanden)', 'text', 'voll'],
+  ['v-p-gas', 'Gasflasche-Stand', 'text', ''],
+  ['v-p-wasser', 'Frischwasser-Stand', 'text', ''],
+  ['v-p-grauwasser', 'Grauwasser-Stand', 'text', ''],
+  ['v-p-zeit', 'Datum/Uhrzeit Übernahme', 'text', '10.06.2026, 13:00'],
+  ['v-p-mitarbeiter', 'Übergabe durch (Mitarbeiter)', 'text', ''],
+  ['v-p-pannenhotline', 'Pannenhotline aus Kundenkonto', 'text', '+49 89 3803 4629']
+];
+const VEHICLE_FIELDS_RETURN = [
+  ['v-r-km', 'Kilometerstand bei Rückgabe', 'number', ''],
+  ['v-r-gefahren', 'Gefahrene Kilometer', 'number', ''],
+  ['v-r-tank', 'Tankfüllstand (sollte VOLL sein!)', 'text', 'voll'],
+  ['v-r-adblue', 'AdBlue-Tank (sollte voll sein)', 'text', 'voll'],
+  ['v-r-gas', 'Gasflasche-Stand', 'text', ''],
+  ['v-r-wasser', 'Frischwasser entleert?', 'text', 'ja'],
+  ['v-r-grauwasser', 'Abwasser entleert?', 'text', 'ja'],
+  ['v-r-toilette', 'Toilette + Solbio entleert?', 'text', 'ja'],
+  ['v-r-zeit', 'Datum/Uhrzeit Rückgabe', 'text', '27.06.2026, 12:00'],
+  ['v-r-mitarbeiter', 'Rückgabe an (Mitarbeiter)', 'text', '']
+];
+
+// ============ STATE ============
+const STORAGE_KEY = 'roadsurfer-uebergabe-2026';
+
+let state = loadState();
+let currentMode = 'pickup';
+let currentSection = 'check';
+let pendingDamage = null;
+
+function defaultState() {
+  return {
+    pickup: { checks: {}, vehicle: {}, damages: [], photos: {}, notes: '' },
+    return: { checks: {}, vehicle: {}, damages: [], photos: {}, notes: '' }
+  };
+}
+
+function loadState() {
+  try {
+    const s = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (s) return Object.assign(defaultState(), s);
+  } catch(e) {}
+  return defaultState();
+}
+
+function saveState() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+  catch(e) {
+    console.warn('Speichern fehlgeschlagen:', e);
+    if (e && (e.name === 'QuotaExceededError' || e.code === 22)) {
+      showToast('Speicher voll! Bitte alte Fotos löschen.', true);
+    }
+  }
+}
+
+function escapeHtml(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// ============ RENDERING ============
+function setMode(mode) {
+  currentMode = mode;
+  ['pickup', 'return', 'info'].forEach(m => {
+    document.getElementById('tab-' + m).classList.toggle('active', m === mode);
+  });
+  // Section-Tab-Default zurücksetzen
+  if (mode === 'info') {
+    currentSection = 'contacts';
+  } else if (currentSection === 'contacts' || currentSection === 'tips') {
+    currentSection = 'check';
+  }
+  document.getElementById('mode-sub').textContent =
+    mode === 'pickup' ? '10.06.2026, 13:00 · Ingolstädterstr. 172, München' :
+    mode === 'return' ? '27.06.2026, 12:00 · Ingolstädterstr. 172, München' :
+    'Buchung 3933254797 · SUNRISE SUITE · 17 Nächte';
+  renderApp();
+}
+
+function setSection(sec) {
+  currentSection = sec;
+  renderApp();
+}
+
+function renderApp() {
+  renderSectionTabs();
+  renderSection();
+  updateStats();
+}
+
+function renderSectionTabs() {
+  const tabs = document.getElementById('section-tabs');
+  tabs.innerHTML = '';
+  let sections;
+  if (currentMode === 'info') {
+    sections = [
+      ['contacts', '📞 Kontakte'],
+      ['vertrag', '📄 Vertrag'],
+      ['versich', '📋 Versicherung'],
+      ['rules', '⚠️ Gebühren'],
+      ['agb', '📜 AGB'],
+      ['tips', '💡 Tipps']
+    ];
+  } else {
+    sections = [
+      ['check', '✅ Checkliste'],
+      ['vehicle', '🚐 Fahrzeug-Daten'],
+      ['damage', '⚠️ Schäden'],
+      ['photos', '📸 Fotos'],
+      ['notes', '📝 Notizen']
+    ];
+  }
+  sections.forEach(([id, label]) => {
+    const btn = document.createElement('button');
+    btn.textContent = label;
+    btn.className = id === currentSection ? 'active' : '';
+    btn.addEventListener('click', () => setSection(id));
+    tabs.appendChild(btn);
+  });
+}
+
+function renderSection() {
+  const container = document.getElementById('sections-container');
+  container.innerHTML = '';
+
+  if (currentMode === 'info') {
+    if (currentSection === 'contacts') return renderContacts(container);
+    if (currentSection === 'vertrag') return renderVertrag(container);
+    if (currentSection === 'versich') return renderVersich(container);
+    if (currentSection === 'rules') return renderRules(container);
+    if (currentSection === 'agb') return renderAGB(container);
+    if (currentSection === 'tips') return renderTips(container);
+  }
+
+  if (currentSection === 'check') return renderChecklist(container);
+  if (currentSection === 'vehicle') return renderVehicle(container);
+  if (currentSection === 'damage') return renderDamage(container);
+  if (currentSection === 'photos') return renderPhotos(container);
+  if (currentSection === 'notes') return renderNotes(container);
+}
+
+function renderChecklist(container) {
+  const section = document.createElement('section');
+  section.className = 'app-section visible';
+
+  // Warning oben
+  if (currentMode === 'pickup') {
+    section.innerHTML += `
+      <div class="warning-card">
+        <h3>⚠ Die drei wichtigsten Regeln</h3>
+        <p><strong>1. Schäden nach Verlassen der Station können nicht mehr gemeldet werden</strong> (AGB §8 roadsurfer).</p>
+        <p><strong>2. Eigenes Handyvideo rettet die Kaution (800 €) und Selbstbeteiligung (3.000 €).</strong> Vor Vertragsunterschrift komplettes Rundgang-Video mit Datum aufnehmen.</p>
+        <p><strong>3. Kreditkarte für 800 € Kaution mitbringen</strong> — keine American Express!</p>
+      </div>
+    `;
+  } else {
+    section.innerHTML += `
+      <div class="warning-card">
+        <h3>⚠ Kritisch bei Rückgabe</h3>
+        <p><strong>Vor Schlüsselabgabe IMMER eigenes Handyvideo aufnehmen</strong> — komplettes Rundgang außen + innen, mit Datum sichtbar.</p>
+        <p><strong>48-Stunden-Frist:</strong> roadsurfer kann verdeckte Schäden noch nachträglich melden (AGB §8).</p>
+        <p>VOLL getankt + AdBlue voll + Toilette/Wasser entleert + innen gefegt — sonst hohe Gebühren.</p>
+      </div>
+    `;
+  }
+
+  const checklist = currentMode === 'pickup' ? PICKUP_CHECKLIST : RETURN_CHECKLIST;
+  const checks = state[currentMode].checks;
+
+  Object.keys(checklist).forEach(catName => {
+    const cat = document.createElement('div');
+    cat.className = 'cl-cat';
+    const items = checklist[catName];
+    let done = 0;
+    items.forEach(([key]) => { if (checks[key]) done++; });
+    cat.innerHTML = `
+      <h3>
+        <span>${escapeHtml(catName)}</span>
+        <span class="cat-count">${done} / ${items.length}</span>
+      </h3>
+    `;
+    items.forEach(([key, text, critical]) => {
+      const label = document.createElement('label');
+      label.className = 'cl-item' + (critical ? ' critical' : '');
+      label.innerHTML = `
+        <input type="checkbox" ${checks[key] ? 'checked' : ''}>
+        <span class="text">${text}</span>
+      `;
+      const cb = label.querySelector('input[type="checkbox"]');
+      cb.addEventListener('change', () => {
+        checks[key] = cb.checked;
+        saveState();
+        renderApp();
+      });
+      cat.appendChild(label);
+    });
+    section.appendChild(cat);
+  });
+
+  container.appendChild(section);
+}
+
+function renderVehicle(container) {
+  const section = document.createElement('section');
+  section.className = 'app-section visible';
+
+  const fields = currentMode === 'pickup' ? VEHICLE_FIELDS_PICKUP : VEHICLE_FIELDS_RETURN;
+  const veh = state[currentMode].vehicle;
+
+  const card = document.createElement('div');
+  card.className = 'vehicle-card';
+  card.innerHTML = `<h3>${currentMode === 'pickup' ? 'Übernahme-Daten' : 'Rückgabe-Daten'}</h3>`;
+
+  fields.forEach(([id, label, type, placeholder]) => {
+    const div = document.createElement('div');
+    div.className = 'field';
+    div.innerHTML = `
+      <label>${escapeHtml(label)}</label>
+      <input type="${type}" data-field="${id}" value="${escapeHtml(veh[id] || '')}" placeholder="${escapeHtml(placeholder)}"
+        ${type === 'number' ? 'inputmode="numeric"' : ''}>
+    `;
+    const inp = div.querySelector('input');
+    inp.addEventListener('input', () => {
+      veh[id] = inp.value;
+      saveState();
+    });
+    card.appendChild(div);
+  });
+
+  section.appendChild(card);
+
+  // Tipp
+  const tip = document.createElement('div');
+  tip.style.cssText = 'background: rgba(74,106,74,.06); border-left: 3px solid var(--moss); padding: .8rem 1rem; border-radius: 0 4px 4px 0; font-size: .85rem; margin-top: .5rem;';
+  tip.innerHTML = '<strong>Tipp:</strong> Alle Werte mit Fotos belegen (Tacho-Foto, Tankfoto, etc.) — siehe Foto-Plan.';
+  section.appendChild(tip);
+
+  container.appendChild(section);
+}
+
+function renderDamage(container) {
+  const section = document.createElement('section');
+  section.className = 'app-section visible';
+
+  section.innerHTML = `
+    <div class="damage-instructions">
+      <strong>Schäden-Skizze:</strong> Tippe auf die Stelle am Bus, wo du einen Schaden findest. Setze einen Marker und beschreibe den Schaden. Jede Markierung wird unten gelistet.
+    </div>
+  `;
+
+  // Skizze-Container
+  const wrap = document.createElement('div');
+  wrap.className = 'damage-svg-wrap';
+  wrap.innerHTML = renderBusSvg();
+  section.appendChild(wrap);
+
+  const svg = wrap.querySelector('svg');
+  const damages = state[currentMode].damages;
+
+  // Bestehende Marker einzeichnen
+  damages.forEach((d, idx) => addMarkerToSvg(svg, d, idx + 1));
+
+  // Click-Handler auf SVG
+  svg.addEventListener('click', e => {
+    const rect = svg.getBoundingClientRect();
+    const pt = svg.createSVGPoint();
+    pt.x = e.clientX; pt.y = e.clientY;
+    const transformed = pt.matrixTransform(svg.getScreenCTM().inverse());
+    pendingDamage = {
+      mode: currentMode,
+      x: Math.round(transformed.x),
+      y: Math.round(transformed.y),
+      view: getCurrentBusView(e.target)
+    };
+    document.getElementById('damage-input').value = '';
+    document.getElementById('damage-modal-title').textContent = 'Schaden bei (' + pendingDamage.x + ', ' + pendingDamage.y + ')';
+    document.getElementById('damage-modal').classList.add('visible');
+    setTimeout(() => document.getElementById('damage-input').focus(), 100);
+  });
+
+  // Liste
+  const list = document.createElement('div');
+  list.className = 'damage-list';
+
+  if (damages.length === 0) {
+    list.innerHTML = '<p style="color:var(--ink-soft);font-style:italic;text-align:center;padding:1rem;">Noch keine Schäden erfasst.</p>';
+  } else {
+    list.innerHTML = `<h3 style="font-size:.95rem;color:var(--moss-deep);margin:1rem 0 .5rem;">Erfasste Schäden (${damages.length})</h3>`;
+    damages.forEach((d, idx) => {
+      const entry = document.createElement('div');
+      entry.className = 'damage-entry';
+      entry.innerHTML = `
+        <div class="damage-entry-head">
+          <div class="damage-num">${idx + 1}</div>
+          <div class="damage-loc">${escapeHtml(d.location || 'Position ' + idx)}</div>
+          <button class="damage-del" type="button" aria-label="Löschen">✕</button>
+        </div>
+        <textarea placeholder="Beschreibung des Schadens">${escapeHtml(d.description || '')}</textarea>
+      `;
+      const ta = entry.querySelector('textarea');
+      ta.addEventListener('input', () => {
+        d.description = ta.value;
+        saveState();
+      });
+      const del = entry.querySelector('.damage-del');
+      del.addEventListener('click', () => {
+        if (confirm('Schaden ' + (idx + 1) + ' löschen?')) {
+          state[currentMode].damages.splice(idx, 1);
+          saveState();
+          renderApp();
+        }
+      });
+      list.appendChild(entry);
+    });
+  }
+
+  section.appendChild(list);
+  container.appendChild(section);
+}
+
+function renderBusSvg() {
+  // Vereinfachte Bus-Darstellung: Aufsicht von oben + 4 Seiten
+  return `
+    <svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg">
+      <style>
+        .bus-label { font-family: -apple-system, sans-serif; font-size: 16px; fill: #2f4a32; font-weight: 600; }
+        .bus-outline { fill: #f5f1ea; stroke: #4a6a4a; stroke-width: 2; }
+        .bus-detail { fill: none; stroke: #4a6a4a; stroke-width: 1; }
+        .bus-window { fill: #d4dce0; stroke: #4a6a4a; stroke-width: 1; }
+      </style>
+
+      <!-- Aufsicht -->
+      <text x="300" y="25" text-anchor="middle" class="bus-label">Aufsicht (Dach)</text>
+      <rect class="bus-outline" x="240" y="40" width="120" height="280" rx="20" />
+      <rect class="bus-window" x="250" y="80" width="100" height="40" rx="4" /> <!-- Frontscheibe -->
+      <text x="300" y="105" text-anchor="middle" font-size="11" fill="#666">Front</text>
+      <rect class="bus-detail" x="260" y="140" width="80" height="160" rx="6" />
+      <text x="300" y="225" text-anchor="middle" font-size="11" fill="#666">Aufstelldach</text>
+      <rect class="bus-window" x="250" y="290" width="100" height="20" rx="4" />
+      <text x="300" y="305" text-anchor="middle" font-size="10" fill="#666">Heck</text>
+
+      <!-- Linke Seite -->
+      <text x="120" y="380" text-anchor="middle" class="bus-label">Linke Seite</text>
+      <rect class="bus-outline" x="20" y="395" width="200" height="80" rx="8" />
+      <circle class="bus-detail" cx="60" cy="475" r="14" fill="#4a4a4a" />
+      <circle class="bus-detail" cx="180" cy="475" r="14" fill="#4a4a4a" />
+      <rect class="bus-window" x="40" y="410" width="40" height="25" rx="2" />
+      <rect class="bus-window" x="100" y="410" width="50" height="25" rx="2" />
+      <rect class="bus-window" x="160" y="410" width="40" height="25" rx="2" />
+
+      <!-- Rechte Seite -->
+      <text x="480" y="380" text-anchor="middle" class="bus-label">Rechte Seite</text>
+      <rect class="bus-outline" x="380" y="395" width="200" height="80" rx="8" />
+      <circle class="bus-detail" cx="420" cy="475" r="14" fill="#4a4a4a" />
+      <circle class="bus-detail" cx="540" cy="475" r="14" fill="#4a4a4a" />
+      <rect class="bus-window" x="400" y="410" width="40" height="25" rx="2" />
+      <rect class="bus-window" x="460" y="410" width="50" height="25" rx="2" />
+      <rect class="bus-window" x="520" y="410" width="40" height="25" rx="2" />
+      <text x="480" y="445" text-anchor="middle" font-size="10" fill="#666">Schiebetür</text>
+
+      <!-- Front -->
+      <text x="180" y="540" text-anchor="middle" class="bus-label">Front</text>
+      <rect class="bus-outline" x="80" y="555" width="200" height="120" rx="12" />
+      <rect class="bus-window" x="100" y="575" width="160" height="50" rx="4" />
+      <text x="180" y="605" text-anchor="middle" font-size="11" fill="#666">Frontscheibe</text>
+      <rect class="bus-detail" x="100" y="635" width="60" height="25" rx="2" />
+      <rect class="bus-detail" x="200" y="635" width="60" height="25" rx="2" />
+      <text x="180" y="690" text-anchor="middle" font-size="10" fill="#666">Stoßstange</text>
+
+      <!-- Heck -->
+      <text x="420" y="540" text-anchor="middle" class="bus-label">Heck</text>
+      <rect class="bus-outline" x="320" y="555" width="200" height="120" rx="12" />
+      <rect class="bus-window" x="340" y="575" width="160" height="40" rx="4" />
+      <text x="420" y="600" text-anchor="middle" font-size="11" fill="#666">Heckscheibe</text>
+      <rect class="bus-detail" x="340" y="625" width="160" height="40" rx="4" />
+      <text x="420" y="650" text-anchor="middle" font-size="11" fill="#666">Heckklappe</text>
+      <text x="420" y="690" text-anchor="middle" font-size="10" fill="#666">Stoßstange</text>
+
+      <!-- Unterboden / Räder Hinweis -->
+      <text x="300" y="730" text-anchor="middle" font-size="11" fill="#888">Räder, Felgen und Unterboden separat fotografieren</text>
+    </svg>
+  `;
+}
+
+function getCurrentBusView(target) {
+  // Bestimme grob die Ansicht über Position des Klicks (heuristisch)
+  return 'Skizze';
+}
+
+function addMarkerToSvg(svg, damage, num) {
+  const ns = 'http://www.w3.org/2000/svg';
+  const g = document.createElementNS(ns, 'g');
+  const circle = document.createElementNS(ns, 'circle');
+  circle.setAttribute('cx', damage.x);
+  circle.setAttribute('cy', damage.y);
+  circle.setAttribute('r', '14');
+  circle.setAttribute('fill', '#8a3a3a');
+  circle.setAttribute('stroke', 'white');
+  circle.setAttribute('stroke-width', '2');
+  const text = document.createElementNS(ns, 'text');
+  text.setAttribute('x', damage.x);
+  text.setAttribute('y', damage.y + 5);
+  text.setAttribute('text-anchor', 'middle');
+  text.setAttribute('font-size', '13');
+  text.setAttribute('font-weight', '700');
+  text.setAttribute('fill', 'white');
+  text.textContent = num;
+  g.appendChild(circle);
+  g.appendChild(text);
+  g.style.pointerEvents = 'none';
+  svg.appendChild(g);
+}
+
+function confirmDamage() {
+  const txt = document.getElementById('damage-input').value.trim();
+  if (!pendingDamage) return;
+  pendingDamage.location = 'Pos ' + (state[currentMode].damages.length + 1);
+  pendingDamage.description = txt;
+  pendingDamage.created = new Date().toISOString();
+  state[currentMode].damages.push(pendingDamage);
+  saveState();
+  closeModal('damage-modal');
+  pendingDamage = null;
+  renderApp();
+}
+
+function renderPhotos(container) {
+  const section = document.createElement('section');
+  section.className = 'app-section visible';
+
+  section.innerHTML = `
+    <div class="damage-instructions">
+      <strong>${currentMode === 'pickup' ? 'Abholung' : 'Rückgabe'}-Fotos:</strong>
+      12 Aufnahmen mit Kamera oder aus Galerie. Fotos werden im Browser komprimiert (max 1200px, ~150-300 KB) und lokal gespeichert.
+      <br><strong>Tipp:</strong> Zusätzlich ein Video-Rundgang als Sicherheit aufnehmen!
+    </div>
+    <div class="photo-grid" id="photo-grid"></div>
+    <div class="photo-storage-info" id="storage-info">
+      <span><strong id="storage-text">…</strong></span>
+      <div class="photo-storage-bar"><div class="photo-storage-bar-fill" id="storage-bar"></div></div>
+      <span id="storage-pct" style="font-variant-numeric:tabular-nums;font-size:.8rem;">…</span>
+    </div>
+  `;
+  const grid = section.querySelector('#photo-grid');
+
+  PHOTO_LIST.forEach(([label, emoji], idx) => {
+    const key = 'photo-' + idx;
+    const photoData = state[currentMode].photos[key];
+    const hasPhoto = photoData && typeof photoData === 'object' && photoData.data;
+
+    const tile = document.createElement('div');
+    tile.className = 'photo-tile' + (hasPhoto ? ' has-photo' : '');
+
+    const dateStr = hasPhoto && photoData.timestamp
+      ? new Date(photoData.timestamp).toLocaleString('de-DE', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })
+      : '';
+
+    tile.innerHTML = `
+      <div class="photo-label">
+        <span class="photo-num">${emoji} ${idx + 1}</span>
+        ${escapeHtml(label)}
+        ${hasPhoto ? `<div class="photo-meta">${dateStr}</div>` : ''}
+      </div>
+      <div class="photo-thumb-wrap">
+        ${hasPhoto
+          ? `<img class="photo-thumb" alt="${escapeHtml(label)}">`
+          : `<span class="photo-empty-icon">📷</span>`}
+      </div>
+      <div class="photo-actions">
+        ${hasPhoto
+          ? `<button type="button" data-act="view">Ansehen</button>
+             <button type="button" data-act="replace">Ersetzen</button>
+             <button type="button" data-act="delete" class="danger">Löschen</button>`
+          : `<button type="button" data-act="camera">📷 Kamera</button>
+             <button type="button" data-act="gallery">🖼️ Galerie</button>`}
+      </div>
+    `;
+
+    // Bild laden falls vorhanden
+    if (hasPhoto) {
+      const img = tile.querySelector('.photo-thumb');
+      img.src = photoData.data;
+      img.addEventListener('click', () => showPhotoViewer(key, label, photoData));
+    }
+
+    // Action-Buttons
+    tile.querySelectorAll('button[data-act]').forEach(btn => {
+      const act = btn.dataset.act;
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        if (act === 'view') showPhotoViewer(key, label, photoData);
+        else if (act === 'delete') deletePhoto(key, label);
+        else if (act === 'camera') triggerPhotoUpload(key, label, true);
+        else if (act === 'gallery') triggerPhotoUpload(key, label, false);
+        else if (act === 'replace') triggerPhotoUpload(key, label, false);
+      });
+    });
+
+    grid.appendChild(tile);
+  });
+
+  container.appendChild(section);
+  updateStorageInfo();
+}
+
+// ============ FOTO-UPLOAD ============
+function triggerPhotoUpload(key, label, useCamera) {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*';
+  if (useCamera) input.capture = 'environment';
+  input.style.display = 'none';
+  document.body.appendChild(input);
+
+  input.addEventListener('change', async () => {
+    const file = input.files && input.files[0];
+    document.body.removeChild(input);
+    if (!file) return;
+
+    showToast('Komprimiere Foto…');
+    try {
+      const compressed = await compressImage(file, 1200, 0.7);
+      state[currentMode].photos[key] = {
+        data: compressed.dataUrl,
+        timestamp: Date.now(),
+        size: compressed.size,
+        originalName: file.name || 'foto.jpg'
+      };
+      saveState();
+      renderApp();
+      showToast('Foto gespeichert (' + formatSize(compressed.size) + ')');
+    } catch (err) {
+      console.error(err);
+      showToast('Foto konnte nicht verarbeitet werden', true);
+    }
+  });
+
+  input.click();
+}
+
+function compressImage(file, maxSize, quality) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const img = new Image();
+      img.onload = () => {
+        let w = img.width, h = img.height;
+        if (w > h) {
+          if (w > maxSize) { h = Math.round(h * maxSize / w); w = maxSize; }
+        } else {
+          if (h > maxSize) { w = Math.round(w * maxSize / h); h = maxSize; }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, w, h);
+        ctx.drawImage(img, 0, 0, w, h);
+        const dataUrl = canvas.toDataURL('image/jpeg', quality);
+        // Größe in Bytes schätzen: base64 length * 0.75
+        const size = Math.round((dataUrl.length - 'data:image/jpeg;base64,'.length) * 0.75);
+        resolve({ dataUrl, size, width: w, height: h });
+      };
+      img.onerror = () => reject(new Error('Bild-Decode fehlgeschlagen'));
+      img.src = e.target.result;
+    };
+    reader.onerror = () => reject(new Error('Datei-Read fehlgeschlagen'));
+    reader.readAsDataURL(file);
+  });
+}
+
+function deletePhoto(key, label) {
+  if (!confirm('Foto "' + label + '" wirklich löschen?')) return;
+  delete state[currentMode].photos[key];
+  saveState();
+  renderApp();
+  showToast('Foto gelöscht');
+}
+
+let currentViewerPhoto = null;
+function showPhotoViewer(key, label, photoData) {
+  if (!photoData || !photoData.data) return;
+  currentViewerPhoto = { key, label, photoData };
+  const overlay = document.getElementById('photo-viewer-overlay');
+  document.getElementById('photo-viewer-img').src = photoData.data;
+  const meta = photoData.timestamp
+    ? new Date(photoData.timestamp).toLocaleString('de-DE')
+    : '';
+  document.getElementById('photo-viewer-info').innerHTML =
+    '<strong>' + escapeHtml(label) + '</strong>' +
+    (meta ? '<br>Aufgenommen: ' + meta : '') +
+    (photoData.size ? ' · ' + formatSize(photoData.size) : '');
+  overlay.classList.add('visible');
+}
+
+function closePhotoViewer() {
+  document.getElementById('photo-viewer-overlay').classList.remove('visible');
+  currentViewerPhoto = null;
+}
+
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return Math.round(bytes / 1024) + ' KB';
+  return (bytes / 1024 / 1024).toFixed(2) + ' MB';
+}
+
+function calcStorageUsage() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY) || '';
+    return raw.length; // UTF-16 chars; in den meisten Browsern Limit ~5MB als Char-Limit
+  } catch(e) { return 0; }
+}
+
+function updateStorageInfo() {
+  const used = calcStorageUsage();
+  const limit = 5 * 1024 * 1024; // konservative Annahme: 5 MB
+  const pct = Math.min(100, Math.round(used / limit * 100));
+  const bar = document.getElementById('storage-bar');
+  const text = document.getElementById('storage-text');
+  const pctEl = document.getElementById('storage-pct');
+  if (!bar || !text) return;
+  bar.style.width = pct + '%';
+  bar.classList.remove('warn', 'danger');
+  if (pct > 80) bar.classList.add('danger');
+  else if (pct > 60) bar.classList.add('warn');
+  text.textContent = 'Speicher: ' + formatSize(used);
+  pctEl.textContent = pct + '%';
+}
+
+function renderNotes(container) {
+  const section = document.createElement('section');
+  section.className = 'app-section visible';
+  section.innerHTML = `
+    <h3 style="color:var(--moss-deep);margin:0 0 .8rem 0;">Notizen ${currentMode === 'pickup' ? '— Übernahme' : '— Rückgabe'}</h3>
+    <textarea class="notes-textarea" id="notes-ta" placeholder="Hier alles notieren, was auffällt: Auffälligkeiten, Bemerkungen vom Mitarbeiter, Versprechen, eigene Beobachtungen…"></textarea>
+  `;
+  const ta = section.querySelector('#notes-ta');
+  ta.value = state[currentMode].notes || '';
+  ta.addEventListener('input', () => {
+    state[currentMode].notes = ta.value;
+    saveState();
+  });
+  container.appendChild(section);
+}
+
+// ============ INFO-SECTIONS ============
+function renderContacts(container) {
+  const section = document.createElement('section');
+  section.className = 'app-section visible';
+  section.innerHTML = `
+    <div class="contact-card">
+      <h4>🚐 roadsurfer Kontakt</h4>
+      <div class="row"><span class="label">24/7 Pannen-/Unfall-Hotline</span><span class="value"><a href="tel:+498938034629">+49 89 3803 4629</a></span></div>
+      <div class="row"><span class="label">Persönliche Pannenhotline</span><span class="value">Im Kundenkonto nach Abholung</span></div>
+      <div class="row"><span class="label">Schaden-Mail</span><span class="value">assistance@roadsurfer.com</span></div>
+      <div class="row"><span class="label">Kundenservice allgemein</span><span class="value"><a href="tel:+498921541673">+49 89 2154 1673</a></span></div>
+      <div class="row"><span class="label">Buchung allgemein</span><span class="value">rent@roadsurfer.com</span></div>
+      <div class="row"><span class="label">Kundenkonto</span><span class="value">booking.roadsurfer.com</span></div>
+      <div class="row"><span class="label">Buchungs-Nr.</span><span class="value"><strong>3933254797</strong></span></div>
+      <div class="row"><span class="label">Kunden-Nr.</span><span class="value"><strong>343610</strong></span></div>
+    </div>
+
+    <div class="contact-card">
+      <h4>🚨 Notruf &amp; Polizei (Schweden)</h4>
+      <div class="row"><span class="label">Notruf alle Dienste</span><span class="value"><a href="tel:112">112</a></span></div>
+      <div class="row"><span class="label">Polizei (kein Notfall)</span><span class="value"><a href="tel:11414">114 14</a></span></div>
+      <div class="row"><span class="label">Gesundheitsberatung</span><span class="value"><a href="tel:1177">1177</a></span></div>
+      <div class="row"><span class="label">SOS-Pannenhilfe Schweden</span><span class="value"><a href="tel:020910040">020-91 00 40</a></span></div>
+      <div class="row"><span class="label">Aus Ausland: Polizei</span><span class="value"><a href="tel:+46771141400">+46 771 14 14 00</a></span></div>
+    </div>
+
+    <div class="contact-card">
+      <h4>🔧 ADAC &amp; Pannenhilfe</h4>
+      <div class="row"><span class="label">ADAC aus Ausland</span><span class="value"><a href="tel:+498922222">+49 89 22 22 22</a></span></div>
+      <div class="row"><span class="label">Hinweis</span><span class="value">roadsurfer-Hotline ist erste Anlaufstelle!</span></div>
+    </div>
+
+    <div class="contact-card">
+      <h4>🛡️ ERGO Reiseversicherung</h4>
+      <div class="row"><span class="label">Schadenmeldung</span><span class="value"><a href="tel:+498941661799">+49 89 4166-1799</a></span></div>
+      <div class="row"><span class="label">Allgemeine Beratung</span><span class="value"><a href="tel:+498941661766">+49 89 4166-1766</a></span></div>
+      <div class="row"><span class="label">Online-Schaden</span><span class="value">ergo-reiseversicherung.de/schaden</span></div>
+    </div>
+
+    <div class="contact-card">
+      <h4>🇩🇪 Deutsche Botschaft Stockholm</h4>
+      <div class="row"><span class="label">Telefon</span><span class="value"><a href="tel:+4686701500">+46 8 670 1500</a></span></div>
+    </div>
+  `;
+  container.appendChild(section);
+}
+
+function renderVersich(container) {
+  const section = document.createElement('section');
+  section.className = 'app-section visible';
+  section.innerHTML = `
+    <div class="contact-card">
+      <h4>📄 Buchung 3933254797</h4>
+      <div class="row"><span class="label">Fahrzeug</span><span class="value"><strong>SUNRISE SUITE</strong></span></div>
+      <div class="row"><span class="label">Mieter</span><span class="value">Ulrich Derwart</span></div>
+      <div class="row"><span class="label">Mietzeitraum</span><span class="value">10.06.–27.06.2026, 17 Nächte</span></div>
+      <div class="row"><span class="label">Abholung</span><span class="value">10.06.2026, 13:00<br>Ingolstädterstr. 172, 80939 München</span></div>
+      <div class="row"><span class="label">Rückgabe</span><span class="value">27.06.2026, 12:00<br>Ingolstädterstr. 172, 80939 München</span></div>
+      <div class="row"><span class="label">Kaution</span><span class="value"><strong>800 €</strong> (Kreditkarte, kein AmEx)</span></div>
+      <div class="row"><span class="label">Gesamtpreis</span><span class="value">2.350,40 € (bezahlt)</span></div>
+      <div class="row"><span class="label">Inkludiert</span><span class="value">Unbegrenzte Km · 2 Fahrer · Küchenbox · Fahrradträger (4 Räder)</span></div>
+    </div>
+
+    <div class="warning-card" style="border-left-color: var(--moss-deep); background: rgba(74,106,74,.05);">
+      <h3 style="color: var(--moss-deep);">🛡️ roadsurfer Basic-Schutzpaket</h3>
+      <p><strong>Selbstbeteiligung pro Schaden:</strong> 3.000 €</p>
+      <p><strong>Plus:</strong> 49 € Bearbeitungsgebühr pro Schadensfall</p>
+      <p><strong>Inklusive:</strong> Unbegrenzte Kilometer, 1 Zusatzfahrer, Mobilitätsservice, Pannenhilfe (24/7-Hotline)</p>
+      <p><strong>Nicht abgedeckt:</strong> Markisenschäden, Dachschäden bei zu niedriger Durchfahrt, Falschbetankung (Diesel ↔ Wasser), grobe Fahrlässigkeit, unbefestigte Straßen, Fährschäden</p>
+    </div>
+
+    <div class="contact-card">
+      <h4>🛡️ ERGO Reiseversicherung — Vertragsdaten</h4>
+      <div class="row"><span class="label">Versicherungs-Nr.</span><span class="value"><strong>184447112</strong></span></div>
+      <div class="row"><span class="label">Tarif</span><span class="value">SBA201 (CDW Plus Wohnmobile)</span></div>
+      <div class="row"><span class="label">Versicherte</span><span class="value">Ulrich Derwart, Sabine Dany-Panzer</span></div>
+      <div class="row"><span class="label">Geltung</span><span class="value">10.06.–27.06.2026, weltweit</span></div>
+      <div class="row"><span class="label">Versicherungssumme</span><span class="value"><strong>6.000 €</strong></span></div>
+      <div class="row"><span class="label">Selbstbeteiligung</span><span class="value">keine</span></div>
+      <div class="row"><span class="label">Prämie</span><span class="value">304,20 €</span></div>
+    </div>
+
+    <div class="warning-card" style="background: rgba(212,164,55,.08); border-left-color: var(--sun);">
+      <h3 style="color: var(--moss-deep);">💡 So greifen die zwei Versicherungen ineinander</h3>
+      <p><strong>1.</strong> Bei einem Schaden: roadsurfer Basic-Paket ⟶ 3.000 € Selbstbeteiligung gehen von Kaution + ggf. weitere Forderung.</p>
+      <p><strong>2.</strong> Diese 3.000 € reichst du an ERGO ein ⟶ ERGO erstattet die SB (bis 6.000 € Summe). So bezahlst du am Ende effektiv nichts (außer 49 € Bearbeitungspauschale roadsurfer).</p>
+      <p><strong>3.</strong> Wichtig: Beim Schaden BEIDE informieren (roadsurfer zuerst, ERGO innerhalb 7 Tage).</p>
+    </div>
+
+    <div class="warning-card">
+      <h3>Im Schadenfall — Reihenfolge</h3>
+      <p><strong>1.</strong> Bei Unfall: 112 anrufen, Polizei-Aktenzeichen holen (Pflicht laut AGB §12!).</p>
+      <p><strong>2.</strong> Fotos &amp; Videos vom Schaden, Stelle, Beteiligten, Kennzeichen.</p>
+      <p><strong>3.</strong> Unfallbericht-Formular aus Handschuhfach ausfüllen (sonst 1.000 € Vertragsstrafe!).</p>
+      <p><strong>4.</strong> Unverzüglich roadsurfer Hotline anrufen — vor Reparatur immer Genehmigung holen!</p>
+      <p><strong>5.</strong> Unfallbericht-Scan an <strong>assistance@roadsurfer.com</strong> schicken.</p>
+      <p><strong>6.</strong> ERGO melden: 089 4166-1799, oder online ergo-reiseversicherung.de/schaden</p>
+    </div>
+  `;
+  container.appendChild(section);
+}
+
+function renderRules(container) {
+  const section = document.createElement('section');
+  section.className = 'app-section visible';
+  section.innerHTML = `
+    <div class="warning-card">
+      <h3>💸 roadsurfer Strafgebühren (laut AGB)</h3>
+      <p><strong>Verspätete Rückgabe:</strong> 50 €/Stunde, max. 500 €/24h</p>
+      <p><strong>Tank nicht voll:</strong> 64 € (75-99 %) bis 199 € (0-25 %)</p>
+      <p><strong>AdBlue nicht voll:</strong> 50 €</p>
+      <p><strong>Toilette nicht entleert:</strong> 230 €</p>
+      <p><strong>Wassertank nicht entleert:</strong> 50 €</p>
+      <p><strong>Falscher Rückgabeort:</strong> 700 €</p>
+      <p><strong>Verlust Schlüssel:</strong> 1.000 €</p>
+      <p><strong>Verlust KFZ-Schein:</strong> 200 €</p>
+      <p><strong>Bußgeld-Bearbeitung:</strong> 34,99 € pro Bescheid</p>
+      <p><strong>Unfallbericht fehlt/fehlerhaft:</strong> 1.000 € Vertragsstrafe!</p>
+      <p><strong>Rauchen im Bus:</strong> nach Reinigungsliste</p>
+    </div>
+
+    <div class="warning-card">
+      <h3>⛔ Wofür der Mieter VOLL haftet (kein Schutzpaket-Schutz)</h3>
+      <p>• Markisenschäden (Bedienungsfehler) — kann Kaution übersteigen!</p>
+      <p>• Dachschäden bei Missachtung der Durchfahrtshöhe</p>
+      <p>• Falschbetankung (Wasser/Diesel)</p>
+      <p>• Fährschäden (kein Versicherungsschutz!)</p>
+      <p>• Vorsatz und grobe Fahrlässigkeit</p>
+      <p>• Fahren unter Alkohol/Drogen/Krankheit</p>
+      <p>• Schäden durch unbefestigte Straßen</p>
+      <p>• Fahrer nicht im Mietvertrag eingetragen</p>
+    </div>
+
+    <div class="warning-card" style="border-left-color: var(--moss-deep); background: rgba(74,106,74,.05);">
+      <h3 style="color: var(--moss-deep);">📋 Erlaubte Länder</h3>
+      <p>Schweden ✓ EU-Mitglied — alles in Ordnung.</p>
+      <p>Erlaubt sind alle EU-Staaten, Island, Norwegen, Schweiz, UK, Albanien, Andorra, Bosnien, Liechtenstein, Moldawien, Nordmazedonien, Montenegro, Serbien.</p>
+      <p>Nicht erlaubt: Russland, Türkei, Ukraine, Belarus, Marokko, Israel, Iran, Tunesien.</p>
+    </div>
+
+    <div class="warning-card" style="border-left-color: var(--moss-deep); background: rgba(74,106,74,.05);">
+      <h3 style="color: var(--moss-deep);">🚿 Reinigungs-Anforderungen</h3>
+      <p>Der Bus muss zurückgegeben werden:</p>
+      <p>• <strong>Innen:</strong> gefegt, gesaugt, gewischt</p>
+      <p>• <strong>Außen:</strong> frei von grobem Schmutz (z.B. großflächiger Schlamm)</p>
+      <p>• <strong>Toilette + Solbio:</strong> entleert</p>
+      <p>• <strong>Frisch- + Abwassertank:</strong> entleert</p>
+      <p>Sonst Reinigungspauschale gemäß Preisliste am Standort.</p>
+    </div>
+  `;
+  container.appendChild(section);
+}
+
+function renderTips(container) {
+  const section = document.createElement('section');
+  section.className = 'app-section visible';
+  section.innerHTML = `
+    <div class="contact-card">
+      <h4>🇸🇪 Schweden-Maut (wichtig!)</h4>
+      <div style="font-size:.88rem;line-height:1.6;color:var(--ink);">
+        • <strong>Pflicht: Vorab auf epass24.com registrieren</strong><br>
+        • Kennzeichen kann nachträglich nach Bus-Abholung ergänzt werden<br>
+        • Mautstationen erfassen Kennzeichen automatisch<br>
+        • Bei Nicht-Registrierung: roadsurfer berechnet 34,99 € pro Mahnung + Maut<br>
+        • Auch Oslo + Norwegen autopass.no — falls Abstecher
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <h4>💡 Vor der Übernahme</h4>
+      <div style="font-size:.88rem;line-height:1.6;color:var(--ink);">
+        • <strong>90 Minuten</strong> für die Übergabe einplanen<br>
+        • Online-Check-in am Vortag im Kundenkonto<br>
+        • Camper-Tutorial-Videos (SUNRISE SUITE) ansehen<br>
+        • Beide Fahrer kommen mit Führerschein im Original<br>
+        • Kreditkarte (keine AmEx!) für 800 € Kaution<br>
+        • ERGO-Tarif rechtzeitig wegen Mietwagen-Frage klären
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <h4>📸 Foto-Strategie (kaution-rettend!)</h4>
+      <div style="font-size:.88rem;line-height:1.6;color:var(--ink);">
+        • <strong>Eigenes Handyvideo</strong> ist Pflicht — komplette Außenseite + Innen<br>
+        • Datum/Uhrzeit sichtbar (z.B. Uhr daneben oder im Bus-Display)<br>
+        • Bei Rückgabe das gleiche Video aufnehmen<br>
+        • Min. 8 Wochen aufheben (48-Std-Frist + Kaution-Freigabe 30 Tage)<br>
+        • Tank-Foto bei Übergabe + Rückgabe als Beweis
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <h4>⚠️ Häufige Fallen bei roadsurfer</h4>
+      <div style="font-size:.88rem;line-height:1.6;color:var(--ink);">
+        • Übergabeprotokoll <strong>nicht unterschreiben</strong>, bevor Schäden komplett aufgenommen<br>
+        • Nicht durch Waschanlage (Aufstelldach!)<br>
+        • Falschbetankung kann Wasser-System komplett zerstören (über Kaution)<br>
+        • Markise NIE bei Wind/Regen ausfahren oder unbeaufsichtigt lassen<br>
+        • Schäden vor Verlassen melden — danach: keine Chance<br>
+        • AdBlue im Auge behalten (Diesel)
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <h4>🚨 Wenn was passiert</h4>
+      <div style="font-size:.88rem;line-height:1.6;color:var(--ink);">
+        1. <strong>Bei Unfall:</strong> Polizei 112, Aktenzeichen holen<br>
+        2. Fotos: Schaden, Stelle, Beteiligte<br>
+        3. Unfallbericht (Handschuhfach) ausfüllen<br>
+        4. roadsurfer 24h-Hotline anrufen<br>
+        5. Bei Reparatur: vor Auftragsvergabe roadsurfer-Genehmigung!<br>
+        6. ERGO informieren: 089 4166-1799<br>
+        7. Belege sammeln (Mietvertrag, Übergabeprotokoll, Polizeibericht, Fotos)
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <h4>🅿️ Stellplätze in Schweden</h4>
+      <div style="font-size:.88rem;line-height:1.6;color:var(--ink);">
+        • <strong>Allemansrätten</strong> erlaubt Übernachtung außerhalb von Campingplätzen — aber NICHT mit Fahrzeug auf privatem Grund<br>
+        • 1 Nacht freistehend in der Wildnis okay, 24h-Regel<br>
+        • Camping-Stellplätze in Schweden meist ohne Anmeldung, Bezahlung über App oder Briefkasten<br>
+        • Toilette/Grauwasser nur an Entsorgungsstationen entleeren
+      </div>
+    </div>
+  `;
+  container.appendChild(section);
+}
+
+// ============ VERTRAG ============
+function renderVertrag(container) {
+  const section = document.createElement('section');
+  section.className = 'app-section visible';
+  section.innerHTML = `
+    <div class="contact-card">
+      <h4>👤 Mieter &amp; Kundenkonto</h4>
+      <div class="row"><span class="label">Name</span><span class="value"><strong>Ulrich Derwart</strong></span></div>
+      <div class="row"><span class="label">E-Mail</span><span class="value">ulrich.derwart@gmail.com</span></div>
+      <div class="row"><span class="label">Kunden-Nr.</span><span class="value"><strong>343610</strong></span></div>
+      <div class="row"><span class="label">Vorgangsnummer</span><span class="value"><strong>3933254797</strong></span></div>
+      <div class="row"><span class="label">Reservierungsdatum</span><span class="value">31.12.2025, 12:00:13</span></div>
+      <div class="row"><span class="label">Payment Notif. Nr.</span><span class="value">DE1000630043</span></div>
+    </div>
+
+    <div class="contact-card">
+      <h4>🚐 Fahrzeug &amp; Mietzeitraum</h4>
+      <div class="row"><span class="label">Fahrzeugkategorie</span><span class="value"><strong>SUNRISE SUITE</strong></span></div>
+      <div class="row"><span class="label">Mietzeitraum</span><span class="value">10.06.–27.06.2026<br>17 Nächte</span></div>
+      <div class="row"><span class="label">Abholung</span><span class="value">10.06.2026, 13:00<br>Ingolstädterstr. 172, 80939 München</span></div>
+      <div class="row"><span class="label">Rückgabe</span><span class="value">27.06.2026, 12:00<br>Ingolstädterstr. 172, 80939 München</span></div>
+    </div>
+
+    <div class="contact-card">
+      <h4>💰 Preis-Aufstellung (gebucht)</h4>
+      <div class="row"><span class="label">9 Nächte ab 10.06.</span><span class="value">9 × 139,00 € = 1.251,00 €</span></div>
+      <div class="row"><span class="label">1 Nacht 19.06.</span><span class="value">1 × 129,00 € = 129,00 €</span></div>
+      <div class="row"><span class="label">6 Nächte ab 20.06.</span><span class="value">6 × 149,00 € = 894,00 €</span></div>
+      <div class="row"><span class="label">1 Nacht 26.06.</span><span class="value">1 × 159,00 € = 159,00 €</span></div>
+      <div class="row"><span class="label">Tarif-Zwischensumme</span><span class="value"><strong>2.433,00 €</strong></span></div>
+      <div class="row"><span class="label">EARLY20-Rabatt</span><span class="value">-486,60 € (-20 %)</span></div>
+      <div class="row"><span class="label">Küchenbox</span><span class="value">15,00 €</span></div>
+      <div class="row"><span class="label">Buchungsgebühr</span><span class="value">129,00 €</span></div>
+      <div class="row"><span class="label">Reisevorbereitungsgebühr</span><span class="value">89,00 €</span></div>
+      <div class="row"><span class="label">Fahrradträger (4 Räder)</span><span class="value">153,00 € (am 20.05. nachgebucht)</span></div>
+      <div class="row"><span class="label">Pick-Up Time 13:00</span><span class="value">9,00 €</span></div>
+      <div class="row"><span class="label">Return Time 12:00</span><span class="value">9,00 €</span></div>
+      <div class="row"><span class="label">Basis-Schutzpaket (SB 3000)</span><span class="value">17 × 0 € = 0,00 €</span></div>
+      <div class="row"><span class="label">Unbegrenzte Freikilometer</span><span class="value">0,00 €</span></div>
+      <div class="row"><span class="label">Netto-Gesamt</span><span class="value">1.975,13 €</span></div>
+      <div class="row"><span class="label">+ 19 % USt.</span><span class="value">375,27 €</span></div>
+      <div class="row"><span class="label">Brutto-Gesamt</span><span class="value"><strong>2.350,40 €</strong></span></div>
+      <div class="row"><span class="label">Bereits bezahlt</span><span class="value">2.350,40 € (Kreditkarte)</span></div>
+      <div class="row"><span class="label">Noch offen</span><span class="value">0,00 €</span></div>
+      <div class="row"><span class="label">Zahlungsfrist</span><span class="value">05.01.2026 (erledigt)</span></div>
+    </div>
+
+    <div class="contact-card">
+      <h4>🛡️ Kaution (am Abholtag fällig)</h4>
+      <div class="row"><span class="label">Kautionsbetrag</span><span class="value"><strong>800,00 €</strong></span></div>
+      <div class="row"><span class="label">Zahlungsart</span><span class="value">Kreditkarte ODER Debitkarte ODER EC</span></div>
+      <div class="row"><span class="label">Wichtig</span><span class="value">KEINE American Express!</span></div>
+      <div class="row"><span class="label">Freigabe nach Rückgabe</span><span class="value">Kreditkarte: bis zu 30 Tage<br>EC-Karte: bis zu 6–8 Wochen</span></div>
+    </div>
+
+    <div class="contact-card">
+      <h4>📦 Inkludierte Leistungen</h4>
+      <div class="row"><span class="label">Fahrer</span><span class="value">2 (Mieter + 1 Zusatzfahrer kostenlos)</span></div>
+      <div class="row"><span class="label">Kilometer</span><span class="value">Unbegrenzt</span></div>
+      <div class="row"><span class="label">Versicherung</span><span class="value">Basis-Schutzpaket (SB 3.000 €)</span></div>
+      <div class="row"><span class="label">Mobilitätsservice</span><span class="value">24/7 inklusive</span></div>
+      <div class="row"><span class="label">Pannenhilfe</span><span class="value">24/7 inklusive</span></div>
+      <div class="row"><span class="label">Equipment-Set</span><span class="value">Auffahrkeile, Wasserkanister, Stromkabel, Handfeger, Schaufel, Gasflasche, Tisch + 2 Stühle, Verdunkelungen, Solbio, Markisenkurbel</span></div>
+      <div class="row"><span class="label">Zusätzlich gebucht</span><span class="value">Küchenbox, Fahrradträger (4 Räder)</span></div>
+    </div>
+
+    <div class="contact-card">
+      <h4>🏢 Vertragspartner</h4>
+      <div class="row"><span class="label">Firma</span><span class="value">Roadsurfer GmbH</span></div>
+      <div class="row"><span class="label">Adresse</span><span class="value">Winzererstr. 47d<br>80797 München, Deutschland</span></div>
+      <div class="row"><span class="label">E-Mail</span><span class="value">rent@roadsurfer.com</span></div>
+      <div class="row"><span class="label">Webseite</span><span class="value">roadsurfer.com</span></div>
+      <div class="row"><span class="label">Registernummer</span><span class="value">HRB 229982</span></div>
+      <div class="row"><span class="label">USt-ID</span><span class="value">DE309915314</span></div>
+      <div class="row"><span class="label">Steuernummer</span><span class="value">143 176 05 00 6</span></div>
+      <div class="row"><span class="label">Geschäftsführer</span><span class="value">Dr. Susanne Dickhardt<br>Christoph Niemann<br>Markus Dickhardt</span></div>
+    </div>
+
+    <div class="contact-card">
+      <h4>🏦 Bankverbindung roadsurfer</h4>
+      <div class="row"><span class="label">Bank</span><span class="value">Deutsche Bank</span></div>
+      <div class="row"><span class="label">IBAN</span><span class="value">DE62 7007 0010 0051 3374 01</span></div>
+      <div class="row"><span class="label">SWIFT/BIC</span><span class="value">DEUTDEMMXXX</span></div>
+      <div class="row"><span class="label">Zahlungsreferenz</span><span class="value">Ulrich Derwart / 3933254797</span></div>
+    </div>
+  `;
+  container.appendChild(section);
+}
+
+// ============ AGB ============
+function renderAGB(container) {
+  const section = document.createElement('section');
+  section.className = 'app-section visible';
+  section.innerHTML = `
+    <div class="damage-instructions">
+      <strong>Kompakter AGB-Auszug</strong> (Stand 01.12.2025, Abschnitt A — Europa). Die vollständigen AGB findest du auf roadsurfer.com/de/agb/. Nur die für die Reise wichtigsten Punkte.
+    </div>
+
+    <div class="contact-card">
+      <h4>§1 Erlaubte Länder</h4>
+      <p style="font-size:.85rem;color:var(--ink);margin:0;">EU + Island, Norwegen, Schweiz, Großbritannien, Albanien, Andorra, Bosnien, Liechtenstein, Moldawien, Nordmazedonien, Montenegro, Serbien.</p>
+      <p style="font-size:.85rem;color:var(--berry);margin:.5rem 0 0 0;"><strong>Nicht erlaubt:</strong> Russland, Türkei, Ukraine, Belarus, Marokko, Israel, Iran, Tunesien.</p>
+    </div>
+
+    <div class="contact-card">
+      <h4>§2 Fahrer</h4>
+      <p style="font-size:.85rem;color:var(--ink);margin:0;">• Mindestens 18 Jahre alt<br>• Mindestens 1 Jahr im Besitz Klasse B (oder alte Klasse 3)<br>• Beide Fahrer müssen im Mietvertrag eingetragen sein<br>• Führerschein im Original — keine Kopien<br>• Nicht-eingetragener Fahrer: keine Versicherung + Mieter haftet voll</p>
+    </div>
+
+    <div class="contact-card">
+      <h4>§5 Stornierung &amp; Umbuchung</h4>
+      <p style="font-size:.85rem;color:var(--ink);margin:0;"><strong>Standard-Tarif (ohne Flex-Option):</strong></p>
+      <p style="font-size:.85rem;color:var(--ink);margin:.3rem 0 0 0;">• Storno bis 48h vor Mietbeginn: nur Reisevorbereitungsgebühr (89 €) zurück<br>• Storno 0–48h vor Mietbeginn: <strong>nichts</strong> zurück</p>
+      <p style="font-size:.85rem;color:var(--ink);margin:.5rem 0 0 0;"><strong>Umbuchung:</strong> bis 60 Tage vor Mietbeginn möglich; Aufpreis zahlen / Differenz erstattet</p>
+      <p style="font-size:.85rem;color:var(--ink);margin:.5rem 0 0 0;"><strong>Vorzeitige Rückgabe:</strong> keine Erstattung, voller Mietpreis bleibt fällig</p>
+    </div>
+
+    <div class="contact-card">
+      <h4>§6 Kaution</h4>
+      <p style="font-size:.85rem;color:var(--ink);margin:0;">• 800 € per Kreditkarte oder EC/Debit (keine AmEx)<br>• Ohne Kaution: kein Fahrzeug<br>• Freigabe Kreditkarte: bis 30 Tage<br>• Freigabe EC: 6–8 Wochen<br>• <strong>48-Stunden-Frist:</strong> Vermieter kann verdeckte Schäden nachträglich melden</p>
+    </div>
+
+    <div class="contact-card">
+      <h4>§7 Verspätung</h4>
+      <p style="font-size:.85rem;color:var(--ink);margin:0;">• 50 € pro angefangener Stunde<br>• Max 500 € pro 24h<br>• Mindestmietdauer: 3 Nächte</p>
+    </div>
+
+    <div class="contact-card">
+      <h4>§8 Übernahme &amp; Rückgabe</h4>
+      <p style="font-size:.85rem;color:var(--ink);margin:0;"><strong>Vor Abfahrt vom Standort:</strong> Alle Schäden müssen im Protokoll dokumentiert sein. Spätere Meldungen werden nicht akzeptiert!</p>
+      <p style="font-size:.85rem;color:var(--ink);margin:.5rem 0 0 0;"><strong>Pflicht-Equipment-Check:</strong> Auffahrkeile, Wasserkanister, Stromkabel, Handfeger/Schaufel, Gasflasche, Tisch + 2 Stühle, Verdunkelungen, Solbio, Markisenkurbel</p>
+      <p style="font-size:.85rem;color:var(--ink);margin:.5rem 0 0 0;"><strong>Rückgabe:</strong> innen gefegt + gesaugt + gewischt, außen frei von grobem Schmutz, Toilette/Solbio entleert, Wassertanks entleert, vollgetankt, AdBlue voll.</p>
+    </div>
+
+    <div class="contact-card">
+      <h4>§9 Obhutspflicht</h4>
+      <p style="font-size:.85rem;color:var(--ink);margin:0;">• <strong>Rauchverbot</strong> im Bus<br>• Keine Haustiere (außer "Dogbus" gebucht)<br>• Nur gesicherte Gasflasche während Fahrt<br>• Bedienungsanleitungen strikt beachten<br>• Eigenverantwortung für Maut/Visa/Verkehrsregeln</p>
+    </div>
+
+    <div class="contact-card">
+      <h4>§10 Wartung im Mietzeitraum</h4>
+      <p style="font-size:.85rem;color:var(--ink);margin:0;">• <strong>Warnlampen beachten</strong> — sofort reagieren<br>• Ölstand, Kühlwasser, Reifendruck regelmäßig prüfen<br>• Bei AdBlue-Warnung: sofort auf eigene Kosten nachfüllen (sonst 50 € Pauschale)<br>• Verschleißreparaturen: roadsurfer zahlt<br>• Tankkosten + Betriebsstoffe: Mieter</p>
+    </div>
+
+    <div class="contact-card">
+      <h4>§11 Haftung &amp; Versicherung</h4>
+      <p style="font-size:.85rem;color:var(--ink);margin:0;"><strong>Volle Haftung des Mieters für:</strong></p>
+      <p style="font-size:.85rem;color:var(--ink);margin:.3rem 0 0 0;">• Reifenschäden (Reserverad nur durch Pannendienst!)<br>• Windschutzscheiben<br>• Diebstahlschäden (Polizeibericht!)<br>• Wettereinflüsse (Hagel, Wind, Regen)<br>• Innenraum<br>• Karosserie- und Unterbodenschäden<br>• Schäden auf unbefestigten Straßen<br>• <strong>Markisenschäden (typisch durch Bedienfehler!)</strong><br>• Dachschäden bei Missachtung Durchfahrtshöhen<br>• Falschbetankung (Wasser/Diesel)<br>• Fährschäden — KEIN Versicherungsschutz!</p>
+      <p style="font-size:.85rem;color:var(--berry);margin:.5rem 0 0 0;"><strong>Diese Schäden sind durch KEIN Schutzpaket abgedeckt!</strong></p>
+    </div>
+
+    <div class="contact-card">
+      <h4>§12 Unfall- und Schadenmeldung</h4>
+      <p style="font-size:.85rem;color:var(--ink);margin:0;"><strong>Pflicht-Reihenfolge:</strong></p>
+      <p style="font-size:.85rem;color:var(--ink);margin:.3rem 0 0 0;">1. Bei Unfall: <strong>immer Polizei rufen</strong> — auch ohne Beteiligte!<br>2. Unfallbericht (Handschuhfach) vollständig ausfüllen<br>3. Scan unverzüglich an <strong>assistance@roadsurfer.com</strong><br>4. roadsurfer Pannenhotline anrufen<br>5. Reparatur nur nach roadsurfer-Genehmigung<br>6. Bei Werkstattbesuch: vorher Adresse + Kosten an roadsurfer</p>
+      <p style="font-size:.85rem;color:var(--berry);margin:.5rem 0 0 0;"><strong>Vertragsstrafe 1.000 €</strong> bei fehlendem oder mangelhaftem Unfallbericht!</p>
+      <p style="font-size:.85rem;color:var(--ink);margin:.5rem 0 0 0;"><strong>Gegnerische Ansprüche</strong> nicht anerkennen. Keine Dokumente außer Europäischem Unfallbericht unterschreiben.</p>
+    </div>
+
+    <div class="contact-card">
+      <h4>§13 Schutzpakete (Basic = inkl.)</h4>
+      <p style="font-size:.85rem;color:var(--ink);margin:0;"><strong>Eure Buchung: BASIC-Schutzpaket</strong></p>
+      <p style="font-size:.85rem;color:var(--ink);margin:.3rem 0 0 0;">• Selbstbeteiligung: <strong>3.000 €</strong> pro Schaden<br>• Unbegrenzte Kilometer<br>• 1 Zusatzfahrer kostenlos<br>• 24h-Mobilitätsservice<br>• 24h-Pannenhilfe</p>
+      <p style="font-size:.85rem;color:var(--ink-soft);margin:.5rem 0 0 0;"><em>Plus-Paket würde SB auf 800 € senken, Max-Paket auf 150 € + Scheiben + Reifen.</em></p>
+    </div>
+
+    <div class="contact-card">
+      <h4>§15 Maut</h4>
+      <p style="font-size:.85rem;color:var(--ink);margin:0;">• <strong>Schweden:</strong> Vorab auf <strong>epass24.com</strong> registrieren (Pflicht!)<br>• Kennzeichen kann nach Bus-Übergabe nachgetragen werden<br>• Bei Nicht-Zahlung: <strong>34,99 €</strong> Bearbeitungsgebühr roadsurfer + ursprüngliche Maut + Strafen</p>
+    </div>
+
+    <div class="contact-card">
+      <h4>§18 Verjährung, Gerichtsstand</h4>
+      <p style="font-size:.85rem;color:var(--ink);margin:0;">• Verjährungsfrist: <strong>6 Monate</strong> nach Rückgabe<br>• Bei polizeilich aufgenommenem Unfall: ab Akteneinsicht<br>• <strong>14 Tage</strong> Einwendungsfrist bei Schadensberechnung<br>• Gerichtsstand: München<br>• Recht: deutsches Recht (auch im Ausland)</p>
+    </div>
+
+    <div class="contact-card">
+      <h4>📡 GPS &amp; Telematik</h4>
+      <p style="font-size:.85rem;color:var(--ink);margin:0;">Manche Busse haben GPS-Tracking-Geräte. roadsurfer kann damit:</p>
+      <p style="font-size:.85rem;color:var(--ink);margin:.3rem 0 0 0;">• Standort verfolgen<br>• Schadenfälle bearbeiten<br>• Bei Vertragsbruch Bus remote abschalten/abschließen<br>• Bei verlängerter Nichtrückgabe Polizei einschalten</p>
+    </div>
+  `;
+  container.appendChild(section);
+}
+
+// ============ STATS ============
+function updateStats() {
+  if (currentMode === 'info') {
+    document.getElementById('count-done').textContent = '—';
+    document.getElementById('count-total').textContent = '—';
+    document.getElementById('progress-fill').style.width = '0%';
+    document.getElementById('percent').textContent = '';
+    return;
+  }
+  const checklist = currentMode === 'pickup' ? PICKUP_CHECKLIST : RETURN_CHECKLIST;
+  let total = 0, done = 0;
+  Object.keys(checklist).forEach(cat => {
+    checklist[cat].forEach(([key]) => {
+      total++;
+      if (state[currentMode].checks[key]) done++;
+    });
+  });
+  document.getElementById('count-done').textContent = done;
+  document.getElementById('count-total').textContent = total;
+  const pct = total > 0 ? Math.round(done / total * 100) : 0;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('percent').textContent = pct + '%';
+}
+
+// ============ EXPORT / IMPORT ============
+function showExport(withPhotos) {
+  if (withPhotos === undefined) withPhotos = false; // Default: ohne Fotos
+  let exportState = state;
+  if (!withPhotos) {
+    exportState = JSON.parse(JSON.stringify(state));
+    ['pickup', 'return'].forEach(mode => {
+      const photos = exportState[mode].photos || {};
+      Object.keys(photos).forEach(k => {
+        if (photos[k] && typeof photos[k] === 'object' && photos[k].data) {
+          photos[k] = { taken: true, timestamp: photos[k].timestamp, size: photos[k].size, _photoOmitted: true };
+        }
+      });
+    });
+  }
+  const data = {
+    format: 'roadsurfer-uebergabe-2026',
+    version: 4,
+    exported: new Date().toISOString(),
+    withPhotos: withPhotos,
+    state: exportState
+  };
+  const txt = JSON.stringify(data);
+  document.getElementById('export-text').value = txt;
+  document.getElementById('export-size-info').textContent =
+    'Größe: ' + formatSize(txt.length) + (withPhotos ? ' (Signal-Versand evtl. nicht möglich bei >1 MB)' : ' — gut für Signal');
+
+  // Button-Styles toggeln
+  const b1 = document.getElementById('exp-with-photos');
+  const b2 = document.getElementById('exp-no-photos');
+  if (b1 && b2) {
+    if (withPhotos) {
+      b1.style.background = 'var(--moss-deep)'; b1.style.color = 'white'; b1.style.borderColor = 'var(--moss-deep)';
+      b2.style.background = 'var(--paper)'; b2.style.color = 'var(--ink)'; b2.style.borderColor = 'var(--line)';
+    } else {
+      b2.style.background = 'var(--moss-deep)'; b2.style.color = 'white'; b2.style.borderColor = 'var(--moss-deep)';
+      b1.style.background = 'var(--paper)'; b1.style.color = 'var(--ink)'; b1.style.borderColor = 'var(--line)';
+    }
+  }
+
+  document.getElementById('export-modal').classList.add('visible');
+}
+
+function copyExport() {
+  const ta = document.getElementById('export-text');
+  ta.select();
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(ta.value).then(() => {
+      showToast('In Zwischenablage kopiert');
+      closeModal('export-modal');
+    }).catch(() => {
+      try { document.execCommand('copy'); showToast('Kopiert'); closeModal('export-modal'); }
+      catch(e) { showToast('Bitte manuell markieren und kopieren', true); }
+    });
+  } else {
+    try { document.execCommand('copy'); showToast('Kopiert'); closeModal('export-modal'); }
+    catch(e) { showToast('Bitte manuell markieren und kopieren', true); }
+  }
+}
+
+function showImport() {
+  document.getElementById('import-text').value = '';
+  document.getElementById('import-modal').classList.add('visible');
+  setTimeout(() => document.getElementById('import-text').focus(), 100);
+}
+
+function applyImport() {
+  const txt = document.getElementById('import-text').value.trim();
+  if (!txt) { showToast('Kein Text eingegeben', true); return; }
+  let data;
+  try { data = JSON.parse(txt); }
+  catch(e) { showToast('Ungültiges Format', true); return; }
+  if (data.format !== 'roadsurfer-uebergabe-2026' && data.format !== 'bus-uebergabe-2026') {
+    if (!confirm('Daten haben nicht das erwartete Format. Trotzdem importieren?')) return;
+  }
+  if (!confirm('Aktuellen Stand überschreiben?\nQuelle: ' + (data.exported || 'unbekannt') + (data.withPhotos === false ? '\n(ohne Fotos — bestehende Fotos werden beibehalten)' : ''))) return;
+
+  if (data.state) {
+    const incoming = data.state;
+    // Wenn Import OHNE Fotos: bestehende lokale Fotos behalten
+    if (data.withPhotos === false) {
+      ['pickup', 'return'].forEach(mode => {
+        if (incoming[mode] && incoming[mode].photos) {
+          Object.keys(incoming[mode].photos).forEach(k => {
+            const ph = incoming[mode].photos[k];
+            if (ph && ph._photoOmitted && state[mode] && state[mode].photos && state[mode].photos[k] && state[mode].photos[k].data) {
+              // lokales Foto behalten
+              incoming[mode].photos[k] = state[mode].photos[k];
+            }
+          });
+        }
+      });
+    }
+    state = Object.assign(defaultState(), incoming);
+  }
+  saveState();
+  closeModal('import-modal');
+  renderApp();
+  showToast('Import erfolgreich');
+}
+
+function resetCurrent() {
+  if (currentMode === 'info') {
+    showToast('Info-Modus kann nicht zurückgesetzt werden', false);
+    return;
+  }
+  if (confirm('Wirklich alle Daten der ' + (currentMode === 'pickup' ? 'Abholung' : 'Rückgabe') + ' zurücksetzen?')) {
+    state[currentMode] = { checks: {}, vehicle: {}, damages: [], photos: {}, notes: '' };
+    saveState();
+    renderApp();
+    showToast(currentMode === 'pickup' ? 'Abholung zurückgesetzt' : 'Rückgabe zurückgesetzt');
+  }
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('visible');
+}
+
+// ============ TOAST ============
+let toastTimer = null;
+function showToast(msg, isError) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.toggle('error', !!isError);
+  t.classList.add('visible');
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('visible'), 2500);
+}
+
+// ============ INIT ============
+renderApp();
+</script>
+</body>
+</html>
