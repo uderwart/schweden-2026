@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#2f4a32">
+<title>Versicherungen · Schweden 2026</title>
+<style>
+  :root {
+    --gruen: #2f4a32;
+    --gruen-hell: #3d5e41;
+    --sand: #f4f1e8;
+    --gelb: #f7c948;
+    --rot: #8a3a3a;
+    --text: #1f2a20;
+    --grau: #6b7568;
+    --line: #d8d0c2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--sand);
+    color: var(--text);
+    min-height: 100vh;
+    padding-bottom: 60px;
+    line-height: 1.45;
+  }
+
+  /* Header */
+  header {
+    background: var(--gruen);
+    color: white;
+    padding: env(safe-area-inset-top) 20px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 1px 4px rgba(0,0,0,.1);
+  }
+  header .top {
+    padding-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  header .back {
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,.12);
+    flex-shrink: 0;
+  }
+  header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -.3px;
+    flex: 1;
+  }
+  header .sub {
+    font-size: 13px;
+    opacity: .8;
+    margin-top: 6px;
+    padding-left: 48px;
+  }
+
+  /* Notfall-Banner */
+  .notfall-banner {
+    background: var(--rot);
+    color: white;
+    padding: 18px 20px;
+    text-align: center;
+  }
+  .notfall-banner .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    opacity: .85;
+    margin-bottom: 6px;
+  }
+  .notfall-banner .nummer {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: .02em;
+  }
+  .notfall-banner .nummer a {
+    color: white;
+    text-decoration: none;
+  }
+  .notfall-banner .hint {
+    font-size: 12px;
+    opacity: .85;
+    margin-top: 6px;
+  }
+
+  /* Schnellzugriff */
+  .quick-section {
+    padding: 20px 16px 8px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .quick-section h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--grau);
+    margin-bottom: 10px;
+    padding-left: 4px;
+  }
+  .quick-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .quick-call {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px 14px;
+    text-decoration: none;
+    color: var(--text);
+    box-shadow: 0 1px 3px rgba(47,74,50,.06);
+    transition: transform .12s;
+    min-height: 88px;
+  }
+  .quick-call:active { transform: scale(.97); }
+  .quick-call .who {
+    font-size: 11px;
+    color: var(--grau);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: 4px;
+  }
+  .quick-call .label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gruen);
+    margin-bottom: 6px;
+  }
+  .quick-call .nummer {
+    font-size: 15px;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+    margin-top: auto;
+  }
+
+  /* Hauptbereich */
+  main {
+    padding: 16px 16px 0;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  main h2.kapitel {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--grau);
+    margin: 22px 4px 10px;
+  }
+
+  /* Versicherungs-Karten */
+  .vers-karte {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(47,74,50,.06);
+  }
+  .vers-head {
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .vers-head:active { background: rgba(47,74,50,.03); }
+  .vers-icon {
+    flex: 0 0 42px;
+    height: 42px;
+    border-radius: 11px;
+    background: var(--gruen);
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .vers-head-text {
+    flex: 1;
+    min-width: 0;
+  }
+  .vers-head-text .titel {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .vers-head-text .person {
+    font-size: 12px;
+    color: var(--grau);
+  }
+  .vers-arrow {
+    color: var(--grau);
+    font-size: 18px;
+    transition: transform .2s;
+    flex-shrink: 0;
+  }
+  .vers-karte.open .vers-arrow {
+    transform: rotate(90deg);
+  }
+  .vers-body {
+    display: none;
+    padding: 0 18px 18px;
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+  }
+  .vers-karte.open .vers-body {
+    display: block;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 7px 0;
+    border-bottom: 1px solid #f0ebde;
+    gap: 14px;
+    font-size: 14px;
+  }
+  .row:last-child { border-bottom: none; }
+  .row .lbl {
+    color: var(--grau);
+    flex-shrink: 0;
+    font-size: 13px;
+  }
+  .row .val {
+    color: var(--text);
+    text-align: right;
+    word-break: break-word;
+    font-variant-numeric: tabular-nums;
+  }
+  .row .val strong { font-weight: 600; }
+  .row .val a {
+    color: var(--gruen);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .row .val a:active { text-decoration: underline; }
+
+  .block-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--gruen);
+    margin: 14px 0 6px;
+    font-weight: 600;
+  }
+  .block-title:first-child { margin-top: 0; }
+
+  .info-box {
+    background: rgba(47,74,50,.05);
+    border-left: 3px solid var(--gruen);
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .warn-box {
+    background: rgba(247,201,72,.15);
+    border-left: 3px solid var(--gelb);
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  /* Schadenfall-Strategie */
+  .strategie {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(47,74,50,.06);
+  }
+  .strategie h3 {
+    color: var(--gruen);
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .strategie ol {
+    padding-left: 22px;
+    margin: 6px 0;
+  }
+  .strategie ol li {
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .strategie ol li strong {
+    color: var(--gruen);
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 11px;
+    color: var(--grau);
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="top">
+    <a href="index.html" class="back" aria-label="Zurück">‹</a>
+    <h1>Versicherungen</h1>
+  </div>
+  <div class="sub">Übersicht für Schweden 2026</div>
+</header>
+
+<div class="notfall-banner">
+  <div class="label">Im Lebensgefährlichen Notfall</div>
+  <div class="nummer"><a href="tel:112">112</a></div>
+  <div class="hint">Notruf in allen EU-Ländern · kostenlos · ohne Vorwahl</div>
+</div>
+
+<section class="quick-section">
+  <h2>Schadenfall-Hotlines (24/7)</h2>
+  <div class="quick-grid">
+    <a class="quick-call" href="tel:+498941661799">
+      <div class="who">Uli · Münchener Verein</div>
+      <div class="label">Schadenmeldung</div>
+      <div class="nummer">+49 89 4166-1799</div>
+    </a>
+    <a class="quick-call" href="tel:+4922157894005">
+      <div class="who">Sabine · DKV</div>
+      <div class="label">Notfall Ausland</div>
+      <div class="nummer">+49 221 578-94005</div>
+    </a>
+    <a class="quick-call" href="tel:+498938034629">
+      <div class="who">Bus · roadsurfer</div>
+      <div class="label">Pannenhotline</div>
+      <div class="nummer">+49 89 3803 4629</div>
+    </a>
+    <a class="quick-call" href="tel:+498922222">
+      <div class="who">ADAC</div>
+      <div class="label">Pannenhilfe Ausland</div>
+      <div class="nummer">+49 89 22 22 22</div>
+    </a>
+  </div>
+</section>
+
+<main>
+
+  <h2 class="kapitel">Reise-Krankenversicherung</h2>
+
+  <article class="vers-karte" id="mv">
+    <div class="vers-head" onclick="toggle('mv')">
+      <div class="vers-icon">🛡️</div>
+      <div class="vers-head-text">
+        <div class="titel">Münchener Verein · ReiseKV</div>
+        <div class="person">Uli · Tarif 501 Einzelschutz</div>
+      </div>
+      <div class="vers-arrow">›</div>
+    </div>
+    <div class="vers-body">
+      <div class="block-title">Hotlines</div>
+      <div class="row"><span class="lbl">Schadenmeldung</span><span class="val"><a href="tel:+498941661799">+49 89 4166-1799</a></span></div>
+      <div class="row"><span class="lbl">Beratung</span><span class="val"><a href="tel:+498941661766">+49 89 4166-1766</a></span></div>
+      <div class="row"><span class="lbl">Erreichbarkeit</span><span class="val">Mo-Fr 8-19, Sa 9-13</span></div>
+      <div class="row"><span class="lbl">E-Mail</span><span class="val">info@muenchener-verein.de</span></div>
+      <div class="row"><span class="lbl">Online-Schaden</span><span class="val">muenchener-verein.de</span></div>
+
+      <div class="block-title">Vertragsdaten</div>
+      <div class="row"><span class="lbl">Versichert</span><span class="val">Ulrich Derwart</span></div>
+      <div class="row"><span class="lbl">Tarif</span><span class="val">501 (Einzelschutz)</span></div>
+      <div class="row"><span class="lbl">Vertragsart</span><span class="val">Dauerpolice (Auslandsreise)</span></div>
+      <div class="row"><span class="lbl">Geltungsbereich</span><span class="val">weltweit, außerhalb DE</span></div>
+      <div class="row"><span class="lbl">Reisedauer max.</span><span class="val">70 Tage je Reise</span></div>
+      <div class="row"><span class="lbl">Selbstbeteiligung</span><span class="val">keine</span></div>
+
+      <div class="block-title">Wichtige Leistungen</div>
+      <div class="row"><span class="lbl">Heilbehandlung</span><span class="val">Arzt, Zahnarzt, Heilpraktiker</span></div>
+      <div class="row"><span class="lbl">Krankenhaus</span><span class="val">stationär inkl. OP</span></div>
+      <div class="row"><span class="lbl">Rücktransport</span><span class="val">medizinisch sinnvoll/vertretbar</span></div>
+      <div class="row"><span class="lbl">Begleitperson</span><span class="val">mitversichert</span></div>
+      <div class="row"><span class="lbl">Such-/Bergungskosten</span><span class="val">bis 5.000 €</span></div>
+      <div class="row"><span class="lbl">Schmerzst. Zahnbehandlung</span><span class="val">einfache Ausführung</span></div>
+
+      <div class="warn-box">
+        <strong>Nicht versichert:</strong> Bestehende Erkrankungen, geplante Behandlungen, Kur/Reha, psychotherapeutische Behandlung, Brille/Kontaktlinsen
+      </div>
+    </div>
+  </article>
+
+  <article class="vers-karte" id="dkv">
+    <div class="vers-head" onclick="toggle('dkv')">
+      <div class="vers-icon">🛡️</div>
+      <div class="vers-head-text">
+        <div class="titel">DKV · Auslandsreise-KV</div>
+        <div class="person">Sabine · Tarif AS 7 Dauerpolice</div>
+      </div>
+      <div class="vers-arrow">›</div>
+    </div>
+    <div class="vers-body">
+      <div class="block-title">Notfall-Hotlines</div>
+      <div class="row"><span class="lbl">Notfall im Ausland</span><span class="val"><a href="tel:+4922157894005"><strong>+49 221 578-94005</strong></a></span></div>
+      <div class="row"><span class="lbl">Allg. aus dem Ausland</span><span class="val"><a href="tel:+4922157894018">+49 221 578-94018</a></span></div>
+      <div class="row"><span class="lbl">Telefax</span><span class="val">+49 221 578-6000</span></div>
+      <div class="row"><span class="lbl">24/7 erreichbar</span><span class="val">ja</span></div>
+
+      <div class="block-title">Service Deutschland</div>
+      <div class="row"><span class="lbl">Adressänderung</span><span class="val"><a href="tel:08003746444">0800 3746 444</a></span></div>
+      <div class="row"><span class="lbl">Leistungsabteilung</span><span class="val"><a href="tel:08003746100">0800 3746 100</a></span></div>
+      <div class="row"><span class="lbl">E-Mail</span><span class="val">service@dkv.com</span></div>
+      <div class="row"><span class="lbl">Online</span><span class="val">www.dkv.com</span></div>
+
+      <div class="block-title">Vertragsdaten</div>
+      <div class="row"><span class="lbl">Versichert</span><span class="val">Sabine Dany</span></div>
+      <div class="row"><span class="lbl">Versicherungs-Nr.</span><span class="val"><strong>50/81 767 661</strong></span></div>
+      <div class="row"><span class="lbl">Tarif</span><span class="val">AS 7 (Dauerpolice)</span></div>
+      <div class="row"><span class="lbl">Bestehend seit</span><span class="val">05/1992</span></div>
+
+      <div class="block-title">Berater</div>
+      <div class="row"><span class="lbl">Name</span><span class="val">Rainer Dobmeier</span></div>
+      <div class="row"><span class="lbl">Telefon</span><span class="val"><a href="tel:+498962754751">+49 89 6275 4751</a></span></div>
+      <div class="row"><span class="lbl">Anschrift</span><span class="val">Thomas-Dehler-Str. 2, 81737 München</span></div>
+
+      <div class="info-box">
+        <strong>Wichtig für Uli:</strong> Wenn Sabine zurücktransportiert werden müsste, bist du als Begleitperson über ihre DKV-Police mitversichert. Reziproke Absicherung ist damit gegeben.
+      </div>
+    </div>
+  </article>
+
+
+  <h2 class="kapitel">Mietfahrzeug-Versicherung</h2>
+
+  <article class="vers-karte" id="ergo">
+    <div class="vers-head" onclick="toggle('ergo')">
+      <div class="vers-icon">🚐</div>
+      <div class="vers-head-text">
+        <div class="titel">ERGO Reiseversicherung</div>
+        <div class="person">CDW Plus Wohnmobile (Mietfahrzeug)</div>
+      </div>
+      <div class="vers-arrow">›</div>
+    </div>
+    <div class="vers-body">
+      <div class="block-title">Hotlines</div>
+      <div class="row"><span class="lbl">Schadenmeldung</span><span class="val"><a href="tel:+498941661799">+49 89 4166-1799</a></span></div>
+      <div class="row"><span class="lbl">Allg. Beratung</span><span class="val"><a href="tel:+498941661766">+49 89 4166-1766</a></span></div>
+      <div class="row"><span class="lbl">Online-Schaden</span><span class="val">ergo-reiseversicherung.de</span></div>
+
+      <div class="block-title">Vertragsdaten</div>
+      <div class="row"><span class="lbl">Versicherungs-Nr.</span><span class="val"><strong>184447112</strong></span></div>
+      <div class="row"><span class="lbl">Tarif</span><span class="val">SBA201 (CDW Plus Wohnmobile)</span></div>
+      <div class="row"><span class="lbl">Versicherte</span><span class="val">Ulrich Derwart, Sabine Dany-Panzer</span></div>
+      <div class="row"><span class="lbl">Geltung</span><span class="val">10.06.–27.06.2026, weltweit</span></div>
+      <div class="row"><span class="lbl">Versicherungssumme</span><span class="val"><strong>6.000 €</strong></span></div>
+      <div class="row"><span class="lbl">Selbstbeteiligung</span><span class="val">keine</span></div>
+      <div class="row"><span class="lbl">Prämie</span><span class="val">304,20 €</span></div>
+
+      <div class="block-title">Wofür</div>
+      <div class="row"><span class="lbl">Zweck</span><span class="val">Selbstbeteiligung des roadsurfer-Schutzpakets (3.000 €) erstattet</span></div>
+      <div class="row"><span class="lbl">Effektive SB</span><span class="val">nur 49 € roadsurfer-Bearbeitungs­gebühr</span></div>
+
+      <div class="info-box">
+        <strong>So funktioniert's:</strong> Schaden am Bus → roadsurfer zieht 3.000 € SB → bei ERGO einreichen → ERGO erstattet. Beide informieren: roadsurfer zuerst, ERGO innerhalb 7 Tage.
+      </div>
+    </div>
+  </article>
+
+
+  <h2 class="kapitel">Im Schadenfall</h2>
+
+  <div class="strategie">
+    <h3>📋 Reihenfolge bei einem Schaden</h3>
+    <ol>
+      <li><strong>112</strong> bei Personenschaden oder akutem Notfall.</li>
+      <li>Bei Krankheit Uli: <strong>Münchener Verein</strong> kontaktieren oder lokal zum Arzt und Belege sammeln.</li>
+      <li>Bei Krankheit Sabine: <strong>DKV-Notruf</strong> (+49 221 578-94005) — 24/7 erreichbar.</li>
+      <li>Bei Bus-Schaden: <strong>roadsurfer-Hotline</strong> + Unfallbericht (Handschuhfach) ausfüllen.</li>
+      <li>Bei Unfall: <strong>immer Polizei</strong> rufen — Aktenzeichen ist Pflicht für roadsurfer (AGB § 12).</li>
+      <li>Fotos &amp; Belege sammeln — Originalrechnungen aufheben!</li>
+      <li>Kein Anerkenntnis von Schuld vor Ort. Nichts unterschreiben außer Europäischem Unfallbericht.</li>
+      <li>Schaden bei <strong>ERGO</strong> einreichen für SB-Erstattung.</li>
+    </ol>
+  </div>
+
+  <div class="warn-box" style="margin-top:14px;">
+    <strong>Verjährungsfristen beachten:</strong> Krankenversicherung &amp; Reiseversicherung haben verschiedene Anzeigefristen. Schäden möglichst innerhalb 7 Tagen melden, spätestens 14 Tage.
+  </div>
+
+</main>
+
+<footer>
+  Privat · nur für Uli &amp; Sabine<br>
+  Letzte Aktualisierung: 09.06.2026
+</footer>
+
+<script>
+function toggle(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+
+// Erste Karte standardmäßig offen, falls nicht-Notfall (Münchener Verein für Uli)
+// — bewusst weggelassen, alle bleiben zu, damit man oben sofort die Übersicht hat
+</script>
+
+</body>
+</html>
