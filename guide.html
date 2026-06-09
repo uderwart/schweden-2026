@@ -957,6 +957,73 @@
     height: 3px;
     display: inline-block;
   }
+
+  /* Cross-Link Karten — Verweise auf andere HTML-Tools */
+  .crosslink {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--moss);
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    text-decoration: none;
+    color: var(--ink);
+    margin: 1rem 0;
+    transition: all .2s;
+  }
+  .crosslink:hover {
+    border-color: var(--moss-deep);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+    color: var(--ink);
+  }
+  .crosslink .cl-icon {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    background: var(--moss-deep);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.6rem;
+  }
+  .crosslink.berry .cl-icon { background: var(--berry); }
+  .crosslink .cl-text { flex: 1; }
+  .crosslink .cl-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--moss-deep);
+    margin-bottom: .15rem;
+  }
+  .crosslink.berry .cl-title { color: var(--berry); }
+  .crosslink .cl-sub {
+    font-size: .88rem;
+    color: var(--ink-soft);
+  }
+  .crosslink .cl-arrow {
+    flex-shrink: 0;
+    color: var(--moss);
+    font-size: 1.4rem;
+  }
+  .quick-rules {
+    background: rgba(74,106,74,.04);
+    border-left: 3px solid var(--moss);
+    padding: 1rem 1.3rem;
+    margin: 1rem 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .quick-rules h4 {
+    margin: 0 0 .5rem 0;
+    color: var(--moss-deep);
+    font-size: .95rem;
+  }
+  .quick-rules p { margin: 0 0 .4rem 0; font-size: .9rem; color: var(--ink); }
+  .quick-rules p:last-child { margin-bottom: 0; }
 </style>
 </head>
 <body>
@@ -968,9 +1035,9 @@
     <h1>Eine ruhige Reise<br>durch <em>Sverige</em>.</h1>
     <p style="max-width: 600px; margin-top: 1.5rem; font-size: 1.1rem;">Vom Aufbruch in München bis zu den Schären vor Stockholm und zurück. Alles, was ihr unterwegs braucht: Route, Stellplätze, Regeln, Sprache, Notfälle.</p>
     <div class="hero-meta">
-      <div><span>Start</span><strong>Do, 11.06.2026</strong></div>
+      <div><span>Bus-Abholung</span><strong>Mi, 10.06.2026</strong></div>
       <div><span>Stockholm</span><strong>21.–24.06.</strong></div>
-      <div><span>Rückfähre</span><strong>Fr, 26.06.2026</strong></div>
+      <div><span>Bus-Rückgabe</span><strong>Sa, 27.06.2026</strong></div>
       <div><span>Reisende</span><strong>Uli &amp; Sabine</strong></div>
     </div>
   </div>
@@ -979,7 +1046,6 @@
 <nav class="toc">
   <ul>
     <li><button class="toc-btn" data-target="vorab">Vorab</button></li>
-    <li><button class="toc-btn" data-target="bus">Bus</button></li>
     <li><button class="toc-btn" data-target="route">Route</button></li>
     <li><button class="toc-btn" data-target="karte">Karte</button></li>
     <li><button class="toc-btn" data-target="stockholm">Stockholm</button></li>
@@ -988,9 +1054,7 @@
     <li><button class="toc-btn" data-target="essen">Essen &amp; Fika</button></li>
     <li><button class="toc-btn" data-target="muecken">Mücken</button></li>
     <li><button class="toc-btn" data-target="sprache">Sprache</button></li>
-    <li><button class="toc-btn" data-target="packliste">Packliste</button></li>
-    <li><button class="toc-btn" data-target="notfall">Notfall</button></li>
-    <li><button class="toc-btn" data-target="archiv">Archiv</button></li>
+    <li><button class="toc-btn" data-target="termine">Termine</button></li>
   </ul>
 </nav>
 
@@ -1049,196 +1113,29 @@
   </div>
 </section>
 
-<!-- ============ BUS ============ -->
+
+<!-- ============ BUS-VERWEIS ============ -->
 <section id="bus">
   <div class="section-head">
     <div class="num">01b — VW-Bus Übergabe</div>
     <h2>Abholung &amp; Rückgabe</h2>
-    <p>Der teuerste Moment der Reise ist nicht das Tanken, sondern eine übersehene Delle bei der Rückgabe. Hier alles, was bei Übergabe und Rückgabe wichtig ist — mit Schwerpunkt auf <strong>Schadens-Beweissicherung</strong>, weil das die Kaution rettet.</p>
+    <p>Die komplette Übergabe-Doku — Schadensaufnahme, Foto-Plan, Vertragsdaten und 24/7-Hotlines — liegt in der eigenen Bus-App. Hier nur die zwei Faustregeln, die alles entscheiden.</p>
   </div>
 
-  <div class="archiv-warning">
+  <div class="quick-rules">
     <h4>⚠ Die zwei wichtigsten Regeln</h4>
-    <p style="margin-bottom: .5rem;"><strong>1. Schäden nach Verlassen der Station können nicht mehr gemeldet werden.</strong> Alles vor Ort dokumentieren, im Übergabeprotokoll eintragen lassen, Fotos machen.</p>
-    <p style="margin-bottom: 0;"><strong>2. Fotos und Video sind eure Lebensversicherung.</strong> Mehrere Reisende berichten, dass nur ihr privates Handyvideo die Kaution gerettet hat, als bei der Rückgabe Schäden behauptet wurden, die schon vorher da waren.</p>
-    <p class="source-note">Quelle: roadsurfer Trustpilot-Bewertungen, roadsurfer FAQ &amp; AGB</p>
+    <p><strong>1. Schäden nach Verlassen der Station können nicht mehr gemeldet werden.</strong> Alles vor Ort dokumentieren, ins Übergabeprotokoll eintragen lassen, Fotos machen.</p>
+    <p><strong>2. Eigenes Handyvideo rettet Kaution (800 €) und Selbstbeteiligung (3.000 €).</strong> Vor Vertragsunterschrift komplettes Rundgang-Video mit Datum aufnehmen.</p>
   </div>
 
-  <div class="pickup-return-grid">
-
-    <!-- ABHOLUNG -->
-    <div class="pr-col pickup">
-      <h3>Abholung <span class="pr-date">Mi, 10.06.2026</span></h3>
-
-      <h4>Mitbringen</h4>
-      <ul>
-        <li class="critical">Personalausweis oder Reisepass beider Fahrer — <strong>Original</strong>, keine Fotos</li>
-        <li class="critical">Führerschein beider Fahrer im Original (Klasse B / 3, mind. 1–2 Jahre Fahrpraxis)</li>
-        <li class="critical">Kreditkarte für die Kaution (Visa oder Mastercard), PIN nicht vergessen</li>
-        <li>Buchungsbestätigung digital oder ausgedruckt</li>
-        <li>ERGO Versicherungsschein Nr. 184447112</li>
-        <li>Mietvertrag-Daten / Reservierungsnummer</li>
-      </ul>
-
-      <h4>Vorab am Vortag</h4>
-      <ul>
-        <li>Online-Check-in im Kundenkonto erledigen</li>
-        <li>Camper-Tutorial-Videos zum Bus-Modell anschauen — das spart vor Ort Zeit</li>
-        <li>Equipment-Liste der Buchung durchgehen, damit ihr wisst, was dabei sein muss</li>
-      </ul>
-
-      <h4>Bei der Übergabe</h4>
-      <ul>
-        <li class="critical">Bus außen <strong>komplett auf Schäden absuchen</strong>, gemeinsam mit Mitarbeiter</li>
-        <li class="critical">Jede vorhandene Delle, jeden Kratzer ins Übergabeprotokoll eintragen lassen</li>
-        <li class="critical">Eigenes Handyvideo machen: Rundgang außen, dann innen — mit Datum/Uhrzeit sichtbar</li>
-        <li>Innen prüfen: Polsterschäden, Funktionsfähigkeit der Klappen, Markise, Aufstelldach</li>
-        <li>Reifenzustand, Felgen-Kratzer dokumentieren</li>
-        <li>Unterboden (soweit sichtbar) und Front- + Heckschürze prüfen</li>
-        <li>Equipment-Check: alles vollständig laut Liste?</li>
-        <li>Tankfüllstand notieren (Foto vom Tacho)</li>
-        <li>Kilometerstand notieren (Foto)</li>
-        <li>Wassertanks: voll/leer? Notieren</li>
-        <li>Gas-Kasten: Flasche(n) vorhanden, Stand?</li>
-      </ul>
-
-      <h4>Vor Abfahrt</h4>
-      <ul>
-        <li class="critical">Mietvertrag <strong>unterschreiben</strong> — sonst kein Versicherungsschutz</li>
-        <li class="critical">E-Mail mit Mietvertrag und erfassten Schäden ankommen lassen, prüfen, ob alles drin steht</li>
-        <li>Pannenhotline-Nummer ins Handy speichern (erscheint nach Abholung im Kundenkonto)</li>
-        <li>QR-Code im Handschuhfach merken (für Hilfe unterwegs)</li>
-        <li>Praktisch erproben: Bett aufbauen, Küche, Heizung, Aufstelldach</li>
-      </ul>
+  <a class="crosslink" href="uebergabe.html">
+    <div class="cl-icon">🚐</div>
+    <div class="cl-text">
+      <div class="cl-title">Bus-Übergabe-App öffnen</div>
+      <div class="cl-sub">Checklisten · Foto-Plan · Schaden-Skizze · Vertragsdaten · AGB-Auszug</div>
     </div>
-
-    <!-- RÜCKGABE -->
-    <div class="pr-col return">
-      <h3>Rückgabe <span class="pr-date">Sa, 27.06.2026</span></h3>
-
-      <h4>Tag vorher unterwegs</h4>
-      <ul>
-        <li class="critical">Grauwassertank und Toilette an Entsorgungsstation leeren</li>
-        <li class="critical">Bus innen reinigen: Oberflächen, Küche, Kühlschrank leer, Boden fegen</li>
-        <li>Vollständigkeits-Check des Equipments — ist alles wieder dabei?</li>
-        <li>Frischwassertank ausspülen oder leeren (je nach Vorgabe)</li>
-        <li>Müll komplett entsorgen — keine Reste im Bus</li>
-        <li>Persönliche Sachen einsammeln (auch unter Polstern, in Fächern)</li>
-      </ul>
-
-      <h4>Am Tag der Rückgabe</h4>
-      <ul>
-        <li class="critical">Vollgetankt zurückgeben — sonst 19 € Pauschale + Spritkosten</li>
-        <li>Groben Schmutz an Windschutzscheibe und Stoßstange entfernen (Tankstelle)</li>
-        <li><strong>Nicht</strong> durch die Waschanlage — kann Aufstelldach beschädigen</li>
-        <li>Pünktlich am Rückgabeort sein, Puffer einplanen</li>
-        <li>Online einchecken via QR-Code an der Station oder Link aus Erinnerungs-Mail</li>
-      </ul>
-
-      <h4>Bei der Rückgabe vor Ort</h4>
-      <ul>
-        <li class="critical"><strong>Eigenes Handyvideo machen, BEVOR ihr die Schlüssel abgebt</strong> — Rundgang außen + innen, mit Datum sichtbar</li>
-        <li class="critical">Bei gemeinsamer Sichtprüfung dabei bleiben, Schäden im Rückgabeprotokoll mitlesen</li>
-        <li class="critical">Rückgabeprotokoll <strong>unterschreiben</strong> — und Kopie/Foto behalten</li>
-        <li>Prüfung kann 20 Min dauern, Zeit einplanen</li>
-        <li>Ergebnis findet ihr danach im Kundenkonto</li>
-        <li>Bei behaupteten Schäden, die ihr nicht verursacht habt: <strong>vor Ort widersprechen</strong>, eigenes Video zeigen</li>
-      </ul>
-
-      <h4>Nach der Rückgabe</h4>
-      <ul>
-        <li>Schadensberechnung erfolgt innerhalb 14 Tagen</li>
-        <li><strong>48-Stunden-Frist:</strong> Vermieter kann verdeckte Schäden bis 48 h nach Rückgabe geltend machen</li>
-        <li>Kreditkarten-Kaution: Block wird nach max. 30 Tagen automatisch freigegeben</li>
-        <li>EC-Kaution: Rückzahlung innerhalb 8 Wochen</li>
-        <li>Bei Schadensvorwurf: Einspruch per E-Mail oder Post innerhalb 14 Tagen ab Erhalt der Rechnung</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- FOTO-PLAN -->
-  <div class="photo-plan">
-    <h3>📸 Foto-Plan: 12 Aufnahmen pro Übergabe</h3>
-    <p style="margin-bottom: .5rem;"><strong>Beide Male</strong> — bei Abholung und Rückgabe — durch dieselbe Liste gehen. Jedes Foto mit sichtbarem Datum/Uhrzeit, alternativ als Videoaufnahme im Rundgang. So habt ihr im Ernstfall einen Vergleich.</p>
-    <p style="margin-bottom: 0; font-size: .85rem; color: var(--ink-soft);"><em>Klick auf eine Kachel = erledigt markieren (lokal gespeichert).</em></p>
-    <div class="photo-grid" id="photo-grid">
-      <!-- wird per JS gerendert -->
-    </div>
-  </div>
-
-  <!-- ABLAUF ABHOLUNG -->
-  <h3 style="margin: 2.5rem 0 1rem 0;">Empfohlener Ablauf am Abholtag</h3>
-  <p>Plant für die Abholung mindestens 90 Minuten ein. Hier ein realistischer Zeitplan, der nichts dem Zufall überlässt:</p>
-
-  <div class="timeline-handover">
-    <div class="th-step">
-      <div class="th-time">– 24 Stunden</div>
-      <div class="th-title">Online-Check-in &amp; Camper-Tutorial</div>
-      <div class="th-desc">Daten eintragen, Tutorial-Videos schauen, Equipment-Liste prüfen. Dokumente bereitlegen.</div>
-    </div>
-    <div class="th-step">
-      <div class="th-time">+ 0 Min</div>
-      <div class="th-title">Ankunft am Welcome Point</div>
-      <div class="th-desc">Pünktlich da sein. Dokumente bereithalten. Mitarbeiter wird euch zugewiesen.</div>
-    </div>
-    <div class="th-step">
-      <div class="th-time">+ 10 Min</div>
-      <div class="th-title">Dokumenten-Check &amp; Kaution</div>
-      <div class="th-desc">Ausweis und Führerschein des Hauptfahrers werden fotografiert. Kaution wird auf der Kreditkarte geblockt.</div>
-    </div>
-    <div class="th-step">
-      <div class="th-time">+ 25 Min</div>
-      <div class="th-title">Final Checks am Fahrzeug</div>
-      <div class="th-desc">Praktische Einführung in die Camper-Funktionen. Fragen sammeln, alle Funktionen durchgehen.</div>
-    </div>
-    <div class="th-step">
-      <div class="th-time">+ 45 Min</div>
-      <div class="th-title">Schadensaufnahme — gründlich!</div>
-      <div class="th-desc"><strong>Der wichtigste Schritt.</strong> Bus außen und innen komplett durchgehen, jede Auffälligkeit ins Protokoll. Parallel eigenes Video aufnehmen. Reifen, Felgen, Unterboden, Dach nicht vergessen.</div>
-    </div>
-    <div class="th-step">
-      <div class="th-time">+ 70 Min</div>
-      <div class="th-title">Mietvertrag unterschreiben</div>
-      <div class="th-desc">Erst nach kompletter Schadensaufnahme. E-Mail-Bestätigung abwarten und prüfen, dass alle dokumentierten Schäden drin sind.</div>
-    </div>
-    <div class="th-step">
-      <div class="th-time">+ 90 Min</div>
-      <div class="th-title">Abfahrt</div>
-      <div class="th-desc">Pannenhotline ins Handy gespeichert, QR-Code im Handschuhfach lokalisiert. Erste Tankstop einplanen für ruhige Bus-Erkundung.</div>
-    </div>
-  </div>
-
-  <!-- WAS TUN WENN -->
-  <h3 style="margin: 2.5rem 0 1rem 0;">Was tun, wenn …</h3>
-  <div class="grid-2">
-    <div class="card warn">
-      <h4>… der Bus nicht dem Gebuchten entspricht?</h4>
-      <p>Z.B. Schaltgetriebe statt Automatik, fehlende Ausstattung. Sofort vor Ort reklamieren, nicht einsteigen und losfahren. Pannenhotline anrufen für Lösung. Schriftlich/per E-Mail dokumentieren.</p>
-    </div>
-    <div class="card warn">
-      <h4>… ein neuer Schaden während der Reise passiert?</h4>
-      <p>Sofort dokumentieren: Fotos, Notizen mit Datum, ggf. Polizei rufen (bei Unfall mit anderen). Pannenhotline anrufen, Schaden melden. ERGO parallel informieren (089 4166-1799).</p>
-    </div>
-    <div class="card warn">
-      <h4>… technische Probleme unterwegs auftreten?</h4>
-      <p>Pannenhotline anrufen (Nummer im Kundenkonto nach Abholung). QR-Code im Handschuhfach scannen für schnelle Hilfe. Nicht selbst reparieren ohne Rücksprache — das kann den Versicherungsschutz gefährden.</p>
-    </div>
-    <div class="card warn">
-      <h4>… bei Rückgabe Schäden behauptet werden, die ihr nicht verursacht habt?</h4>
-      <p>Eigenes Übergabe-Video zeigen. Vor Ort widersprechen, Rückgabeprotokoll <strong>nicht ohne Vorbehalt</strong> unterschreiben (z.B. "unter Vorbehalt der Prüfung" dazuschreiben). Innerhalb 14 Tagen schriftlich Einspruch einlegen.</p>
-    </div>
-  </div>
-
-  <!-- ZUSATZHINWEISE -->
-  <h3 style="margin: 2.5rem 0 1rem 0;">Praktische Tipps</h3>
-  <ul class="clean">
-    <li><strong>Equipment-Check beim Einräumen:</strong> Vor der eigenen Beladung das mitgelieferte Equipment durchzählen und in einer eigenen Liste festhalten. Sonst wird's bei der Rückgabe stressig.</li>
-    <li><strong>Innen-Foto vor dem Beladen:</strong> Vor dem Einräumen ein Foto vom leeren, sauberen Innenraum machen. So habt ihr einen Vergleichsstand, falls bei der Rückgabe behauptet wird, der Bus sei verschmutzt zurückgegeben worden.</li>
-    <li><strong>Werkzeug-Kasten prüfen:</strong> Bordwerkzeug, Wagenheber, Ersatzrad oder Reifendichtmittel-Set vorhanden? Auch das beim Übergabe-Check abhaken.</li>
-    <li><strong>Bedienungsanleitung fotografieren:</strong> Falls ein Heft im Bus liegt, Seiten zu Aufstelldach, Heizung, Wasser-/Gassystem abfotografieren. Spart unterwegs Sucherei.</li>
-    <li><strong>Schäden-Frist beachten:</strong> Verdeckte Schäden können bis 48 Std. nach Rückgabe vom Vermieter geltend gemacht werden. Bewahrt euer Rückgabe-Video mindestens 8 Wochen auf.</li>
-  </ul>
-
+    <div class="cl-arrow">›</div>
+  </a>
 </section>
 
 <!-- ============ ROUTE ============ -->
@@ -1811,151 +1708,30 @@
   </div>
 </section>
 
-<!-- ============ PACKLISTE ============ -->
+<!-- ============ PACKLISTE-VERWEIS ============ -->
 <section id="packliste">
     <div class="section-head">
       <div class="num">09 — Packliste</div>
       <h2>Was in den Bus muss</h2>
-      <p>Zum Abhaken — die Häkchen werden lokal in eurem Browser gespeichert.</p>
+      <p>Die vollständige Packliste mit ~150 Items, Mengen-Empfehlungen und Tasche-Zuordnung liegt in der mobilen Packlisten-App.</p>
     </div>
 
-    <div class="checklist" id="checklist-root">
-      <div class="checklist-cat">
-        <h4>Dokumente</h4>
-        <label><input type="checkbox" data-key="d1"><span>Personalausweis (beide)</span></label>
-        <label><input type="checkbox" data-key="d2"><span>Führerschein</span></label>
-        <label><input type="checkbox" data-key="d3"><span>Fahrzeugschein</span></label>
-        <label><input type="checkbox" data-key="d4"><span>Versicherungspapiere / Grüne Karte</span></label>
-        <label><input type="checkbox" data-key="d5"><span>Fährbuchung Hin- und Rückweg</span></label>
-        <label><input type="checkbox" data-key="d6"><span>Krankenversicherungskarte (EHIC)</span></label>
-        <label><input type="checkbox" data-key="d7"><span>ADAC-Karte / Schutzbrief</span></label>
+    <a class="crosslink" href="packliste.html">
+      <div class="cl-icon">🎒</div>
+      <div class="cl-text">
+        <div class="cl-title">Packlisten-App öffnen</div>
+        <div class="cl-sub">8 Kategorien · Mengen · Pack-Plan mit Taschen · Import/Export per Text</div>
       </div>
-
-      <div class="checklist-cat">
-        <h4>Bus und Technik</h4>
-        <label><input type="checkbox" data-key="b1"><span>Warndreieck, Warnweste (2x)</span></label>
-        <label><input type="checkbox" data-key="b2"><span>Verbandskasten, Glühlampen</span></label>
-        <label><input type="checkbox" data-key="b3"><span>Abschleppseil</span></label>
-        <label><input type="checkbox" data-key="b4"><span>Reifendruck-Messer</span></label>
-        <label><input type="checkbox" data-key="b5"><span>Starthilfekabel</span></label>
-        <label><input type="checkbox" data-key="b6"><span>Werkzeug, Kabelbinder, Dichtband</span></label>
-        <label><input type="checkbox" data-key="b7"><span>Wasserkanister, Trichter</span></label>
-        <label><input type="checkbox" data-key="b8"><span>Verlängerungskabel CEE-Adapter</span></label>
-        <label><input type="checkbox" data-key="b9"><span>Toilettenchemie / Kassettentabs</span></label>
-      </div>
-
-      <div class="checklist-cat">
-        <h4>Schlafen und Wohnen</h4>
-        <label><input type="checkbox" data-key="s1"><span>Bettwäsche, Decken, Kissen</span></label>
-        <label><input type="checkbox" data-key="s2"><span>Schlafsack als Backup</span></label>
-        <label><input type="checkbox" data-key="s3"><span>Verdunkelung — wegen 18 h Tageslicht!</span></label>
-        <label><input type="checkbox" data-key="s4"><span>Klappstühle, Klapptisch</span></label>
-        <label><input type="checkbox" data-key="s5"><span>Stirnlampen + Ersatzbatterien</span></label>
-        <label><input type="checkbox" data-key="s6"><span>Outdoor-Decke fürs Picknick</span></label>
-      </div>
-
-      <div class="checklist-cat">
-        <h4>Küche</h4>
-        <label><input type="checkbox" data-key="k1"><span>Gas voll? (Kartuschen prüfen)</span></label>
-        <label><input type="checkbox" data-key="k2"><span>Kaffee-Setup (Kanne, Mühle, Bohnen)</span></label>
-        <label><input type="checkbox" data-key="k3"><span>Geschirr, Besteck, Schneidebrett</span></label>
-        <label><input type="checkbox" data-key="k4"><span>Spülmittel, Schwämme, Geschirrtuch</span></label>
-        <label><input type="checkbox" data-key="k5"><span>Müllbeutel, Brotzeitdosen</span></label>
-        <label><input type="checkbox" data-key="k6"><span>Salz, Pfeffer, Olivenöl, Gewürze</span></label>
-        <label><input type="checkbox" data-key="k7"><span>Trockenvorrat (Pasta, Reis, Couscous)</span></label>
-        <label><input type="checkbox" data-key="k8"><span>Wasserflaschen + Filter</span></label>
-      </div>
-
-      <div class="checklist-cat">
-        <h4>Kleidung</h4>
-        <label><input type="checkbox" data-key="c1"><span>Regenjacke + Regenhose</span></label>
-        <label><input type="checkbox" data-key="c2"><span>Warme Fleecejacke</span></label>
-        <label><input type="checkbox" data-key="c3"><span>Wanderschuhe + leichte Schuhe</span></label>
-        <label><input type="checkbox" data-key="c4"><span>Mütze, dünne Handschuhe</span></label>
-        <label><input type="checkbox" data-key="c5"><span>Badesachen, Mikrofaserhandtücher</span></label>
-        <label><input type="checkbox" data-key="c6"><span>Sonnenbrille, Sonnenhut</span></label>
-        <label><input type="checkbox" data-key="c7"><span>Schlafmaske (helle Nächte!)</span></label>
-        <label><input type="checkbox" data-key="c8"><span>Eine schönere Kombi für Stockholm</span></label>
-      </div>
-
-      <div class="checklist-cat">
-        <h4>Outdoor und Natur</h4>
-        <label><input type="checkbox" data-key="o1"><span>Mückenschutz (Autan, Anti-Brumm)</span></label>
-        <label><input type="checkbox" data-key="o2"><span>After-Bite, Zeckenzange</span></label>
-        <label><input type="checkbox" data-key="o3"><span>Sonnencreme (LSF 30+)</span></label>
-        <label><input type="checkbox" data-key="o4"><span>Fernglas (Schären!)</span></label>
-        <label><input type="checkbox" data-key="o5"><span>Wanderkarte / Outdooractive Premium</span></label>
-        <label><input type="checkbox" data-key="o6"><span>Trinkflaschen, Daypack</span></label>
-      </div>
-
-      <div class="checklist-cat">
-        <h4>Elektronik</h4>
-        <label><input type="checkbox" data-key="t1"><span>Handys + Ladekabel</span></label>
-        <label><input type="checkbox" data-key="t2"><span>Powerbank, USB-Adapter (12V)</span></label>
-        <label><input type="checkbox" data-key="t3"><span>Kamera + Speicherkarten</span></label>
-        <label><input type="checkbox" data-key="t4"><span>Bluetooth-Box für Lagerfeuer-Musik</span></label>
-        <label><input type="checkbox" data-key="t5"><span>Kindle / Buch / Reiseführer</span></label>
-      </div>
-
-      <div class="checklist-cat">
-        <h4>Persönlich und Sonstiges</h4>
-        <label><input type="checkbox" data-key="e1"><span>Reise-Apotheke (Schmerz, Magen, Pflaster)</span></label>
-        <label><input type="checkbox" data-key="e2"><span>Persönliche Medikamente</span></label>
-        <label><input type="checkbox" data-key="e3"><span>Kreditkarte + Backup-Karte</span></label>
-        <label><input type="checkbox" data-key="e4"><span>Etwas Bargeld (~50 €) als Reserve</span></label>
-        <label><input type="checkbox" data-key="e5"><span>Tagebuch + Stift</span></label>
-        <label><input type="checkbox" data-key="e6"><span>Spielkarten, Würfelspiel</span></label>
-        <label><input type="checkbox" data-key="e7"><span>Gitarre? (für Lagerfeuer-Abende)</span></label>
-      </div>
-    </div>
+      <div class="cl-arrow">›</div>
+    </a>
 </section>
 
-<!-- ============ NOTFALL ============ -->
-<section id="notfall" class="alt">
-  <div class="inner">
+<!-- ============ TERMINE ============ -->
+<section id="termine">
   <div class="section-head">
-    <div class="num">10 — Im Notfall</div>
-    <h2>Wichtige Nummern</h2>
-  </div>
-
-  <div class="emergency">
-    <h3>Sofortige Hilfe</h3>
-    <p>Die 112 funktioniert in ganz Schweden — Polizei, Feuerwehr, Krankenwagen. Operatoren sprechen Englisch.</p>
-    <div class="emergency-grid">
-      <div><strong>112</strong><span>Notruf (alle)</span></div>
-      <div><strong>114 14</strong><span>Polizei (kein Notfall)</span></div>
-      <div><strong>1177</strong><span>Krankenberatung</span></div>
-      <div><strong>020 96 27 27</strong><span>SOS Pannenhilfe</span></div>
-    </div>
-  </div>
-
-  <div style="margin-top: 2rem;" class="grid-2">
-    <div class="card">
-      <h4>Deutsche Botschaft Stockholm</h4>
-      <p>Skarpögatan 9, 115 27 Stockholm<br>+46 8 670 1500</p>
-    </div>
-    <div class="card">
-      <h4>ADAC Auslands-Notruf</h4>
-      <p>Aus Schweden: <strong>+49 89 22 22 22</strong><br>24/7 deutschsprachig — Pannenhilfe, Abschleppen, Werkstatt-Vermittlung</p>
-    </div>
-    <div class="card">
-      <h4>Apotheke (Apotek)</h4>
-      <p>Apotheken erkennt ihr am grünen Kreuz. Größere Ketten: <strong>Apotek Hjärtat</strong>, <strong>Apoteket</strong>. Standardmedikamente meist ohne Rezept verfügbar.</p>
-    </div>
-    <div class="card">
-      <h4>Krankenhaus (Sjukhus)</h4>
-      <p>EHIC-Karte mitnehmen — damit werden Behandlungen wie für schwedische Bürger abgerechnet (kleine Selbstbeteiligung). Größere Krankenhäuser in jeder Provinzhauptstadt.</p>
-    </div>
-  </div>
-  </div>
-</section>
-
-<!-- ============ ARCHIV ============ -->
-<section id="archiv">
-  <div class="section-head">
-    <div class="num">10 — Dokumentenarchiv</div>
+    <div class="num">10 — Termine &amp; Übersicht</div>
     <h2>Wichtige Daten auf einen Blick</h2>
-    <p>Reservierungen, Versicherung, Vertragsdaten, Schadensablauf — alles, was im Ernstfall griffbereit sein muss. Tippe auf eine Nummer oder Adresse, um sie zu kopieren.</p>
+    <p>Termine, Reservierungen, Notruf-Backup-Liste — und Verweise auf die anderen Reise-Apps.</p>
   </div>
 
   <h3 style="margin: 0 0 1rem 0;">Reservierungen &amp; Buchungen</h3>
@@ -1979,160 +1755,86 @@
     <div>Gesamt geplant: <strong id="res-total">0,00 €</strong></div>
   </div>
 
-  <div class="archiv-warning">
-    <h4>⚠ Vor Reisebeginn klären</h4>
-    <p style="margin-bottom: .5rem;">Im Beratungsprotokoll und in Teil H der Versicherungsbedingungen ist der CDW-Selbstbehalts-Ausschluss PLUS durchgängig auf <strong>Mietfahrzeuge</strong> ausgelegt — er erstattet den Selbstbehalt aus dem Mietvertrag. Wenn ihr mit eurem <strong>eigenen</strong> California Ocean fahrt, könnte der Tarif nicht greifen.</p>
-    <p style="margin-bottom: 0;"><strong>Empfehlung:</strong> Vor Reisebeginn ERGO unter <span class="copyable">+49 89 4166-1766</span> anrufen und klären, ob der Tarif für ein Eigenfahrzeug gilt. Widerruf wäre innerhalb von 14 Tagen ab Erhalt der Unterlagen möglich. Dies ist Information, keine Rechtsberatung.</p>
-  </div>
-
-  <h3 style="margin: 2.5rem 0 1rem 0;">ERGO Reiseversicherung — Vertragsdaten</h3>
-  <div class="archiv-doc">
-    <h4>CDW-Selbstbehalts-Ausschluss PLUS für Wohnmobile</h4>
-    <div class="doc-meta">Tarif SBA201 · Versicherungsschein vom 04.02.2026</div>
-
-    <table class="archiv-table">
-      <tr><td>Versicherungs-Nr.</td><td><span class="copyable">184447112</span></td></tr>
-      <tr><td>Anfrage-ID</td><td><span class="copyable">RA-ERV-7126076</span></td></tr>
-      <tr><td>Versicherungsnehmer</td><td>Ulrich Derwart</td></tr>
-      <tr><td>Versicherte Personen</td><td>Ulrich Derwart, Sabine Dany-Panzer</td></tr>
-      <tr><td>Versicherungsbeginn</td><td>10.06.2026</td></tr>
-      <tr><td>Versicherungsende</td><td>27.06.2026</td></tr>
-      <tr><td>Geltungsbereich</td><td>Welt (weltweit)</td></tr>
-      <tr><td>Versicherungssumme</td><td>6.000,00 €</td></tr>
-      <tr><td>Selbstbeteiligung</td><td>keine</td></tr>
-      <tr><td>Prämie gesamt</td><td>304,20 € (inkl. 48,57 € Versicherungsteuer)</td></tr>
-      <tr><td>Zahlungsweise</td><td>Banklastschrift</td></tr>
-      <tr><td>Vertragsbedingungen</td><td>VB-ERV/CC 2024</td></tr>
-    </table>
-  </div>
-
-  <h3 style="margin: 2.5rem 0 1rem 0;">Was die Versicherung leistet</h3>
-  <div class="grid-2">
-    <div class="card good">
-      <h4>Versichert ist</h4>
-      <ul style="margin: 0; padding-left: 1.2rem;">
-        <li>Diebstahl des Mietfahrzeugs</li>
-        <li>Schäden durch Unfall</li>
-        <li>Schäden durch Vandalismus</li>
-        <li>Schäden durch Elementarereignisse (Sturm, Hagel, Hochwasser, Erdrutsch etc.)</li>
-        <li>Schäden bei versuchtem Diebstahl</li>
-        <li><strong>Plus-Leistung:</strong> Unterboden, Reifen, Windschutz-/Seiten-/Heckscheibe, Außenspiegel, Dach</li>
-      </ul>
+  <h3 style="margin: 2.5rem 0 1rem 0;">📅 Termine im Überblick</h3>
+  <div class="reservations" style="grid-template-columns: 1fr 2fr 1fr;">
+    <div class="res-row header">
+      <div>Datum / Uhrzeit</div>
+      <div>Ereignis</div>
+      <div style="text-align: right;">Ort</div>
     </div>
-    <div class="card warn">
-      <h4>Nicht versichert</h4>
-      <ul style="margin: 0; padding-left: 1.2rem;">
-        <li>Fahrer ohne Berechtigung im Mietvertrag</li>
-        <li>Schäden an Ölwanne</li>
-        <li>Schäden im Innenraum</li>
-        <li>Verlust/Beschädigung Fahrzeugschlüssel</li>
-        <li>Vorsatz oder grobe Fahrlässigkeit</li>
-        <li>Fahren unter Alkohol/Drogen/Arzneimittel-Einfluss</li>
-        <li>Wettfahrten und Übungsfahrten</li>
-        <li>Befahren nicht-zulässiger Straßen (Campingplätze sind erlaubt)</li>
-        <li>Verschleiß und Bedienfehler</li>
-      </ul>
+    <div class="res-row">
+      <div><strong>Mi 10.06.</strong> 13:00</div>
+      <div>🚐 Bus-Abholung (roadsurfer SUNRISE SUITE)</div>
+      <div style="text-align: right;">Ingolstädter Str. 172, München</div>
+    </div>
+    <div class="res-row">
+      <div><strong>Fr 12.06.</strong></div>
+      <div>⛴ Fähre Rostock → Trelleborg (TT-Line "Nils Dacke")</div>
+      <div style="text-align: right;">Rostock</div>
+    </div>
+    <div class="res-row">
+      <div><strong>So 21.06.</strong></div>
+      <div>🌞 Ankunft Stockholm (Camping Bredäng / Ängby)</div>
+      <div style="text-align: right;">Stockholm</div>
+    </div>
+    <div class="res-row">
+      <div><strong>Do 25.06.</strong></div>
+      <div>⛴ Fähre Trelleborg → Rostock (TT-Line "Nils Holgersson")</div>
+      <div style="text-align: right;">Trelleborg</div>
+    </div>
+    <div class="res-row">
+      <div><strong>Sa 27.06.</strong> 12:00</div>
+      <div>🚐 Bus-Rückgabe (roadsurfer)</div>
+      <div style="text-align: right;">Ingolstädter Str. 172, München</div>
     </div>
   </div>
+  <p style="margin: .8rem 0 0 0; font-size: .85rem; color: var(--ink-soft);"><em>Genaue Fähr-Uhrzeiten siehe TT-Line-Buchungsbestätigung (Buchung 95739462).</em></p>
 
-  <h3 style="margin: 2.5rem 0 1rem 0;">Im Schadenfall — Schritt für Schritt</h3>
-  <ol class="step-list">
-    <li><strong>Sicher stellen, Polizei rufen.</strong> Bei Unfall, Diebstahl oder Vandalismus die örtliche Polizei sofort verständigen — schwedischer Notruf <span class="copyable">112</span>. Lasst euch ein Aktenzeichen oder einen Polizeibericht aushändigen.</li>
-    <li><strong>Fotos machen.</strong> Schäden, Unfallstelle, Kennzeichen aller Beteiligten, Zeugen-Kontaktdaten. Mit Datum/Uhrzeit, möglichst aus mehreren Winkeln.</li>
-    <li><strong>Schaden minimieren.</strong> Vertragspflicht — alles vermeiden, was den Schaden vergrößern würde (Schadenminderungspflicht).</li>
-    <li><strong>Schaden bei ERGO online melden:</strong> <span class="copyable">ergo-reiseversicherung.de/schaden</span> — Nachweise direkt im Formular hochladen.</li>
-    <li><strong>Bei Fragen:</strong> Schadenabwicklung <span class="copyable">+49 89 4166-1799</span> (Mo-Fr 8-19 Uhr, Sa 9-13 Uhr).</li>
-    <li><strong>Belege sammeln.</strong> Alles aufheben, was zum Schadenfall gehört (siehe Liste unten).</li>
-  </ol>
+  <h3 style="margin: 2.5rem 0 1rem 0;">📋 Weiterführende Apps</h3>
 
-  <h3 style="margin: 2.5rem 0 1rem 0;">Erforderliche Nachweise</h3>
-  <p style="margin-bottom: 1rem;">Diese Unterlagen werden für die Schadensabwicklung benötigt — sammelt sie sofort, nicht erst zuhause:</p>
-  <div class="grid-2">
-    <div class="card">
-      <h4>Immer einreichen</h4>
-      <ul class="doc-checklist">
-        <li>Versicherungsnachweis (Prämienrechnung)</li>
-        <li>Buchungsunterlagen</li>
-        <li>Ausgefülltes Schadenformular</li>
-        <li>Übergabeprotokoll Mietfahrzeug</li>
-        <li>Vollständiger Mietvertrag</li>
-        <li>Nachweis vereinbarter Selbstbehalt</li>
-        <li>Abrechnungsbescheid des Vermieters</li>
-        <li>Angaben zu zusätzlichen Reiseversicherungen (Kreditkarte, Automobilclub)</li>
-      </ul>
+  <a class="crosslink" href="versicherungen.html">
+    <div class="cl-icon">🛡️</div>
+    <div class="cl-text">
+      <div class="cl-title">Versicherungen-Übersicht</div>
+      <div class="cl-sub">Münchener Verein (Uli) · DKV (Sabine) · ERGO Mietfahrzeug · Schadenfall-Reihenfolge · 24/7-Hotlines</div>
     </div>
-    <div class="card">
-      <h4>Je nach Schadenfall</h4>
-      <ul class="doc-checklist">
-        <li>Unfallprotokoll oder Polizeibericht</li>
-        <li>Rückgabeprotokoll mit Schadenbericht</li>
-        <li>Fotos der entstandenen Schäden</li>
-        <li>Bei Diebstahl: Polizeiliche Anzeige</li>
-        <li>Kostenvoranschlag oder Reparaturrechnung</li>
-        <li>Nachweis der Selbstbehalt-Zahlung an Vermieter</li>
-        <li>Bestätigung Vermieter über unverzügliche Schadenmeldung</li>
-        <li>Bei Erstattung durch Kfz-Versicherung: Leistungsbescheid</li>
-      </ul>
+    <div class="cl-arrow">›</div>
+  </a>
+
+  <a class="crosslink" href="uebergabe.html">
+    <div class="cl-icon">🚐</div>
+    <div class="cl-text">
+      <div class="cl-title">Bus-Übergabe-App</div>
+      <div class="cl-sub">Checklisten · Foto-Upload · Schaden-Skizze · Vertrag · AGB · roadsurfer-Tipps</div>
     </div>
-  </div>
+    <div class="cl-arrow">›</div>
+  </a>
 
-  <h3 style="margin: 2.5rem 0 1rem 0;">Kontakte ERGO</h3>
-  <div class="archiv-doc">
-    <table class="archiv-table">
-      <tr><td>Schadenmeldung online</td><td><span class="copyable">ergo-reiseversicherung.de/schaden</span></td></tr>
-      <tr><td>Schadenabwicklung Telefon</td><td><span class="copyable">+49 89 4166-1799</span></td></tr>
-      <tr><td>Allgemeine Beratung</td><td><span class="copyable">+49 89 4166-1766</span></td></tr>
-      <tr><td>E-Mail</td><td><span class="copyable">contact@ergo-reiseversicherung.de</span></td></tr>
-      <tr><td>Erreichbarkeit</td><td>Mo-Fr 8-19 Uhr · Sa 9-13 Uhr</td></tr>
-      <tr><td>Postadresse Schäden</td><td>ERGO Reiseversicherung AG<br>Leistungsabteilung<br>Postfach 80 06 20<br>81606 München</td></tr>
-      <tr><td>Postadresse allgemein</td><td>ERGO Reiseversicherung AG<br>Postfach 80 05 45<br>81605 München</td></tr>
-    </table>
-  </div>
+  <a class="crosslink" href="packliste.html">
+    <div class="cl-icon">🎒</div>
+    <div class="cl-text">
+      <div class="cl-title">Packlisten-App</div>
+      <div class="cl-sub">~150 Items · Mengen · Pack-Plan mit Taschen</div>
+    </div>
+    <div class="cl-arrow">›</div>
+  </a>
 
-  <h3 style="margin: 2.5rem 0 1rem 0;">Zu beachten</h3>
-  <div class="card" style="border-left: 3px solid var(--sun);">
-    <h4 style="color: var(--moss-deep);">Wichtige Regeln aus den Bedingungen</h4>
-    <ul style="margin: 0; padding-left: 1.2rem; color: var(--ink-soft);">
-      <li><strong>Schaden unverzüglich melden</strong> — "ohne schuldhaftes Zögern". Verspätete Meldung kann zu Leistungskürzung oder -verweigerung führen.</li>
-      <li><strong>Bei Übernahme des Fahrzeugs:</strong> Alle vorhandenen Schäden im Übergabeprotokoll dokumentieren. Spätere Ansprüche scheitern sonst.</li>
-      <li><strong>Wahrheitspflicht:</strong> Alle Angaben gegenüber ERGO müssen wahrheitsgemäß sein. Arglistige Verletzung führt zum vollständigen Verlust des Versicherungsschutzes.</li>
-      <li><strong>Vorrang anderer Versicherungen:</strong> Falls Kreditkarten-Schutz oder andere Versicherungen den Schaden decken, gehen diese vor. ERGO leistet zunächst, holt sich Geld dann von dort zurück.</li>
-      <li><strong>Verjährung:</strong> Ansprüche verjähren nach drei Jahren ab Schluss des Jahres, in dem der Anspruch entstanden ist.</li>
-    </ul>
-  </div>
-
-  <h3 style="margin: 2.5rem 0 1rem 0;">Weitere Dokumente zur Reise</h3>
-  <p>Diese Unterlagen liegen separat als PDF vor und sollten <strong>digital im Handy</strong> (z.B. in einer Reise-Cloud) und <strong>als Ausdruck im Bus</strong> verfügbar sein:</p>
-  <ul class="doc-checklist" style="margin-top: 1rem;">
-    <li>Personalausweise (beide)</li>
-    <li>Führerscheine</li>
-    <li>Fahrzeugschein des California</li>
-    <li>Kfz-Versicherungsschein (Kasko / Haftpflicht)</li>
-    <li>Grüne Versicherungskarte</li>
-    <li>ERGO Versicherungsschein Nr. 184447112</li>
-    <li>Beratungsprotokoll RA-ERV-7126076</li>
-    <li>Fährbuchung Rostock-Trelleborg (hin und zurück)</li>
-    <li>Krankenversicherungskarte (EHIC) beider Personen</li>
-    <li>Impfausweise (Tetanus, FSME)</li>
-    <li>Listen wichtiger Medikamente und Allergien</li>
-    <li>ADAC-Mitgliedskarte / Schutzbrief-Unterlagen</li>
-    <li>Notfall-Kontakte zuhause (jemand der Bescheid weiß)</li>
-  </ul>
-
-  <h3 style="margin: 2.5rem 0 1rem 0;">Notruf-Karte für die Brieftasche</h3>
+  <h3 style="margin: 2.5rem 0 1rem 0;">🚨 Notruf-Backup für die Brieftasche</h3>
+  <p style="margin-bottom: 1rem; font-size: .9rem;">Im Versicherungs-Tool sind die wichtigsten Hotlines als 1-Tap-Anruf eingerichtet. Falls Handy weg oder leer — diese Liste ausdrucken und ins Portemonnaie:</p>
   <div class="archiv-doc" style="border-left-color: var(--berry); background: #fafaf5;">
     <h4 style="color: var(--berry);">Im Ernstfall</h4>
     <table class="archiv-table">
       <tr><td>Notruf Schweden (alle)</td><td><strong style="font-size: 1.2rem;">112</strong></td></tr>
       <tr><td>Polizei (kein Notfall)</td><td><strong>114 14</strong></td></tr>
-      <tr><td>Krankenberatung</td><td><strong>1177</strong></td></tr>
-      <tr><td>SOS Pannenhilfe Schweden</td><td><strong>020 96 27 27</strong></td></tr>
+      <tr><td>Gesundheitsberatung</td><td><strong>1177</strong></td></tr>
+      <tr><td>SOS Pannenhilfe Schweden</td><td><strong>020-91 00 40</strong></td></tr>
+      <tr><td>roadsurfer Pannenhotline 24/7</td><td><strong>+49 89 3803 4629</strong></td></tr>
       <tr><td>ADAC aus dem Ausland</td><td><strong>+49 89 22 22 22</strong></td></tr>
+      <tr><td>Münchener Verein (Uli) Schaden</td><td><strong>+49 89 4166-1799</strong></td></tr>
+      <tr><td>DKV (Sabine) Notfall Ausland</td><td><strong>+49 221 578-94005</strong></td></tr>
       <tr><td>ERGO Schadenmeldung</td><td><strong>+49 89 4166-1799</strong></td></tr>
-      <tr><td>Versicherungs-Nr. ERGO</td><td><strong>184447112</strong></td></tr>
       <tr><td>Deutsche Botschaft Stockholm</td><td><strong>+46 8 670 1500</strong></td></tr>
     </table>
-    <p style="margin: 1rem 0 0 0; font-size: .85rem;"><em>Diese Liste ausdrucken, in die Brieftasche stecken oder als Foto auf dem Handy speichern.</em></p>
   </div>
 
 </section>
@@ -2140,34 +1842,10 @@
 <footer>
   <p class="signature">Ha en trevlig resa.</p>
   <p>Habt eine schöne Zeit — und meldet euch, wenn ihr zurück seid.<br>
-  Quellen: visitsweden.de, schwedentipps.se, ADAC Länderinfo Schweden, nordlandcamper.de, traveloptimizer.de, skandinavientrips.de, mueckenguru.de, besucherguide-schweden.de · Stand April 2026.</p>
+  Quellen: visitsweden.de, schwedentipps.se, ADAC Länderinfo Schweden, nordlandcamper.de, traveloptimizer.de, skandinavientrips.de, mueckenguru.de, besucherguide-schweden.de · Stand Juni 2026 · v23.</p>
 </footer>
 
 <script>
-  (function() {
-    const STORAGE_KEY = 'schweden-packliste-2026';
-    const root = document.getElementById('checklist-root');
-    if (!root) return;
-
-    let saved = {};
-    try {
-      saved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-    } catch(e) {
-      saved = {};
-    }
-
-    root.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-      const key = cb.dataset.key;
-      if (saved[key]) cb.checked = true;
-      cb.addEventListener('change', () => {
-        saved[key] = cb.checked;
-        try {
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
-        } catch(e) {}
-      });
-    });
-  })();
-
   document.querySelectorAll('nav.toc .toc-btn').forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();
@@ -2801,104 +2479,6 @@
       openEditForm(id);
     }
   });
-
-  // ============ BUS-TAB Checklisten + Foto-Plan ============
-  const BUS_CHECK_KEY = 'schweden-bus-checklist-2026';
-  const PHOTO_KEY = 'schweden-foto-plan-2026';
-
-  const photoList = [
-    { id: 'p1',  label: 'Front (komplett)' },
-    { id: 'p2',  label: 'Heck (komplett)' },
-    { id: 'p3',  label: 'Linke Seite' },
-    { id: 'p4',  label: 'Rechte Seite' },
-    { id: 'p5',  label: 'Dach &amp; Aufstelldach' },
-    { id: 'p6',  label: 'Räder &amp; Felgen' },
-    { id: 'p7',  label: 'Front-/Heckschürze nah' },
-    { id: 'p8',  label: 'Innenraum vorne' },
-    { id: 'p9',  label: 'Innenraum hinten' },
-    { id: 'p10', label: 'Polster &amp; Bett' },
-    { id: 'p11', label: 'Tacho: km + Tank' },
-    { id: 'p12', label: 'Equipment ausgebreitet' }
-  ];
-
-  function loadPhotoState() {
-    try {
-      const s = localStorage.getItem(PHOTO_KEY);
-      return s ? JSON.parse(s) : { pickup: {}, return: {} };
-    } catch(e) { return { pickup: {}, return: {} }; }
-  }
-  function savePhotoState(st) {
-    try { localStorage.setItem(PHOTO_KEY, JSON.stringify(st)); } catch(e) {}
-  }
-
-  function renderPhotoGrid() {
-    const grid = document.getElementById('photo-grid');
-    if (!grid) return;
-    const state = loadPhotoState();
-    grid.innerHTML = '';
-
-    // Zwei Sektionen: Abholung und Rückgabe
-    [
-      { key: 'pickup', label: 'Abholung 10.06.' },
-      { key: 'return', label: 'Rückgabe 27.06.' }
-    ].forEach(section => {
-      const header = document.createElement('div');
-      header.style.cssText = 'grid-column: 1/-1; font-family: Fraunces, serif; color: var(--moss-deep); font-size: 1rem; margin-top: .5rem; margin-bottom: .2rem; font-weight: 500;';
-      header.textContent = section.label;
-      grid.appendChild(header);
-
-      photoList.forEach((p, idx) => {
-        const tile = document.createElement('div');
-        const isDone = state[section.key] && state[section.key][p.id];
-        tile.className = 'photo-tile' + (isDone ? ' done' : '');
-        tile.dataset.section = section.key;
-        tile.dataset.photoId = p.id;
-        tile.innerHTML = '<span class="num">' + (idx + 1) + '</span>' + p.label;
-        tile.addEventListener('click', () => {
-          const st = loadPhotoState();
-          if (!st[section.key]) st[section.key] = {};
-          st[section.key][p.id] = !st[section.key][p.id];
-          savePhotoState(st);
-          renderPhotoGrid();
-        });
-        grid.appendChild(tile);
-      });
-    });
-  }
-
-  // Checkbox-Klicks in den Listen
-  function initBusChecklist() {
-    const cols = document.querySelectorAll('#bus .pr-col');
-    if (!cols.length) return;
-
-    // Items eindeutig adressieren (sektion + index)
-    let saved = {};
-    try {
-      const s = localStorage.getItem(BUS_CHECK_KEY);
-      if (s) saved = JSON.parse(s);
-    } catch(e) {}
-
-    cols.forEach((col, colIdx) => {
-      const items = col.querySelectorAll('li');
-      items.forEach((li, liIdx) => {
-        const key = 'c' + colIdx + '-' + liIdx;
-        if (saved[key]) li.classList.add('checked');
-        li.addEventListener('click', () => {
-          li.classList.toggle('checked');
-          saved[key] = li.classList.contains('checked');
-          try { localStorage.setItem(BUS_CHECK_KEY, JSON.stringify(saved)); } catch(e) {}
-        });
-      });
-    });
-
-    renderPhotoGrid();
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initBusChecklist);
-  } else {
-    initBusChecklist();
-  }
 
   // Initial-Render bei DOM-Ready
   function initReservations() {
