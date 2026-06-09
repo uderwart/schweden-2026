@@ -1024,6 +1024,88 @@
   }
   .quick-rules p { margin: 0 0 .4rem 0; font-size: .9rem; color: var(--ink); }
   .quick-rules p:last-child { margin-bottom: 0; }
+
+  /* Termine-Sektion ganz vorne — kompakte Highlight-Version */
+  .termine-hero {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1.5rem 1.8rem;
+    margin-top: 1rem;
+    box-shadow: var(--shadow);
+  }
+  .termin-row {
+    display: grid;
+    grid-template-columns: 105px 1fr auto;
+    gap: 1rem;
+    padding: .8rem 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .termin-row:last-child { border-bottom: none; }
+  .termin-row.critical {
+    background: linear-gradient(to right, rgba(212,164,55,.08), transparent 30%);
+    margin: 0 -.8rem;
+    padding-left: .8rem;
+    padding-right: .8rem;
+    border-radius: 6px;
+  }
+  .termin-date {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    color: var(--moss-deep);
+    font-size: .95rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .termin-date small {
+    display: block;
+    font-family: -apple-system, sans-serif;
+    font-weight: 400;
+    font-size: .75rem;
+    color: var(--ink-soft);
+    margin-top: .2rem;
+  }
+  .termin-event {
+    color: var(--ink);
+    font-size: .95rem;
+  }
+  .termin-event strong { color: var(--moss-deep); font-weight: 600; }
+  .termin-event small {
+    display: block;
+    color: var(--ink-soft);
+    font-size: .8rem;
+    margin-top: .2rem;
+  }
+  .termin-status {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    padding: .2rem .55rem;
+    border-radius: 12px;
+    background: rgba(74,106,74,.12);
+    color: var(--moss-deep);
+    font-weight: 600;
+    white-space: nowrap;
+    align-self: center;
+  }
+  .termin-status.pending {
+    background: rgba(212,164,55,.18);
+    color: #8b6800;
+  }
+  .termin-status.fix {
+    background: rgba(74,106,74,.18);
+    color: var(--moss-deep);
+  }
+  @media (max-width: 600px) {
+    .termin-row {
+      grid-template-columns: 90px 1fr;
+    }
+    .termin-status {
+      grid-column: 2;
+      justify-self: start;
+      margin-top: .2rem;
+    }
+  }
 </style>
 </head>
 <body>
@@ -1045,6 +1127,7 @@
 
 <nav class="toc">
   <ul>
+    <li><button class="toc-btn" data-target="termine">📅 Termine</button></li>
     <li><button class="toc-btn" data-target="vorab">Vorab</button></li>
     <li><button class="toc-btn" data-target="route">Route</button></li>
     <li><button class="toc-btn" data-target="karte">Karte</button></li>
@@ -1054,9 +1137,63 @@
     <li><button class="toc-btn" data-target="essen">Essen &amp; Fika</button></li>
     <li><button class="toc-btn" data-target="muecken">Mücken</button></li>
     <li><button class="toc-btn" data-target="sprache">Sprache</button></li>
-    <li><button class="toc-btn" data-target="termine">Termine</button></li>
   </ul>
 </nav>
+
+<!-- ============ TERMINE (oben) ============ -->
+<section id="termine">
+  <div class="section-head">
+    <div class="num">📅 — Termine</div>
+    <h2>Alle Termine auf einen Blick</h2>
+    <p>Was wann wo. <strong>Bei Fähre 1,5 Stunden vor Abfahrt da sein</strong>, beim Bus pünktlich. Status-Pillen rechts zeigen, was schon fix ist und was noch fehlt.</p>
+  </div>
+
+  <div class="termine-hero">
+
+    <h3 style="margin: 0 0 .5rem 0; font-size: 1rem; color: var(--moss-deep); font-family: 'Fraunces', serif;">🚐 Bus &amp; ⛴ Fähre</h3>
+
+    <div class="termin-row critical">
+      <div class="termin-date">Mi 10.06.<small>13:00 Uhr</small></div>
+      <div class="termin-event"><strong>🚐 Bus-Abholung</strong> roadsurfer SUNRISE SUITE<br><small>Ingolstädter Str. 172, 80939 München · Buchung 3933254797 · 90 Min einplanen</small></div>
+      <div class="termin-status fix">FIX</div>
+    </div>
+
+    <div class="termin-row critical">
+      <div class="termin-date">Fr 12.06.<small>Uhrzeit folgt</small></div>
+      <div class="termin-event"><strong>⛴ Hin-Fähre</strong> TT-Line „Nils Dacke"<br><small>Rostock → Trelleborg · <strong>1,5 h vor Abfahrt am Check-in</strong> · Buchung 95739462</small></div>
+      <div class="termin-status pending">UHRZEIT?</div>
+    </div>
+
+    <div class="termin-row critical">
+      <div class="termin-date">Do 25.06.<small>Uhrzeit folgt</small></div>
+      <div class="termin-event"><strong>⛴ Rück-Fähre</strong> TT-Line „Nils Holgersson"<br><small>Trelleborg → Rostock · <strong>1,5 h vor Abfahrt am Check-in</strong> · Buchung 95739462</small></div>
+      <div class="termin-status pending">UHRZEIT?</div>
+    </div>
+
+    <div class="termin-row critical">
+      <div class="termin-date">Sa 27.06.<small>12:00 Uhr</small></div>
+      <div class="termin-event"><strong>🚐 Bus-Rückgabe</strong> roadsurfer<br><small>Ingolstädter Str. 172, 80939 München · <strong>pünktlich</strong> (sonst 50 €/h, max. 500 €/24h)</small></div>
+      <div class="termin-status fix">FIX</div>
+    </div>
+
+    <h3 style="margin: 1.8rem 0 .5rem 0; font-size: 1rem; color: var(--moss-deep); font-family: 'Fraunces', serif;">👥 Treffen unterwegs</h3>
+
+    <div class="termin-row">
+      <div class="termin-date">Datum?<small>Stockholm-Bereich</small></div>
+      <div class="termin-event"><strong>👫 Sissi &amp; Donald</strong> — Treffen/Besuch in Schweden<br><small>Daten kommen noch · Ort, Datum, Uhrzeit, Kontakt</small></div>
+      <div class="termin-status pending">OFFEN</div>
+    </div>
+
+    <div class="termin-row">
+      <div class="termin-date">Datum?<small>Ort?</small></div>
+      <div class="termin-event"><strong>👤 Cim</strong> — Treffen<br><small>Daten kommen noch · Ort, Datum, Uhrzeit, Kontakt</small></div>
+      <div class="termin-status pending">OFFEN</div>
+    </div>
+
+  </div>
+
+  <p style="margin-top: 1rem; font-size: .85rem; color: var(--ink-soft);"><em>Die ausführliche Buchungsverwaltung mit Status-Tracking und Preisen findet ihr unten unter <a href="#archiv">Archiv</a>.</em></p>
+</section>
 
 <!-- ============ VORAB ============ -->
 <section id="vorab">
@@ -1726,12 +1863,12 @@
     </a>
 </section>
 
-<!-- ============ TERMINE ============ -->
-<section id="termine">
+<!-- ============ ARCHIV ============ -->
+<section id="archiv">
   <div class="section-head">
-    <div class="num">10 — Termine &amp; Übersicht</div>
-    <h2>Wichtige Daten auf einen Blick</h2>
-    <p>Termine, Reservierungen, Notruf-Backup-Liste — und Verweise auf die anderen Reise-Apps.</p>
+    <div class="num">10 — Archiv &amp; Reservierungen</div>
+    <h2>Reservierungen, Verweise &amp; Notruf-Backup</h2>
+    <p>Buchungsverwaltung mit Status-Tracking, Verweise auf die anderen Apps und die Notruf-Liste zum Ausdrucken.</p>
   </div>
 
   <h3 style="margin: 0 0 1rem 0;">Reservierungen &amp; Buchungen</h3>
@@ -1754,41 +1891,6 @@
     <div>Gebucht: <strong id="res-booked">0</strong></div>
     <div>Gesamt geplant: <strong id="res-total">0,00 €</strong></div>
   </div>
-
-  <h3 style="margin: 2.5rem 0 1rem 0;">📅 Termine im Überblick</h3>
-  <div class="reservations" style="grid-template-columns: 1fr 2fr 1fr;">
-    <div class="res-row header">
-      <div>Datum / Uhrzeit</div>
-      <div>Ereignis</div>
-      <div style="text-align: right;">Ort</div>
-    </div>
-    <div class="res-row">
-      <div><strong>Mi 10.06.</strong> 13:00</div>
-      <div>🚐 Bus-Abholung (roadsurfer SUNRISE SUITE)</div>
-      <div style="text-align: right;">Ingolstädter Str. 172, München</div>
-    </div>
-    <div class="res-row">
-      <div><strong>Fr 12.06.</strong></div>
-      <div>⛴ Fähre Rostock → Trelleborg (TT-Line "Nils Dacke")</div>
-      <div style="text-align: right;">Rostock</div>
-    </div>
-    <div class="res-row">
-      <div><strong>So 21.06.</strong></div>
-      <div>🌞 Ankunft Stockholm (Camping Bredäng / Ängby)</div>
-      <div style="text-align: right;">Stockholm</div>
-    </div>
-    <div class="res-row">
-      <div><strong>Do 25.06.</strong></div>
-      <div>⛴ Fähre Trelleborg → Rostock (TT-Line "Nils Holgersson")</div>
-      <div style="text-align: right;">Trelleborg</div>
-    </div>
-    <div class="res-row">
-      <div><strong>Sa 27.06.</strong> 12:00</div>
-      <div>🚐 Bus-Rückgabe (roadsurfer)</div>
-      <div style="text-align: right;">Ingolstädter Str. 172, München</div>
-    </div>
-  </div>
-  <p style="margin: .8rem 0 0 0; font-size: .85rem; color: var(--ink-soft);"><em>Genaue Fähr-Uhrzeiten siehe TT-Line-Buchungsbestätigung (Buchung 95739462).</em></p>
 
   <h3 style="margin: 2.5rem 0 1rem 0;">📋 Weiterführende Apps</h3>
 
