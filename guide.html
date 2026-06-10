@@ -1624,11 +1624,11 @@
       <div class="currency-calc" onclick="event.stopPropagation()">
         <div class="calc-row">
           <label>SEK</label>
-          <input type="number" id="calc-sek" placeholder="100" value="100" inputmode="decimal">
+          <input type="text" id="calc-sek" placeholder="z.B. 100" inputmode="decimal" autocomplete="off">
         </div>
         <div class="calc-row">
           <label>EUR</label>
-          <input type="number" id="calc-eur" placeholder="9,20" value="9,20" inputmode="decimal">
+          <input type="text" id="calc-eur" placeholder="z.B. 9,20" inputmode="decimal" autocomplete="off">
         </div>
         <div class="calc-hint">Kurs: 1 SEK = 0,092 € · Stand 06/2026</div>
       </div>
@@ -3016,29 +3016,62 @@
   });
 
   // ============ WÄHRUNGSRECHNER ============
-  const SEK_TO_EUR = 0.092; // Kurs 1 SEK = 0,092 EUR (Stand 06/2026)
-  const calcSek = document.getElementById('calc-sek');
-  const calcEur = document.getElementById('calc-eur');
+  function initCurrencyCalc() {
+    const SEK_TO_EUR = 0.092; // Kurs 1 SEK = 0,092 EUR (Stand 06/2026)
+    const calcSek = document.getElementById('calc-sek');
+    const calcEur = document.getElementById('calc-eur');
 
-  function fmtNum(n) {
-    if (isNaN(n)) return '';
-    return n.toFixed(2).replace('.', ',');
-  }
+    if (!calcSek || !calcEur) {
+      console.warn('Currency calc inputs not found');
+      return;
+    }
 
-  function parseNum(s) {
-    if (!s) return NaN;
-    return parseFloat(String(s).replace(',', '.'));
-  }
+    function fmtNum(n) {
+      if (isNaN(n) || !isFinite(n)) return '';
+      return n.toFixed(2).replace('.', ',');
+    }
 
-  if (calcSek && calcEur) {
-    calcSek.addEventListener('input', () => {
+    function parseNum(s) {
+      if (!s || !s.trim()) return NaN;
+      // Punkt und Komma beide erlauben, Spaces entfernen
+      const clean = String(s).trim().replace(/\s/g, '').replace(',', '.');
+      return parseFloat(clean);
+    }
+
+    let syncing = false;
+    function syncFromSek() {
+      if (syncing) return;
+      syncing = true;
       const sek = parseNum(calcSek.value);
       calcEur.value = isNaN(sek) ? '' : fmtNum(sek * SEK_TO_EUR);
-    });
-    calcEur.addEventListener('input', () => {
+      syncing = false;
+    }
+    function syncFromEur() {
+      if (syncing) return;
+      syncing = true;
       const eur = parseNum(calcEur.value);
       calcSek.value = isNaN(eur) ? '' : fmtNum(eur / SEK_TO_EUR);
+      syncing = false;
+    }
+
+    ['input', 'keyup', 'change'].forEach(ev => {
+      calcSek.addEventListener(ev, syncFromSek);
+      calcEur.addEventListener(ev, syncFromEur);
     });
+
+    // Beim Fokussieren das andere Feld leeren, damit man tippen kann
+    calcSek.addEventListener('focus', () => {
+      if (calcSek.value && !calcEur.value) syncFromSek();
+    });
+    calcEur.addEventListener('focus', () => {
+      if (calcEur.value && !calcSek.value) syncFromEur();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCurrencyCalc);
+  } else {
+    initCurrencyCalc();
   }
 
   // ============ RESERVIERUNGEN ============
