@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#4a6a4a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Schweden mit dem VW-Bus · 11. bis 26.06.2026 · v10</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -246,6 +249,70 @@
   .fact span { font-size: .7rem; text-transform: uppercase; letter-spacing: .15em; color: var(--ink-soft); }
   .fact strong { display: block; font-family: 'Fraunces', serif; font-size: 1.3rem; color: var(--moss-deep); margin-top: .3rem; }
   .fact small { color: var(--ink-soft); font-size: .8rem; }
+
+  /* SEK-Mini-Rechner in der Währungs-Kachel */
+  .fact.currency {
+    cursor: pointer;
+    transition: background .15s;
+    position: relative;
+  }
+  .fact.currency:hover {
+    background: rgba(74,106,74,.04);
+  }
+  .fact.currency::after {
+    content: '🧮';
+    position: absolute;
+    top: 1.1rem;
+    right: 1.1rem;
+    font-size: .9rem;
+    opacity: .4;
+  }
+  .currency-calc {
+    display: none;
+    margin-top: .8rem;
+    padding-top: .8rem;
+    border-top: 1px solid var(--line);
+  }
+  .fact.currency.open .currency-calc {
+    display: block;
+  }
+  .calc-row {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    margin-bottom: .5rem;
+  }
+  .calc-row:last-child { margin-bottom: 0; }
+  .calc-row input {
+    width: 100%;
+    padding: .4rem .6rem;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: white;
+    font-size: .95rem;
+    font-family: inherit;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    min-width: 0;
+  }
+  .calc-row input:focus {
+    outline: none;
+    border-color: var(--moss);
+  }
+  .calc-row label {
+    font-size: .8rem;
+    color: var(--ink-soft);
+    font-weight: 600;
+    flex-shrink: 0;
+    min-width: 32px;
+  }
+  .calc-hint {
+    font-size: .7rem;
+    color: var(--ink-soft);
+    margin-top: .5rem;
+    text-align: center;
+  }
 
   details {
     background: var(--paper);
@@ -1184,6 +1251,246 @@
     .route-table .rt-head:nth-child(3),
     .route-table .rt-head:nth-child(4) { display: none; }
   }
+
+  /* ============ MOBILE OPTIMIZATION ============ */
+  @media (max-width: 700px) {
+    /* iOS Safe Areas */
+    body {
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+    }
+
+    /* Header / Hero kompakter */
+    .hero {
+      padding: 2rem 1.2rem 2.5rem !important;
+    }
+    .hero-deco {
+      font-size: 4rem !important;
+      top: -.5rem !important;
+      right: -1rem !important;
+    }
+    .hero h1 {
+      font-size: 2rem !important;
+      line-height: 1.15 !important;
+    }
+    .hero p {
+      font-size: .95rem !important;
+      margin-top: 1rem !important;
+    }
+    .eyebrow {
+      font-size: .7rem !important;
+    }
+    .hero-meta {
+      grid-template-columns: 1fr 1fr !important;
+      gap: .8rem !important;
+      margin-top: 1.5rem !important;
+    }
+    .hero-meta > div { padding: .6rem .8rem !important; }
+    .hero-meta strong { font-size: .9rem !important; }
+    .hero-meta span { font-size: .7rem !important; }
+
+    /* TOC: horizontal scrollbar mit Touch */
+    nav.toc {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--bg);
+      padding: .6rem 1rem;
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 1px 6px rgba(0,0,0,.04);
+    }
+    nav.toc ul {
+      display: flex !important;
+      overflow-x: auto;
+      overflow-y: hidden;
+      gap: .4rem !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    nav.toc ul::-webkit-scrollbar { display: none; }
+    nav.toc li { flex-shrink: 0; }
+    nav.toc .toc-btn {
+      padding: .5rem .9rem !important;
+      font-size: .85rem !important;
+      white-space: nowrap;
+      min-height: 36px;
+    }
+
+    /* Sections: weniger Padding */
+    section {
+      padding: 2rem 1.2rem !important;
+    }
+    section .inner {
+      padding: 0 !important;
+    }
+    .section-head {
+      margin-bottom: 1.5rem !important;
+    }
+    .section-head .num {
+      font-size: .7rem !important;
+    }
+    section h2 {
+      font-size: 1.6rem !important;
+      line-height: 1.2 !important;
+    }
+    section h3 {
+      font-size: 1.15rem !important;
+    }
+    section p, section li {
+      font-size: .95rem !important;
+      line-height: 1.55 !important;
+    }
+
+    /* Termine-Hero kompakter */
+    .termine-hero {
+      padding: 1rem 1rem !important;
+    }
+    .termin-row {
+      gap: .5rem !important;
+      padding: .7rem 0 !important;
+    }
+    .termin-date {
+      font-size: .88rem !important;
+    }
+    .termin-date small {
+      font-size: .72rem !important;
+    }
+    .termin-event {
+      font-size: .9rem !important;
+    }
+    .termin-event small {
+      font-size: .78rem !important;
+      line-height: 1.4 !important;
+    }
+    .termin-status {
+      font-size: .62rem !important;
+      padding: .15rem .45rem !important;
+    }
+
+    /* Quick-Rules: weniger Padding */
+    .quick-rules {
+      padding: .9rem 1rem !important;
+      margin: .8rem 0 !important;
+    }
+    .quick-rules h4 {
+      font-size: .92rem !important;
+    }
+    .quick-rules p {
+      font-size: .88rem !important;
+    }
+
+    /* Crosslinks kompakter */
+    .crosslink {
+      padding: 1rem 1.1rem !important;
+      gap: .9rem !important;
+    }
+    .crosslink .cl-icon {
+      width: 42px !important;
+      height: 42px !important;
+      font-size: 1.3rem !important;
+    }
+    .crosslink .cl-title {
+      font-size: 1rem !important;
+    }
+    .crosslink .cl-sub {
+      font-size: .8rem !important;
+    }
+
+    /* Archiv-Cards (Bastu-Empfehlungen etc.) */
+    .archiv-doc {
+      padding: 1rem 1.1rem !important;
+      margin: .8rem 0 !important;
+    }
+    .archiv-doc h4 {
+      font-size: 1rem !important;
+    }
+    .archiv-table td {
+      font-size: .85rem !important;
+      padding: .35rem .5rem !important;
+    }
+
+    /* Reservierungstabelle: Touch-friendly */
+    .res-row {
+      padding: .8rem .9rem !important;
+    }
+    .res-row.header { display: none !important; }
+    .res-row > div { padding: 0 !important; }
+    .res-name { font-size: .92rem !important; font-weight: 600; }
+    .res-date { font-size: .78rem !important; color: var(--ink-soft); }
+    .res-status {
+      padding: .35rem .7rem !important;
+      font-size: .75rem !important;
+      min-height: 32px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    /* Touch-Targets: alle Links/Buttons min 44px */
+    a, button {
+      min-height: 32px;
+    }
+    a.toc-btn, button.toc-btn,
+    .crosslink, .res-status, .termin-status, .quick-call {
+      min-height: 44px;
+    }
+
+    /* Tap-Highlight reduzieren */
+    * {
+      -webkit-tap-highlight-color: rgba(74,106,74,.15);
+    }
+
+    /* Bessere Lesbarkeit auf Mobil */
+    body {
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    /* Bilder responsive */
+    img, svg {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+
+    /* Tabellen scrollbar */
+    table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Footer */
+    footer {
+      padding: 2rem 1.2rem !important;
+      font-size: .8rem !important;
+    }
+  }
+
+  /* Sehr kleine Geräte (iPhone SE etc.) */
+  @media (max-width: 380px) {
+    .hero h1 { font-size: 1.7rem !important; }
+    .hero-meta { grid-template-columns: 1fr !important; }
+    section { padding: 1.5rem 1rem !important; }
+    section h2 { font-size: 1.4rem !important; }
+    .termin-row {
+      grid-template-columns: 80px 1fr !important;
+    }
+    .termin-status {
+      grid-column: 2 !important;
+      justify-self: start !important;
+    }
+  }
+
+  /* Print-Optimierung */
+  @media print {
+    nav.toc, .crosslink, footer { display: none; }
+    body { background: white; color: black; }
+    section { page-break-inside: avoid; padding: 1rem !important; }
+    a { color: black; text-decoration: none; }
+    a[href]:after { content: " (" attr(href) ")"; font-size: .8em; }
+  }
 </style>
 </head>
 <body>
@@ -1230,8 +1537,6 @@
 
   <div class="termine-hero">
 
-    <h3 style="margin: 0 0 .5rem 0; font-size: 1rem; color: var(--moss-deep); font-family: 'Fraunces', serif;">🚐 Bus &amp; ⛴ Fähre</h3>
-
     <div class="termin-row critical">
       <div class="termin-date">Mi 10.06.<small>13:00 Uhr</small></div>
       <div class="termin-event"><strong>🚐 Bus-Abholung</strong> roadsurfer SUNRISE SUITE<br><small>Ingolstädter Str. 172, 80939 München · Buchung 3933254797 · 90 Min einplanen</small></div>
@@ -1245,22 +1550,14 @@
     </div>
 
     <div class="termin-row critical">
-      <div class="termin-date">Do 25.06.<small>09:55 Uhr</small></div>
-      <div class="termin-event"><strong>⛴ Rück-Fähre</strong> TT-Line „Nils Holgersson"<br><small>Trelleborg → Rostock (Ankunft 15:45) · <strong>Check-in bis 08:25</strong> (1,5 h vorher) · Buchung 95739462</small></div>
-      <div class="termin-status fix">FIX</div>
-    </div>
-
-    <div class="termin-row critical">
-      <div class="termin-date">Sa 27.06.<small>12:00 Uhr</small></div>
-      <div class="termin-event"><strong>🚐 Bus-Rückgabe</strong> roadsurfer<br><small>Ingolstädter Str. 172, 80939 München · <strong>pünktlich</strong> (sonst 50 €/h, max. 500 €/24h)</small></div>
-      <div class="termin-status fix">FIX</div>
-    </div>
-
-    <h3 style="margin: 1.8rem 0 .5rem 0; font-size: 1rem; color: var(--moss-deep); font-family: 'Fraunces', serif;">🌻 Feiertage &amp; Einkauf in Schweden</h3>
-
-    <div class="termin-row critical">
       <div class="termin-date">Do 18.06.<small>Tag 8</small></div>
       <div class="termin-event"><strong>🛒 Großer Einkaufstag</strong> vor Mittsommer<br><small>Letzte Chance bei Systembolaget &amp; Supermarkt für Hering, Kartoffeln, Schnaps, Bier · Fr+Sa geschlossen oder verkürzt</small></div>
+      <div class="termin-status fix">FIX</div>
+    </div>
+
+    <div class="termin-row">
+      <div class="termin-date">Do 18.06.<small>→ Di 23.06.</small></div>
+      <div class="termin-event"><strong>👫 Sissi &amp; Donald</strong> — First Camp City-Stockholm<br><small>Anreise Do 18.06. (Check-in 13:00) · Abreise Di 23.06. (Check-out 12:00) · 5 Nächte · Buchungs-Nr. 65450 · Bezirk Skarpnäck am Flatensee · Toni bleibt zu Hause · <strong>Treffen-Zeitpunkt je nach Route 1 oder 2</strong></small></div>
       <div class="termin-status fix">FIX</div>
     </div>
 
@@ -1276,17 +1573,33 @@
       <div class="termin-status fix">FIX</div>
     </div>
 
-    <h3 style="margin: 1.8rem 0 .5rem 0; font-size: 1rem; color: var(--moss-deep); font-family: 'Fraunces', serif;">👥 Treffen unterwegs</h3>
-
-    <div class="termin-row">
-      <div class="termin-date">Do 18.06.<small>→ Di 23.06.</small></div>
-      <div class="termin-event"><strong>👫 Sissi &amp; Donald</strong> — First Camp City-Stockholm<br><small>Anreise Do 18.06. (Check-in 13:00) · Abreise Di 23.06. (Check-out 12:00) · 5 Nächte · Buchungs-Nr. 65450 · Bezirk Skarpnäck am Flatensee · Toni bleibt zu Hause · <strong>Treffen-Zeitpunkt je nach Route 1 oder 2</strong></small></div>
-      <div class="termin-status fix">FIX</div>
+    <div class="termin-row critical">
+      <div class="termin-date">So 21.06.<small>1 Nacht</small></div>
+      <div class="termin-event"><strong>🏕️ Fyrishov Camping Uppsala</strong><br><small>Idrottsgatan 2, 753 33 Uppsala · Buchung <strong>12025601</strong> · 410 SEK (≈ 37,72 €) bezahlt · CEpool (Strom + Pool-Eintritt) · Check-in 8–21 Uhr · Tel <a href="tel:+46187274960">+46 18 727 49 60</a></small></div>
+      <div class="termin-status fix">GEBUCHT</div>
     </div>
 
     <div class="termin-row">
       <div class="termin-date">So 21.06.<small>14:00 Uhr</small></div>
-      <div class="termin-event"><strong>👤 Cim</strong> — Treffen in Uppsala<br><small>Tag 11 · Kungsgatan 66 M, 753 41 Uppsala · ca. 4 h (14:00–18:00) · Übernachtung Fyrishov Camping <strong>Buchung 12025601</strong> (410 SEK bezahlt), am 22.06. morgens weiter nach Stockholm</small></div>
+      <div class="termin-event"><strong>👤 Cim</strong> — Treffen in Uppsala<br><small>Tag 11 · Kungsgatan 66 M, 753 41 Uppsala · ca. 4 h (14:00–18:00) · Übernachtung Fyrishov Camping (siehe oben), am 22.06. morgens weiter nach Stockholm</small></div>
+      <div class="termin-status fix">FIX</div>
+    </div>
+
+    <div class="termin-row">
+      <div class="termin-date">Mo 22.–23.06.<small>2 Nächte</small></div>
+      <div class="termin-event"><strong>🏕️ Stockholm Stellplatz</strong><br><small>Bredäng Camping oder First Camp City-Stockholm (bei Sissi/Donald) · noch zu buchen · Hauptsaison-Wochenende, vorab klären</small></div>
+      <div class="termin-status pending">OFFEN</div>
+    </div>
+
+    <div class="termin-row critical">
+      <div class="termin-date">Do 25.06.<small>09:55 Uhr</small></div>
+      <div class="termin-event"><strong>⛴ Rück-Fähre</strong> TT-Line „Nils Holgersson"<br><small>Trelleborg → Rostock (Ankunft 15:45) · <strong>Check-in bis 08:25</strong> (1,5 h vorher) · Buchung 95739462</small></div>
+      <div class="termin-status fix">FIX</div>
+    </div>
+
+    <div class="termin-row critical">
+      <div class="termin-date">Sa 27.06.<small>12:00 Uhr</small></div>
+      <div class="termin-event"><strong>🚐 Bus-Rückgabe</strong> roadsurfer<br><small>Ingolstädter Str. 172, 80939 München · <strong>pünktlich</strong> (sonst 50 €/h, max. 500 €/24h)</small></div>
       <div class="termin-status fix">FIX</div>
     </div>
 
@@ -1304,7 +1617,22 @@
   </div>
 
   <div class="quick-facts">
-    <div class="fact"><span>Währung</span><strong>SEK</strong><small>1 € ≈ 11 SEK</small></div>
+    <div class="fact currency" onclick="this.classList.toggle('open')">
+      <span>Währung</span>
+      <strong>SEK</strong>
+      <small>1 € ≈ 10,87 SEK</small>
+      <div class="currency-calc" onclick="event.stopPropagation()">
+        <div class="calc-row">
+          <label>SEK</label>
+          <input type="number" id="calc-sek" placeholder="100" value="100" inputmode="decimal">
+        </div>
+        <div class="calc-row">
+          <label>EUR</label>
+          <input type="number" id="calc-eur" placeholder="9,20" value="9,20" inputmode="decimal">
+        </div>
+        <div class="calc-hint">Kurs: 1 SEK = 0,092 € · Stand 06/2026</div>
+      </div>
+    </div>
     <div class="fact"><span>Sprache</span><strong>Schwedisch</strong><small>Englisch überall</small></div>
     <div class="fact"><span>Zeitzone</span><strong>MESZ</strong><small>gleiche wie DE</small></div>
     <div class="fact"><span>Notruf</span><strong>112</strong><small>EU-weit</small></div>
@@ -2686,6 +3014,32 @@
       }
     }
   });
+
+  // ============ WÄHRUNGSRECHNER ============
+  const SEK_TO_EUR = 0.092; // Kurs 1 SEK = 0,092 EUR (Stand 06/2026)
+  const calcSek = document.getElementById('calc-sek');
+  const calcEur = document.getElementById('calc-eur');
+
+  function fmtNum(n) {
+    if (isNaN(n)) return '';
+    return n.toFixed(2).replace('.', ',');
+  }
+
+  function parseNum(s) {
+    if (!s) return NaN;
+    return parseFloat(String(s).replace(',', '.'));
+  }
+
+  if (calcSek && calcEur) {
+    calcSek.addEventListener('input', () => {
+      const sek = parseNum(calcSek.value);
+      calcEur.value = isNaN(sek) ? '' : fmtNum(sek * SEK_TO_EUR);
+    });
+    calcEur.addEventListener('input', () => {
+      const eur = parseNum(calcEur.value);
+      calcSek.value = isNaN(eur) ? '' : fmtNum(eur / SEK_TO_EUR);
+    });
+  }
 
   // ============ RESERVIERUNGEN ============
   const RES_KEY = 'schweden-reservierungen-2026-v2';
