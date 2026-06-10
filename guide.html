@@ -1106,6 +1106,84 @@
       margin-top: .2rem;
     }
   }
+
+  /* Route-Vergleich Box */
+  .route-vergleich {
+    background: rgba(212,164,55,.08);
+    border-left: 4px solid var(--sun);
+    padding: 1rem 1.4rem;
+    border-radius: 0 8px 8px 0;
+    margin: 1rem 0;
+  }
+  .route-vergleich h4 {
+    margin: 0 0 .5rem 0;
+    color: var(--moss-deep);
+    font-size: 1rem;
+  }
+  .route-vergleich p { margin: .3rem 0; font-size: .9rem; }
+  .route-vergleich strong { color: var(--moss-deep); }
+
+  /* Route-Tag-Tabelle (kompakte Übersicht) */
+  .route-table {
+    display: grid;
+    grid-template-columns: 80px 100px 1fr 130px;
+    gap: 0;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 1rem;
+    font-size: .88rem;
+  }
+  .route-table > div {
+    padding: .7rem 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .route-table > div:nth-last-child(-n+4) {
+    border-bottom: none;
+  }
+  .route-table .rt-head {
+    background: rgba(74,106,74,.08);
+    font-weight: 600;
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--moss-deep);
+  }
+  .route-table .rt-tag {
+    font-weight: 600;
+    color: var(--moss);
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+  }
+  .route-table .rt-datum {
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+  }
+  .route-table .rt-ort {
+    color: var(--ink-soft);
+    font-size: .8rem;
+    font-style: italic;
+  }
+  .route-table .rt-row-highlight {
+    background: rgba(212,164,55,.1);
+  }
+  @media (max-width: 700px) {
+    .route-table {
+      grid-template-columns: 60px 1fr;
+    }
+    .route-table > div { padding: .5rem .8rem; font-size: .85rem; }
+    .route-table .rt-datum, .route-table .rt-ort {
+      grid-column: 2;
+      padding-top: 0;
+      padding-bottom: .5rem;
+      font-size: .78rem;
+    }
+    .route-table .rt-head { padding-bottom: .5rem; }
+    .route-table .rt-head:nth-child(2) { padding-top: .5rem; }
+    .route-table .rt-head:nth-child(3),
+    .route-table .rt-head:nth-child(4) { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -1118,7 +1196,7 @@
     <p style="max-width: 600px; margin-top: 1.5rem; font-size: 1.1rem;">Vom Aufbruch in München bis zu den Schären vor Stockholm und zurück. Alles, was ihr unterwegs braucht: Route, Stellplätze, Regeln, Sprache, Notfälle.</p>
     <div class="hero-meta">
       <div><span>Bus-Abholung</span><strong>Mi, 10.06.2026</strong></div>
-      <div><span>Stockholm</span><strong>21.–24.06.</strong></div>
+      <div><span>Stockholm</span><strong>22.–23.06.</strong></div>
       <div><span>Bus-Rückgabe</span><strong>Sa, 27.06.2026</strong></div>
       <div><span>Reisende</span><strong>Uli &amp; Sabine</strong></div>
     </div>
@@ -1129,13 +1207,15 @@
   <ul>
     <li><button class="toc-btn" data-target="termine">📅 Termine</button></li>
     <li><button class="toc-btn" data-target="vorab">Vorab</button></li>
-    <li><button class="toc-btn" data-target="route">Route</button></li>
+    <li><button class="toc-btn" data-target="route">Route 1</button></li>
+    <li><button class="toc-btn" data-target="route2">Route 2 🔀</button></li>
     <li><button class="toc-btn" data-target="karte">Karte</button></li>
     <li><button class="toc-btn" data-target="stockholm">Stockholm</button></li>
     <li><button class="toc-btn" data-target="regeln">Regeln</button></li>
     <li><button class="toc-btn" data-target="stellplatz">Stellplatz</button></li>
     <li><button class="toc-btn" data-target="essen">Essen &amp; Fika</button></li>
     <li><button class="toc-btn" data-target="muecken">Mücken</button></li>
+    <li><button class="toc-btn" data-target="bastu">Bastu</button></li>
     <li><button class="toc-btn" data-target="sprache">Sprache</button></li>
   </ul>
 </nav>
@@ -1199,15 +1279,15 @@
     <h3 style="margin: 1.8rem 0 .5rem 0; font-size: 1rem; color: var(--moss-deep); font-family: 'Fraunces', serif;">👥 Treffen unterwegs</h3>
 
     <div class="termin-row">
-      <div class="termin-date">Datum?<small>Stockholm-Bereich</small></div>
-      <div class="termin-event"><strong>👫 Sissi &amp; Donald</strong> — Treffen/Besuch in Schweden<br><small>Daten kommen noch · Ort, Datum, Uhrzeit, Kontakt</small></div>
-      <div class="termin-status pending">OFFEN</div>
+      <div class="termin-date">Do 18.06.<small>→ Di 23.06.</small></div>
+      <div class="termin-event"><strong>👫 Sissi &amp; Donald</strong> — First Camp City-Stockholm<br><small>Anreise Do 18.06. (Check-in 13:00) · Abreise Di 23.06. (Check-out 12:00) · 5 Nächte · Buchungs-Nr. 65450 · Bezirk Skarpnäck am Flatensee · Toni bleibt zu Hause · <strong>Treffen-Zeitpunkt je nach Route 1 oder 2</strong></small></div>
+      <div class="termin-status fix">FIX</div>
     </div>
 
     <div class="termin-row">
-      <div class="termin-date">Datum?<small>Ort?</small></div>
-      <div class="termin-event"><strong>👤 Cim</strong> — Treffen<br><small>Daten kommen noch · Ort, Datum, Uhrzeit, Kontakt</small></div>
-      <div class="termin-status pending">OFFEN</div>
+      <div class="termin-date">So 21.06.<small>14:00 Uhr</small></div>
+      <div class="termin-event"><strong>👤 Cim</strong> — Treffen in Uppsala<br><small>Tag 11 · Kungsgatan 66 M, 753 41 Uppsala · ca. 4 h (14:00–18:00) · Übernachtung Fyrishov Camping <strong>Buchung 12025601</strong> (410 SEK bezahlt), am 22.06. morgens weiter nach Stockholm</small></div>
+      <div class="termin-status fix">FIX</div>
     </div>
 
   </div>
@@ -1301,7 +1381,13 @@
     <div class="section-head">
       <div class="num">02 — Tag für Tag</div>
       <h2>Eure Route — 18 Tage</h2>
-      <p>Anreise München → Rostock → Trelleborg, dann gemütlich an der Ostküste hoch nach Stockholm (Ankunft 21.06.). Drei Tage in der Hauptstadt, dann zurück über Mittelschweden zur Fähre am 25.06., Rest-Anfahrt mit Übernachtung, Bus-Rückgabe am 27.06.</p>
+      <p>Anreise München → Rostock → Trelleborg, dann gemütlich an der Ostküste hoch. Mittsommer in Södermanland (19./20.06.), Uppsala mit Cim (21.06.), Stockholm-Ankunft (22.06.), zwei Tage Stadt, dann zurück über Mittelschweden zur Fähre am 25.06., Rest-Anfahrt mit Übernachtung, Bus-Rückgabe am 27.06.</p>
+      <div class="route-vergleich">
+        <h4>🔀 Zwei Routen-Varianten</h4>
+        <p><strong>Route 1 (hier dargestellt):</strong> Original-Plan — Mittsommer in Södermanland am Hembygdsgård, dann gemütlich nach Stockholm.</p>
+        <p><strong>Route 2:</strong> Stockholm-Sprung am 18.06., Mittsommer mit Sissi &amp; Donald in der Hauptstadt feiern. Siehe Sektion <a href="#route2">02b — Alternativroute</a> direkt unten.</p>
+        <p style="margin-top: .5rem; font-size: .85rem; color: var(--ink-soft);"><em>Entscheidung kann auch unterwegs fallen — beide Routen sind durchplanbar.</em></p>
+      </div>
     </div>
 
     <div class="timeline-bar">
@@ -1459,12 +1545,43 @@
     <div class="day highlight">
       <div class="day-num">21.06.<small>So · Tag 11</small></div>
       <div class="day-content">
-        <h3>Ankunft Stockholm</h3>
-        <div class="route">~ 80 km · dann U-Bahn · ca. 13–14 Uhr da</div>
-        <p>Gemütlich aus Trosa los gegen 10–11 Uhr, 80 km Fahrt = ca. 1,5 h. <strong>Ankunft Campingplatz zwischen 13:00 und 14:00 Uhr</strong>, Stellplatz beziehen, dann U-Bahn ins Zentrum. Bus auf einem Stellplatz <strong>außerhalb</strong> abstellen — innerstädtisch ist es teuer und eng. Empfehlung: <strong>Bredäng Camping</strong> (eigene U-Bahn-Station, 15 Min ins Zentrum) oder <strong>Ängby Camping</strong>. Erster Nachmittag/Abend in <strong>Gamla Stan</strong>, der mittelalterlichen Altstadt: Kopfsteinpflaster, schmale Gassen, am Stortorget ein erstes Bier.</p>
-        <ul>
-          <li><strong>Stockholm-Atmosphäre am Sonntag nach Mittsommer:</strong> Die Stadt ist relativ leer und ruhig — viele Schweden sind noch auf dem Land. Vorteil: weniger Touristenmassen in Gamla Stan, entspannte Cafés. Nachteil: Manche Restaurants haben verkürzte Öffnungszeiten oder sind zu. Vor dem Aufbruch ins Restaurant kurz auf Google Maps prüfen.</li>
-          <li>Stellplatz Bredäng &amp; Ängby bei Mittsommer-Wochenende oft ausgebucht — <strong>vorab buchen</strong>.</li>
+        <h3>Trosa → Uppsala — Treffen mit Cim</h3>
+        <div class="route">~ 150 km · Stockholm umfahren · Ankunft Camping ca. 13:30</div>
+        <p>Gemütliches Frühstück in Trosa, gegen 10:30–11:30 los. Stockholm über die <strong>Westtangente</strong> (E4 + E18) umfahren — sonst Stau im Stadtkern. <strong>Ankunft Fyrishov Camping ca. 13:30 Uhr</strong>, Stellplatz beziehen, dann ab ins Zentrum: <strong>14:00 bei Cim</strong>. 4 entspannte Stunden bis ca. 18:00.</p>
+
+        <p>Uppsala ist Schwedens <strong>viertgrößte Stadt</strong> und älteste Universitätsstadt (gegründet 1477), mit imposantem <strong>Domkyrkan</strong> (höchste Kirche Skandinaviens), dem botanischen <strong>Linnéträdgården</strong> und einer entspannten Studentenstimmung am Fluss <strong>Fyrisån</strong>. Perfekter Ort für einen Tag mit Freunden.</p>
+
+        <div class="quick-rules" style="margin-top: 1rem;">
+          <h4>🏕️ Stellplatz — gebucht ✅</h4>
+          <p><strong>Fyrishov Stugby &amp; Camping</strong> · Idrottsgatan 2, 753 33 Uppsala</p>
+          <p><strong>Buchungsnr.: 12025601</strong> · Kunden-Nr.: 004916093842547</p>
+          <p>1 Nacht 21.→22.06.2026 · Stellplatz mit Strom + Pool-Eintritt · <strong>410 SEK (≈ 37,72 €) bereits bezahlt</strong></p>
+          <p style="margin-top: .5rem;">Check-in Sommer: Campingrezeption 08–21 Uhr · Servicegebäude mit Dusche (kostenlos), WC, Waschraum, Küche · 20 Min Fußweg ins Zentrum am Fyrisån entlang</p>
+          <p style="margin-top: .5rem;"><strong>Kontakt:</strong> +46 18 727 49 60 · camping.fyrishov@uppsala.se · <a href="https://fyrishov.se" target="_blank" rel="noopener">fyrishov.se</a></p>
+        </div>
+
+        <div class="quick-rules" style="margin-top: 1rem;">
+          <h4>📍 Cims Adresse</h4>
+          <p><strong>Kungsgatan 66 M, 753 41 Uppsala</strong> — mitten im Zentrum, 600 m vom Domkyrkan, ~20 Min Fußweg vom Fyrishov Camping (am Fyrisån entlang).</p>
+        </div>
+
+        <div class="quick-rules" style="margin-top: 1rem;">
+          <h4>⏰ Zeitvorschlag — 4 h mit Cim (ab 14:00)</h4>
+          <p><strong>10:00–11:30</strong> Frühstück in Trosa, dann gemütlich aus Trosa los<br>
+          <strong>13:30</strong> Ankunft Fyrishov Camping, Stellplatz beziehen<br>
+          <strong>13:40</strong> Aufbruch ins Zentrum (zu Fuß am Fluss in 20 Min oder Bus 1/4)<br>
+          <strong>14:00</strong> Bei Cim klingeln — Kungsgatan 66 M<br>
+          <strong>14:00–15:30</strong> Spaziergang gemeinsam zum <strong>Domkyrkan</strong> (5 Min, kostenlos, beeindruckend) und <strong>Linnéträdgården</strong> (8 Min, botanischer Garten von Carl von Linné, 70 SEK)<br>
+          <strong>15:30–16:30</strong> Fika in der <strong>Ofvandahls</strong> (älteste Konditorei der Stadt, seit 1878 — 5 Min von Cim) oder Café an der Domkirche<br>
+          <strong>16:30–18:00</strong> Abendessen zu dritt, z.B. im <strong>Stadshuset</strong>, <strong>Hambergs Fisk</strong> oder einem entspannten Restaurant am Fluss<br>
+          <strong>18:00</strong> Verabschiedung — danach langer heller schwedischer Abend für euch am Fyrisån</p>
+          <p style="margin-top: .5rem;"><em>Alternativ: Wenn Cim euch zu sich einlädt → erst zu Hause klingeln, dann gemeinsam zum Essen gehen oder bei ihm zu Hause essen.</em></p>
+        </div>
+
+        <ul style="margin-top: 1rem;">
+          <li><strong>Abends frei:</strong> Spaziergang am Fyrisån, vielleicht in der <strong>O'Connor's Pub</strong> oder am Stadshotellet ein Bier. In den hellen schwedischen Nächten lange draußen sitzen.</li>
+          <li><strong>Wichtig vor Stockholm-Anreise morgen:</strong> evtl. einkaufen für Stockholm — manche Stockholm-Stellplätze haben keine Geschäfte in Laufweite.</li>
+          <li><strong>Stockholm morgen früh:</strong> Uppsala → Stockholm-Bredäng = ~70 km, Pendlertåg-Verbindung als Alternative (40 Min).</li>
         </ul>
       </div>
     </div>
@@ -1472,12 +1589,14 @@
     <div class="day highlight">
       <div class="day-num">22.06.<small>Mo · Tag 12</small></div>
       <div class="day-content">
-        <h3>Stockholm — Museumstag</h3>
-        <div class="route">U-Bahn &amp; zu Fuß</div>
-        <p>Auf der Insel <strong>Djurgården</strong> bündeln sich die Highlights: <strong>Vasamuseum</strong> (das geborgene Kriegsschiff von 1628), <strong>Skansen</strong> (Freilichtmuseum mit Tierpark — Elche, Bären, Rentiere), <strong>ABBA-Museum</strong>. Mehr als zwei Museen pro Tag wird zu viel — wählt aus.</p>
+        <h3>Uppsala → Stockholm + Gamla Stan</h3>
+        <div class="route">~ 70 km · Ankunft ca. 11 Uhr</div>
+        <p>Gemütliches Frühstück in Uppsala, gegen 10:00 los. Stockholm-Bredäng erreicht ihr in ca. 1 h. <strong>Stellplatz beziehen</strong>, U-Bahn ins Zentrum. Erster Nachmittag/Abend in <strong>Gamla Stan</strong>, der mittelalterlichen Altstadt: Kopfsteinpflaster, schmale Gassen, Königspalast, am Stortorget ein erstes Bier.</p>
         <ul>
-          <li>Mittag: <strong>Rosendals Trädgård</strong> auf Djurgården — Bio-Garten-Café mit eigenem Brot.</li>
-          <li>Abends: <em>Fika</em> bei Vete-Katten in Vasastan oder Spaziergang über den <strong>Monteliusvägen</strong> bei Sonnenuntergang (geht im Juni gegen 22 Uhr).</li>
+          <li><strong>Stellplatz-Empfehlung:</strong> <strong>Bredäng Camping</strong> (eigene U-Bahn-Station, 15 Min ins Zentrum) oder <strong>Ängby Camping</strong>. Beide außerhalb der Citymaut-Zone.</li>
+          <li><strong>U-Bahn:</strong> Tageskarte SL Access ~165 SEK pro Person, gilt für U-Bahn, Bus, Tram, Pendlertåg.</li>
+          <li><strong>Abends:</strong> Sonnenuntergangs-Spaziergang über den <strong>Monteliusvägen</strong> (Aussichtsbalkon über die ganze Stadt, ~22 Uhr).</li>
+          <li><strong>👫 Sissi &amp; Donald</strong> sind in dieser Zeit ebenfalls in Stockholm unterwegs (eigener Camper). Spätestens jetzt per Signal abstimmen: gemeinsamer Stellplatz, gemeinsamer Abend, oder bestimmtes Restaurant/Café für ein Treffen heute oder morgen.</li>
         </ul>
       </div>
     </div>
@@ -1485,11 +1604,14 @@
     <div class="day highlight">
       <div class="day-num">23.06.<small>Di · Tag 13</small></div>
       <div class="day-content">
-        <h3>Stockholm — Schären-Tag</h3>
-        <div class="route">Fähre vom Strömkajen</div>
-        <p>Tagesausflug in den Stockholmer Schärengarten — etwa <strong>30.000 Inseln</strong> ziehen sich 80 km in die Ostsee. Empfehlung für einen Tag: <strong>Vaxholm</strong> (gut erreichbar, schönes Festungsstädtchen, ~1 h Fähre) oder weiter raus nach <strong>Sandhamn</strong> (mehr Atmosphäre, längere Fahrt).</p>
+        <h3>Stockholm — Museumstag auf Djurgården</h3>
+        <div class="route">U-Bahn &amp; zu Fuß</div>
+        <p>Auf der Insel <strong>Djurgården</strong> bündeln sich die Highlights. Empfehlung: <strong>Vasamuseum vormittags</strong> (geborgenes Kriegsschiff von 1628 — Stockholms eindrucksvollstes Museum, weltweit einzigartig), <strong>Skansen nachmittags</strong> (Freilichtmuseum mit Tierpark — Elche, Bären, Rentiere, historische Schweden-Häuser). Mehr als zwei Museen pro Tag wird zu viel.</p>
         <ul>
-          <li>Mitnehmen: Picknick, Badesachen, Fernglas, Sonnencreme.</li>
+          <li><strong>Vasa:</strong> Öffnung 09:00, kommt früh — am späten Vormittag wird's voll.</li>
+          <li><strong>Skansen:</strong> Mit dem Vasamuseum gegenüber zu Fuß verbunden. Tierpark drinnen.</li>
+          <li><strong>Mittag dazwischen:</strong> <strong>Rosendals Trädgård</strong> auf Djurgården — Bio-Garten-Café mit eigenem Brot. Schöner Pausenort.</li>
+          <li><strong>Abends:</strong> <em>Fika</em> bei <strong>Vete-Katten</strong> in Vasastan (klassische schwedische Konditorei seit 1928).</li>
         </ul>
       </div>
     </div>
@@ -1538,6 +1660,133 @@
           <li>Tipp: schon am Vorabend in München-Umland übernachten und mit Puffer ankommen.</li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROUTE 2 — ALTERNATIVROUTE ============ -->
+<section id="route2" class="alt">
+  <div class="inner">
+    <div class="section-head">
+      <div class="num">02b — Alternativroute</div>
+      <h2>Route 2 — Stockholm-Sprung &amp; Mittsommer mit Sissi und Donald</h2>
+      <p>Falls ihr Mittsommer gemeinsam mit Sissi und Donald in Stockholm feiern wollt: <strong>am Mi 17.06. von Östgötaland aus den Sprung nach Stockholm</strong> und ab Do 18.06. dort sein. Sissi &amp; Donald checken am 18.06. im First Camp City-Stockholm ein und bleiben bis Di 23.06. (Check-out 12:00). So habt ihr 5 Tage Überschneidung statt nur einen halben Tag.</p>
+    </div>
+
+    <div class="route-vergleich">
+      <h4>Was bleibt gleich vs. anders</h4>
+      <p><strong>Gleich:</strong> Bus-Termine (10.06. Abholung, 27.06. Rückgabe), Fähren (12.06. + 25.06.), Cim-Treffen 21.06. in Uppsala, Östküste-Strecke 13.–17.06., Rückreise 24.–27.06.</p>
+      <p><strong>Anders:</strong> Großer Sprung 18.06. nach Stockholm (~ 250 km), Mittsommer in Stockholm statt Södermanland, Uppsala-Tagesausflug am 21.06. (statt Übernachtung), Stockholm ist 5 Tage statt 2.</p>
+    </div>
+
+    <div class="route-table">
+      <div class="rt-head">Tag</div>
+      <div class="rt-head">Datum</div>
+      <div class="rt-head">Programm</div>
+      <div class="rt-head">Übernachtung</div>
+
+      <div class="rt-tag">0–7</div>
+      <div class="rt-datum">10.–17.06.</div>
+      <div>Wie Route 1: Bus-Abholung, Anfahrt Rostock, Fähre, Skåne, Småland, Östküste</div>
+      <div class="rt-ort">wie Route 1</div>
+
+      <div class="rt-tag">8</div>
+      <div class="rt-datum">Mi 17.06.</div>
+      <div>Letzte Etappe Östküste, <strong>Großeinkauf für Mittsommer</strong> (Hering, Schnaps, Kartoffeln) — Vorlauf einen Tag früher, damit ihr morgen im Sprung-Modus seid</div>
+      <div class="rt-ort">Östgötaland</div>
+
+      <div class="rt-tag rt-row-highlight">9</div>
+      <div class="rt-datum rt-row-highlight">Do 18.06.</div>
+      <div class="rt-row-highlight"><strong>🚀 Stockholm-Sprung</strong> · ~ 250 km · Ankunft First Camp City-Stockholm nachmittags · Begrüßung Sissi &amp; Donald, gemeinsamer Abend</div>
+      <div class="rt-ort rt-row-highlight">First Camp City-Stockholm</div>
+
+      <div class="rt-tag rt-row-highlight">10</div>
+      <div class="rt-datum rt-row-highlight">Fr 19.06.</div>
+      <div class="rt-row-highlight"><strong>🌻 Midsommarafton</strong> mit Sissi &amp; Donald — z.B. <strong>Skansen</strong> (offizielle Stockholm-Feier mit Tanz um den Maibaum, Musik, drei Tage Programm) oder gemeinsam am First Camp / Flatensee</div>
+      <div class="rt-ort rt-row-highlight">First Camp</div>
+
+      <div class="rt-tag rt-row-highlight">11</div>
+      <div class="rt-datum rt-row-highlight">Sa 20.06.</div>
+      <div class="rt-row-highlight"><strong>🌞 Midsommardagen</strong> — gemeinsame Schären-Tour <strong>Vaxholm</strong> oder Flatensee-Tag (Baden, Spazieren, Sonne)</div>
+      <div class="rt-ort rt-row-highlight">First Camp</div>
+
+      <div class="rt-tag">12</div>
+      <div class="rt-datum">So 21.06.</div>
+      <div><strong>👤 Tagesausflug zu Cim nach Uppsala</strong> · ~ 70 km hin, 14:00 bei Cim, 4 h Programm bis 18:00 · zurück Stockholm bis 19:30 · Alternative: bei Cim übernachten (Fyrishov Camping), morgen zurück</div>
+      <div class="rt-ort">First Camp / Fyrishov</div>
+
+      <div class="rt-tag rt-row-highlight">13</div>
+      <div class="rt-datum rt-row-highlight">Mo 22.06.</div>
+      <div class="rt-row-highlight"><strong>👫 Letzter ganzer Tag mit Sissi &amp; Donald</strong> · Stockholm gemeinsam erkunden — Gamla Stan, Königspalast, Wechselablösung 12:15, abends Restaurant <strong>Pelikan</strong> (Södermalm, klassische schwedische Wirtschaft)</div>
+      <div class="rt-ort rt-row-highlight">First Camp / Bredäng</div>
+
+      <div class="rt-tag rt-row-highlight">14</div>
+      <div class="rt-datum rt-row-highlight">Di 23.06.</div>
+      <div class="rt-row-highlight"><strong>Vormittag mit Sissi &amp; Donald</strong> bis Check-out 12:00 · gemeinsames Frühstück, Verabschiedung · Nachmittag: <strong>Vasamuseum</strong> auf Djurgården, abends Spaziergang Monteliusvägen</div>
+      <div class="rt-ort rt-row-highlight">Bredäng</div>
+
+      <div class="rt-tag">15</div>
+      <div class="rt-datum">Mi 24.06.</div>
+      <div>Stockholm → Vätternsee / Linköping · ~ 400 km Schnellfahrt-Tag · Stopp am Vättern (Flytande bastun!) · Übernachtung Linköping</div>
+      <div class="rt-ort">Linköping</div>
+
+      <div class="rt-tag">16–17</div>
+      <div class="rt-datum">Do 25. – Sa 27.06.</div>
+      <div>Wie Route 1: Rest-Sprint, Fähre 09:55 → Rostock, Rückfahrt München-Region, Bus-Rückgabe 27.06. 12:00</div>
+      <div class="rt-ort">wie Route 1</div>
+    </div>
+
+    <h3 style="margin: 2rem 0 1rem 0;">🤔 Worauf bei Route 2 zu achten ist</h3>
+
+    <div class="quick-rules">
+      <h4>Vorteile</h4>
+      <p>• <strong>Mittsommer mit Freunden</strong> statt allein in Södermanland — gemeinsame Erinnerung</p>
+      <p>• <strong>Stockholm ist 5 Tage statt 2</strong> — viel mehr Zeit für Museen, Schären, Stadt</p>
+      <p>• <strong>Cim-Treffen bleibt drin</strong> (als Tagesausflug)</p>
+      <p>• <strong>Skansen Mittsommerfeier</strong> als Alternative zum Dorffest — drei Tage Programm, urban-folkloristisch</p>
+    </div>
+
+    <div class="quick-rules" style="border-left-color: var(--berry); background: rgba(138,58,58,.05);">
+      <h4 style="color: var(--berry);">Nachteile / zu klären</h4>
+      <p>• <strong>Stellplatz First Camp City-Stockholm:</strong> Sehr beliebt zu Mittsommer — <strong>dringend vorab buchen</strong>. Alternativ Ställplats Stockholm direkt nebenan (24/7 offen, keine Reservierung nötig).</p>
+      <p>• <strong>Großer Sprung-Tag 18.06.:</strong> ~ 250 km Autobahn am Stück — anstrengender als die gemütliche Original-Route.</p>
+      <p>• <strong>Mittsommer fern vom Land:</strong> Skansen ist touristisch (40-50.000 Besucher in drei Tagen). Authentischer wäre Dorffest in Södermanland (Route 1).</p>
+      <p>• <strong>Mehr Geld für Stellplätze:</strong> First Camp City ist deutlich teurer als die ländlichen Übernachtungen.</p>
+    </div>
+
+    <h3 style="margin: 2rem 0 1rem 0;">🏕️ Stellplatz-Optionen für Stockholm</h3>
+
+    <div class="archiv-doc" style="border-left-color: var(--moss);">
+      <h4 style="color: var(--moss-deep);">First Camp City-Stockholm (Sissi &amp; Donalds Platz)</h4>
+      <table class="archiv-table">
+        <tr><td>Lage</td><td>Bezirk Skarpnäck, am Flatensee, im Naturreservat Flaten</td></tr>
+        <tr><td>Entfernung Zentrum</td><td>~ 10 km, 25 Min mit Bus 401</td></tr>
+        <tr><td>Geo</td><td>N 59.2481792, E 18.1616595</td></tr>
+        <tr><td>Buchung</td><td>firstcamp.se/destinations/city-stockholm</td></tr>
+        <tr><td>Charakter</td><td>Klein, persönlich, am See, mit Naturreservat direkt nebenan</td></tr>
+        <tr><td>Highlights</td><td>Strand Flatenbadet, Spielplatz, Minigolf, Tennisplatz</td></tr>
+      </table>
+      <p style="margin-top: .5rem; font-size: .88rem;"><em>Gemeinsam mit Sissi &amp; Donald nebeneinander stehen — direkter Austausch, gemeinsame Abendessen am Camper.</em></p>
+    </div>
+
+    <div class="archiv-doc" style="border-left-color: var(--moss);">
+      <h4 style="color: var(--moss-deep);">Ställplats Stockholm (direkt nebenan)</h4>
+      <table class="archiv-table">
+        <tr><td>Lage</td><td>Direkt neben First Camp City</td></tr>
+        <tr><td>Öffnung</td><td>24/7, ganzjährig</td></tr>
+        <tr><td>Buchung</td><td>Keine Reservierung nötig, Wohnmobil-Stellplatz</td></tr>
+      </table>
+      <p style="margin-top: .5rem; font-size: .88rem;"><em>Backup, falls First Camp ausgebucht ist. Sissi &amp; Donald nur 200 m weg — gemeinsame Treffen einfach.</em></p>
+    </div>
+
+    <div class="archiv-doc" style="border-left-color: var(--moss);">
+      <h4 style="color: var(--moss-deep);">Bredäng Camping (alternativ)</h4>
+      <table class="archiv-table">
+        <tr><td>Lage</td><td>Süd-Stockholm, eigene U-Bahn-Station</td></tr>
+        <tr><td>Entfernung Zentrum</td><td>~ 8 km, 15 Min U-Bahn</td></tr>
+        <tr><td>Entfernung First Camp</td><td>~ 15 km</td></tr>
+      </table>
+      <p style="margin-top: .5rem; font-size: .88rem;"><em>Beste U-Bahn-Anbindung der drei Optionen. Sissi &amp; Donald für Treffen besuchen, aber nicht direkt nebenan.</em></p>
     </div>
   </div>
 </section>
@@ -1892,6 +2141,102 @@
       <li><strong>Mälaren-See, Uppsala</strong> — abends an Ufern aufpassen, sonst unauffällig.</li>
     </ul>
     <p style="margin-top: 1rem; font-size: .9rem;">Wo es nervig werden <em>könnte</em>: nur wenn ihr abends einen sehr windstillen Stellplatz tief im Småland-Wald direkt am See wählt. Lösung: ein paar hundert Meter weiter eine offenere Stelle suchen.</p>
+</section>
+
+<!-- ============ BASTU ============ -->
+<section id="bastu">
+  <div class="section-head">
+    <div class="num">07b — Bastu</div>
+    <h2>Schwitzen wie die Schweden — bada bastu</h2>
+    <p>Sauna ist in Schweden nicht nur Wellness, sondern <strong>Kultur</strong>. Der Begriff <em>bastu</em> kommt von <em>badstuga</em> = Badehütte, die Tradition reicht bis ins 5. Jahrhundert zurück — schon die Wikinger schätzten den Wechsel zwischen heißer Hütte und kaltem Bad. Anders als in Deutschland: das ist hier ein <strong>Gemeinschaftserlebnis</strong>, oft im Wald oder am Wasser, mit anschließendem Sprung in See oder Meer.</p>
+  </div>
+
+  <div class="quick-rules">
+    <h4>🧖 Bastu-Etikette in 6 Punkten</h4>
+    <p><strong>1. "Bada bastu" sagt man</strong> — wörtlich "Sauna baden". Wer das auf Schwedisch sagt, gewinnt Sympathien.</p>
+    <p><strong>2. Handtuch als Sitzunterlage ist Pflicht.</strong> Schweiß darf nicht aufs Holz tropfen. Großes Handtuch mitbringen.</p>
+    <p><strong>3. Vor jedem Gang gründlich abduschen.</strong> Auch zwischendurch nach jedem Aufguss. Hygiene ist heilig.</p>
+    <p><strong>4. Nacktheit ist normal</strong> in geschlechtergetrennten Bereichen, in gemischten Saunas oft Handtuch um die Hüften. Bei modernen Hotel-Spas vorher fragen — manche schreiben Badekleidung vor.</p>
+    <p><strong>5. Plaudern ist erlaubt</strong> — anders als die deutsche Schweige-Etikette. Schweden sehen die Sauna als Sozialort.</p>
+    <p><strong>6. Aufguss mit Birkenzweigen</strong> — leichtes Klopfen auf die Haut fördert die Durchblutung. Häufig in traditionellen Bastus angeboten.</p>
+  </div>
+
+  <h3 style="margin: 2rem 0 1rem 0;">🗺️ Saunen auf eurer Strecke</h3>
+
+  <div class="archiv-doc" style="border-left-color: var(--moss);">
+    <h4 style="color: var(--moss-deep);">1. Bastu Paus — Malmö (direkt nach der Fähre)</h4>
+    <table class="archiv-table">
+      <tr><td>Adresse</td><td>Daniaparken, Barometergatan 72, 211 17 Malmö</td></tr>
+      <tr><td>Distanz Trelleborg</td><td>~ 35 km, 35 Min Fahrt</td></tr>
+      <tr><td>Charakter</td><td>Floating Sauna (schwimmende Sauna), kleines Boot fährt euch raus</td></tr>
+      <tr><td>Besonderheit</td><td>Aufguss mit Tobias, der einzeln betreut</td></tr>
+      <tr><td>Bewertung</td><td>5,0 ★ (262 Bewertungen)</td></tr>
+      <tr><td>Öffnung</td><td>Mi/Fr 17–21:30, Sa 10–16:30, So 10–16</td></tr>
+      <tr><td>Telefon</td><td><a href="tel:+46733625020">+46 73 362 50 20</a></td></tr>
+    </table>
+    <p style="margin-top: .5rem; font-size: .88rem;"><em>Für den Reisestart nach der Fähre 12.06. eine wunderbare Idee, um in Schweden anzukommen. Vor Ort buchen geht meistens nicht, vorher anrufen!</em></p>
+  </div>
+
+  <div class="archiv-doc" style="border-left-color: var(--moss);">
+    <h4 style="color: var(--moss-deep);">2. Långviken's sauna society — Kalmar (Ostküste)</h4>
+    <table class="archiv-table">
+      <tr><td>Adresse</td><td>Kalmarsundsparken 33, 392 57 Kalmar</td></tr>
+      <tr><td>Distanz</td><td>auf der Route an Tag 4–5</td></tr>
+      <tr><td>Charakter</td><td>Holzbefeuerte Sauna mit Blick auf den Kalmarsund</td></tr>
+      <tr><td>Besonderheit</td><td>Direkter Zugang zum Meer für die Abkühlung</td></tr>
+      <tr><td>Bewertung</td><td>5,0 ★</td></tr>
+    </table>
+    <p style="margin-top: .5rem; font-size: .88rem;"><em>Privatverein — vor Ort fragen, ob für Gäste zugänglich. Sehr lokales Erlebnis.</em></p>
+  </div>
+
+  <div class="archiv-doc" style="border-left-color: var(--moss);">
+    <h4 style="color: var(--moss-deep);">3. Warmbadhuset — Västervik (Ostküste)</h4>
+    <table class="archiv-table">
+      <tr><td>Adresse</td><td>Strömspromenaden 1, 593 30 Västervik</td></tr>
+      <tr><td>Distanz</td><td>zwischen Kalmar und Stockholm, an der E22</td></tr>
+      <tr><td>Charakter</td><td>Spa-Komplex mit mehreren Räumen (Salzwand-Raum, Hamam, Fußbad)</td></tr>
+      <tr><td>Besonderheit</td><td>Max. 20 Personen pro Sitting — sehr ruhig, hochwertig</td></tr>
+      <tr><td>Bewertung</td><td>4,9 ★ (53 Bewertungen)</td></tr>
+      <tr><td>Öffnung</td><td>Di–So 12–18 (Mo geschlossen)</td></tr>
+      <tr><td>Telefon</td><td><a href="tel:+46490795800">+46 490 79 58 00</a></td></tr>
+    </table>
+    <p style="margin-top: .5rem; font-size: .88rem;"><em>Highlight für einen Tag mit besonderer Erholung. Buchung empfehlenswert.</em></p>
+  </div>
+
+  <div class="archiv-doc" style="border-left-color: var(--moss);">
+    <h4 style="color: var(--moss-deep);">4. Lilla Sauna / Sthlm Sauna Vinterviken — Stockholm</h4>
+    <table class="archiv-table">
+      <tr><td>Adresse Lilla Sauna</td><td>Söder Mälarstrand 24, 118 25 Stockholm</td></tr>
+      <tr><td>Adresse Vinterviken</td><td>Instrumentvägen 30, 126 51 Hägersten</td></tr>
+      <tr><td>Charakter Lilla</td><td>Holzbefeuerte Sauna für 2–6 Personen, Cold Plunge in der Bucht</td></tr>
+      <tr><td>Charakter Vinterviken</td><td>Kult-Sauna mit Blick aufs Wasser, Bademöglichkeit im See</td></tr>
+      <tr><td>Bewertung beide</td><td>5,0 / 4,9 ★</td></tr>
+      <tr><td>Öffnung Lilla</td><td>täglich 06–23 Uhr</td></tr>
+    </table>
+    <p style="margin-top: .5rem; font-size: .88rem;"><em>Lilla Sauna ist klein und intim — perfekt für einen Stockholm-Sauna-Abend. Vinterviken ist Membership-orientiert, lieber vorher per Web buchen.</em></p>
+  </div>
+
+  <div class="archiv-doc" style="border-left-color: var(--moss);">
+    <h4 style="color: var(--moss-deep);">5. Flytande bastun — Karlsborg am Vättern (Rückweg)</h4>
+    <table class="archiv-table">
+      <tr><td>Adresse</td><td>Vättern, 546 30 Karlsborg</td></tr>
+      <tr><td>Distanz</td><td>auf der Rückroute Tag 14 (24.06.) direkt am Vätternsee</td></tr>
+      <tr><td>Charakter</td><td><strong>Schwimmende Sauna</strong> am Vättern, holzbefeuert, für 11–15 Personen</td></tr>
+      <tr><td>Besonderheit</td><td>Vom Steg direkt in den glasklaren Vättern springen</td></tr>
+      <tr><td>Bewertung</td><td>5,0 ★</td></tr>
+      <tr><td>Telefon</td><td><a href="tel:+46505173 50">+46 505 173 50</a></td></tr>
+    </table>
+    <p style="margin-top: .5rem; font-size: .88rem;"><em>Perfekt für einen Rückreise-Stop am Vättern. Reservierung dringend empfohlen, da die Plätze begrenzt sind.</em></p>
+  </div>
+
+  <h3 style="margin: 2rem 0 1rem 0;">💡 Tipps für unterwegs</h3>
+  <ul>
+    <li><strong>Campingplatz-Sauna:</strong> Viele schwedische Campingplätze haben eigene Bastu — oft im Preis inklusive oder gegen kleinen Aufpreis. Bei der Anmeldung danach fragen.</li>
+    <li><strong>"Allmänhetens bastu":</strong> Öffentliche Sauna, meist gemeindeeigen, sehr günstig (~50–80 SEK), oft mit lokalen Gemeinschaft. Im Tourismusbüro vor Ort nachfragen.</li>
+    <li><strong>Mitnehmen:</strong> 2 Handtücher (eins zum Sitzen, eins zum Abtrocknen), Badeschlappen, evtl. Badekleidung für gemischte Bereiche.</li>
+    <li><strong>Zeit einplanen:</strong> Eine Bastu-Sitzung dauert mindestens 1,5–2 Stunden — Saunagänge mit Kaltbad &amp; Erholung dazwischen.</li>
+    <li><strong>Im Sommer:</strong> Auch wenn ihr keinen Schnee zum Hineinwerfen habt — der Sprung in den See bei 16 °C nach 90 °C Sauna ist trotzdem ein Erlebnis.</li>
+  </ul>
 </section>
 
 <!-- ============ SPRACHE ============ -->
@@ -2343,31 +2688,40 @@
   });
 
   // ============ RESERVIERUNGEN ============
-  const RES_KEY = 'schweden-reservierungen-2026';
+  const RES_KEY = 'schweden-reservierungen-2026-v2';
   const STATUS_CYCLE = ['offen', 'gebucht', 'bezahlt'];
 
   // Default-Einträge (initial bei erstem Öffnen)
   const defaultReservations = [
     {
-      id: 'r1', date: '11.06.2026', dateLabel: 'Mi · Tag 1',
+      id: 'r0', date: '10.06.2026', dateLabel: 'Mi · Tag 0',
+      name: 'Bus-Abholung roadsurfer München',
+      address: 'Ingolstädter Str. 172, 80939 München',
+      phone: '+49 89 3803 4629',
+      price: '',
+      status: 'bezahlt',
+      notes: 'Buchung 3933254797. Abholung 13:00. 90 Min für Übergabe einplanen.'
+    },
+    {
+      id: 'r1', date: '11.06.2026', dateLabel: 'Do · Tag 1',
       name: 'Stellplatz Mühlendamm Rostock',
       address: 'Mühlendamm 36, 18055 Rostock',
       phone: '0381 3812222',
       price: '10,00',
       status: 'offen',
-      notes: '24 Plätze, beleuchtet, 1 km zur Altstadt, Bushaltestelle am Platz. Ganzjährig geöffnet.'
+      notes: '24 Plätze, beleuchtet, 1 km zur Altstadt, Bushaltestelle am Platz. Ganzjährig geöffnet. WICHTIG: Wecker 05:30 für Fähre!'
     },
     {
-      id: 'r2', date: '12.06.2026', dateLabel: 'Do · Tag 2',
-      name: 'Fähre Rostock → Trelleborg',
-      address: 'TT-Line oder Stena Line',
+      id: 'r2', date: '12.06.2026', dateLabel: 'Fr · Tag 2',
+      name: 'Hin-Fähre Rostock → Trelleborg',
+      address: 'TT-Line "Nils Dacke" 08:15–14:30',
       phone: '',
       price: '',
-      status: 'gebucht',
-      notes: 'Bereits gebucht. Mind. 1 h vor Abfahrt am Hafen.'
+      status: 'bezahlt',
+      notes: 'Buchung 95739462, bezahlt. Check-in bis 06:45.'
     },
     {
-      id: 'r3', date: '12.06.2026', dateLabel: 'Do · Tag 2',
+      id: 'r3', date: '12.06.2026', dateLabel: 'Fr · Tag 2',
       name: 'Stellplatz Skåne (Stenshuvud / Simrishamn)',
       address: '',
       phone: '',
@@ -2376,7 +2730,7 @@
       notes: 'Erste Nacht in Schweden. park4night oder Campercontact.'
     },
     {
-      id: 'r4', date: '13.06.2026', dateLabel: 'Fr · Tag 3',
+      id: 'r4', date: '13.06.2026', dateLabel: 'Sa · Tag 3',
       name: 'Dragsö Camping Karlskrona',
       address: 'Dragsövägen, 371 37 Karlskrona',
       phone: '+46 455 153 54',
@@ -2385,7 +2739,7 @@
       notes: 'Direkt an der Küste, eigene Halbinsel.'
     },
     {
-      id: 'r5', date: '14.06.2026', dateLabel: 'Sa · Tag 4',
+      id: 'r5', date: '14.06.2026', dateLabel: 'So · Tag 4',
       name: 'Stellplatz Småland (See)',
       address: '',
       phone: '',
@@ -2394,7 +2748,7 @@
       notes: 'Glasreich-Region. Konkreter Platz spontan.'
     },
     {
-      id: 'r6', date: '15.06.2026', dateLabel: 'So · Tag 5',
+      id: 'r6', date: '15.06.2026', dateLabel: 'Mo · Tag 5',
       name: 'Camping Kalmar / Öland',
       address: '',
       phone: '',
@@ -2403,7 +2757,7 @@
       notes: 'Bei gutem Wetter Öland; sonst Kalmar Stadt.'
     },
     {
-      id: 'r7', date: '16.06.2026', dateLabel: 'Mo · Tag 6',
+      id: 'r7', date: '16.06.2026', dateLabel: 'Di · Tag 6',
       name: 'Stellplatz Vimmerby / Västervik',
       address: '',
       phone: '',
@@ -2412,7 +2766,7 @@
       notes: 'Lindgren-Welt oder Schären — Entscheidung vor Ort.'
     },
     {
-      id: 'r8', date: '17.06.2026', dateLabel: 'Di · Tag 7',
+      id: 'r8', date: '17.06.2026', dateLabel: 'Mi · Tag 7',
       name: 'Sankt Anna Stellplatz',
       address: '',
       phone: '',
@@ -2421,7 +2775,7 @@
       notes: 'Schären-Tag, ruhig.'
     },
     {
-      id: 'r9', date: '18.06.2026', dateLabel: 'Mi · Tag 8',
+      id: 'r9', date: '18.06.2026', dateLabel: 'Do · Tag 8',
       name: 'Stendörren-Naturreservat',
       address: 'Stendörrens naturreservat, 611 99 Studsvik',
       phone: '',
@@ -2448,40 +2802,49 @@
       notes: 'Mittsommertag, ruhig fahren.'
     },
     {
-      id: 'r12', date: '21.-23.06.2026', dateLabel: 'So-Di · Tag 11-13',
-      name: 'Bredäng Camping Stockholm (3 Nächte)',
+      id: 'r12', date: '21.06.2026', dateLabel: 'So · Tag 11',
+      name: 'Fyrishov Stugby & Camping Uppsala',
+      address: 'Idrottsgatan 2, 753 33 Uppsala',
+      phone: '+46 18 727 49 60',
+      price: '37,72',
+      status: 'bezahlt',
+      notes: 'Buchung 12025601 · 410 SEK · CEpool (Stellplatz mit Strom + Pool-Eintritt) · 20 Min Fußweg ins Zentrum. Cim-Treffen 14:00.'
+    },
+    {
+      id: 'r12b', date: '22.-23.06.2026', dateLabel: 'Mo-Di · Tag 12-13',
+      name: 'Bredäng Camping Stockholm (2 Nächte)',
       address: 'Stora Sällskapets Väg 60, 127 32 Skärholmen',
       phone: '+46 8 97 70 71',
       price: '',
       status: 'offen',
-      notes: 'Eigene U-Bahn-Station ins Zentrum. Vorab buchen — in der Hauptsaison oft voll.'
+      notes: 'Eigene U-Bahn-Station ins Zentrum. Vorab buchen — in der Hauptsaison oft voll. Alternativ: First Camp City-Stockholm bei Sissi & Donald.'
     },
     {
       id: 'r13', date: '24.06.2026', dateLabel: 'Mi · Tag 14',
-      name: 'Stellplatz Mälaren-See',
+      name: 'Stellplatz Vätternsee / Linköping',
       address: '',
       phone: '',
       price: '',
       status: 'offen',
-      notes: 'Nach Uppsala-Vormittag.'
+      notes: 'Schnellfahrt-Tag aus Stockholm. Optional Stop am Vättern (Flytande bastun!).'
     },
     {
       id: 'r14', date: '25.06.2026', dateLabel: 'Do · Tag 15',
-      name: 'Skanör / Ystad — letzte Nacht',
+      name: 'Rückfähre Trelleborg → Rostock + Übernachtung DE',
+      address: 'TT-Line "Nils Holgersson" 09:55–15:45',
+      phone: '',
+      price: '',
+      status: 'gebucht',
+      notes: 'Buchung 95739462, bezahlt. Check-in bis 08:25. Übernachtung in Rostock-Nähe oder weiter südlich.'
+    },
+    {
+      id: 'r15', date: '26.06.2026', dateLabel: 'Fr · Tag 16',
+      name: 'Übernachtung Bayreuth / Nürnberg / Regensburg',
       address: '',
       phone: '',
       price: '',
       status: 'offen',
-      notes: 'Strand-Camping in Trelleborg-Nähe. Abends tanken.'
-    },
-    {
-      id: 'r15', date: '26.06.2026', dateLabel: 'Fr · Tag 16',
-      name: 'Fähre Trelleborg → Rostock',
-      address: '',
-      phone: '',
-      price: '',
-      status: 'gebucht',
-      notes: 'Bereits gebucht. Frühe Abfahrt empfohlen.'
+      notes: 'Zwischenstop auf der Rückfahrt — am 27.06. entspannt zur Bus-Rückgabe nach München.'
     }
   ];
 
