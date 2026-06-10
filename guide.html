@@ -1514,6 +1514,8 @@
   <ul>
     <li><button class="toc-btn" data-target="termine">📅 Termine</button></li>
     <li><button class="toc-btn" data-target="vorab">Vorab</button></li>
+    <li><button class="toc-btn" data-target="eco">🌱 Eco-Fahrt</button></li>
+    <li><button class="toc-btn" data-target="maut">🛣️ Maut</button></li>
     <li><button class="toc-btn" data-target="route">Route 1</button></li>
     <li><button class="toc-btn" data-target="route2">Route 2 🔀</button></li>
     <li><button class="toc-btn" data-target="karte">Karte</button></li>
@@ -1539,8 +1541,14 @@
 
     <div class="termin-row critical">
       <div class="termin-date">Mi 10.06.<small>13:00 Uhr</small></div>
-      <div class="termin-event"><strong>🚐 Bus-Abholung</strong> roadsurfer SUNRISE SUITE<br><small>Ingolstädter Str. 172, 80939 München · Buchung 3933254797 · 90 Min einplanen</small></div>
+      <div class="termin-event"><strong>🚐 Bus-Abholung</strong> roadsurfer SUNRISE SUITE<br><small>Ingolstädter Str. 172, 80939 München · Buchung 3933254797 · 90 Min einplanen<br>📍 <a href="https://maps.google.com/?q=Ingolst%C3%A4dter+Str+172+80939+M%C3%BCnchen" target="_blank" rel="noopener">Ingolstädter Str. 172, 80939 München</a> · ☎ <a href="tel:+498938034629">+49 89 3803 4629</a><br>🎫 <a href="https://account.roadsurfer.com/de/3933254797/overview?token=7i5dzRDAi68F66jn9iwi9tqx859cM4ipOTck3QwoSVUMquX20USWn46hE2bD5syL" target="_blank" rel="noopener"><strong>Vor Ort: Pick-up-Pass aktivieren</strong></a></small></div>
       <div class="termin-status fix">FIX</div>
+    </div>
+
+    <div class="termin-row">
+      <div class="termin-date">Mi 10.06.<small>nach Abholung</small></div>
+      <div class="termin-event"><strong>📝 EPASS24-Registrierung</strong> (optional aber empfohlen)<br><small>Kennzeichen vom Bus notieren · auf <a href="https://www.epass24.com/de/" target="_blank" rel="noopener">epass24.com/de</a> registrieren · Kreditkarte hinterlegen · spart Bearbeitungsgebühr von roadsurfer (10-30 €)</small></div>
+      <div class="termin-status pending">TODO</div>
     </div>
 
     <div class="termin-row critical">
@@ -1706,6 +1714,245 @@
     <div class="cl-arrow">›</div>
   </a>
 </section>
+
+<!-- ============ ECO-FAHRT ============ -->
+<section id="eco">
+  <div class="section-head">
+    <div class="num">01c — Eco-Fahrt</div>
+    <h2>Langsamer fahren, mehr sparen</h2>
+    <p>Auf den ~2.850 km Autobahn-Strecke könnt ihr mit <strong>90 km/h statt 100 km/h</strong> spürbar Diesel, Geld und CO₂ sparen — bei nur 3,2 Stunden mehr Fahrzeit über die gesamte Reise verteilt.</p>
+  </div>
+
+  <div class="eco-stats">
+    <div class="eco-stat">
+      <div class="eco-icon">⛽</div>
+      <div class="eco-value">42,8 L</div>
+      <div class="eco-label">Diesel gespart</div>
+      <div class="eco-detail">Statt 328 L → nur 285 L</div>
+    </div>
+    <div class="eco-stat">
+      <div class="eco-icon">💶</div>
+      <div class="eco-value">69,68 €</div>
+      <div class="eco-label">Geld gespart</div>
+      <div class="eco-detail">Bei Diesel 1,63 €/L</div>
+    </div>
+    <div class="eco-stat">
+      <div class="eco-icon">🌱</div>
+      <div class="eco-value">113 kg</div>
+      <div class="eco-label">CO₂ gespart</div>
+      <div class="eco-detail">≈ 18% weniger Emissionen</div>
+    </div>
+    <div class="eco-stat eco-stat-highlight">
+      <div class="eco-icon">⏱️</div>
+      <div class="eco-value">22 €/h</div>
+      <div class="eco-label">Ertrag pro Mehrzeit</div>
+      <div class="eco-detail">69,68 € ÷ 3,2 h Mehrzeit</div>
+    </div>
+  </div>
+
+  <div class="eco-chart-wrap">
+    <h3 style="margin: 0 0 1rem 0; font-size: 1rem;">Vergleich 100 vs. 90 km/h auf 2.850 km Autobahn</h3>
+    <div style="position: relative; height: 280px;">
+      <canvas id="ecoChart" role="img" aria-label="Vergleichsdiagramm: Diesel-Verbrauch, Kosten und CO2 bei 100 vs 90 km/h">Diesel @100: 328 L · @90: 285 L. Kosten @100: 534 € · @90: 465 €. CO2 @100: 866 kg · @90: 753 kg.</canvas>
+    </div>
+  </div>
+
+  <div class="quick-rules" style="margin-top: 1.5rem;">
+    <h4>💡 Warum 90 km/h der süße Punkt ist</h4>
+    <p><strong>Aerodynamik:</strong> Luftwiderstand steigt mit v² — der Sprung 90→100 km/h kostet überproportional viel Sprit (~15% mehr Verbrauch für 11% mehr Tempo).</p>
+    <p><strong>Bus-Charakter:</strong> Wohnmobile mit 3,5 t haben den optimalen Reise-Bereich zwischen 80–95 km/h. Schon ab 100 km/h wird's laut, windschief, Spritfresser.</p>
+    <p><strong>Schweden eh:</strong> Dort sind Autobahnen meist auf 100–110 km/h limitiert, Landstraßen 80–90. Eure 90 km/h-Marke trifft das perfekt.</p>
+    <p><strong>3,2 h auf 17 Tage:</strong> Pro Tag im Schnitt 11 Minuten mehr Fahrt. Praktisch nicht spürbar — passt zur „ruhigen Reise durch Sverige".</p>
+  </div>
+
+  <!-- TANK-STRATEGIE -->
+  <h3 style="margin: 3rem 0 1rem 0; font-size: 1.3rem; color: var(--moss-deep); font-family: 'Fraunces', serif;">⛽ Plus: Tank-Strategie</h3>
+  <p style="margin-bottom: 1rem;">Bei ~375 Liter Diesel-Gesamtverbrauch macht der Tankstellen-Spread bis zu <strong>30 Cent pro Liter</strong> aus. Das sind nochmal über <strong>80 €</strong> Sparpotenzial. Hier die Eckdaten:</p>
+
+  <div class="eco-stats">
+    <div class="eco-stat">
+      <div class="eco-icon">⛔</div>
+      <div class="eco-value">1,75 €/L</div>
+      <div class="eco-label">Worst Case</div>
+      <div class="eco-detail">Autobahn-Raststätte (~656 € gesamt)</div>
+    </div>
+    <div class="eco-stat">
+      <div class="eco-icon">🚧</div>
+      <div class="eco-value">1,67 €/L</div>
+      <div class="eco-label">Standard</div>
+      <div class="eco-detail">Gemischt (~626 € gesamt)</div>
+    </div>
+    <div class="eco-stat">
+      <div class="eco-icon">✅</div>
+      <div class="eco-value">1,52 €/L</div>
+      <div class="eco-label">Best Case</div>
+      <div class="eco-detail">Discounter abseits AB (~570 € gesamt)</div>
+    </div>
+    <div class="eco-stat eco-stat-highlight">
+      <div class="eco-icon">💰</div>
+      <div class="eco-value">~ 50 €</div>
+      <div class="eco-label">Realistische Ersparnis</div>
+      <div class="eco-detail">10-11 € pro bewusster Tankstop</div>
+    </div>
+  </div>
+
+  <div class="eco-chart-wrap">
+    <h3 style="margin: 0 0 1rem 0; font-size: 1rem;">Gesamtkosten Diesel je Tank-Strategie (375 L Reisebedarf)</h3>
+    <div style="position: relative; height: 240px;">
+      <canvas id="ecoTankChart" role="img" aria-label="Vergleichsdiagramm Gesamtkosten Diesel: Worst Case 656 Euro, Standard 626 Euro, Best Case 570 Euro">Worst Case: 656 € · Standard: 626 € · Best Case: 570 €. Differenz Worst-Best: 86 €.</canvas>
+    </div>
+  </div>
+
+  <div class="quick-rules" style="margin-top: 1.5rem;">
+    <h4>🎯 Die 7 Spar-Regeln beim Tanken in Schweden</h4>
+    <p><strong>1. Niemals an Autobahn-Raststätten</strong> entlang E4, E6 oder E18 tanken — "motorway tax" von 10-15 Cent pro Liter.</p>
+    <p><strong>2. 3-Min-Umweg ins Industrieareal</strong> ("industriområde") lohnt fast immer. Die Ersparnis auf eine 70-L-Tankung ist meistens den kleinen Umweg wert.</p>
+    <p><strong>3. Cluster-Regel:</strong> Wo mehrere Tankstellen nebeneinander stehen (Halmstad, Jönköping, Kalmar), drückt Konkurrenz die Preise. Wenn Ingo oder ST1 gegenüber Circle K steht — bester Bezirks-Preis sicher.</p>
+    <p><strong>4. „Automat"- / „Minipris"-Schilder</strong> = unbemannte Discount-Variante. <em>Obemannade stationer</em> sind oft 0,15-0,30 SEK pro Liter günstiger als die bemannte Schwester nebenan.</p>
+    <p><strong>5. Vor Großstädten tanken</strong>, nicht im Stadtgebiet (Stockholm-Innenstadt deutlich teurer).</p>
+    <p><strong>6. App <a href="https://www.bensinpriser.nu" target="_blank" rel="noopener" style="color: var(--moss-deep);">bensinpriser.nu</a></strong> zeigt Live-Preise in der Nähe — vor jedem Tankstop kurz checken.</p>
+    <p><strong>7. Vor der Fähre tanken</strong>, nicht am Hafen — TT-Line-Umgebung Trelleborg/Rostock hat oft Aufschlag.</p>
+  </div>
+
+  <div class="quick-rules" style="margin-top: 1rem; background: rgba(74,106,74,.06); border-left-color: var(--moss);">
+    <h4>📱 Tankstellen-Ketten im Überblick</h4>
+    <p><strong>Discounter (günstig):</strong> Ingo (Discount-Marke), ST1 Automat, OKQ8 Minipris, Qstar (Land/Kleinstadt)</p>
+    <p><strong>Standard:</strong> Preem (grünes Bär-Logo, größtes Netz), Circle K (ehemals Statoil), OKQ8, ST1 (ehemals Shell, seit 2025)</p>
+    <p><strong>Special:</strong> Tanka (oft an Volvo-Händlern, eigene Kundenkarte) · Gulf (~70 Stationen) · Shell (gibt's nicht mehr — alle umgebaut)</p>
+    <p style="margin-top: .5rem; font-size: .85rem; color: var(--ink-soft);"><em>Wichtig: Nur Kreditkarten akzeptiert (kein EC/Maestro), PIN immer nötig.</em></p>
+  </div>
+</section>
+
+<!-- ============ MAUT ============ -->
+<section id="maut">
+  <div class="section-head">
+    <div class="num">01d — Maut</div>
+    <h2>Keine Vignette. Aber Stockholm-Trick.</h2>
+    <p>Schweden hat <strong>keine Autobahnmaut</strong> und <strong>keine Vignette</strong>. Maut fällt nur an zwei Stellen an: bei wenigen Brücken und als City-Maut in Stockholm und Göteborg. Für eure Route ist nur Stockholm relevant — mit dem Wochenend-Trick fast komplett vermeidbar.</p>
+  </div>
+
+  <div class="quick-rules">
+    <h4>✅ Was ihr nicht braucht</h4>
+    <p><strong>Keine Vignette, keine Box, keine Mautstation.</strong> Schweden ist nicht Österreich oder Schweiz. Alles läuft über automatische Kennzeichenerfassung — Kameras fotografieren, Rechnung kommt später.</p>
+  </div>
+
+  <div class="eco-stats" style="margin-top: 2rem;">
+    <div class="eco-stat">
+      <div class="eco-icon">🚗</div>
+      <div class="eco-value">45 SEK</div>
+      <div class="eco-label">Max. pro Stockholm-Strecke</div>
+      <div class="eco-detail">≈ 4,15 €</div>
+    </div>
+    <div class="eco-stat">
+      <div class="eco-icon">📅</div>
+      <div class="eco-value">Mo–Fr</div>
+      <div class="eco-label">Maut-Zeiten</div>
+      <div class="eco-detail">6:00 – 18:29 Uhr</div>
+    </div>
+    <div class="eco-stat">
+      <div class="eco-icon">🆓</div>
+      <div class="eco-value">Sa+So</div>
+      <div class="eco-label">Mautfrei</div>
+      <div class="eco-detail">+ Feiertage + ganzer Juli</div>
+    </div>
+    <div class="eco-stat eco-stat-highlight">
+      <div class="eco-icon">⚠️</div>
+      <div class="eco-value">+10-30 €</div>
+      <div class="eco-label">roadsurfer-Aufschlag</div>
+      <div class="eco-detail">Bearbeitungsgebühr ohne EPASS24</div>
+    </div>
+  </div>
+
+  <div class="quick-rules" style="margin-top: 1.5rem;">
+    <h4>🎯 Eure konkrete Stockholm-Strategie</h4>
+    <p><strong>Mo 22.06. (Werktag):</strong> Anreise aus Uppsala — Maut <strong>fällt an</strong>, je nach Route bis 45 SEK</p>
+    <p><strong>Di 23.06. (Werktag):</strong> Stockholm-Stadtbummel mit ÖPNV — <strong>Bus stehen lassen</strong>, keine Maut</p>
+    <p><strong>Mi 24.06. (Werktag):</strong> Abreise — Maut <strong>fällt an</strong>, eventuell vor 6:00 oder nach 18:30 fahren</p>
+    <p style="margin-top: .8rem;"><strong>Maximalschaden bei Nichtbeachtung:</strong> ~12 € City-Maut + ggf. 10-30 € roadsurfer-Bearbeitungsgebühr</p>
+    <p><strong>Mit ÖPNV-Trick:</strong> Bus stehen lassen → spart Maut + Parkplatz + Stress in der engen Innenstadt. Bredäng/First Camp hat eigene U-Bahn-Station ins Zentrum.</p>
+  </div>
+
+  <div class="quick-rules" style="margin-top: 1rem;">
+    <h4>📝 EPASS24 — vor der Reise registrieren</h4>
+    <p>EPASS24 ist der schwedische Mautdienstleister für ausländische Kennzeichen. Wenn ihr <strong>nichts macht</strong>, geht die Rechnung zuerst an roadsurfer (Halter), die leiten sie weiter — mit Bearbeitungsgebühr von 10-30 €.</p>
+    <p><strong>Besser:</strong> Am 10.06. nach Bus-Abholung kurz Kennzeichen notieren und auf <a href="https://www.epass24.com/de/" target="_blank" rel="noopener" style="color: var(--moss-deep);"><strong>epass24.com/de</strong></a> mit Kreditkarte registrieren. Dauert 5 Min. Spart 10-30 €.</p>
+    <p style="margin-top: .5rem; font-size: .85rem; color: var(--ink-soft);"><em>Beachte: Da der Bus auf roadsurfer registriert ist, müsst ihr beim Kennzeichen ggf. das Vorgehen mit roadsurfer klären — fragt vor Ort, ob die Maut direkt an euch oder über roadsurfer abgewickelt wird.</em></p>
+  </div>
+
+  <div class="quick-rules" style="margin-top: 1rem; background: rgba(74,106,74,.06); border-left-color: var(--moss);">
+    <h4>🌉 Brücken auf eurer Route (mautpflichtig)</h4>
+    <p><strong>Skurubron Stockholm</strong> — südöstlich von Stockholm, fahrt ihr nur, wenn ihr die Bredäng-Bypass-Route nehmt. Auf eurer Route Uppsala→Stockholm und Stockholm→Linköping <strong>nicht zwingend</strong>.</p>
+    <p><strong>Öresundbrücke</strong> — nur relevant, wenn ihr nach Dänemark fahrt. Nicht eingeplant.</p>
+    <p><strong>Sundsvallsbron, Motalabron</strong> — liegen nicht auf eurer Route. Irrelevant.</p>
+  </div>
+</section>
+
+<style>
+  /* Eco-Sektion Styles */
+  .eco-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: .8rem;
+    margin: 1.5rem 0;
+  }
+  .eco-stat {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 1.2rem 1rem;
+    text-align: center;
+  }
+  .eco-stat-highlight {
+    background: linear-gradient(135deg, rgba(74,106,74,.08), rgba(212,164,55,.08));
+    border-color: var(--moss);
+  }
+  .eco-icon {
+    font-size: 1.6rem;
+    margin-bottom: .4rem;
+    line-height: 1;
+  }
+  .eco-value {
+    font-family: 'Fraunces', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--moss-deep);
+    margin-bottom: .2rem;
+    line-height: 1.1;
+  }
+  .eco-stat-highlight .eco-value {
+    color: var(--sun);
+    background: linear-gradient(135deg, var(--moss-deep), var(--sun));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .eco-label {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--ink-soft);
+    margin-bottom: .3rem;
+    font-weight: 600;
+  }
+  .eco-detail {
+    font-size: .75rem;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+  .eco-chart-wrap {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 1.3rem 1.4rem 1.5rem;
+    margin-top: 1.5rem;
+  }
+  @media (max-width: 600px) {
+    .eco-stats { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
+    .eco-stat { padding: 1rem .7rem; }
+    .eco-value { font-size: 1.4rem; }
+    .eco-chart-wrap { padding: 1rem 1rem 1.2rem; }
+  }
+</style>
 
 <!-- ============ ROUTE ============ -->
 <section id="route" class="alt">
@@ -2703,6 +2950,7 @@
   Quellen: visitsweden.de, schwedentipps.se, ADAC Länderinfo Schweden, nordlandcamper.de, traveloptimizer.de, skandinavientrips.de, mueckenguru.de, besucherguide-schweden.de · Stand Juni 2026 · v23.</p>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
   document.querySelectorAll('nav.toc .toc-btn').forEach(btn => {
     btn.addEventListener('click', e => {
@@ -3430,6 +3678,145 @@
     document.addEventListener('DOMContentLoaded', initMap);
   } else {
     initMap();
+  }
+
+  // ============ ECO-CHART ============
+  function initEcoChart() {
+    const canvas = document.getElementById('ecoChart');
+    if (!canvas || typeof Chart === 'undefined') return;
+
+    new Chart(canvas, {
+      type: 'bar',
+      data: {
+        labels: ['Diesel (L)', 'Kosten (€)', 'CO₂ (kg)', 'Fahrzeit (h)'],
+        datasets: [
+          {
+            label: 'Bei 100 km/h',
+            data: [328, 534, 866, 28.5],
+            backgroundColor: '#b85c5c',
+            borderColor: '#993333',
+            borderWidth: 1,
+            borderRadius: 4
+          },
+          {
+            label: 'Bei 90 km/h',
+            data: [285, 465, 753, 31.7],
+            backgroundColor: '#4a6a4a',
+            borderColor: '#2f4a32',
+            borderWidth: 1,
+            borderRadius: 4
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: {
+              font: { size: 12, family: 'system-ui' },
+              boxWidth: 14,
+              boxHeight: 14,
+              padding: 12,
+              color: '#3a3a36'
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(ctx) {
+                const units = ['L', '€', 'kg', 'h'];
+                return ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString('de-DE') + ' ' + units[ctx.dataIndex];
+              }
+            }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              font: { size: 11, family: 'system-ui' },
+              color: '#7a7872'
+            },
+            grid: { color: 'rgba(0,0,0,.05)' }
+          },
+          x: {
+            ticks: {
+              font: { size: 12, family: 'system-ui', weight: '500' },
+              color: '#3a3a36'
+            },
+            grid: { display: false }
+          }
+        }
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEcoChart);
+  } else {
+    setTimeout(initEcoChart, 100);
+  }
+
+  // ============ TANK-CHART ============
+  function initEcoTankChart() {
+    const canvas = document.getElementById('ecoTankChart');
+    if (!canvas || typeof Chart === 'undefined') return;
+
+    new Chart(canvas, {
+      type: 'bar',
+      data: {
+        labels: ['Worst Case\n(nur Autobahn)', 'Standard\n(gemischt)', 'Best Case\n(Discounter)'],
+        datasets: [{
+          label: 'Gesamtkosten Diesel (€)',
+          data: [656, 626, 570],
+          backgroundColor: ['#b85c5c', '#d4a437', '#4a6a4a'],
+          borderColor: ['#993333', '#a37e1a', '#2f4a32'],
+          borderWidth: 1,
+          borderRadius: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(ctx) {
+                return ctx.parsed.y.toLocaleString('de-DE') + ' € gesamt';
+              }
+            }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: false,
+            min: 500,
+            max: 700,
+            ticks: {
+              font: { size: 11, family: 'system-ui' },
+              color: '#7a7872',
+              callback: function(v) { return v + ' €'; }
+            },
+            grid: { color: 'rgba(0,0,0,.05)' }
+          },
+          x: {
+            ticks: {
+              font: { size: 11, family: 'system-ui', weight: '500' },
+              color: '#3a3a36'
+            },
+            grid: { display: false }
+          }
+        }
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEcoTankChart);
+  } else {
+    setTimeout(initEcoTankChart, 100);
   }
 </script>
 
